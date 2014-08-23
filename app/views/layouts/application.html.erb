@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="<%= @page_lang_cls %>">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="robots" content="<%= @page_robots %>" />
+    <meta name="description" content="<%= @page_desc %>" />
+    <meta name="keywords" content="<%= @page_keywords %>" />
+    <meta name="author" content="<%= @page_author %>" />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0' />
+    <%= csrf_meta_tags %>
+    <!-- Title -->
+    <title><%= @page_name %> | <%= @page_title %></title>
+    <!-- Favicon -->
+    <!-- TODO -->
+    <%= favicon_link_tag 'favicon.ico' %>
+    <!-- Styles -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <!-- Font awsome cdn -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Facebook & Linkedin Meta -->
+    <meta property="og:site_name" content="<%= @page_name %>">
+    <meta property="og:title" content="<%= @page_title %>">
+    <meta property="og:url" content="<%= link_to 'Homepage', root_path %>">
+    <meta property="og:description" content="<%= @page_desc %>">
+    <!-- TODO -->
+    <meta property="og:image" content="/assets/logo_square.png">
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="<%= @page_name %>">
+    <meta name="twitter:url" content="<%= link_to 'Homepage', root_path  %>">
+    <meta name="twitter:title" content="<%= @page_title %>">
+    <meta name="twitter:description" content="<%= @page_desc %>">
+    <!-- TODO -->
+    <meta name="twitter:image" content="/assets/logo_square.png">
+
+    <!-- noscript #1 -->
+    <noscript>
+    <style type="text/css">
+      div, footer { display: none; }
+      noscript div { display: block !important; }
+      body { color: #333; background: white; width: 500px; margin: 100px auto; }
+      h1 { font: bold 47px/1.5 sans-serif; margin: .6em 0; }
+      p { font: 21px/1.5 Georgia,serif; margin: 1.5em 0; }
+      small { font-size: 70%; color: gray; }
+    </style>
+    </noscript>
+
+  </head>
+  <body id="body" class="<%= @device_cls %> <%= @is_logged_in_cls %>">
+
+    <!-- noscript #2 -->
+    <noscript>
+    <div>
+      <h1><%= @lang_javascript_header %></h1>
+      <p><%= @lang_javascript_body %></p>
+      <div class="form-group"><a target="blank" href="https://www.google.com/search?q=how+to+enable+javascript" class="btn btn-primary btn-lg"><%= @lang_how_to_enable_javascript %></a></div>
+    </div>
+    </noscript>
+    <!-- Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand"><%= @page_name %></a>
+
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+          <ul class="nav navbar-nav" id="menu-top">
+            <li data-template="index"><a title="Introduction and overview" href="{$baseroot}"><%= @lang_search %></a></li>
+            <li data-template="pomodoro"><a title="Start the online timer" href="{$baseroot}/pomodoro"><%= @lang_about %></a></li>
+            <li data-template="feedback"><a title="Feedback form and discussion" href="{$baseroot}/feedback"><%= @lang_feedback %></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" id="menu-alt">
+            <li data-template="myaccount|settings" class="dropdown">
+              TODO - dropdown
+            </li>
+            <li class="current-clock-wrap text-right"><a id="current-time" class="clock-small"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div class="container">
+
+      <%= yield %>
+
+    </div>
+    <footer>
+      <div class="container footer">
+        <hr class="footer">
+        <div class="row">
+          <div class="col-lg-12">
+
+            <ul class="list-unstyled">
+              <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
+              <li>&#169; 2013 - <%= Time.now.year %></li>
+              <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
+              <li class="no-mobile no-smartphone">~</li>
+              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="http://about.me/petr.nagy">about.me</a></li>
+              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="https://twitter.com/petrnagy">tw</a></li>
+              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="http://www.linkedin.com/pub/petr-nagy/60/176/781">ln</a></li>
+              <li class="no-mobile no-smartphone"><a href="https://plus.google.com/108570974371249066128?rel=author">g+</a></li>
+              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="https://www.facebook.com/petr.nagy">fb</a></li>
+              <li class="no-mobile no-smartphone no-tablet"><a target="blank" rel="nofollow" href="http://knedlajz.deviantart.com/gallery/">da</a></li>
+            </ul>
+            <p class="no-mobile no-smartphone small">Starring:&nbsp;&nbsp;&nbsp; 
+              <a target="_blank" rel="nofollow" href="https://www.ruby-lang.org/en/">#ruby</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://rubyonrails.org/">#rails</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://www.postgresql.org/">#postgresql</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://en.wikipedia.org/wiki/JavaScript">#js</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://coffeescript.org/">#coffeescript</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://jquery.com">#jquery</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://getbootstrap.com">#bootstrap</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://bootswatch.com">#bootswatch</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://git-scm.com">#git</a>
+            </p>
+            <p class="no-mobile no-smartphone small">Images:&nbsp;&nbsp;&nbsp; 
+              <a target="_blank" rel="nofollow" href="http://www.morguefile.com/creative/mconnors">tomato</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://theromancee.deviantart.com/art/Coffee-Cup-PSD-editable-381319610">coffee</a> ~ 
+              <a target="_blank" rel="nofollow" href="http://wegraphics.deviantart.com/art/Apple-products-PSD-templates-177631984">macbook</a> ~
+              <a target="_blank" rel="nofollow" href="http://www.elegantthemes.com/blog/resources/free-social-media-icon-set">icons</a>
+            </p>
+            <p class="text-center disclaimer">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus <br>
+              feugiat lorem diam, sed euismod dolor faucibus eu. Donec varius <br>
+              diam at elit ultricies aliquam.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+    <!-- Scripts -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </body>
+
+</html>
