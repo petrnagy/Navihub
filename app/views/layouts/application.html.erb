@@ -92,7 +92,7 @@
           <div class="col-lg-12">
 
             <ul class="list-unstyled">
-              <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
+              <li class="pull-right"><a href="#body" class="scroll-top"><%= @lang_back_to_top %></a></li>
               <li>&#169; 2013 - <%= Time.now.year %></li>
               <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
               <li class="no-mobile no-smartphone">~</li>
@@ -103,7 +103,7 @@
               <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="https://www.facebook.com/petr.nagy">fb</a></li>
               <li class="no-mobile no-smartphone no-tablet"><a target="blank" rel="nofollow" href="http://knedlajz.deviantart.com/gallery/">da</a></li>
             </ul>
-            <p class="no-mobile no-smartphone small">Starring:&nbsp;&nbsp;&nbsp; 
+            <p class="no-mobile no-smartphone small"><%= @lang_starring %>:&nbsp;&nbsp;&nbsp; 
               <a target="_blank" rel="nofollow" href="https://www.ruby-lang.org/en/">#ruby</a> ~ 
               <a target="_blank" rel="nofollow" href="http://rubyonrails.org/">#rails</a> ~ 
               <a target="_blank" rel="nofollow" href="http://www.postgresql.org/">#postgresql</a> ~ 
@@ -135,3 +135,5 @@
   </body>
 
 </html>
+
+<%= @debug %>

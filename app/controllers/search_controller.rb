@@ -2,22 +2,21 @@ class SearchController < ApplicationController
 
   public
   
-  @results = []
+  @results
   
   def index
   end
 
-  def find term = nil, order = nil, offset = nil
-    if term.class.name.downcase == 'string' && term.length
-      @results = process_search term, order, offset
-      if @results.length
-        render 'find'
+  def find
+    if params.has_key?('term') && params['term'].is_a?(String) && params['term'].length > 0
+      @results = process_search params
+      if @results.length > 0
+        true
       else
         render 'empty'
       end
-      
-    else  
-      render 'find'
+    else
+      render 'index'
     end
   end
 
@@ -28,12 +27,11 @@ class SearchController < ApplicationController
   
   private
   
-  def process_search term, order, offset
-    # todo
-    # 1) require model
-    # 2) process search in cache
-    # 3) process searchvia api
-    [1,2,3]
+  def process_search params
+    search = Search.new params
+    search.start
+    search.get
+    @debug = search.get
   end
   
 end
