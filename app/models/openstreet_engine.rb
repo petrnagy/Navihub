@@ -1,0 +1,5 @@
+class OpenstreetEngine < SearchEngine
+  
+  
+  
+end

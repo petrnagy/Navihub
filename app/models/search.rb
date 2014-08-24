@@ -5,23 +5,42 @@ class Search
   @@allowed_orders = %w{distance name relevance}
   @@allowed_engines = %w{google bing openstreet yelp foursquare}
   
-  @term; @order; @offset; @engines
-  
-  attr_reader @@allowed_orders
-  attr_reader @@allowed_engines
+  @params; @engines; @results;
   
   def initialize params
-    @term = params['term']
-    @order = determine_order params['order']
-    @offset = determine_offset params['offset']
+    @params = {
+      :term => params['term'],
+      :order => determine_order(params['order']),
+      :offset => determine_offset(params['offset']),
+    }
     @engines = determine_search_engines params['engines']
   end
   
-  def start
-    
+  def search
+    results = []
+    fibers = {}
+    @engines.each do |name|
+      engine = "#{name.capitalize}Engine".constantize.new @params
+      fibers[name] = {
+        :fiber => Fiber.new do |lambda|
+          lambda.call
+        end,
+        :lambda => lambda do |engine|
+          engine.search
+        end
+      }
+    end
+    fibers.each do |payload|
+      results < payload[:fiber].resume(payload[:lambda])
+    end
+    unless results.length == 0 then
+      results = order results
+      results = limit results
+    end
+    @results = results
   end
   
-  def get
+  def get_results
     @order
   end
   
@@ -50,14 +69,17 @@ class Search
   
   def determine_search_engines engines
     allowed = []
-    if engines.is_a?(Array)
-      engines.each do |engine|
-        if @@allowed_engines.include? engine
-          allowed < engine
-        end
-      end
-    end
+    engines.split(',').each do |engine|
+      allowed < engine if @@allowed_engines.include? engine
+    end if engines.is_a? String
     allowed.length > 0 ? allowed : @@allowed_engines
+  end
+  
+  def order
+    # @todo method
+  end
+  def limit
+    # @todo method
   end
   
 end

@@ -10,11 +10,7 @@ class SearchController < ApplicationController
   def find
     if params.has_key?('term') && params['term'].is_a?(String) && params['term'].length > 0
       @results = process_search params
-      if @results.length > 0
-        true
-      else
-        render 'empty'
-      end
+      render 'empty' if @results.length == 0
     else
       render 'index'
     end
@@ -29,9 +25,9 @@ class SearchController < ApplicationController
   
   def process_search params
     search = Search.new params
-    search.start
-    search.get
-    @debug = search.get
+    search.search
+    search.get_results
+    @debug = search.get_results
   end
   
 end

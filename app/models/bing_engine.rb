@@ -1,0 +1,5 @@
+class BingEngine < SearchEngine
+  
+  
+  
+end
