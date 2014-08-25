@@ -1,11 +1,23 @@
 class ApplicationController < ActionController::Base
   
+  public
+  
+  protected
+  
+  @user
+  
+  private
+  
+  public
+  
   protect_from_forgery with: :exception
   
-  def initialize
-    super
+  before_filter :init
+  
+  def init
     init_html_variables
     init_lang_variables
+    init_user
   end
   
   protected
@@ -18,7 +30,6 @@ class ApplicationController < ActionController::Base
     @page_robots = Rails.env.production? ? 'index, follow' : 'noindex, nofollow'
     @device_cls = determine_device
     @is_logged_in_cls = determine_login_status
-
   end
   
   def init_lang_variables
@@ -37,6 +48,12 @@ class ApplicationController < ActionController::Base
   
   def determine_login_status
     'not-logged-in'
+  end
+  
+  def init_user
+    cookie = Cookie.new cookies[:navihub_id]
+    @user = User.new session[:session_id], cookie
+    
   end
   
   private

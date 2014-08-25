@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id_id: 
+  token: MyString
+  token_secret: MyString
+  valid: 2014-08-24 14:17:46
+  conn_ser: 
+  credentials_ser: 
+  active: false
+
+two:
+  user_id_id: 
+  token: MyString
+  token_secret: MyString
+  valid: 2014-08-24 14:17:46
+  conn_ser: 
+  credentials_ser: 
+  active: false

@@ -2,46 +2,51 @@ class Search
   
   public
   
+  protected
+  
   @@allowed_orders = %w{distance name relevance}
   @@allowed_engines = %w{google bing openstreet yelp foursquare}
   
-  @params; @engines; @results;
+  private
   
-  def initialize params
+  @params; @location; @engines; @results; 
+  @timeout;
+  
+  public
+  
+  attr_reader :results
+  
+  def initialize params, location
     @params = {
       :term => params['term'],
       :order => determine_order(params['order']),
       :offset => determine_offset(params['offset']),
+      :radius => params.has_key?('radius') ? params['radius'] : 500, # meters
     }
     @engines = determine_search_engines params['engines']
+    @timeout = 5
+    @location = location
   end
   
   def search
+    ts_start = Time.now
     results = []
-    fibers = {}
+    threads = []
     @engines.each do |name|
-      engine = "#{name.capitalize}Engine".constantize.new @params
-      fibers[name] = {
-        :fiber => Fiber.new do |lambda|
-          lambda.call
-        end,
-        :lambda => lambda do |engine|
-          engine.search
-        end
-      }
+      # do not put new instance initialization in the thread because of 'Circular dependency' bug !
+      engine = "#{name.capitalize}Engine".constantize.new @params, @location
+      threads << Thread.new do
+        results << engine.search
+        Thread.exit if results.length == @engines.length || (Time.now - ts_start) > @timeout
+      end
     end
-    fibers.each do |payload|
-      results < payload[:fiber].resume(payload[:lambda])
-    end
+    threads.each { |t| t.abort_on_exception = false; t.join }
     unless results.length == 0 then
+      results = flatten results
       results = order results
       results = limit results
     end
     @results = results
-  end
-  
-  def get_results
-    @order
   end
   
   protected
@@ -70,15 +75,25 @@ class Search
   def determine_search_engines engines
     allowed = []
     engines.split(',').each do |engine|
-      allowed < engine if @@allowed_engines.include? engine
+      allowed << engine if @@allowed_engines.include? engine
     end if engines.is_a? String
     allowed.length > 0 ? allowed : @@allowed_engines
   end
   
-  def order
+  def flatten results
+    flattened = []
+    results.each do |result|
+      flattened.concat result
+    end
+    flattened
+  end
+  
+  def order results
+    results
     # @todo method
   end
-  def limit
+  def limit results
+    results
     # @todo method
   end
   

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id_id: 
+  cookie_id_id: 
+  sessid: MyString
+  valid: 2014-08-24 14:13:32
+  remember: false
+  active: false
+
+two:
+  user_id_id: 
+  cookie_id_id: 
+  sessid: MyString
+  valid: 2014-08-24 14:13:32
+  remember: false
+  active: false

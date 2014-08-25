@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_fb: MyString
+  id_tw: MyString
+  id_gp: MyString
+  name: MyString
+  imgurl: MyString
+  active: false
+
+two:
+  id_fb: MyString
+  id_tw: MyString
+  id_gp: MyString
+  name: MyString
+  imgurl: MyString
+  active: false

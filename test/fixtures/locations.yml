@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  get: MyString
+  set: MyString
+  delete: MyString
+  user_id_id: 
+  name: MyString
+  latitude: 1.5
+  longitude: 1.5
+  country: MyString
+  country_short: MyString
+  city: MyString
+  city2: MyString
+  street1: MyString
+  street2: MyString
+  active: false
+
+two:
+  get: MyString
+  set: MyString
+  delete: MyString
+  user_id_id: 
+  name: MyString
+  latitude: 1.5
+  longitude: 1.5
+  country: MyString
+  country_short: MyString
+  city: MyString
+  city2: MyString
+  street1: MyString
+  street2: MyString
+  active: false

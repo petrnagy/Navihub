@@ -5,8 +5,9 @@ class SearchEngine
   class MethodNotOverridden < StandardError
   end
   
-  def initialize params
+  def initialize params, location
     @params = params
+    @location = location
   end
   
   def search

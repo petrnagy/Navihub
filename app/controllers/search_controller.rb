@@ -24,10 +24,12 @@ class SearchController < ApplicationController
   private
   
   def process_search params
-    search = Search.new params
+    #location = Location.new @user
+    location = nil
+    search = Search.new params, location
     search.search
-    search.get_results
-    @debug = search.get_results
+    search.results
+    
   end
   
 end
