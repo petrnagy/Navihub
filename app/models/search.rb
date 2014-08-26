@@ -5,7 +5,8 @@ class Search
   protected
   
   @@allowed_orders = %w{distance name relevance}
-  @@allowed_engines = %w{google bing openstreet yelp foursquare}
+  #@@allowed_engines = %w{google bing openstreet yelp foursquare}
+  @@allowed_engines = %w{google}
   
   private
   

@@ -1,4 +1,4 @@
 class Session < ActiveRecord::Base
-  belongs_to :user_id
-  belongs_to :cookie_id
+  belongs_to :user
+  belongs_to :cookie
 end

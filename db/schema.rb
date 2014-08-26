@@ -11,23 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824175429) do
+ActiveRecord::Schema.define(version: 20140826190128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cookies", force: true do |t|
-    t.integer  "user_id_id"
+    t.integer  "user_id"
     t.string   "cookie"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "cookies", ["user_id_id"], name: "index_cookies_on_user_id_id", using: :btree
+  add_index "cookies", ["active"], name: "index_cookies_on_active", using: :btree
+  add_index "cookies", ["cookie"], name: "index_cookies_on_cookie", unique: true, using: :btree
+  add_index "cookies", ["user_id"], name: "index_cookies_on_user_id", using: :btree
 
   create_table "credentials", force: true do |t|
-    t.integer  "user_id_id"
+    t.integer  "user_id"
     t.string   "email"
     t.string   "password"
     t.string   "salt"
@@ -36,11 +38,13 @@ ActiveRecord::Schema.define(version: 20140824175429) do
     t.datetime "updated_at"
   end
 
-  add_index "credentials", ["user_id_id"], name: "index_credentials_on_user_id_id", using: :btree
+  add_index "credentials", ["active"], name: "index_credentials_on_active", using: :btree
+  add_index "credentials", ["email"], name: "index_credentials_on_email", unique: true, using: :btree
+  add_index "credentials", ["user_id"], name: "index_credentials_on_user_id", using: :btree
 
   create_table "facebook_sessions", force: true do |t|
-    t.integer  "user_id_id"
-    t.datetime "valid"
+    t.integer  "user_id"
+    t.datetime "valid_to"
     t.datetime "expires"
     t.datetime "issued"
     t.binary   "session_ser"
@@ -50,11 +54,12 @@ ActiveRecord::Schema.define(version: 20140824175429) do
     t.datetime "updated_at"
   end
 
-  add_index "facebook_sessions", ["user_id_id"], name: "index_facebook_sessions_on_user_id_id", using: :btree
+  add_index "facebook_sessions", ["active"], name: "index_facebook_sessions_on_active", using: :btree
+  add_index "facebook_sessions", ["user_id"], name: "index_facebook_sessions_on_user_id", using: :btree
 
   create_table "google_sessions", force: true do |t|
-    t.integer  "user_id_id"
-    t.datetime "valid"
+    t.integer  "user_id"
+    t.datetime "valid_to"
     t.datetime "expires"
     t.datetime "issued"
     t.text     "token_json"
@@ -64,7 +69,8 @@ ActiveRecord::Schema.define(version: 20140824175429) do
     t.datetime "updated_at"
   end
 
-  add_index "google_sessions", ["user_id_id"], name: "index_google_sessions_on_user_id_id", using: :btree
+  add_index "google_sessions", ["active"], name: "index_google_sessions_on_active", using: :btree
+  add_index "google_sessions", ["user_id"], name: "index_google_sessions_on_user_id", using: :btree
 
   create_table "langs", force: true do |t|
     t.string   "name"
@@ -74,12 +80,10 @@ ActiveRecord::Schema.define(version: 20140824175429) do
     t.datetime "updated_at"
   end
 
+  add_index "langs", ["active"], name: "index_langs_on_active", using: :btree
+
   create_table "locations", force: true do |t|
-    t.string   "get"
-    t.string   "set"
-    t.string   "delete"
-    t.integer  "user_id_id"
-    t.string   "name"
+    t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "country"
@@ -93,27 +97,30 @@ ActiveRecord::Schema.define(version: 20140824175429) do
     t.datetime "updated_at"
   end
 
-  add_index "locations", ["user_id_id"], name: "index_locations_on_user_id_id", using: :btree
+  add_index "locations", ["active"], name: "index_locations_on_active", using: :btree
+  add_index "locations", ["latitude"], name: "index_locations_on_latitude", using: :btree
+  add_index "locations", ["longitude"], name: "index_locations_on_longitude", using: :btree
+  add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
 
   create_table "sessions", force: true do |t|
-    t.integer  "user_id_id"
-    t.integer  "cookie_id_id"
+    t.integer  "user_id"
     t.string   "sessid"
-    t.datetime "valid"
+    t.datetime "valid_to"
     t.boolean  "remember"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["cookie_id_id"], name: "index_sessions_on_cookie_id_id", using: :btree
-  add_index "sessions", ["user_id_id"], name: "index_sessions_on_user_id_id", using: :btree
+  add_index "sessions", ["active"], name: "index_sessions_on_active", using: :btree
+  add_index "sessions", ["sessid"], name: "index_sessions_on_sessid", unique: true, using: :btree
+  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "twitter_sessions", force: true do |t|
-    t.integer  "user_id_id"
+    t.integer  "user_id"
     t.string   "token"
     t.string   "token_secret"
-    t.datetime "valid"
+    t.datetime "valid_to"
     t.binary   "conn_ser"
     t.binary   "credentials_ser"
     t.boolean  "active"
@@ -121,7 +128,8 @@ ActiveRecord::Schema.define(version: 20140824175429) do
     t.datetime "updated_at"
   end
 
-  add_index "twitter_sessions", ["user_id_id"], name: "index_twitter_sessions_on_user_id_id", using: :btree
+  add_index "twitter_sessions", ["active"], name: "index_twitter_sessions_on_active", using: :btree
+  add_index "twitter_sessions", ["user_id"], name: "index_twitter_sessions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "id_fb"
@@ -134,6 +142,11 @@ ActiveRecord::Schema.define(version: 20140824175429) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["active"], name: "index_users_on_active", using: :btree
+  add_index "users", ["id_fb"], name: "index_users_on_id_fb", using: :btree
+  add_index "users", ["id_gp"], name: "index_users_on_id_gp", using: :btree
+  add_index "users", ["id_tw"], name: "index_users_on_id_tw", using: :btree
+
   create_table "vars", force: true do |t|
     t.string   "name"
     t.string   "value"
@@ -141,5 +154,7 @@ ActiveRecord::Schema.define(version: 20140824175429) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "vars", ["active"], name: "index_vars_on_active", using: :btree
 
 end
