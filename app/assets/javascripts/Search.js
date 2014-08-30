@@ -21,7 +21,9 @@ var Search = function(step) {
 Search.prototype = {
 
   _init: function() {
+    // TODO -o PN: pokud zmenim formular rucne, musi se vyresetovat offset !
     this._bindSubmit();
+    this._bindChange();
   },
 
   _bindSubmit: function() {
@@ -30,6 +32,13 @@ Search.prototype = {
       e.preventDefault();
       that.ajaxSubmit();
       return false;
+    });
+  }, // end method
+
+  _bindChange: function() {
+    var that = this;
+    that.$form.find("input[type='text'], select").change(function() {
+      that.$form.find("[name='search[offset]']").val(0);
     });
   }, // end method
 
