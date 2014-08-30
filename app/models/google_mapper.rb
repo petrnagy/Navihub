@@ -1,8 +1,8 @@
 class GoogleMapper < GenericMapper
   
   def map
-    mapped = @@template.clone
-    
+    mapped = get_template
+
     mapped[:origin] = @data[:origin]
     mapped[:geometry][:lat] = @data[:data]['geometry']['location']['lat']
     mapped[:geometry][:lng] = @data[:data]['geometry']['location']['lng']

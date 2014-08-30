@@ -7,7 +7,7 @@ class NokiaMapper < GenericMapper
       if @data[:data][i].is_a?(Array)
         @data[:data][i].each do |item|
           unless item['position'] == nil
-            mapped = @@template.clone
+            mapped = get_template
     
             mapped[:origin] = @data[:origin]
             mapped[:geometry][:lat] = item['position'][0]
@@ -15,7 +15,7 @@ class NokiaMapper < GenericMapper
             mapped[:id] = item['id']
             mapped[:icon] = item['icon']
             mapped[:name] = item['title']
-            mapped[:tags] = [[item['category']['title']]]
+            mapped[:tags] = [item['category']['title']]
             mapped[:vicinity] = item['vicinity']
       
             results << mapped

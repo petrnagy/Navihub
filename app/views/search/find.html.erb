@@ -1,2 +1,41 @@
-<h1>Search#find</h1>
-<p>Find me in app/views/search/find.html.erb</p>
+<div class="col-lg-12 search-form" id="search-form">
+  <form>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Search anything around you..." value="<%= @tpl_vars[:input_params]['term'] %>" name="search[term]">
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="form-group">
+        <select class="form-control" name="search[radius]">
+          <option value="0">Distance</option>
+          <option value="500">< 500m | 0.3 mi</option>
+          <option value="1000">< 1km | 0.62 mi</option>
+          <option value="3000">< 3km | 1.86 mi</option>
+          <option value="10000">< 10km | 6.2 mi</option>
+          <option value="0">all</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="form-group">
+        <select class="form-control" name="search[sort]">
+          <option value="">Sort</option>
+          <option value="distance-asc" value="0">Nearest first</option>
+          <option value="name-asc">Alphabetically</option>
+          <option value="rand-rand">Random</option>
+        </select>
+      </div>
+    </div>
+    <div class="3">
+      <button type="submit" class="btn btn-success">Search</button> 
+    </div>
+    <input type="hidden" name="search[offset]" value="0">
+  </form>
+</div>
+<div class="col-lg-12">
+  <hr>  
+</div>
+<div id="search-results">
+  <%= render 'list_find' %>
+</div>

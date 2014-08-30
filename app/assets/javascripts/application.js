@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$.ajaxSetup({
+  cache: false,
+  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+});

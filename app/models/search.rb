@@ -11,11 +11,11 @@ class Search
   private
   
   @params; @location; @engines; @results; 
-  @timeout;
+  @timeout; @total_cnt;
   
   public
   
-  attr_reader :results
+  attr_reader :results, :params, :total_cnt
   
   def initialize params, location
     term = params[:term]
@@ -26,10 +26,18 @@ class Search
       :order => determine_order(params['order']),
       :offset => determine_offset(params['offset']),
       :radius => params.has_key?('radius') ? params['radius'] : 500, # meters
-      :limit => 20,
+      :limit => 21,
+      :step => 21,
+      :append => params[:append]
     }
+    if ! params['is_xhr'] && @params[:offset] > 0 # calculate limit instead of offset for non-ajax requests
+      if @params[:offset] % @params[:limit] == 0
+        @params[:limit] = @params[:limit] * ( (@params[:offset] / @params[:limit]) + 1 );
+      end
+      @params[:offset] = 0
+    end
     @engines = determine_search_engines params['engines']
-    @timeout = 5
+    @timeout = 3
     @location = location
   end
   
@@ -47,10 +55,13 @@ class Search
     end
     threads.each { |t| t.abort_on_exception = false; t.join }
     unless results.length == 0 then
+      # @todo - refactor lines
       results = flatten results
       results = map results
+      @total_cnt = results.length
       results = order results
-      results = limit results
+      results = limit results, @params[:limit], @params[:offset]
+      results = postprocess results
     end
     @results = results
   end
@@ -75,7 +86,7 @@ class Search
   end
   
   def determine_offset offset
-    offset.is_a?(Integer) && offset >= 0 ? offset : 0
+    offset =~ /^[0-9]+$/ && offset.to_i >= 0 ? offset.to_i : 0
   end
   
   def determine_search_engines engines
@@ -104,9 +115,22 @@ class Search
     # @todo method
   end
   
-  def limit results
-    results
-    # @todo method
+  def limit results, limit, offset
+    results.slice offset, limit
+  end
+  
+  def postprocess results
+    processed = []
+    generic_engine = SearchEngine.new nil, nil
+    key = generic_engine.google_api_key
+    results.each do |current|
+      if current[:geometry][:lat] != nil && current[:geometry][:lat] != nil
+        current[:map] = GoogleMap.get_result_tn current[:geometry][:lat], current[:geometry][:lng], key
+        
+      end
+      processed << current
+    end
+    processed
   end
   
 end

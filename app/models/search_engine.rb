@@ -6,6 +6,8 @@ class SearchEngine
   
   public
   
+  attr_reader :google_api_key
+  
   class MethodNotOverridden < StandardError
   end
   

@@ -3,17 +3,6 @@ class GenericMapper
   protected
   
   @data; 
-  @@template = {
-    :origin     => nil,
-    :geometry   => { :lat => nil, :lng => nil },
-    :id         => nil,
-    :icon       => nil,
-    :image      => nil,
-    :name       => nil,
-    :title      => nil,
-    :tags       => [],
-    :vicinity   => nil,
-  }
   
   public
   
@@ -29,6 +18,24 @@ class GenericMapper
   end
   
   protected
+  
+  def get_template
+    {
+      :origin     => nil,
+      :geometry   => { :lat => nil, :lng => nil },
+      :distance   => nil,
+      :id         => nil,
+      :icon       => nil,
+      :image      => nil,
+      :map        => nil,
+      :name       => nil,
+      :title      => nil,
+      :tags       => [],
+      :vicinity   => nil,
+      :url        => nil,
+      :phone      => nil,
+    }
+  end
   
   private
   

@@ -1,7 +1,7 @@
 class YelpMapper < GenericMapper
   
   def map
-    mapped = @@template.clone
+    mapped = get_template
     
     mapped[:origin] = @data[:origin]
     mapped[:id] = @data[:data]['id']

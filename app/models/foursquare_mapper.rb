@@ -1,7 +1,7 @@
 class FoursquareMapper < GenericMapper
   
   def map
-    mapped = @@template.clone
+    mapped = get_template
     
     mapped[:origin] = @data[:origin]
     mapped[:geometry][:lat] = @data[:data]['venue']['location']['lat']
@@ -14,7 +14,6 @@ class FoursquareMapper < GenericMapper
         mapped[:tags] << cat['name']
       end
     end
-    
     [mapped]
   end
   
