@@ -26,7 +26,8 @@ class SearchController < ApplicationController
   def process_search params
     location = Location.where(user_id: @user.id, active: true).order('id DESC').first!
     search = Search.new params, location
-    @debug = search.search
+    results = search.search
+    @debug = results
   end
   
 end

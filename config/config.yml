@@ -1,4 +1,5 @@
 development:
   server_name: localhost:3000
 production: 
-  server_name: tomatoid.com
+  server_name: navihub.net
+default:

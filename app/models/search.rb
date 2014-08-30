@@ -5,8 +5,8 @@ class Search
   protected
   
   @@allowed_orders = %w{distance name relevance}
-  #@@allowed_engines = %w{google bing openstreet yelp foursquare}
-  @@allowed_engines = %w{google}
+  # bing openstreet - those are shits
+  @@allowed_engines = %w{google nokia yelp foursquare}
   
   private
   
@@ -18,11 +18,15 @@ class Search
   attr_reader :results
   
   def initialize params, location
+    term = params[:term]
+    term = term.strip! || term
+    term = term.gsub(%r{\ +}, ' ')
     @params = {
-      :term => params['term'],
+      :term => term,
       :order => determine_order(params['order']),
       :offset => determine_offset(params['offset']),
       :radius => params.has_key?('radius') ? params['radius'] : 500, # meters
+      :limit => 20,
     }
     @engines = determine_search_engines params['engines']
     @timeout = 5
@@ -37,13 +41,14 @@ class Search
       # do not put new instance initialization in the thread because of 'Circular dependency' bug !
       engine = "#{name.capitalize}Engine".constantize.new @params, @location
       threads << Thread.new do
-        results << engine.search
+        results << engine.search  
         Thread.exit if results.length == @engines.length || (Time.now - ts_start) > @timeout
       end
     end
     threads.each { |t| t.abort_on_exception = false; t.join }
     unless results.length == 0 then
       results = flatten results
+      results = map results
       results = order results
       results = limit results
     end
@@ -89,10 +94,16 @@ class Search
     flattened
   end
   
+  def map results
+    mapper = ResultsMapper.new results
+    mapper.map_all
+  end
+  
   def order results
     results
     # @todo method
   end
+  
   def limit results
     results
     # @todo method
