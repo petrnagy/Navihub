@@ -9,25 +9,36 @@
 <div class="col-lg-12">
   <% @data[:results].each do |result| %>
     <div class="col-lg-4 result-box origin-<%= result[:origin] %>">
-      <h3><%= result[:name] %></h3>
-      <% if result[:tags].is_a? Array %>
-        <% result[:tags].each do |label| %>
-          <span class="label label-success"><%= label %></span>
+      <h3 title="<%= result[:name] %>">
+        <%= result[:name] %>
+        <%= image_tag(result[:icon], class: 'result-icon', alt: 'Icon') if result[:icon] %>
+        </h3>
+        <%= image_tag result[:map] if result[:map] %>    
+        <% if result[:pretty_loc] %>
+          <span class="label label-default result-geometry">
+            <%= result[:pretty_loc][:lat][0].to_s + '° ' + result[:pretty_loc][:lat][1].to_s + "' " + result[:pretty_loc][:lat][2].to_s + '" ' + result[:pretty_loc][:lat][3].to_s %>, 
+            <%= result[:pretty_loc][:lng][0].to_s + '° ' + result[:pretty_loc][:lng][1].to_s + "' " + result[:pretty_loc][:lng][2].to_s + '" ' + result[:pretty_loc][:lng][3].to_s %> | 
+            lat <%= result[:geometry][:lat].round(4).to_s + ', lng ' + result[:geometry][:lng].round(4).to_s %>
+          </span>
         <% end %>
-      <% end %>
-      <% result %>
-      <% if result[:map] %>
-        <%= image_tag result[:map] %>
-      <% end %>
-      <% if result[:icon] %>
-        <%= image_tag result[:icon] %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-<div class="col-lg-12">
-  <hr>
-</div>
-<div class="col-lg-12 load-more text-center">
-  <button class="btn btn-success">Show next <%= @data[:data][:params][:step] %> results </button>
-</div>
+        <% if result[:distance] %>
+          <span class="label label-danger"><%= result[:distance] %> m away</span>
+          <span class="label label-primary">10 min walk</span>
+          <span class="label label-info">3 min drive</span>
+        <% end %>
+
+        <% if result[:tags].is_a? Array %>
+          <% result[:tags].each do |label| %>
+            <span class="label label-success"><%= label %></span>
+          <% end %>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
+  <div class="col-lg-12">
+    <hr>
+  </div>
+  <div class="col-lg-12 load-more text-center">
+    <button class="btn btn-success">Show next <%= @data[:data][:params][:step] %> results </button>
+  </div>

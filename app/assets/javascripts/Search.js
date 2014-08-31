@@ -21,7 +21,6 @@ var Search = function(step) {
 Search.prototype = {
 
   _init: function() {
-    // TODO -o PN: pokud zmenim formular rucne, musi se vyresetovat offset !
     this._bindSubmit();
     this._bindChange();
   },
@@ -64,7 +63,7 @@ Search.prototype = {
             that.unlock();
           }, // end func
           error: function() {
-            window.location.reload();
+            //window.location.reload();
             Spinner.hide();
             that.unlock();
           } // end func

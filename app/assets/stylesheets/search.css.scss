@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.result-box h3 { white-space: nowrap; overflow: hidden; }
+.result-box h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0px; }
+.result-box h3 img { max-height: 20px; max-width: 50px; margin-top: -1px; }
 .result-box { min-height: 300px; }
-
+.result-box:hover { background-color: #F7F7F7; cursor: pointer; }
+//.result-box:hover > * { cursor: pointer; }
+.result-box .result-geometry { display: block; border-radius: 0px; background-color: rgb(97, 97, 97); }
+.result-box .label { font-weight: normal; }

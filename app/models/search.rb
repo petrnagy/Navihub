@@ -4,7 +4,7 @@ class Search
   
   protected
   
-  @@allowed_orders = %w{distance name relevance}
+  @@allowed_orders = %w{distance name}
   # bing openstreet - those are shits
   @@allowed_engines = %w{google nokia yelp foursquare}
   
@@ -46,19 +46,22 @@ class Search
     results = []
     threads = []
     @engines.each do |name|
-      # do not put new instance initialization in the thread because of 'Circular dependency' bug !
       engine = "#{name.capitalize}Engine".constantize.new @params, @location
       threads << Thread.new do
+        # require all the files which thread requires to make it "thread-safe"
+        require 'net/http'
+        require 'net/https'
+        require 'uri'
         results << engine.search  
         Thread.exit if results.length == @engines.length || (Time.now - ts_start) > @timeout
       end
     end
     threads.each { |t| t.abort_on_exception = false; t.join }
     unless results.length == 0 then
-      # @todo - refactor lines
       results = flatten results
       results = map results
       @total_cnt = results.length
+      results = preprocess results
       results = order results
       results = limit results, @params[:limit], @params[:offset]
       results = postprocess results
@@ -90,6 +93,7 @@ class Search
   end
   
   def determine_search_engines engines
+    return @@allowed_engines # This functionality is turned off on FE - ATM
     allowed = []
     engines.split(',').each do |engine|
       allowed << engine if @@allowed_engines.include? engine
@@ -110,9 +114,25 @@ class Search
     mapper.map_all
   end
   
+  def preprocess results
+    processed = []
+    results.each do |current|
+      if current[:geometry][:lat] != nil && current[:geometry][:lat] != nil
+        current[:distance] = Location.calculate_distance(
+          @location.latitude.to_f, 
+          @location.longitude.to_f, 
+          current[:geometry][:lat], 
+          current[:geometry][:lng]
+        ) unless current[:distance].to_i > 0
+      end
+      processed << current
+    end
+    processed
+  end
+  
   def order results
-    results
-    # @todo method
+    sorter = ResultsSorter.new results
+    sorter.sort(@params[:order][:by], @params[:order][:dir] == 'asc')
   end
   
   def limit results, limit, offset
@@ -125,9 +145,24 @@ class Search
     key = generic_engine.google_api_key
     results.each do |current|
       if current[:geometry][:lat] != nil && current[:geometry][:lat] != nil
+        # generate static map img
         current[:map] = GoogleMap.get_result_tn current[:geometry][:lat], current[:geometry][:lng], key
-        
+        # add location label
+        current[:pretty_loc] = Location.pretty_loc current[:geometry][:lat], current[:geometry][:lng]
+        if current[:distance] > 1000
+          current[:distance] = DistanceHelper.m_to_km current[:distance], '.', 1
+        else
+          current[:distance] = current[:distance].to_i
+        end
+        current[:mtime] = Time.now.usec
       end
+      # modify labels
+      tags = []
+      current[:tags].each do |tag|
+        tags << tag.gsub('_', '-').gsub(' ', '-').downcase unless tag == nil
+      end
+      current[:tags] = tags
+      
       processed << current
     end
     processed
