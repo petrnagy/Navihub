@@ -8,12 +8,16 @@
     <div class="col-lg-2">
       <div class="form-group">
         <select class="form-control" name="search[radius]">
-          <option value="0">Distance</option>
-          <option value="500">< 500m | 0.3 mi</option>
-          <option value="1000">< 1km | 0.62 mi</option>
-          <option value="3000">< 3km | 1.86 mi</option>
-          <option value="10000">< 10km | 6.2 mi</option>
-          <option value="0">all</option>
+          <% [ 
+            {:val => 0, :name => 'Distance'},
+            {:val => 500, :name => '< 500m | 0.3 mi'},
+            {:val => 1000, :name => '< 1km | 0.62 mi'},
+            {:val => 3000, :name => '< 3km | 1.86 mi'},
+            {:val => 10000, :name => '< 10km | 6.2 mi'},
+            {:val => 0, :name => 'All'}
+            ].each do |option| %>
+            <option <%= (option[:val].to_i > 0 && @tpl_vars[:input_params]['radius'].to_i == option[:val].to_i ? 'selected="selected"' : '')  %> value="<%= option[:val] %>"><%= option[:name] %></option>
+          <% end %>
         </select>
       </div>
     </div>

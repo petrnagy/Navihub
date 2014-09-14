@@ -6,6 +6,7 @@
 .result-box h3 img { max-height: 20px; max-width: 50px; margin-top: -1px; }
 .result-box { min-height: 300px; }
 .result-box:hover { background-color: #F7F7F7; cursor: pointer; }
+.result-box.active, .result-detail, .result-box.active:hover { background-color: #FFF2C8; }
 //.result-box:hover > * { cursor: pointer; }
 .result-box .result-geometry { display: block; border-radius: 0px; background-color: rgb(97, 97, 97); }
 .result-box .label { font-weight: normal; }

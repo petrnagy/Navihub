@@ -1,4 +1,4 @@
-<% if ! @data[:data][:params][:append] %>
+<% if 1 != @data[:data][:params][:append].to_i %>
   <div class="col-lg-12">
     <div class="col-lg-6">
       <h2>Search results for '<%= @data[:data][:input_params][:term] %>'</h2>
@@ -22,8 +22,8 @@
           </span>
         <% end %>
         <% if result[:distance] %>
-          <span class="label label-danger"><%= result[:distance] %> m away</span>
-          <span class="label label-primary">10 min walk</span>
+          <span class="label label-danger"><%= result[:distance] %> <%= result[:distance_unit] %> away</span>
+          <span class="label label-primary"><%= result[:distance_in_mins] %> min walk</span>
           <span class="label label-info">3 min drive</span>
         <% end %>
 

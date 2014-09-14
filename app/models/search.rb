@@ -25,7 +25,7 @@ class Search
       :term => term,
       :order => determine_order(params['order']),
       :offset => determine_offset(params['offset']),
-      :radius => params.has_key?('radius') ? params['radius'] : 500, # meters
+      :radius => determine_radius(params['radius']),
       :limit => 21,
       :step => 21,
       :append => params[:append]
@@ -42,26 +42,26 @@ class Search
   end
   
   def search
-    ts_start = Time.now
-    results = []
-    threads = []
-    @engines.each do |name|
-      engine = "#{name.capitalize}Engine".constantize.new @params, @location
-      threads << Thread.new do
-        # require all the files which thread requires to make it "thread-safe"
-        require 'net/http'
-        require 'net/https'
-        require 'uri'
-        results << engine.search  
-        Thread.exit if results.length == @engines.length || (Time.now - ts_start) > @timeout
-      end
-    end
-    threads.each { |t| t.abort_on_exception = false; t.join }
+    results = search_async
+    process_results results
+  rescue
+    # ! ! ! HACK !!! BIG UGLY HACK !!! ACHTUNG ! ! !
+    # if non-threadsafe code raised error, we request the APIs again, without multithreading
+    results = search_sync
+    process_results results
+  end
+  
+  protected
+  
+  private
+  
+  def process_results results
     unless results.length == 0 then
       results = flatten results
       results = map results
-      @total_cnt = results.length
       results = preprocess results
+      results = filter results
+      @total_cnt = results.length
       results = order results
       results = limit results, @params[:limit], @params[:offset]
       results = postprocess results
@@ -69,9 +69,29 @@ class Search
     @results = results
   end
   
-  protected
+  def search_async
+    ts_start = Time.now
+    results = []
+    threads = []
+    @engines.each do |name|
+      engine = "#{name.capitalize}Engine".constantize.new @params, @location
+      threads << Thread.new do
+        results << engine.search  
+        Thread.exit if results.length == @engines.length || (Time.now - ts_start) > @timeout
+      end
+    end
+    threads.each { |t| t.abort_on_exception = false; t.join }
+    results
+  end
   
-  private
+  def search_sync
+    results = []
+    @engines.each do |name|
+      engine = "#{name.capitalize}Engine".constantize.new @params, @location
+      results << engine.search        
+    end
+    results
+  end
   
   def determine_order order
     if order.is_a? String
@@ -90,6 +110,11 @@ class Search
   
   def determine_offset offset
     offset =~ /^[0-9]+$/ && offset.to_i >= 0 ? offset.to_i : 0
+  end
+  
+  def determine_radius radius
+    return 99999 if radius == nil || radius.to_i == 0
+    radius.to_i
   end
   
   def determine_search_engines engines
@@ -112,6 +137,16 @@ class Search
   def map results
     mapper = ResultsMapper.new results
     mapper.map_all
+  end
+  
+  def filter results
+    processed = []
+    results.each do |current|
+      if current[:distance] <= @params[:radius]
+        processed << current
+      end
+    end
+    processed
   end
   
   def preprocess results
@@ -149,12 +184,17 @@ class Search
         current[:map] = GoogleMap.get_result_tn current[:geometry][:lat], current[:geometry][:lng], key
         # add location label
         current[:pretty_loc] = Location.pretty_loc current[:geometry][:lat], current[:geometry][:lng]
+        current[:mtime] = Time.now.usec
+      end
+      if current[:distance] != nil
+        current[:distance_in_mins] = DistanceHelper.m_to_min current[:distance]
         if current[:distance] > 1000
           current[:distance] = DistanceHelper.m_to_km current[:distance], '.', 1
+          current[:distance_unit] = 'km'
         else
           current[:distance] = current[:distance].to_i
+          current[:distance_unit] = 'm'
         end
-        current[:mtime] = Time.now.usec
       end
       # modify labels
       tags = []

@@ -7,7 +7,7 @@ var Search = function(step) {
   this.defaults = {
     sort: 'distance-asc',
     offset: 0,
-    radius: 10000,
+    radius: 0,
   };
   // order matters !
   this.interests = ['term', 'radius', 'sort', 'offset'];
@@ -46,7 +46,7 @@ Search.prototype = {
     var values = that.getValues();
     if ( values['term'].length ) {
       var url = that.buildUrl(values);
-      if ( url && url != window.location.href ) {
+      if ( url ) {
         that.pushUrl(url);
         that.lock();
         Spinner.show();
@@ -106,7 +106,9 @@ Search.prototype = {
   pushUrl: function(url) {
     var that = this;
     try {
-      window.history.pushState(null, null, url)
+      if ( url != window.location.href ) {
+        window.history.pushState(null, null, url)
+      } // end if
       return true;
     } catch (e) { // IE9 and lower
       return false;

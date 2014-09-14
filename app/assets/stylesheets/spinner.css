@@ -53,7 +53,7 @@
 #spinner {
   position: fixed;
   top: -83px;
-  left: 49%;  
+  left: 48%;  
   z-index: 10000;
 }
 #spinner > div { background-color: white; }
