@@ -1,0 +1,39 @@
+<div class="col-lg-12 search-form" id="search-form">
+  <form>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Search anything around you..." value="<%= @tpl_vars[:input_params]['term'] %>" name="search[term]">
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="form-group">
+        <select class="form-control" name="search[radius]">
+          <% [ 
+            {:val => 0, :name => 'Distance'},
+            {:val => 500, :name => '< 500m | 0.3 mi'},
+            {:val => 1000, :name => '< 1km | 0.62 mi'},
+            {:val => 3000, :name => '< 3km | 1.86 mi'},
+            {:val => 10000, :name => '< 10km | 6.2 mi'},
+            {:val => 0, :name => 'All'}
+            ].each do |option| %>
+            <option <%= (option[:val].to_i > 0 && @tpl_vars[:input_params]['radius'].to_i == option[:val].to_i ? 'selected="selected"' : '')  %> value="<%= option[:val] %>"><%= option[:name] %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="form-group">
+        <select class="form-control" name="search[sort]">
+          <option value="">Sort</option>
+          <option value="distance-asc" value="0">Nearest first</option>
+          <option value="name-asc">Alphabetically</option>
+          <option value="rand-rand">Random</option>
+        </select>
+      </div>
+    </div>
+    <div class="3">
+      <button type="submit" class="btn btn-success">Search</button> 
+    </div>
+    <input type="hidden" name="search[offset]" value="0">
+  </form>
+</div>

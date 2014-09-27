@@ -8,22 +8,32 @@
 <% end %>
 <div class="col-lg-12">
   <% @data[:results].each do |result| %>
-    <div class="col-lg-4 result-box origin-<%= result[:origin] %>">
+    <div class="col-lg-4 result-box origin-<%= result[:origin] %> <%= result[:duplicity_score] >= 0.9 ? 'not-duplicate' : 'not-duplicate' %>">
       <h3 title="<%= result[:name] %>">
         <%= result[:name] %>
-        <%= image_tag(result[:icon], class: 'result-icon', alt: 'Icon') if result[:icon] %>
-        </h3>
-        <%= image_tag result[:map] if result[:map] %>    
-        <% if result[:pretty_loc] %>
-          <span class="label label-default result-geometry">
+      </h3>
+      <div class="map-wrapper">
+        <% if result[:map] %>
+          <%= image_tag result[:map] %>
+        <% else %>
+          <%= image_tag 'result-unknown-loc.png' %>
+        <% end %>
+      </div>
+      <div class="geometry-wrapper">
+        <span class="label label-default result-geometry">
+          <% if result[:pretty_loc] %>
             <%= result[:pretty_loc][:lat][0].to_s + '° ' + result[:pretty_loc][:lat][1].to_s + "' " + result[:pretty_loc][:lat][2].to_s + '" ' + result[:pretty_loc][:lat][3].to_s %>, 
             <%= result[:pretty_loc][:lng][0].to_s + '° ' + result[:pretty_loc][:lng][1].to_s + "' " + result[:pretty_loc][:lng][2].to_s + '" ' + result[:pretty_loc][:lng][3].to_s %> | 
             lat <%= result[:geometry][:lat].round(4).to_s + ', lng ' + result[:geometry][:lng].round(4).to_s %>
-          </span>
-        <% end %>
+          <% else %>
+            unknown location
+          <% end %>
+        </span>
+      </div>
+      <div class="labels-wrapper">
         <% if result[:distance] %>
           <span class="label label-danger"><%= result[:distance] %> <%= result[:distance_unit] %> away</span>
-          <span class="label label-primary"><%= result[:distance_in_mins] %> min walk</span>
+          <span class="label label-primary"><%= (result[:distance_in_mins] > 0 ? result[:distance_in_mins] : '< 1') %> min walk</span>
           <span class="label label-info">3 min drive</span>
         <% end %>
 
@@ -32,13 +42,19 @@
             <span class="label label-success"><%= label %></span>
           <% end %>
         <% end %>
-
       </div>
-    <% end %>
-  </div>
-  <div class="col-lg-12">
-    <hr>
-  </div>
-  <div class="col-lg-12 load-more text-center">
-    <button class="btn btn-success">Show next <%= @data[:data][:params][:step] %> results </button>
-  </div>
+
+      <%= image_tag(result[:icon], class: 'result-icon', alt: 'Icon') if result[:icon] %>
+        <%= image_tag('origin-' + result[:origin] + '.png', class: 'origin-icon', alt: 'Origin icon') %>
+
+          <%= result[:duplicity_score] %>
+
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-12">
+      <hr>
+    </div>
+    <div class="col-lg-12 load-more text-center">
+      <button class="btn btn-success">Show next <%= @data[:data][:params][:step] %> results </button>
+    </div>

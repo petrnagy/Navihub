@@ -4,5 +4,3 @@
 //= require Search
 //= require NextButton
 
-search = new Search(21);
-btn = new NextButton(search);

@@ -8,5 +8,11 @@
 .result-box:hover { background-color: #F7F7F7; cursor: pointer; }
 .result-box.active, .result-detail, .result-box.active:hover { background-color: #FFF2C8; }
 //.result-box:hover > * { cursor: pointer; }
-.result-box .result-geometry { display: block; border-radius: 0px; background-color: rgb(97, 97, 97); }
+.result-box .result-geometry { display: block; border-radius: 0px; background-color: rgb(97, 97, 97); padding: 5px; }
 .result-box .label { font-weight: normal; }
+
+.col-centered { float: none; margin-left: auto; margin-right: auto; }
+.smile-big { margin-bottom: 40px; }
+.smile-big h1 { font-size: 120px; }
+.search-txt_ { margin-top: 100px; margin-bottom: 100px }
+.result-box.is-duplicate { color: lightgray; }

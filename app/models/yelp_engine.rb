@@ -26,7 +26,7 @@ class YelpEngine < SearchEngine
     url += '&offset=' + @params[:offset].to_s
     url += '&radius=' + @params[:radius].to_s
     url += '&term=' + @params[:term]
-    access_token.get(url)
+    access_token.get(URI::escape url)
   end
   
   def map data

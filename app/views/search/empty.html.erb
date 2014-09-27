@@ -1,2 +1,12 @@
-<h1>Search#empty</h1>
-<p>Find me in app/views/search/empty.html.erb</p>
+<%= render 'form' %>
+<div class="col-lg-12">
+  <hr>  
+</div>
+<div id="search-results">
+  <div class="smile-big text-center">
+    <h1>:-(</h1>
+  </div>
+  <div class="text-center">
+    <p>No results for the term '<%= @tpl_vars[:input_params]['term'] %>'</p>
+  </div>
+</div>

@@ -1,5 +1,8 @@
 class Search
   
+  require 'json'
+  require 'digest/md5'
+  
   public
   
   protected
@@ -11,11 +14,11 @@ class Search
   private
   
   @params; @location; @engines; @results; 
-  @timeout; @total_cnt;
+  @timeout; @total_cnt; @results_from_cache;
   
   public
   
-  attr_reader :results, :params, :total_cnt
+  attr_reader :results, :params, :total_cnt, :results_from_cache
   
   def initialize params, location
     term = params[:term]
@@ -41,13 +44,27 @@ class Search
     @location = location
   end
   
+  def get_debug
+    return nil
+  end
+  
   def search
-    results = search_async
+    key = Digest::MD5.hexdigest([@params, @engines, @location].to_json)
+    cached = ApiCache.get_from_cache key
+    if cached != nil
+      results = cached
+      @results_from_cache = true
+    else
+      results = search_async
+      @results_from_cache = false
+    end
+    ApiCache.save_to_cache key, results if results
     process_results results
   rescue
-    # ! ! ! HACK !!! BIG UGLY HACK !!! ACHTUNG ! ! !
+    # ! ! ! HACK !!! BIG UGLY HACK ! ! !
     # if non-threadsafe code raised error, we request the APIs again, without multithreading
     results = search_sync
+    ApiCache.save_to_cache(key, results) if results
     process_results results
   end
   
@@ -57,14 +74,9 @@ class Search
   
   def process_results results
     unless results.length == 0 then
-      results = flatten results
-      results = map results
-      results = preprocess results
-      results = filter results
+      results = filter preprocess map flatten results
       @total_cnt = results.length
-      results = order results
-      results = limit results, @params[:limit], @params[:offset]
-      results = postprocess results
+      results = postprocess limit(order(results), @params[:limit], @params[:offset])
     end
     @results = results
   end
@@ -113,7 +125,7 @@ class Search
   end
   
   def determine_radius radius
-    return 99999 if radius == nil || radius.to_i == 0
+    return 99999 if radius == nil || radius.to_i <= 0
     radius.to_i
   end
   
@@ -143,6 +155,7 @@ class Search
     processed = []
     results.each do |current|
       if current[:distance] <= @params[:radius]
+        current[:duplicity_score] = get_duplicity_score processed, current if processed.length
         processed << current
       end
     end
@@ -180,10 +193,8 @@ class Search
     key = generic_engine.google_api_key
     results.each do |current|
       if current[:geometry][:lat] != nil && current[:geometry][:lat] != nil
-        # generate static map img
-        current[:map] = GoogleMap.get_result_tn current[:geometry][:lat], current[:geometry][:lng], key
-        # add location label
-        current[:pretty_loc] = Location.pretty_loc current[:geometry][:lat], current[:geometry][:lng]
+        current[:map] = GoogleMap.get_result_tn current[:geometry][:lat], current[:geometry][:lng], key # generate static map img
+        current[:pretty_loc] = Location.pretty_loc current[:geometry][:lat], current[:geometry][:lng] # add location label
         current[:mtime] = Time.now.usec
       end
       if current[:distance] != nil
@@ -206,6 +217,16 @@ class Search
       processed << current
     end
     processed
+  end
+  
+  def get_duplicity_score processed, current
+    max_score = 0.00
+    processed.each do |old|
+      detector = DuplicityDetector.new @params[:term], old[:name], current[:name]
+      score = detector.get_score
+      max_score = score if score > max_score
+    end
+    max_score
   end
   
 end

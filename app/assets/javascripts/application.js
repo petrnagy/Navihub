@@ -19,3 +19,12 @@ $.ajaxSetup({
   cache: false,
   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 });
+
+if ( $("#search-form").length ) {
+    search = new Search(21);
+    btn = new NextButton(search);
+} // end if
+
+if ( $("#search-input").length ) {
+    input = new Input(21);
+} // end if

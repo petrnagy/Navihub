@@ -67,9 +67,9 @@
         <div class="navbar-collapse collapse" id="navbar-main">
 
           <ul class="nav navbar-nav" id="menu-top">
-            <li data-template="index"><a title="Introduction and overview" href="{$baseroot}"><%= @lang_search %></a></li>
-            <li data-template="pomodoro"><a title="Start the online timer" href="{$baseroot}/pomodoro"><%= @lang_about %></a></li>
-            <li data-template="feedback"><a title="Feedback form and discussion" href="{$baseroot}/feedback"><%= @lang_feedback %></a></li>
+            <li data-template="index"><%= link_to @lang_search, controller: "search" %></li>
+            <li data-template="index"><%= link_to @lang_about, controller: "search" %></li>
+            <li data-template="index"><%= link_to @lang_feedback, controller: "search" %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right" id="menu-alt">
             <li data-template="myaccount|settings" class="dropdown">
