@@ -46,17 +46,17 @@ class DuplicityDetector
     similarity_raw = comparator.similarity @raw1, @raw2
     similarity_prepared = comparator.similarity @sentence1.join(' '), @sentence2.join(' ')
     
-    similarity = ( similarity_raw + similarity_prepared ) / 2
+    similarity = ( similarity_raw + similarity_prepared ) / 4
     score = similarity
     
     shorter = get_shorter_array
     longer = get_longer_array
       
     if is_subarray shorter, longer
-      score += (0.25 * shorter.length) # longer array contains all the elements from the shorter array
+      score += (0.1 * shorter.length) # longer array contains all the elements from the shorter array
     end
       
-    score += get_contains_cnt(shorter, longer) * 0.25
+    score += get_contains_cnt(shorter, longer) * 0.1
     
     score
   end

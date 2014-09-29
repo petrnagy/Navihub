@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  get 'settings/general'
+
+  get 'settings/location'
+
+  get 'settings/profile'
+
   root 'homepage#index'
   
   get 'search' => 'search#index'

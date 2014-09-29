@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
     cookie = init_cookie
     if sess.user_id == cookie.user_id
       if sess.user_id == nil
-        user = User.create(active: true)
+        user = User.create(active: true); user.save
         sess.user_id = user.id
         cookie.user_id = user.id  
       else
@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
     if user
       @user = user
     else
-      @user = User.create(active: true)
+      @user = User.create(active: true); @user.save
       sess.user_id = @user.id
       cookie.user_id = @user.id
     end
