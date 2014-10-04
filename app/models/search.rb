@@ -10,6 +10,8 @@ class Search
   @@allowed_orders = %w{distance name}
   # bing openstreet - those are shits
   @@allowed_engines = %w{google nokia yelp foursquare}
+  @@max_distance = 20000;
+  @@duplicity_score_threshold = 1.0
   
   private
   
@@ -25,13 +27,13 @@ class Search
     term = term.strip! || term
     term = term.gsub(%r{\ +}, ' ')
     @params = {
-      :term => term,
-      :order => determine_order(params['order']),
-      :offset => determine_offset(params['offset']),
-      :radius => determine_radius(params['radius']),
-      :limit => 21,
-      :step => 21,
-      :append => params[:append]
+      :term     => term,
+      :order    => determine_order(params['order']),
+      :offset   => determine_offset(params['offset']),
+      :radius   => determine_radius(params['radius']),
+      :limit    => 21,
+      :step     => 21,
+      :append   => params[:append]
     }
     if ! params['is_xhr'] && @params[:offset] > 0 # calculate limit instead of offset for non-ajax requests
       if @params[:offset] % @params[:limit] == 0
@@ -44,10 +46,6 @@ class Search
     @location = location
   end
   
-  def get_debug
-    return nil
-  end
-  
   def search
     key = Digest::MD5.hexdigest([@params, @engines, @location].to_json)
     cached = ApiCache.get_from_cache key
@@ -58,7 +56,7 @@ class Search
       results = search_async
       @results_from_cache = false
     end
-    ApiCache.save_to_cache key, results if results
+    ApiCache.save_to_cache key, results if results && ! @results_from_cache
     process_results results
   rescue
     # ! ! ! HACK !!! BIG UGLY HACK ! ! !
@@ -125,8 +123,11 @@ class Search
   end
   
   def determine_radius radius
-    return 99999 if radius == nil || radius.to_i <= 0
-    radius.to_i
+    if radius == nil || radius.to_i <= 0
+      @@max_distance
+    else
+      radius.to_i  
+    end
   end
   
   def determine_search_engines engines
@@ -154,7 +155,7 @@ class Search
   def filter results
     processed = []
     results.each do |current|
-      if current[:distance] <= @params[:radius]
+      if nil != current[:distance] && current[:distance] <= @params[:radius]
         current[:duplicity_score] = get_duplicity_score processed, current if processed.length
         processed << current
       end
@@ -165,14 +166,17 @@ class Search
   def preprocess results
     processed = []
     results.each do |current|
+      current[:mtime] = Time.now.usec
       if current[:geometry][:lat] != nil && current[:geometry][:lat] != nil
         current[:distance] = Location.calculate_distance(
           @location.latitude.to_f, 
           @location.longitude.to_f, 
           current[:geometry][:lat], 
           current[:geometry][:lng]
+          # TODO: zajistit, aby bylo vzdy v metrech
         ) unless current[:distance].to_i > 0
       end
+      current[:duplicates] = Hash.new
       processed << current
     end
     processed
@@ -193,12 +197,14 @@ class Search
     key = generic_engine.google_api_key
     results.each do |current|
       if current[:geometry][:lat] != nil && current[:geometry][:lat] != nil
-        current[:map] = GoogleMap.get_result_tn current[:geometry][:lat], current[:geometry][:lng], key # generate static map img
-        current[:pretty_loc] = Location.pretty_loc current[:geometry][:lat], current[:geometry][:lng] # add location label
-        current[:mtime] = Time.now.usec
+        current[:map] = GoogleMap.get_result_tn current[:geometry][:lat], current[:geometry][:lng], key
+        current[:pretty_loc] = Location.pretty_loc current[:geometry][:lat], current[:geometry][:lng]
+      elsif current[:address] != nil
+        current[:map] = GoogleMap.get_result_tn_by_address current[:address], key
       end
       if current[:distance] != nil
         current[:distance_in_mins] = DistanceHelper.m_to_min current[:distance]
+        current[:car_distance_in_mins] = DistanceHelper.car_m_to_min current[:distance]
         if current[:distance] > 1000
           current[:distance] = DistanceHelper.m_to_km current[:distance], '.', 1
           current[:distance_unit] = 'km'
@@ -227,6 +233,13 @@ class Search
       max_score = score if score > max_score
     end
     max_score
+  end
+  
+  # - - - debug
+  
+  public
+  def get_debug
+    
   end
   
 end

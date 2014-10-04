@@ -10,7 +10,7 @@ class ResultsSorter
     case by
     when 'name'
       lambda = ->(a, b) { a[:name] <=> b[:name] }
-    when 'distance'    
+    when 'distance'
       lambda = ->(a, b) { a[:distance] <=> b[:distance] }
     end
     data = @data.clone.sort(& lambda)

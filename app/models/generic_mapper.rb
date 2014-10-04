@@ -34,6 +34,7 @@ class GenericMapper
       :vicinity   => nil,
       :url        => nil,
       :phone      => nil,
+      :address    => nil,
     }
   end
   

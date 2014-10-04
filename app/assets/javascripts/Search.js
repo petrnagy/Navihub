@@ -95,10 +95,14 @@ Search.prototype = {
     } else {
       url += 'http://' + window.location.host;
     } // end if
-    url += '/search';
-    $.each(that.interests, function(k, v) {
-      url += '/' + encodeURIComponent( typeof values[v] != 'undefined' && values[v] ? values[v] : that.defaults[v] );
-    });
+    url += '/find';
+        var char = '?';
+        $.each(that.interests, function(k, v) {
+            if (typeof values[v] != 'undefined' && values[v] && values[v] != that.defaults[v]) {
+                url += char + v + '=' + encodeURIComponent(values[v]);
+                char = '&';
+            } // end if
+        });
     return url;
 
   }, // end method

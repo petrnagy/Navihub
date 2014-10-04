@@ -12,6 +12,8 @@ class GoogleMapper < GenericMapper
     mapped[:tags] = @data[:data]['types']
     mapped[:vicinity] = @data[:data]['vicinity']
     
+    mapped[:address] = @data[:data]['vicinity']
+    
     [mapped]
   end
   

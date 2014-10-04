@@ -20,6 +20,10 @@ class DistanceHelper
     (m / 1.1 / 60).to_i
   end
   
+  def self.car_m_to_min m
+    (m / 5.556 / 60).to_i
+  end
+  
   def self.km_to_min km
     self.m_to_min(km * 1000)
   end

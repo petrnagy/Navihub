@@ -4,13 +4,13 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="robots" content="<%= @page_robots %>" />
-    <meta name="description" content="<%= @page_desc %>" />
-    <meta name="keywords" content="<%= @page_keywords %>" />
-    <meta name="author" content="<%= @page_author %>" />
+    <meta name="description" content="Explore the world around you with your browser." />
+    <meta name="keywords" content="navihub, explore, maps, geolocation" />
+    <meta name="author" content="Petr Nagy" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0' />
     <%= csrf_meta_tags %>
     <!-- Title -->
-    <title><%= @page_name %> | <%= @page_title %></title>
+    <title>Navihub | Find stuff around you!</title>
     <!-- Favicon -->
     <!-- TODO -->
     <%= favicon_link_tag 'favicon.ico' %>
@@ -19,17 +19,17 @@
     <!-- Font awsome cdn -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Facebook & Linkedin Meta -->
-    <meta property="og:site_name" content="<%= @page_name %>">
-    <meta property="og:title" content="<%= @page_title %>">
+    <meta property="og:site_name" content="Navihub">
+    <meta property="og:title" content="Find stuff around you!">
     <meta property="og:url" content="<%= root_path %>">
-    <meta property="og:description" content="<%= @page_desc %>">
+    <meta property="og:description" content="Explore the world around you with your browser.">
     <!-- TODO -->
     <meta property="og:image" content="/assets/logo_square.png">
     <!-- Twitter Meta -->
-    <meta name="twitter:card" content="<%= @page_name %>">
+    <meta name="twitter:card" content="Navihub">
     <meta name="twitter:url" content="<%= root_path  %>">
-    <meta name="twitter:title" content="<%= @page_title %>">
-    <meta name="twitter:description" content="<%= @page_desc %>">
+    <meta name="twitter:title" content="Find stuff around you!">
+    <meta name="twitter:description" content="Explore the world around you with your browser.">
     <!-- TODO -->
     <meta name="twitter:image" content="/assets/logo_square.png">
 
@@ -51,9 +51,9 @@
     <!-- noscript #2 -->
     <noscript>
     <div>
-      <h1><%= @lang_javascript_header %></h1>
-      <p><%= @lang_javascript_body %></p>
-      <div class="form-group"><a target="blank" href="https://www.google.com/search?q=how+to+enable+javascript" class="btn btn-primary btn-lg"><%= @lang_how_to_enable_javascript %></a></div>
+      <h1>Javascript</h1>
+      <p>We're sorry! This site requires JavaScript enabled to work properly.</p>
+      <div class="form-group"><a target="blank" href="https://www.google.com/search?q=how+to+enable+javascript" class="btn btn-primary btn-lg">How to enable Javascript</a></div>
     </div>
     </noscript>
     <!-- DI container -->
@@ -61,15 +61,15 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="/" class="navbar-brand"><%= @page_name %></a>
+          <a href="/" class="navbar-brand">Navihub</a>
 
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
 
           <ul class="nav navbar-nav" id="menu-top">
-            <li data-template="index"><%= link_to @lang_search, controller: "search" %></li>
-            <li data-template="index"><%= link_to @lang_about, controller: "search" %></li>
-            <li data-template="index"><%= link_to @lang_feedback, controller: "search" %></li>
+            <li data-template="index"><%= link_to 'Search', controller: "search" %></li>
+            <li data-template="index"><%= link_to 'About', controller: "search" %></li>
+            <li data-template="index"><%= link_to 'Feedback', controller: "search" %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right" id="menu-alt">
             <li data-template="myaccount|settings" class="dropdown">
@@ -93,7 +93,7 @@
           <div class="col-lg-12">
 
             <ul class="list-unstyled">
-              <li class="pull-right"><a href="#body" class="scroll-top"><%= @lang_back_to_top %></a></li>
+              <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
               <li>&#169; 2013 - <%= Time.now.year %></li>
               <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
               <li class="no-mobile no-smartphone">~</li>
@@ -104,7 +104,7 @@
               <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="https://www.facebook.com/petr.nagy">fb</a></li>
               <li class="no-mobile no-smartphone no-tablet"><a target="blank" rel="nofollow" href="http://knedlajz.deviantart.com/gallery/">da</a></li>
             </ul>
-            <p class="no-mobile no-smartphone small"><%= @lang_starring %>:&nbsp;&nbsp;&nbsp; 
+            <p class="no-mobile no-smartphone small">Starring:&nbsp;&nbsp;&nbsp; 
               <a target="_blank" rel="nofollow" href="https://www.ruby-lang.org/en/">#ruby</a> ~ 
               <a target="_blank" rel="nofollow" href="http://rubyonrails.org/">#rails</a> ~ 
               <a target="_blank" rel="nofollow" href="http://www.postgresql.org/">#postgresql</a> ~ 
@@ -143,3 +143,5 @@
     </div>
   </body>
 </html>
+
+<%= @debug %>

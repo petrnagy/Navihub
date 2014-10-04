@@ -14,6 +14,9 @@ class FoursquareMapper < GenericMapper
         mapped[:tags] << cat['name']
       end
     end
+    
+    mapped[:address] = @data[:data]['venue']['location']['address'].to_s + ', ' + @data[:data]['venue']['location']['city'].to_s
+    
     [mapped]
   end
   

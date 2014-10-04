@@ -18,6 +18,8 @@ class NokiaMapper < GenericMapper
             mapped[:tags] = [item['category']['title']]
             mapped[:vicinity] = item['vicinity']
       
+            mapped[:address] = item['vicinity']
+            
             results << mapped
           end
         end

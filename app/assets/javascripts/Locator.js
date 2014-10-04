@@ -5,7 +5,7 @@ var Locator = function() {
     this._data = {browser: null, web: null};
     this._envelope = {
         lat: null, lng: null, country: null, country_short: null,
-        city: null, city2: null, street1: null, street2: null
+        city: null, city2: null, street1: null, street2: null, origin: null,
     };
     this._sent = {browser: false, web: false};
     this._interval = null;
@@ -36,9 +36,11 @@ Locator.prototype = {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(response) {
                 try {
-                    var data = that._envelope;
+                    var data = {};
+                    $.extend(data, that._envelope);
                     data.lat = response.coords.latitude;
                     data.lng = response.coords.longitude;
+                    data.origin = 'browser';
                     that._data.browser = data;
                 } catch (e) {
                     that._data.browser = false;
@@ -55,10 +57,12 @@ Locator.prototype = {
         $.get("http://ipinfo.io", function(response) {
             if (typeof response === 'object') {
                 try {
-                    var data = that._envelope;
+                    var data = {};
+                    $.extend(data, that._envelope);
                     var coords = response.loc.split(',');
                     data.lat = coords[0];
                     data.lng = coords[1];
+                    data.origin = 'web';
                     that._data.web = data;
                 } catch (e) {
                     that._data.web = false;
@@ -66,10 +70,13 @@ Locator.prototype = {
             } // end if
         }, "jsonp");
     },
-    
-    _send: function(data, callback) {
+    _send: function(data) {
         var that = this;
-        // todo ajax
-        // todo callback
+        var data = data;
+        data.set = 1;
+        $.ajax({
+            url: '/settings/location',
+            data: data,
+        });
     },
 } // end prototype

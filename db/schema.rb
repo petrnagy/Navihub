@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927165434) do
+ActiveRecord::Schema.define(version: 20141004170749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,16 +81,6 @@ ActiveRecord::Schema.define(version: 20140927165434) do
   add_index "google_sessions", ["active"], name: "index_google_sessions_on_active", using: :btree
   add_index "google_sessions", ["user_id"], name: "index_google_sessions_on_user_id", using: :btree
 
-  create_table "langs", force: true do |t|
-    t.string   "name"
-    t.string   "value"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "langs", ["active"], name: "index_langs_on_active", using: :btree
-
   create_table "locations", force: true do |t|
     t.integer  "user_id"
     t.float    "latitude"
@@ -155,15 +145,5 @@ ActiveRecord::Schema.define(version: 20140927165434) do
   add_index "users", ["id_fb"], name: "index_users_on_id_fb", using: :btree
   add_index "users", ["id_gp"], name: "index_users_on_id_gp", using: :btree
   add_index "users", ["id_tw"], name: "index_users_on_id_tw", using: :btree
-
-  create_table "vars", force: true do |t|
-    t.string   "name"
-    t.string   "value"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "vars", ["active"], name: "index_vars_on_active", using: :btree
 
 end

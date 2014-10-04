@@ -4,10 +4,8 @@ class ApiCache < ActiveRecord::Base
   
   def self.get_from_cache key
     row = self.find_by(key: key)
-    if row
-      if row.updated_at > (Time.now - 3600)
-        return YAML::load row.data
-      end
+    if row && row.updated_at > (Time.now - 3600)
+      return YAML::load row.data
     end
     return nil
   end

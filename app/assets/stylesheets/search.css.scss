@@ -4,11 +4,13 @@
 
 .result-box h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0px; }
 .result-box h3 img { max-height: 20px; max-width: 50px; margin-top: -1px; }
-.result-box { min-height: 300px; }
-.result-box:hover { background-color: #F7F7F7; cursor: pointer; }
+.result-box { min-height: 315px; }
+/*.result-box:hover { background-color: #F7F7F7; }*/
 .result-box.active, .result-detail, .result-box.active:hover { background-color: #FFF2C8; }
 //.result-box:hover > * { cursor: pointer; }
-.result-box .result-geometry { display: block; border-radius: 0px; background-color: rgb(97, 97, 97); padding: 5px; }
+.result-box .result-geometry { display: block; border-radius: 0px; background-color: #949494; padding: 5px; }
+.result-geometry { width: 340px; }
+.result-address { display: block; border-radius: 0px; background-color: #325d88; padding: 5px; width: 340px; }
 .result-box .label { font-weight: normal; }
 
 .col-centered { float: none; margin-left: auto; margin-right: auto; }
@@ -16,4 +18,5 @@
 .smile-big h1 { font-size: 120px; }
 .search-txt_ { margin-top: 100px; margin-bottom: 100px }
 .result-box.is-duplicate { color: lightgray; }
-.origin-icon, .result-icon { max-width: 50px; max-height: 50px; }
+.origin-icon, .result-icon { max-width: 25px; max-height: 25px; }
+.labels-wrapper { height: 41px; overflow: hidden; }

@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <div class="col-lg-6">
       <h2>Search results for '<%= @data[:data][:input_params][:term] %>'</h2>
-      <p>Showing first <b><%= @data[:data][:params][:limit] %></b> from total <b><%= @data[:data][:total_cnt] %></b> results. Search completed in <%= @data[:data][:total_time] %> s.</p>
+      <p>Showing first <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> from approximately <b><%= @data[:data][:total_cnt] %></b> results. Search completed in <%= @data[:data][:total_time] %> s.</p>
     </div>
   </div>
 <% end %>
@@ -20,21 +20,31 @@
         <% end %>
       </div>
       <div class="geometry-wrapper">
+        <span class="label label-primary result-address">
+          <% if result[:address] %>
+          <%= result[:address] %>
+          <span class="pull-right"><a target="_blank" href="http://maps.google.com/maps?q=<%= u result[:address] %> ">[map]</a></span>
+          <% else %>
+            unknown address
+          <% end %>
+        </span>
         <span class="label label-default result-geometry">
           <% if result[:pretty_loc] %>
             <%= result[:pretty_loc][:lat][0].to_s + '° ' + result[:pretty_loc][:lat][1].to_s + "' " + result[:pretty_loc][:lat][2].to_s + '" ' + result[:pretty_loc][:lat][3].to_s %>, 
             <%= result[:pretty_loc][:lng][0].to_s + '° ' + result[:pretty_loc][:lng][1].to_s + "' " + result[:pretty_loc][:lng][2].to_s + '" ' + result[:pretty_loc][:lng][3].to_s %> | 
             lat <%= result[:geometry][:lat].round(4).to_s + ', lng ' + result[:geometry][:lng].round(4).to_s %>
+            <span class="pull-right"><a target="_blank" href="http://maps.google.com/maps?q=<%= u result[:geometry][:lat].to_s + ',' + result[:geometry][:lng].to_s %> ">[map]</a></span>
           <% else %>
-            unknown location
+            unknown geolocation
           <% end %>
         </span>
+
       </div>
-      <div class="labels-wrapper">
+      <div class="labels-wrapper text-center">
         <% if result[:distance] %>
           <span class="label label-danger"><%= result[:distance] %> <%= result[:distance_unit] %> away</span>
           <span class="label label-primary"><%= (result[:distance_in_mins] > 0 ? result[:distance_in_mins] : '< 1') %> min walk</span>
-          <span class="label label-info">3 min drive</span>
+          <span class="label label-info"><%= (result[:car_distance_in_mins] > 0 ? result[:car_distance_in_mins] : '< 1') %> min drive</span>
         <% end %>
 
         <% if result[:tags].is_a? Array %>
@@ -43,22 +53,23 @@
           <% end %>
         <% end %>
       </div>
-
-      <div>
-        <%= image_tag('origin-' + result[:origin] + '.png', class: 'origin-icon', alt: 'Origin icon') %>
-          <%= image_tag(result[:icon], class: 'result-icon', alt: 'Icon') if result[:icon] %>
-          </div>
-
-          <div class="progress">
-            <div class="progress-bar" style="<%= 'width: ' + ( result[:duplicity_score].to_f * 100 > 100 ? 100 : result[:duplicity_score].to_f * 100 ).to_s + '%' %>"><%= result[:duplicity_score].round 4 %></div>
-          </div>
-
+      <hr>
+      <%#*<div style="float: right;">%>
+        <%#= image_tag('origin-' + result[:origin] + '.png', class: 'origin-icon', alt: 'Origin icon') %>
+          <%#= image_tag(result[:icon], class: 'result-icon', alt: 'Icon') if result[:icon] %>
+          <%#*</div>%>
+      <div class="text-center">
+        <a href="#" class="btn btn-warning btn-detail">Show details</a>
+      </div>
         </div>
       <% end %>
     </div>
     <div class="col-lg-12">
       <hr>
     </div>
+    <% if @data[:data][:total_cnt] > @data[:data][:params][:limit] %>
     <div class="col-lg-12 load-more text-center">
       <button class="btn btn-success">Show next <%= @data[:data][:params][:step] %> results </button>
     </div>
+    <% end %>
+    

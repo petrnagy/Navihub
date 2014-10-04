@@ -20,6 +20,8 @@ class YelpMapper < GenericMapper
     mapped[:url] = @data[:data]['url']
     mapped[:phone] = @data[:data]['dislay_phone']
     
+    mapped[:address] = @data[:data]['location']['address'][0].to_s + ', ' + @data[:data]['location']['city'].to_s;
+    
     [mapped]
   end
   

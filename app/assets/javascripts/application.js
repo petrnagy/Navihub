@@ -13,12 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require Locator
 //= require_tree .
 
 $.ajaxSetup({
   cache: false,
   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 });
+
+new Locator();
 
 if ( $("#search-form").length ) {
     search = new Search(21);

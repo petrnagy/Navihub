@@ -2,7 +2,7 @@ class Location < ActiveRecord::Base
   belongs_to :user
   
   def self.possible lat, lng
-    (lat.to_f <= 90 && lat.to_f >= 0 && lng.to_f <= 180 && lng.to_f >= -180)
+    (lat.to_f <= 90 && lat.to_f >= -90 && lng.to_f <= 180 && lng.to_f >= -180)
   end
   
   def self.pretty_loc lat, lng
@@ -22,7 +22,7 @@ class Location < ActiveRecord::Base
   end
   
   def self.calculate_distance lat1, lng1, lat2, lng2
-    unless ! self.possible(lat1, lng2) || ! self.possible(lat2, lng2) then
+    if self.possible(lat1, lng1) && self.possible(lat2, lng2)
       radius = 6371.00
       rads_per_degree = Math::PI / 180
       delta_lat = (lat2 - lat1) * rads_per_degree

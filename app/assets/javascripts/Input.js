@@ -1,90 +1,91 @@
 /**
-* @author PN @since 2014-09-27
-*/
+ * @author PN @since 2014-09-27
+ */
 var Input = function(step) {
-  this.step = step;
-  this.$form = $("#search-input");
-  this.defaults = {
-    sort: 'distance-asc',
-    offset: 0,
-    radius: 0,
-  };
-  // order matters !
-  this.interests = ['term', 'radius', 'sort', 'offset'];
-  if ( this.$form.length ) {
-    this._init();
-  } else {
-    throw new Error();
-  } // end if
+    this.step = step;
+    this.$form = $("#search-input");
+    this.defaults = {
+        sort: 'distance-asc',
+        offset: 0,
+        radius: 0,
+    };
+    // order matters !
+    this.interests = ['term', 'radius', 'sort', 'offset'];
+    if (this.$form.length) {
+        this._init();
+    } else {
+        throw new Error();
+    } // end if
 } // end func
 
 Input.prototype = {
+    _init: function() {
+        this._bindSubmit();
+    },
+    _bindSubmit: function() {
+        var that = this;
+        that.$form.submit(function(e) {
+            e.preventDefault();
+            that.processSubmit();
+            return false;
+        });
+    }, // end method
 
-  _init: function() {
-    this._bindSubmit();
-  },
+    processSubmit: function() {
+        var that = this;
+        var values = that.getValues();
+        if (values['term'].length) {
+            var url = that.buildUrl(values);
+            if (url) {
+                that.lock();
+                that.pushUrl(url);
+                Spinner.show();
+            } // end if  
+        } // end if
+    }, // end method
 
-  _bindSubmit: function() {
-    var that = this;
-    that.$form.submit(function(e) {
-      e.preventDefault();
-      that.processSubmit();
-      return false;
-    });
-  }, // end method
+    getValues: function() {
+        var that = this;
+        return {
+            term: that.$form.find("[name='search[term]']").val().trim(),
+            radius: that.defaults.radius,
+            sort: that.defaults.sort,
+            offset: that.defaults.offset,
+        };
+    }, // end method
 
-  processSubmit: function() {
-    var that = this;
-    var values = that.getValues();
-    if ( values['term'].length ) {
-      var url = that.buildUrl(values);
-      if ( url ) {
-        that.lock();
-        that.pushUrl(url);
-        Spinner.show();
-      } // end if  
-    } // end if
-  }, // end method
+    buildUrl: function(values) {
+        var that = this;
+        var url = '';
+        if (window.location.origin) {
+            url += window.location.origin;
+        } else {
+            url += 'http://' + window.location.host;
+        } // end if
+        url += '/find';
+        var char = '?';
+        $.each(that.interests, function(k, v) {
+            if (typeof values[v] != 'undefined' && values[v] && values[v] != that.defaults[v]) {
+                url += char + v + '=' + encodeURIComponent(values[v]);
+                char = '&';
+            } // end if
+        });
+        return url;
+    }, // end method
 
-  getValues: function() {
-    var that = this;
-    return {
-      term: that.$form.find("[name='search[term]']").val().trim(),
-      radius: that.defaults.radius,
-      sort: that.defaults.sort,
-      offset: that.defaults.offset,
-    };
-  }, // end method
+    pushUrl: function(url) {
+        var that = this;
+        window.location.href = url;
+    }, // end method
 
-  buildUrl: function(values) {
-    var that = this;
-    var url = '';
-    if ( window.location.origin ) {
-      url += window.location.origin;
-    } else {
-      url += 'http://' + window.location.host;
-    } // end if
-    url += '/search';
-    $.each(that.interests, function(k, v) {
-      url += '/' + encodeURIComponent( typeof values[v] != 'undefined' && values[v] ? values[v] : that.defaults[v] );
-    });
-    return url;
+    lock: function() {
+        var that = this;
+        that.$form.find('input, select, option, button').prop('disabled', true);
+    }, // end method
 
-  }, // end method
-
-  pushUrl: function(url) {
-    var that = this;
-    window.location.href = url;
-  }, // end method
-
-  lock: function() {
-    var that = this;
-    that.$form.find('input, select, option, button').prop('disabled', true);
-  }, // end method
-
-  unlock: function() {
-    var that = this;
-    that.$form.find('input, select, option, button').prop('disabled', false);
-  }, // end method
+    unlock: function() {
+        var that = this;
+        that.$form.find('input, select, option, button').prop('disabled', false);
+    }, // end method
 
 } // end prototype
