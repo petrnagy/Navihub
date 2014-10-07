@@ -12,9 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.cookie
 //= require turbolinks
 //= require Locator
 //= require_tree .
+
+$.cookie.json = true;
 
 $.ajaxSetup({
   cache: false,

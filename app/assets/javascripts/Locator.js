@@ -73,10 +73,24 @@ Locator.prototype = {
     _send: function(data) {
         var that = this;
         var data = data;
-        data.set = 1;
-        $.ajax({
-            url: '/settings/location',
-            data: data,
-        });
+        var cache = that._getFromCache();
+        if (!cache || cache.lat != data.lat || cache.lng != data.lng) {
+            data.set = 1;
+            $.ajax({
+                url: '/settings/location',
+                data: data,
+                success: function(){
+                    that._saveToCache(data);
+                },
+            });
+        } // end if
+    },
+    _getFromCache: function() {
+        return null;
+        return $.cookie('_navihub_loc_cache');
+    },
+    _saveToCache: function(data) {
+        return;
+        $.cookie('_navihub_loc_cache', data);
     },
 } // end prototype

@@ -16,10 +16,12 @@ class DistanceHelper
     (km * 0.6214).round 2
   end
   
+  # about 4km/h
   def self.m_to_min m
     (m / 1.1 / 60).to_i
   end
   
+  # about 20km/h
   def self.car_m_to_min m
     (m / 5.556 / 60).to_i
   end

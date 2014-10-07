@@ -44,7 +44,7 @@ class SearchController < ApplicationController
     @tpl_vars[:total_time] = (Time.now - ts_start).round(2)
     @tpl_vars[:params] = search.params
     @tpl_vars[:results_from_cache] = search.results_from_cache
-    @debug = Rails.application.config.foursquare_client_secret
+    #@debug = Rails.application.config.foursquare_client_secret
     results
   end
   

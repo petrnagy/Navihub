@@ -10,10 +10,10 @@
         <select class="form-control" name="search[radius]">
           <% [ 
             {:val => 0, :name => 'Any distance'},
-            {:val => 500, :name => '< 500m | 0.3 mi'},
-            {:val => 1000, :name => '< 1km | 0.62 mi'},
-            {:val => 3000, :name => '< 3km | 1.86 mi'},
-            {:val => 10000, :name => '< 10km | 6.2 mi'}
+            {:val => 500, :name => '< 500m | ~0.3 mi'},
+            {:val => 1000, :name => '< 1km | ~0.6 mi'},
+            {:val => 3000, :name => '< 3km | ~1.8 mi'},
+            {:val => 10000, :name => '< 10km | ~6 mi'}
             ].each do |option| %>
             <option <%= (option[:val].to_i > 0 && @tpl_vars[:input_params]['radius'].to_i == option[:val].to_i ? 'selected="selected"' : '')  %> value="<%= option[:val] %>"><%= option[:name] %></option>
           <% end %>
