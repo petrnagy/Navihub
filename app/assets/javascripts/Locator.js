@@ -93,4 +93,8 @@ Locator.prototype = {
         return;
         $.cookie('_navihub_loc_cache', data);
     },
+    getLocation: function() {
+        var that = this;
+        return that._data.browser ? that._data.browser : that._data.web;
+    },
 } // end prototype

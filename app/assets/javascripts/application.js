@@ -24,13 +24,20 @@ $.ajaxSetup({
   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 });
 
-new Locator();
+var DI = {};
+
+DI.locator = new Locator();
 
 if ( $("#search-form").length ) {
-    search = new Search(21);
-    btn = new NextButton(search);
+    DI.search = new Search(21); // 21 results per page
+    DI.btn = new NextButton(DI.search);
+    $(document).delegate('.btn-detail', 'click', function(e){
+        e.preventDefault();
+        DetailFactory.activate($(this), DI);
+        return false;
+    });
 } // end if
 
 if ( $("#search-input").length ) {
-    input = new Input(21);
+    DI.input = new Input(21);
 } // end if

@@ -10,7 +10,7 @@ class Search
   @@allowed_orders = %w{distance name}
   # bing openstreet - those are shits
   @@allowed_engines = %w{google nokia yelp foursquare}
-  @@max_distance = 20000;
+  @@max_distance = 20000; # 20km
   @@duplicity_score_threshold = 1.0
   
   private
@@ -21,6 +21,10 @@ class Search
   public
   
   attr_reader :results, :params, :total_cnt, :results_from_cache
+  
+  def self.allowed_engines
+    @@allowed_engines
+  end
   
   def initialize params, location
     term = params[:term]
@@ -219,6 +223,7 @@ class Search
         tags << tag.gsub('_', '-').gsub(' ', '-').downcase unless tag == nil
       end
       current[:tags] = tags
+      current[:json] = current.to_json
       
       processed << current
     end

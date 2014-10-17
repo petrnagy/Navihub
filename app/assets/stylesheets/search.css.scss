@@ -6,7 +6,7 @@
 .result-box h3 img { max-height: 20px; max-width: 50px; margin-top: -1px; }
 .result-box { min-height: 315px; }
 /*.result-box:hover { background-color: #F7F7F7; }*/
-.result-box.active, .result-detail, .result-box.active:hover { background-color: #FFF2C8; }
+/*.result-box.active, .result-detail, .result-box.active:hover { background-color: #FFF2C8; }*/
 //.result-box:hover > * { cursor: pointer; }
 .result-box .result-geometry { display: block; border-radius: 0px; background-color: #949494; padding: 5px; }
 .result-geometry { width: 340px; }
@@ -20,3 +20,6 @@
 .result-box.is-duplicate { color: lightgray; }
 .origin-icon, .result-icon { max-width: 25px; max-height: 25px; }
 .labels-wrapper { height: 41px; overflow: hidden; }
+.detail-wrapper { padding-top: 30px; }
+.detail-wrapper.active, .result-box.active { background-color: rgb(250, 250, 250); }
+.detail-wrapper .map-canvas { height: 380px; }
