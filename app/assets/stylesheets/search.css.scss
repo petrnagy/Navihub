@@ -23,3 +23,9 @@
 .detail-wrapper { padding-top: 30px; }
 .detail-wrapper.active, .result-box.active { background-color: rgb(250, 250, 250); }
 .detail-wrapper .map-canvas { height: 380px; }
+.detail-wrapper .detail-data .cube-spinner { margin-left: 114px; margin-top: 157px; }
+
+.detail-wrapper .detail-links .link { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px; }
+.detail-wrapper .detail-body table, 
+.detail-wrapper .detail-body tbody, 
+.detail-wrapper .detail-body td { max-width: 250px; }

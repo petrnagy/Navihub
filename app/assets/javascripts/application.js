@@ -14,30 +14,24 @@
 //= require jquery_ujs
 //= require jquery.cookie
 //= require turbolinks
-//= require Locator
 //= require_tree .
 
 $.cookie.json = true;
 
 $.ajaxSetup({
-  cache: false,
-  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    cache: false,
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 });
 
-var DI = {};
+var DI = {
+    controller: controller,
+    action: action,
+};
+controller = action = null;
 
 DI.locator = new Locator();
 
-if ( $("#search-form").length ) {
-    DI.search = new Search(21); // 21 results per page
-    DI.btn = new NextButton(DI.search);
-    $(document).delegate('.btn-detail', 'click', function(e){
-        e.preventDefault();
-        DetailFactory.activate($(this), DI);
-        return false;
-    });
-} // end if
-
-if ( $("#search-input").length ) {
-    DI.input = new Input(21);
-} // end if
+DI.kickstart = 'kickstart_' + DI.controller;
+typeof window[DI.kickstart] === 'function'
+        ? window[DI.kickstart](DI)
+        : null;

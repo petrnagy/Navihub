@@ -1,3 +1,11 @@
 // Place all the styles related to the detail controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#detail-results .detail-links .link { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; }
+#detail-results .detail-body table, 
+#detail-results .detail-body tbody, 
+#detail-results .detail-body td { max-width: 280px; }
+
+#detail-results #map_canvas { width: 730px; height: 400px; }

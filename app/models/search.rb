@@ -63,14 +63,12 @@ class Search
     ApiCache.save_to_cache key, results if results && ! @results_from_cache
     process_results results
   rescue
-    # ! ! ! HACK !!! BIG UGLY HACK ! ! !
+    # ! ! ! ! ! ! ! ! ! ! ! ! ! HACK ! ! ! ! ! ! ! ! ! ! ! ! !
     # if non-threadsafe code raised error, we request the APIs again, without multithreading
     results = search_sync
     ApiCache.save_to_cache(key, results) if results
     process_results results
   end
-  
-  protected
   
   private
   
@@ -220,9 +218,10 @@ class Search
       # modify labels
       tags = []
       current[:tags].each do |tag|
-        tags << tag.gsub('_', '-').gsub(' ', '-').downcase unless tag == nil
+        tags << Mixin.normalize_tag(tag) if tag.is_a? String
       end
       current[:tags] = tags
+      current[:ascii_name] = Mixin.normalize_unicode current[:name]
       current[:json] = current.to_json
       
       processed << current
@@ -238,13 +237,6 @@ class Search
       max_score = score if score > max_score
     end
     max_score
-  end
-  
-  # - - - debug
-  
-  public
-  def get_debug
-    
   end
   
 end

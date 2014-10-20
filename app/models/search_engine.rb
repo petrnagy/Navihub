@@ -6,7 +6,7 @@ class SearchEngine
   
   public
   
-  attr_reader :google_api_key
+  attr_reader :google_api_key # do not touch
   
   class MethodNotOverridden < StandardError
   end
@@ -55,8 +55,6 @@ class SearchEngine
       :data => venue
     }
   end
-  
-  private
   
   def init_keys
     # TODO: presunout do pole

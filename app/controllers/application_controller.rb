@@ -2,13 +2,7 @@ class ApplicationController < ActionController::Base
   
   public
   
-  protected
-  
-  @user
-  
-  private
-  
-  public
+  @failsafe;
   
   protect_from_forgery with: :exception
   
@@ -16,9 +10,13 @@ class ApplicationController < ActionController::Base
   
   protected
   
+  @user; @location
+  
   def init
     init_html_variables
     init_user
+    init_location
+    @failsafe = false
   end
   
   def init_html_variables
@@ -95,6 +93,13 @@ class ApplicationController < ActionController::Base
       cookie = Cookie.create(cookie: cookies[:navihub_id], active: true, user_id: nil)
     end
     cookie
+  end
+  
+  def init_location
+    @location = Location.where(user_id: @user.id, active: true).order('id DESC').first!
+    if nil == @location
+      raise NoLocationException
+    end
   end
   
   private

@@ -4,18 +4,24 @@ class DetailController < ApplicationController
     if params.has_key?('origin') && params.has_key?('id')
       @data = load params['origin'], params['id']
       if @data
-        return render 'detail'
+        if request.xhr?
+          return render '_detail', :layout => false
+        else
+          return render 'detail'
+        end
       end
     end
     @data = { :origin => params['origin'] || 'unknown', :id => params['id'] || 'unknown' }
-    render 'empty'
+    @failsafe = true
+    render 'empty', :status => 404
   end
   
   private
   
   def load origin, id
     if Search.allowed_engines.include? origin
-      
+      loader = "#{origin.capitalize}VenueLoader".constantize.new id
+      return loader.load @location
     end
   end
   

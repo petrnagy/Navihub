@@ -78,9 +78,21 @@ Detail.prototype = {
     },
     _initDetailData: function(data) {
         var that = this;
-        //console.log('init detail ajax loader...');
-        //console.log(data);
         that._$detail.find('.detail-header-name').text(data.name);
+        
+        if (data.origin && data.id) {
+            var url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : Mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
+            $.ajax({
+                url: url,
+                method: 'get',
+                success: function(response) {
+                    if (response) {
+                        $(".detail-wrapper .detail-body .detail-data").html(response);
+                    } // end if
+                },
+            });
+        }
+
         //console.log('init detail data...');
     },
     _buildDetailRow: function() {
@@ -94,11 +106,10 @@ Detail.prototype = {
                 '  <div class="col-lg-12 detail-body">' +
                 '    <div class="detail-data col-lg-4">' +
                 '      <div class="cube-spinner"><div class="cube1"></div><div class="cube2"></div></div>' +
-                '<b>Loading some stuff ...</b>' +
                 '    </div>' +
                 '    <div class="map-canvas col-lg-8" id="' + Mixin.generateRandomHash() + '"></div>' +
                 '  </div>' +
-                '  <div class="col-lg-12 detail-header">' +
+                '  <div class="col-lg-12 detail-footer">' +
                 '    <hr>' +
                 '  </div>' +
                 '</div>'
@@ -111,7 +122,6 @@ Detail.prototype = {
         that._$cube.removeClass('active');
         $(".detail-wrapper").slideUp('fast').remove();
         that._setCloseState();
-        console.log('close...');
     },
     _closeOthers: function() {
         var that = this;

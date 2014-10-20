@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   #get 'search/:term(/:radius)(/:order)(/:offset)' => 'search#find'
   #get 'search/:term(/:radius)(/:order)(/:offset)', :controller => 'search', :action => 'find', :term => /[^\/]+/
   
-  get 'detail/:origin/:id' => 'detail#index'
+  get 'detail/:name/:id/:origin' => 'detail#index'
   
 end

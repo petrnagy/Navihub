@@ -33,8 +33,22 @@ class GenericMapper
       :tags       => [],
       :vicinity   => nil,
       :url        => nil,
-      :phone      => nil,
       :address    => nil,
+      # - - -
+      :detail     => {
+        :url          => nil, 
+        :website_url  => nil, 
+        :phones       => [],
+        :email        => nil,
+        :address      => {
+          :country        => nil,
+          :country_short  => nil, 
+          :town           => nil, 
+          :zip            => nil, 
+          :street         => nil, 
+          :premise        => nil, 
+        },
+      },
     }
   end
   

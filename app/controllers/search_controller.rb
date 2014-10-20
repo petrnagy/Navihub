@@ -36,9 +36,8 @@ class SearchController < ApplicationController
   
   def process_search params
     ts_start = Time.now
-    location = Location.where(user_id: @user.id, active: true).order('id DESC').first!
     params['is_xhr'] = request.xhr?
-    search = Search.new params, location
+    search = Search.new params, @location
     results = search.search
     @tpl_vars[:total_cnt] = search.total_cnt
     @tpl_vars[:total_time] = (Time.now - ts_start).round(2)
