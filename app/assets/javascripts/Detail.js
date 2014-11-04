@@ -17,9 +17,12 @@ Detail.prototype = {
     },
     switch : function() {
         var that = this;
-        that._closeOthers();
-        if (that._isOpen()) {
+
+        if (that.isOpen()) {
+            that._close();
+            that._setCloseState();
         } else {
+            that._closeOthers();
             that._open();
             that._loadDetail();
         } // end if
@@ -47,7 +50,7 @@ Detail.prototype = {
         } // end if
         that._$detail.addClass('active');
         that._$cube.addClass('active');
-        that._setOpenState();
+        that.setOpenState();
     },
     _loadDetail: function() {
         var that = this;
@@ -55,9 +58,29 @@ Detail.prototype = {
         try {
             var result = JSON.parse(jsonAttr);
         } catch (e) {
-            //that._close();
+            return that._processDetailError(e);
         } // end try-catch
-        that._initDetailMap(result);
+        if (result.geometry.lat === null || result.geometry.lng === null) {
+            try {
+                if (result.address) {
+                    var geocode = new GoogleGeocode(result.address);
+                    geocode.load(function(coords) {
+                        if (coords !== null) {
+                            result.geometry = coords;
+                            that._initDetailMap(result);
+                        } else {
+                            throw new Error('Could not load detail map, geocode failed');
+                        } // end if
+                    });
+                } else {
+                    throw new Error('Could not load detail map, no coordinates or address available');
+                } // end if   
+            } catch (e) {
+                return that._processDetailError(e);
+            } // end try-catch
+        } else {
+            that._initDetailMap(result);
+        } // end if
         that._initDetailData(result);
     },
     _initDetailMap: function(data) {
@@ -79,9 +102,15 @@ Detail.prototype = {
     _initDetailData: function(data) {
         var that = this;
         that._$detail.find('.detail-header-name').text(data.name);
-        
+
         if (data.origin && data.id) {
-            var url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : Mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
+            var url = '';
+            if (!Mixin.isAscii(data.id.toString())) {
+                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : Mixin.generateRandomHash(5)) + '/' + data.origin.toString() + '?id=' + data.id.toString();
+            } else {
+                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : Mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
+            } // end if
+
             $.ajax({
                 url: url,
                 method: 'get',
@@ -118,18 +147,19 @@ Detail.prototype = {
     },
     _close: function() {
         var that = this;
-        that._$detail.removeClass('active');
-        that._$cube.removeClass('active');
-        $(".detail-wrapper").slideUp('fast').remove();
-        that._setCloseState();
+        if (that.isOpen() && that._$detail) {
+            that._$detail.removeClass('active');
+            that._$cube.removeClass('active');
+            $(".detail-wrapper").slideUp('fast').remove();
+            that._setCloseState();
+        } // end if
     },
     _closeOthers: function() {
         var that = this;
         $(".detail-wrapper").slideUp('fast').remove();
         $(".result-box[data-cube-rel]").removeAttr('data-cube-rel').attr('data-cube-open', 'false');
-        //console.log('close all other...');
     },
-    _setOpenState: function() {
+    setOpenState: function() {
         var that = this;
         that._$cube.attr('data-cube-open', 'true');
     },
@@ -137,7 +167,7 @@ Detail.prototype = {
         var that = this;
         that._$cube.attr('data-cube-open', 'false');
     },
-    _isOpen: function() {
+    isOpen: function() {
         var that = this;
         return (that._$cube.attr('data-cube-open') == 'true');
     },

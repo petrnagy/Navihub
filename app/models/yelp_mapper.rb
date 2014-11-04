@@ -25,4 +25,55 @@ class YelpMapper < GenericMapper
     [mapped]
   end
   
+  def map_detail location
+    mapped = get_template
+    
+    mapped[:origin] = 'Yelp Business'
+    mapped[:geometry][:lat] = @data['location']['coordinate']['latitude'].to_f
+    mapped[:geometry][:lng] = @data['location']['coordinate']['longitude'].to_f
+    mapped[:id] = @data['id']
+    mapped[:icon] = nil
+    mapped[:name] = @data['name']
+    mapped[:tags] = []
+    @data['categories'].each do |cat|
+      mapped[:tags] << cat[1] unless cat[1] == nil
+    end
+    mapped[:vicinity] = nil
+    mapped[:address] = @data['location']['display_address'].join ', '
+    # - - -
+    mapped[:ascii_name] = Mixin.normalize_unicode mapped[:name]
+    # todo tel
+    if mapped[:geometry][:lat] != nil && mapped[:geometry][:lng] != nil
+      
+      mapped[:pretty_loc] = Location.pretty_loc mapped[:geometry][:lat], mapped[:geometry][:lng]
+      
+      mapped[:distance] = Location.calculate_distance(
+        location.latitude.to_f,
+        location.longitude.to_f,
+        mapped[:geometry][:lat],
+        mapped[:geometry][:lng]
+      ).ceil unless mapped[:distance].to_i > 0
+      mapped[:distance_in_mins] = DistanceHelper.m_to_min mapped[:distance]
+      mapped[:car_distance_in_mins] = DistanceHelper.car_m_to_min mapped[:distance]
+      if mapped[:distance] > 1000
+        mapped[:distance] = DistanceHelper.m_to_km mapped[:distance], '.', 1
+        mapped[:distance_unit] = 'km'
+      else
+        mapped[:distance] = mapped[:distance].to_i
+        mapped[:distance_unit] = 'm'
+      end  
+    end
+    mapped[:detail][:url] = @data['url']
+    mapped[:detail][:website_url] = nil
+    
+    mapped[:detail][:address][:premise] = nil
+    mapped[:detail][:address][:street] = nil
+    mapped[:detail][:address][:town] = @data['location']['city']
+    mapped[:detail][:address][:country] = nil
+    mapped[:detail][:address][:country_short] = @data['location']['country_code']
+    mapped[:detail][:address][:zip] = @data['location']['postal_code']
+    
+    mapped
+  end
+  
 end

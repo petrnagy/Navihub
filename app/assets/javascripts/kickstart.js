@@ -16,6 +16,7 @@ function kickstart_search(di) {
         di.search = new Search(21); // 21 results per page
         di.btn = new NextButton(di.search);
         $(document).delegate('.btn-detail', 'click', function(e) {
+            // TODO: rozeznavat, zda je open/closed
             e.preventDefault();
             DetailFactory.activate($(this), di);
             return false;
