@@ -8,6 +8,6 @@ Mixin = {
         return (Math.random() + 1).toString(36).substring(0, length).replace(/[^\w\d]/, '_');
     },
     isAscii: function(str) {
-        return  /^[\000-\177]*$/.test(str) ;
+        return  /^[\x00-\x7F]+$/.test(str);
     },
 }

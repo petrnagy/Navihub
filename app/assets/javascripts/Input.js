@@ -62,15 +62,30 @@ Input.prototype = {
         } else {
             url += 'http://' + window.location.host;
         } // end if
-        url += '/find';
-        var char = '?';
+        var baseUrl = url;
+        var ascii = true;
+        url += '/search';
         $.each(that.interests, function(k, v) {
-            if (typeof values[v] != 'undefined' && values[v] && values[v] != that.defaults[v]) {
-                url += char + v + '=' + encodeURIComponent(values[v]);
-                char = '&';
-            } // end if
+            var val = (typeof values[v] != 'undefined' && values[v] ? values[v] : that.defaults[v]);
+            url += '/' + encodeURIComponent(val);
+            if (!Mixin.isAscii(val)) {
+                ascii = false;
+            }
         });
-        return url;
+        if (ascii) {
+            return url;
+        } else {
+            url = baseUrl;
+            url += '/find';
+            var char = '?';
+            $.each(that.interests, function(k, v) {
+                if (typeof values[v] != 'undefined' && values[v] && values[v] != that.defaults[v]) {
+                    url += char + v + '=' + encodeURIComponent(values[v]);
+                    char = '&';
+                } // end if
+            });
+            return url;
+        } // end if
     }, // end method
 
     pushUrl: function(url) {

@@ -10,7 +10,7 @@ DetailFactory = {
             var $cube = new Detail($button.closest('.result-box'), di);
             var wasOpen = false;
             if (self._prev !== null) {
-                wasOpen = self._prev.isOpen();
+                wasOpen = (self._prev.isOpen() && self._prev.id == $cube.id);
                 self._prev.destroy();
             } // end if
             self._prev = $cube;

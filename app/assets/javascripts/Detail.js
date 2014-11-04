@@ -4,6 +4,7 @@
 var Detail = function($cube, di) {
     if ($cube.length) {
         this.di = di;
+        this.id = $cube.attr('id');
         this._$cube = $cube;
         this._$detail = null;
         this._columns = 3;
