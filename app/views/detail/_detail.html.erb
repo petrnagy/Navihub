@@ -2,7 +2,7 @@
   <tbody>
     <% if  @data[:name] %>
       <tr>
-        <td colspan="2" class="text-center"><%= @data[:name] %></td>
+        <td colspan="2" class="text-center"><%= @data[:name] %><div><small><a target="_blank" href="<%= request.original_url  %>">(open in new window)</a></small></div></td>
       </tr>
     <% end %>
     <tr>
@@ -18,6 +18,14 @@
         lat <%= @data[:geometry][:lat].round(4).to_s + ', lng ' + @data[:geometry][:lng].round(4).to_s %>
       </td>
     </tr>
+    <% if @data[:detail][:phones].length > 0 %>
+      <tr>
+        <td>Phone:</td>
+        <td>
+          <%= @data[:detail][:phones].join ', ' %>
+        </td>
+      </tr>
+    <% end %>
     <% if @data[:origin] != nil %>
       <tr>
         <td>Source:</td>
@@ -66,18 +74,18 @@
         </td>
       </tr>
     <% end %>
-    <tr>
-      <td colspan="2" class="text-center">
-        <% if @data[:tags].is_a? Array %>
+    <% if @data[:tags].is_a? Array %>
+      <tr>
+        <td colspan="2" class="text-center">
           <% @data[:tags].each do |label| %>
             <span class="label label-success"><%= label %></span>
           <% end %>
-        <% end %>
-      </td>
-    </tr>
+        </td>
+      </tr>
+    <% end %>
     <tr>
       <td colspan="2" class="text-center">
-        <div class="social-likes" data-counters="no">
+        <div class="social-likes" data-counters="no" data-url="<%= request.original_url %>">
           <div class="facebook" title="Share link on Facebook">Facebook</div>
           <div class="twitter" title="Share link on Twitter">Twitter</div>
           <div class="plusone" title="Share link on Google+">Google+</div>

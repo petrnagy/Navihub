@@ -25,12 +25,16 @@ Detail.prototype = {
         } else {
             that._closeOthers();
             that._open();
-            that._loadDetail();
+            var pos = ($('.detail-wrapper').offset().top - 135);
+            $("html").animate({scrollTop: pos}, 500, 'swing', function(){
+                that._loadDetail();
+            });
+            
         } // end if
     },
     _open: function() {
         var that = this;
-        var hash = Mixin.generateRandomHash(20);
+        var hash = that.di.mixin.generateRandomHash(20);
         that._$detail = that._buildDetailRow();
         that._$detail.attr('data-cube-rel', hash);
         that._$cube.attr('data-cube-rel', hash);
@@ -38,17 +42,25 @@ Detail.prototype = {
         var offset = that._columns - (prevCount % that._columns);
         var $nextAll = that._$cube.nextAll();
         var index = null;
-        if ($nextAll.length >= offset) {
-            index = offset - 2;
+        var $next = null;
+        if ($nextAll.length === 0) {
+            that._$cube.after(that._$detail);
         } else {
-            index = $nextAll.length - 2;
+            if ($nextAll.length < offset) { // last row
+                index = $nextAll.length - 1;
+            } else if ($nextAll.length >= offset) { // somewhere middle
+                index = offset - 2;
+            } else { // first row
+                index = $nextAll.length - 2;
+            } // end if
+            $next = $nextAll.eq(index < 0 ? 0 : index);
+            if (index >= 0) {
+                $next.after(that._$detail);
+            } else {
+                $next.before(that._$detail);
+            } // end if
         } // end if
-        var $next = $nextAll.eq(index < 0 ? 0 : index);
-        if (index >= 0) {
-            $next.after(that._$detail);
-        } else {
-            $next.before(that._$detail);
-        } // end if
+
         that._$detail.addClass('active');
         that._$cube.addClass('active');
         that.setOpenState();
@@ -106,10 +118,10 @@ Detail.prototype = {
 
         if (data.origin && data.id) {
             var url = '';
-            if (!Mixin.isAscii(data.id.toString())) {
-                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : Mixin.generateRandomHash(5)) + '/' + data.origin.toString() + '?id=' + data.id.toString();
+            if (!that.di.mixin.isAscii(data.id.toString())) {
+                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.origin.toString() + '?id=' + data.id.toString();
             } else {
-                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : Mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
+                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
             } // end if
 
             $.ajax({
@@ -118,6 +130,7 @@ Detail.prototype = {
                 success: function(response) {
                     if (response) {
                         $(".detail-wrapper .detail-body .detail-data").html(response);
+                        $('.social-likes').socialLikes();
                     } // end if
                 },
             });
@@ -137,7 +150,7 @@ Detail.prototype = {
                 '    <div class="detail-data col-lg-4">' +
                 '      <div class="cube-spinner"><div class="cube1"></div><div class="cube2"></div></div>' +
                 '    </div>' +
-                '    <div class="map-canvas col-lg-8" id="' + Mixin.generateRandomHash() + '"></div>' +
+                '    <div class="map-canvas col-lg-8" id="' + that.di.mixin.generateRandomHash() + '"></div>' +
                 '  </div>' +
                 '  <div class="col-lg-12 detail-footer">' +
                 '    <hr>' +

@@ -16,22 +16,31 @@
 //= require turbolinks
 //= require_tree .
 
-$.cookie.json = true;
+var ready;
+ready = function() {
 
-$.ajaxSetup({
-    cache: false,
-    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-});
+    $.cookie.json = true;
 
-var DI = {
-    controller: controller,
-    action: action,
+    $.ajaxSetup({
+        cache: false,
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    });
+
+    var DI = {
+        controller: controller,
+        action: action,
+        mixin: Mixin,
+    };
+    controller = action = null;
+
+    DI.locator = new Locator();
+
+    DI.kickstart = 'kickstart_' + DI.controller;
+    typeof window[DI.kickstart] === 'function'
+            ? window[DI.kickstart](DI)
+            : null;
+
 };
-controller = action = null;
 
-DI.locator = new Locator();
-
-DI.kickstart = 'kickstart_' + DI.controller;
-typeof window[DI.kickstart] === 'function'
-        ? window[DI.kickstart](DI)
-        : null;
+$(document).ready(ready);
+$(document).on('page:load', ready);

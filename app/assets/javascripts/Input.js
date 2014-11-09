@@ -1,7 +1,8 @@
 /**
  * @author PN @since 2014-09-27
  */
-var Input = function(step) {
+var Input = function(step, di) {
+    this.di = di;
     this.step = step;
     this.$form = $("#search-input");
     this.defaults = {
@@ -68,7 +69,7 @@ Input.prototype = {
         $.each(that.interests, function(k, v) {
             var val = (typeof values[v] != 'undefined' && values[v] ? values[v] : that.defaults[v]);
             url += '/' + encodeURIComponent(val);
-            if (!Mixin.isAscii(val)) {
+            if (!that.di.mixin.isAscii(val)) {
                 ascii = false;
             }
         });

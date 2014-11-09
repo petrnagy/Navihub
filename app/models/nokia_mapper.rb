@@ -89,7 +89,7 @@ class NokiaMapper < GenericMapper
     mapped[:detail][:address][:country] = @data['location']['address']['country']
     mapped[:detail][:address][:country_short] = @data['location']['address']['countryCode']
     mapped[:detail][:address][:zip] = @data['location']['address']['postalCode']
-    if mapped[:detail][:address][:street] && mapped[:detail][:address][:premise] &&mapped[:detail][:address][:town] && mapped[:detail][:address][:country]
+    if mapped[:detail][:address][:street] && mapped[:detail][:address][:premise] && mapped[:detail][:address][:town] && mapped[:detail][:address][:country]
       mapped[:address] = mapped[:detail][:address][:street] + ' ' + mapped[:detail][:address][:premise] + ', ' + mapped[:detail][:address][:town] + ', ' + mapped[:detail][:address][:country]
     end
      

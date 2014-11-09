@@ -3,7 +3,7 @@
     <h2>Details - <span class="detail-header-name"><%= @data[:name] %></span></h2>
     <hr>
   </div>
-  <%= @data %>
+<%#= @data %>
   <div class="detail-body">
     <div class="detail-data col-lg-4">
       <table class="table table-striped table-hover">
@@ -30,7 +30,7 @@
               </td>
             </tr>
           <% end %>
-          <% if @data[:detail][:phones].length %>
+          <% if @data[:detail][:phones].length > 0 %>
             <tr>
               <td>Phone:</td>
               <td>
@@ -85,18 +85,18 @@
               </td>
             </tr>
           <% end %>
-          <tr>
-            <td colspan="2" class="text-center">
-              <% if @data[:tags].is_a? Array %>
+          <% if @data[:tags].is_a? Array %>
+            <tr>
+              <td colspan="2" class="text-center">
                 <% @data[:tags].each do |label| %>
                   <span class="label label-success"><%= label %></span>
                 <% end %>
-              <% end %>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          <% end %>
           <tr>
             <td colspan="2" class="text-center">
-              <div class="social-likes" data-counters="no">
+              <div class="social-likes" data-counters="no" data-url="<% request.original_url %>">
                 <div class="facebook" title="Share link on Facebook">Facebook</div>
                 <div class="twitter" title="Share link on Twitter">Twitter</div>
                 <div class="plusone" title="Share link on Google+">Google+</div>

@@ -16,3 +16,6 @@
  */
 
  section#yeld { margin-top: 45px; }
+ .social-likes { font-weight: normal; font-size: 75%; }
+ .social-likes .social-likes__widget { border-radius: .25em; }
+ 

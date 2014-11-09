@@ -1,7 +1,8 @@
 /**
  * @author PN @since 2014-08-30
  */
-var Search = function(step) {
+var Search = function(step, di) {
+    this.di = di;
     this.step = step;
     this.$form = $("#search-form");
     this.defaults = {
@@ -99,7 +100,7 @@ Search.prototype = {
         $.each(that.interests, function(k, v) {
             var val = (typeof values[v] != 'undefined' && values[v] ? values[v] : that.defaults[v]);
             url += '/' + encodeURIComponent(val);
-            if (!Mixin.isAscii(val)) {
+            if (!that.di.mixin.isAscii(val)) {
                 ascii = false;
             }
         });

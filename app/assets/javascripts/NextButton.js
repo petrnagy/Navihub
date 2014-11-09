@@ -1,8 +1,9 @@
 /**
 * @author PN @since 2014-08-30
 */
-var NextButton = function(search) {
-  this.search = search;
+var NextButton = function(di) {
+  this.di = di;
+  this.search = di.search;
   this._init();
 } // end func
 

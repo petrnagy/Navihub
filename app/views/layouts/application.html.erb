@@ -44,7 +44,14 @@
       small { font-size: 70%; color: gray; }
     </style>
     </noscript>
-
+    <!-- Scripts -->
+    <% if @failsafe != true %>
+      <script>
+        var controller = '<%= params[:controller] %>';
+        var action = '<%= params[:action] %>';
+      </script>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <% end %>
   </head>
   <body id="body" class="<%= @device_cls %> <%= @is_logged_in_cls %>">
 
@@ -131,14 +138,6 @@
 
       </div>
     </footer>
-    <!-- Scripts -->
-    <% if @failsafe != true %>
-      <script>
-        var controller = '<%= params[:controller] %>';
-        var action = '<%= params[:action] %>';
-      </script>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <% end %>
     <!-- Spinner -->
     <div class="spinner" id="spinner" style="display: none;">
       <div class="rect1"></div>
