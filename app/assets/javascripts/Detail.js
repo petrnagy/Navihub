@@ -74,28 +74,6 @@ Detail.prototype = {
             return that._processDetailError(e);
         } // end try-catch
 
-        var deferredMapLoader = $.Deferred(function(defer) {
-            that._initDetailMap(result, defer);
-        });
-        var deferredDataLoader = $.Deferred(function(defer) {
-            that._initDetailData(result, defer);
-        });
-        var loadDetail = function() {
-            $.when(deferredMapLoader, deferredDataLoader).done(function() {
-                var offset = 0.00;
-                var dataHeight = $(".detail-data").height();
-                var mapHeight = $("#search-results .map-canvas").height();
-                if (dataHeight > mapHeight) {
-                    $("#search-results .map-canvas").css({
-                        height: $(".detail-data").height(),
-                    });
-                    offset = (dataHeight - mapHeight) / 2;
-                } // end if
-                if (offset > 0.00) {
-                    that.di.detailGoogleMap.map.panBy(0, offset * -1);
-                } // end if
-            });
-        };
         if (result.geometry.lat === null || result.geometry.lng === null) {
             try {
                 if (result.address) {
@@ -103,7 +81,7 @@ Detail.prototype = {
                     geocode.load(function(coords) {
                         if (coords !== null) {
                             result.geometry = coords;
-                            loadDetail();
+                            that._loadDetailAsync(result);
                         } else {
                             throw new Error('Could not load detail map, geocode failed');
                         } // end if
@@ -115,9 +93,35 @@ Detail.prototype = {
                 return that._processDetailError(e);
             } // end try-catch
         } else {
-            loadDetail();
+            that._loadDetailAsync(result);
         } // end if
         //that._initDetailData(result);
+    },
+    _loadDetailAsync: function(result) {
+        var that = this;
+        var deferredMapLoader = $.Deferred(function(defer) {
+            that._initDetailMap(result, defer);
+        });
+        var deferredDataLoader = $.Deferred(function(defer) {
+            that._initDetailData(result, defer);
+        });
+        $.when(deferredMapLoader, deferredDataLoader).done(function() {
+            var offset = 0.00;
+            var dataHeight = $(".detail-data").height();
+            var mapHeight = $("#search-results .map-canvas").height();
+            if (dataHeight > mapHeight) {
+                $("#search-results .map-canvas").css({
+                    height: $(".detail-data").height(),
+                });
+                offset = (dataHeight - mapHeight) / 2;
+            } // end if
+            if (offset > 0.00) {
+                that.di.detailGoogleMap.map.panBy(0, offset * -1);
+            } // end if
+        });
+        if (result.origin) {
+            that._$detail.find('h3').after('<img height="31" alt="Origin '+result.origin+'" class="result-origin-icon" src="/assets/origin-'+result.origin+'.png">');
+        } // end if
     },
     _initDetailMap: function(data, defer) {
         var that = this;
