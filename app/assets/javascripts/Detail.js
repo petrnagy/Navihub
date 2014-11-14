@@ -26,10 +26,10 @@ Detail.prototype = {
             that._closeOthers();
             that._open();
             var pos = ($('.detail-wrapper').offset().top - 135);
-            $("html").animate({scrollTop: pos}, 500, 'swing', function(){
+            $("html").animate({scrollTop: pos}, 500, 'swing', function() {
                 that._loadDetail();
             });
-            
+
         } // end if
     },
     _open: function() {
@@ -73,6 +73,29 @@ Detail.prototype = {
         } catch (e) {
             return that._processDetailError(e);
         } // end try-catch
+
+        var deferredMapLoader = $.Deferred(function(defer) {
+            that._initDetailMap(result, defer);
+        });
+        var deferredDataLoader = $.Deferred(function(defer) {
+            that._initDetailData(result, defer);
+        });
+        var loadDetail = function() {
+            $.when(deferredMapLoader, deferredDataLoader).done(function() {
+                var offset = 0.00;
+                var dataHeight = $(".detail-data").height();
+                var mapHeight = $("#search-results .map-canvas").height();
+                if (dataHeight > mapHeight) {
+                    $("#search-results .map-canvas").css({
+                        height: $(".detail-data").height(),
+                    });
+                    offset = (dataHeight - mapHeight) / 2;
+                } // end if
+                if (offset > 0.00) {
+                    that.di.detailGoogleMap.map.panBy(0, offset * -1);
+                } // end if
+            });
+        };
         if (result.geometry.lat === null || result.geometry.lng === null) {
             try {
                 if (result.address) {
@@ -80,7 +103,7 @@ Detail.prototype = {
                     geocode.load(function(coords) {
                         if (coords !== null) {
                             result.geometry = coords;
-                            that._initDetailMap(result);
+                            loadDetail();
                         } else {
                             throw new Error('Could not load detail map, geocode failed');
                         } // end if
@@ -92,27 +115,27 @@ Detail.prototype = {
                 return that._processDetailError(e);
             } // end try-catch
         } else {
-            that._initDetailMap(result);
+            loadDetail();
         } // end if
-        that._initDetailData(result);
+        //that._initDetailData(result);
     },
-    _initDetailMap: function(data) {
+    _initDetailMap: function(data, defer) {
         var that = this;
-        new GoogleMap(
-                {latitude: data.geometry.lat, longitude: data.geometry.lng},
-        that._$detail.find('.map-canvas').attr('id'),
+        new GoogleMap(that.di, {latitude: data.geometry.lat, longitude: data.geometry.lng}, that._$detail.find('.map-canvas').attr('id'),
                 14,
                 function() {
+                    defer.resolve();
                     var location = that.di.locator.getLocation();
-                    if (location && detailGoogleMap) {
-                        detailGoogleMap.addRoute(
+                    if (location && that.di.detailGoogleMap) {
+                        that.di.detailGoogleMap.addRoute(
                                 {latitude: location.lat, longitude: location.lng},
                         {latitude: data.geometry.lat, longitude: data.geometry.lng},
                         'WALKING');
                     } // end if
+
                 });
     },
-    _initDetailData: function(data) {
+    _initDetailData: function(data, defer) {
         var that = this;
         that._$detail.find('.detail-header-name').text(data.name);
 
@@ -131,8 +154,10 @@ Detail.prototype = {
                     if (response) {
                         $(".detail-wrapper .detail-body .detail-data").html(response);
                         $('.social-likes').socialLikes();
+                        defer.resolve();
                     } // end if
                 },
+                error: defer.reject,
             });
         }
 
@@ -188,6 +213,10 @@ Detail.prototype = {
     destroy: function() {
         var that = this;
         that._close();
-        detailGoogleMap = null;
+        that.di.detailGoogleMap = null;
+    },
+    _processDetailError: function(e) {
+        // TODO: nejaky normalni handler
+        alert(e);
     },
 } // end prototype

@@ -19,9 +19,9 @@ VenueDetail.prototype = {
             var location = that.di.locator.getLocation();
             if (location && typeof location.lat !== 'undefined' && typeof location.lng !== 'undefined') {
                 clearInterval(interval);
-                new GoogleMap({latitude: location.lat, longitude: location.lng}, 'map_canvas', 14, function() {
-                    if (detailGoogleMap && that._data) {
-                        detailGoogleMap.addRoute(
+                new GoogleMap(that.di, {latitude: location.lat, longitude: location.lng}, 'map_canvas', 14, function() {
+                    if (that.di.detailGoogleMap && that._data) {
+                        that.di.detailGoogleMap.addRoute(
                                 {latitude: location.lat, longitude: location.lng},
                         {latitude: that._data.geometry.lat, longitude: that._data.geometry.lng},
                         'WALKING');

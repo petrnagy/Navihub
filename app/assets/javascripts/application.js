@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-var ready;
+var ready, DI;
 ready = function() {
 
     $.cookie.json = true;
@@ -26,7 +26,7 @@ ready = function() {
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
     });
 
-    var DI = {
+    DI = {
         controller: controller,
         action: action,
         mixin: Mixin,

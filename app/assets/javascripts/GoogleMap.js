@@ -11,7 +11,8 @@
  * @param {Number} zoom
  * @returns {GoogleMap}
  */
-var GoogleMap = function(center, canvas, zoom, callback) {
+var GoogleMap = function(di, center, canvas, zoom, callback) {
+    this.di = di;
     this.center = center;
     this.canvas = canvas;
     this.zoom = zoom;
@@ -19,7 +20,7 @@ var GoogleMap = function(center, canvas, zoom, callback) {
     this.map = null;
 
     this._$wrapper = $("#" + this.canvas);
-    this._googleMapApiSrc = 'https://maps.googleapis.com/maps/api/js?callback=detailGoogleMap.initGoogleMap&v=3';
+    this._googleMapApiSrc = 'https://maps.googleapis.com/maps/api/js?callback=DI.detailGoogleMap.initGoogleMap&v=3';
 
     if (this._$wrapper.length) {
         this._init();
@@ -33,7 +34,7 @@ GoogleMap.prototype = {
      */
     _init: function() {
         var that = this;
-        detailGoogleMap = that;
+        that.di.detailGoogleMap = that;
         if (!GoogleMap.googleApiLoaded) {
             that._loadScripts(function() {
                 GoogleMap.googleApiLoaded = true;
@@ -46,19 +47,19 @@ GoogleMap.prototype = {
      * @returns {void}
      * @access public
      * @author PN @since 2014-10-07
-     * @uses global detailGoogleMap
+     * @uses global DI
      */
     initGoogleMap: function() {
         // TODO: event listener nefunguje !
         //google.maps.event.addDomListener(window, 'load', function() {
-        var mapCanvas = document.getElementById(detailGoogleMap.canvas);
+        var mapCanvas = document.getElementById(DI.detailGoogleMap.canvas);
         var mapOptions = {
-            center: new google.maps.LatLng(detailGoogleMap.center.latitude, detailGoogleMap.center.longitude),
-            zoom: detailGoogleMap.zoom,
+            center: new google.maps.LatLng(DI.detailGoogleMap.center.latitude, DI.detailGoogleMap.center.longitude),
+            zoom: DI.detailGoogleMap.zoom,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        detailGoogleMap.map = new google.maps.Map(mapCanvas, mapOptions);
-        detailGoogleMap.callback();
+        DI.detailGoogleMap.map = new google.maps.Map(mapCanvas, mapOptions);
+        DI.detailGoogleMap.callback();
         //});
     }, // end method
     addMarker: function() {
