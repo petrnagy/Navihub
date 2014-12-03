@@ -81,7 +81,7 @@ Detail.prototype = {
                     geocode.load(function(coords) {
                         if (coords !== null) {
                             result.geometry = coords;
-                            that._loadDetailAsync(result);
+                            that._loadDetailDeferred(result);
                         } else {
                             throw new Error('Could not load detail map, geocode failed');
                         } // end if
@@ -93,11 +93,11 @@ Detail.prototype = {
                 return that._processDetailError(e);
             } // end try-catch
         } else {
-            that._loadDetailAsync(result);
+            that._loadDetailDeferred(result);
         } // end if
         //that._initDetailData(result);
     },
-    _loadDetailAsync: function(result) {
+    _loadDetailDeferred: function(result) {
         var that = this;
         var deferredMapLoader = $.Deferred(function(defer) {
             that._initDetailMap(result, defer);
@@ -107,11 +107,11 @@ Detail.prototype = {
         });
         $.when(deferredMapLoader, deferredDataLoader).done(function() {
             var offset = 0.00;
-            var dataHeight = $(".detail-data").height();
+            var dataHeight = $(".detail-data > table > tbody").height();
             var mapHeight = $("#search-results .map-canvas").height();
             if (dataHeight > mapHeight) {
                 $("#search-results .map-canvas").css({
-                    height: $(".detail-data").height(),
+                    height: dataHeight,
                 });
                 offset = (dataHeight - mapHeight) / 2;
             } // end if
@@ -120,7 +120,7 @@ Detail.prototype = {
             } // end if
         });
         if (result.origin) {
-            that._$detail.find('h3').after('<img height="31" alt="Origin '+result.origin+'" class="result-origin-icon" src="/assets/origin-'+result.origin+'.png">');
+            that._$detail.find('.detail-header hr').before('<img height="31" alt="Origin '+result.origin+'" class="result-origin-icon" src="/assets/origin-'+result.origin+'.png">');
         } // end if
     },
     _initDetailMap: function(data, defer) {
@@ -172,7 +172,6 @@ Detail.prototype = {
         var $div = $(
                 '<div class="col-lg-12 detail-wrapper">' +
                 '  <div class="col-lg-12 detail-header">' +
-                '    <h3>Details - <span class="detail-header-name"></span></h3>' +
                 '    <hr>' +
                 '  </div>' +
                 '  <div class="col-lg-12 detail-body">' +

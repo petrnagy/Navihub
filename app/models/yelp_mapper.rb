@@ -29,8 +29,10 @@ class YelpMapper < GenericMapper
     mapped = get_template
     
     mapped[:origin] = 'Yelp Business'
-    mapped[:geometry][:lat] = @data['location']['coordinate']['latitude'].to_f
-    mapped[:geometry][:lng] = @data['location']['coordinate']['longitude'].to_f
+    unless nil === @data['location'] || nil === @data['location']['coordinate']
+      mapped[:geometry][:lat] = @data['location']['coordinate']['latitude'].to_f
+      mapped[:geometry][:lng] = @data['location']['coordinate']['longitude'].to_f
+    end
     mapped[:id] = @data['id']
     mapped[:icon] = nil
     mapped[:name] = @data['name']

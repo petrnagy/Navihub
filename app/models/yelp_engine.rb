@@ -23,7 +23,8 @@ class YelpEngine < SearchEngine
     url = '/v2/search'
     url += '?ll=' + @location.latitude.to_s + ',' + @location.longitude.to_s
     url += '&limit=20' # current yelp limit is 20
-    url += '&offset=' + @params[:offset].to_s
+    #url += '&offset=' + @params[:offset].to_s
+	url += '&offset=0'
     url += '&radius=' + @params[:radius].to_s
     url += '&term=' + @params[:term]
     access_token.get(URI::escape url)

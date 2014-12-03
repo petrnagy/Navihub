@@ -31,6 +31,7 @@ ready = function() {
         action: action,
         mixin: Mixin,
     };
+    
     controller = action = null;
 
     DI.locator = new Locator();

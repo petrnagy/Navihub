@@ -11,7 +11,6 @@ class Search
   # bing openstreet - those are shits
   @@allowed_engines = %w{google nokia yelp foursquare}
   @@max_distance = 20000; # 20km
-  @@duplicity_score_threshold = 1.0
   
   private
   
@@ -39,6 +38,7 @@ class Search
       :step     => 21,
       :append   => params[:append]
     }
+    # FIXME: pri nacteni "more 21 results" 
     if ! params['is_xhr'] && @params[:offset] > 0 # calculate limit instead of offset for non-ajax requests
       if @params[:offset] % @params[:limit] == 0
         @params[:limit] = @params[:limit] * ( (@params[:offset] / @params[:limit]) + 1 );
@@ -158,11 +158,12 @@ class Search
     processed = []
     results.each do |current|
       if nil != current[:distance] && current[:distance] <= @params[:radius]
-        current[:duplicity_score] = get_duplicity_score processed, current if processed.length
         processed << current
       end
     end
-    processed
+    resolver = DuplicityResolver.new processed, @params[:term]
+    resolver.resolve
+    resolver.resolved
   end
   
   def preprocess results
@@ -179,6 +180,7 @@ class Search
         ) unless current[:distance].to_i > 0
       end
       current[:duplicates] = Hash.new
+      current[:origins].push current[:origin]
       processed << current
     end
     processed
@@ -227,16 +229,6 @@ class Search
       processed << current
     end
     processed
-  end
-  
-  def get_duplicity_score processed, current
-    max_score = 0.00
-    processed.each do |old|
-      detector = DuplicityDetector.new @params[:term], old[:name], current[:name]
-      score = detector.get_score
-      max_score = score if score > max_score
-    end
-    max_score
   end
   
 end

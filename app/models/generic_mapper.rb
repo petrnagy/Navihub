@@ -22,6 +22,7 @@ class GenericMapper
   def get_template
     {
       :origin     => nil,
+      :origins    => [],
       :geometry   => { :lat => nil, :lng => nil },
       :distance   => nil,
       :id         => nil,

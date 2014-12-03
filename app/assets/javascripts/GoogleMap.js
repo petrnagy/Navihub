@@ -2,8 +2,6 @@
  * @author PN @since 2014-10-07
  */
 
-// https://developers.google.com/maps/documentation/javascript/examples/directions-travel-modes
-
 /*
  * 
  * @param {Object} center { latidude: float, longitude: float }

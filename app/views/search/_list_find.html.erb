@@ -8,7 +8,7 @@
 <% end %>
 <div class="col-lg-12">
   <% @data[:results].each do |result| %>
-    <div class="col-lg-4 result-box origin-<%= result[:origin] %> <%= result[:duplicity_score] >= 0.9 ? 'duplicate' : 'not-duplicate' %>" data-result-json="<%= result[:json] %>" id="<%= Digest::MD5.hexdigest result[:json] %>">
+    <div class="col-lg-4 result-box origin-<%= result[:origin] %>" data-result-json="<%= result[:json] %>" id="<%= Digest::MD5.hexdigest result[:json] %>">
       <h3 title="<%= result[:name] %>">
         <%= result[:name] %>
       </h3>
@@ -22,18 +22,18 @@
       <div class="geometry-wrapper">
         <span class="label label-primary result-address">
           <% if result[:address] %>
-          <%= result[:address] %>
-          <span class="pull-right"><a target="_blank" href="http://maps.google.com/maps?q=<%= u result[:address] %> ">[map]</a></span>
+            <a class="link-white" target="_blank" href="http://maps.google.com/maps?q=<%= u result[:address] %> "><%= result[:address] %></a>
           <% else %>
             unknown address
           <% end %>
         </span>
         <span class="label label-default result-geometry">
           <% if result[:pretty_loc] %>
-            <%= result[:pretty_loc][:lat][0].to_s + '° ' + result[:pretty_loc][:lat][1].to_s + "' " + result[:pretty_loc][:lat][2].to_s + '" ' + result[:pretty_loc][:lat][3].to_s %>, 
-            <%= result[:pretty_loc][:lng][0].to_s + '° ' + result[:pretty_loc][:lng][1].to_s + "' " + result[:pretty_loc][:lng][2].to_s + '" ' + result[:pretty_loc][:lng][3].to_s %> | 
-            lat <%= result[:geometry][:lat].round(4).to_s + ', lng ' + result[:geometry][:lng].round(4).to_s %>
-            <span class="pull-right"><a target="_blank" href="http://maps.google.com/maps?q=<%= u result[:geometry][:lat].to_s + ',' + result[:geometry][:lng].to_s %> ">[map]</a></span>
+            <a class="link-white" target="_blank" href="http://maps.google.com/maps?q=<%= u result[:geometry][:lat].to_s + ',' + result[:geometry][:lng].to_s %> ">
+              <%= result[:pretty_loc][:lat][0].to_s + '° ' + result[:pretty_loc][:lat][1].to_s + "' " + result[:pretty_loc][:lat][2].to_s + '" ' + result[:pretty_loc][:lat][3].to_s %>, 
+              <%= result[:pretty_loc][:lng][0].to_s + '° ' + result[:pretty_loc][:lng][1].to_s + "' " + result[:pretty_loc][:lng][2].to_s + '" ' + result[:pretty_loc][:lng][3].to_s %> | 
+              lat <%= result[:geometry][:lat].round(4).to_s + ', lng ' + result[:geometry][:lng].round(4).to_s %>
+            </a>
           <% else %>
             unknown geolocation
           <% end %>
@@ -54,23 +54,22 @@
         <% end %>
       </div>
       <hr>
-      <%#*<div style="float: right;">%>
-        <%#= image_tag('origin-' + result[:origin] + '.png', class: 'origin-icon', alt: 'Origin icon') %>
-          <%#= image_tag(result[:icon], class: 'result-icon', alt: 'Icon') if result[:icon] %>
-          <%#*</div>%>
+  <%#*<div style="float: right;">%>
+  <%#= image_tag('origin-' + result[:origin] + '.png', class: 'origin-icon', alt: 'Origin icon') %>
+  <%#= image_tag(result[:icon], class: 'result-icon', alt: 'Icon') if result[:icon] %>
+  <%#*</div>%>
       <div class="text-center">
         <a href="#" class="btn btn-warning btn-detail">Show details</a>
       </div>
-        </div>
-      <% end %>
     </div>
-    <div class="col-lg-12">
-      <hr>
-    </div>
+  <% end %>
+</div>
+<div class="col-lg-12">
+  <hr>
+</div>
 
-    <% if (@data[:data][:params][:offset] + @data[:data][:params][:limit]) < @data[:data][:total_cnt] %>
-    <div class="col-lg-12 load-more text-center">
-      <button class="btn btn-success">Show next <%= @data[:data][:params][:step] %> results </button>
-    </div>
-    <% end %>
-    
+<% if (@data[:data][:params][:offset] + @data[:data][:params][:limit]) <= @data[:data][:total_cnt] %>
+  <div class="col-lg-12 load-more text-center">
+    <button class="btn btn-success">Show next <%= @data[:data][:params][:step] %> results </button>
+  </div>
+<% end %>

@@ -1,4 +1,8 @@
 <div class="text-center">
+  <% if @tpl_vars[:input_params]['offset'].to_i > 0 %>
+    <p>No more results</p>
+  <% else %>
     <h1>:-(</h1>
     <p>No results for the term '<%= @tpl_vars[:input_params]['term'] %>'</p>
-  </div>
+  <% end %>
+</div>

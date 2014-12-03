@@ -14,7 +14,8 @@ class FoursquareEngine < SearchEngine
     url += '?query=' + term
     url += '&ll=' + @location.latitude.to_s + ',' + @location.longitude.to_s
     url += '&radius=' + @params[:radius].to_s
-    url += '&limit=' + @params[:limit].to_s
+    #url += '&limit=' + @params[:limit].to_s
+    url += '&limit=50'
     url += '&m=foursquare'
     url += '&v=20140806'
     url += '&client_id=' + @foursquare_client_id
