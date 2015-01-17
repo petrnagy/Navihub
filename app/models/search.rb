@@ -7,7 +7,7 @@ class Search
   
   protected
   
-  @@allowed_orders = %w{distance name}
+  @@allowed_orders = %w{distance name rand}
   # bing openstreet - those are shits
   @@allowed_engines = %w{google nokia yelp foursquare}
   @@max_distance = 20000; # 20km
