@@ -23,3 +23,20 @@ function kickstart_search(di) {
         });
     } // end if
 } // end func
+
+function kickstart_settings(di) {
+    if ($("form#settings-location").length) {
+        var interval = setInterval(function(){
+            // TODO: nějaký interval, kdyby to nic nenačetlo (implicitní lokace, hodíme prahu s velkým zoomem...)
+            var location = di.locator.getLocation();
+            if (location !== null) {
+                clearInterval(interval);
+                if (!di.locationSettingsMap) {
+                    di.locationSettingsMap = new LocationSettingsMap(di, location);
+                } // end if
+                di.locationSettingsMap.init();
+            } // end if
+        }, 100);
+        
+    } // end if
+} // end func

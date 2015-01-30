@@ -74,14 +74,35 @@
 
           <ul class="nav navbar-nav" id="menu-top">
             <li data-template="index"><%= link_to 'Search', controller: "search" %></li>
-            <li data-template="index"><%= link_to 'About', controller: "search" %></li>
-            <li data-template="index"><%= link_to 'Feedback', controller: "search" %></li>
+            <li data-template="index"><%= link_to 'About', controller: "about" %></li>
+            <li data-template="index"><%= link_to 'Feedback', controller: "feedback" %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right" id="menu-alt">
-            <li data-template="myaccount|settings" class="dropdown">
-              TODO - dropdown
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My account <b class="caret"></b></a>
+              <ul class="dropdown-menu" id="dd-myaccount">
+                <li>
+                  <%= link_to 'Create account', {controller: "settings", action: 'profile'}, class: 'create-account' %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <div class="social-btn">
+                    <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i>Sign in with Facebook</a>
+                  </div>
+                  <div class="social-btn">
+                    <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i>Sign in with Twitter</a>
+                  </div>
+                  <div class="social-btn">
+                    <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i>Sign in with Google</a>
+                  </div>
+                </li>
+              </ul>
             </li>
-            <li class="current-clock-wrap text-right"><a id="current-time" class="clock-small"></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" id="menu-loc">
+            <li data-template="index">
+              <%= link_to 'Loc:' + pretty_loc(@location), controller: "settings", action: 'location' %>
+            </li>
           </ul>
         </div>
       </div>

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   
+  get 'feedback' => 'feedback#index'
+
+  get 'about' => 'about#index'
+
   get 'settings/general'
 
-  get 'settings/location'
+  get 'settings/location' => 'settings#location'
 
   get 'settings/profile'
 

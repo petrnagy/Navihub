@@ -5,12 +5,12 @@ var Locator = function() {
     this._data = {browser: null, web: null};
     this._envelope = {
         lat: null, lng: null, country: null, country_short: null,
-        city: null, city2: null, street1: null, street2: null, origin: null,
+        city: null, city2: null, street1: null, street2: null, origin: null
     };
     this._sent = {browser: false, web: false};
     this._interval = null;
     this._init();
-} // end func
+}; // end func
 
 Locator.prototype = {
     _init: function() {
@@ -74,19 +74,19 @@ Locator.prototype = {
         var that = this;
         var data = data;
         var cache = that._getFromCache();
-        if (!cache || cache.lat != data.lat || cache.lng != data.lng) {
+        if (!cache || cache.lat !== data.lat || cache.lng !== data.lng) {
             data.set = 1;
             $.ajax({
                 url: '/settings/location',
                 data: data,
                 success: function(){
                     that._saveToCache(data);
-                },
+                }
             });
         } // end if
     },
     _getFromCache: function() {
-        return null;
+        return;
         return $.cookie('_navihub_loc_cache');
     },
     _saveToCache: function(data) {
@@ -96,5 +96,5 @@ Locator.prototype = {
     getLocation: function() {
         var that = this;
         return that._data.browser ? that._data.browser : that._data.web;
-    },
-} // end prototype
+    }
+}; // end prototype

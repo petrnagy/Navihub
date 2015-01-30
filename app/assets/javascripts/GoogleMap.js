@@ -9,7 +9,7 @@
  * @param {Number} zoom
  * @returns {GoogleMap}
  */
-var GoogleMap = function(di, center, canvas, zoom, callback) {
+var GoogleMap = function(di, center, canvas, zoom, callback, googleMapApiSrc) {
     this.di = di;
     this.center = center;
     this.canvas = canvas;
@@ -18,7 +18,7 @@ var GoogleMap = function(di, center, canvas, zoom, callback) {
     this.map = null;
 
     this._$wrapper = $("#" + this.canvas);
-    this._googleMapApiSrc = 'https://maps.googleapis.com/maps/api/js?callback=DI.detailGoogleMap.initGoogleMap&v=3';
+    this._googleMapApiSrc = googleMapApiSrc || 'https://maps.googleapis.com/maps/api/js?callback=DI.detailGoogleMap.initGoogleMap&v=3';
 
     if (this._$wrapper.length) {
         this._init();
@@ -54,7 +54,8 @@ GoogleMap.prototype = {
         var mapOptions = {
             center: new google.maps.LatLng(DI.detailGoogleMap.center.latitude, DI.detailGoogleMap.center.longitude),
             zoom: DI.detailGoogleMap.zoom,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            streetViewControl: false
         };
         DI.detailGoogleMap.map = new google.maps.Map(mapCanvas, mapOptions);
         DI.detailGoogleMap.callback();
