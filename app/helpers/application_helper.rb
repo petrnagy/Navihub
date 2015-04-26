@@ -1,10 +1,12 @@
 module ApplicationHelper
-  
+
   def javascript(*files)
     content_for(:footer_js) { javascript_include_tag(*files) }
   end
-  
+
   def pretty_loc location
+    return '- - -' if nil == location
+
     o = '';
     no_txt = true
     # iterate thru required fields
@@ -14,7 +16,7 @@ module ApplicationHelper
         break
       end
     end
-    
+
     if no_txt
       o += location['latitude'].to_s + ', ' + location['longitude'].to_s
     else
@@ -28,8 +30,8 @@ module ApplicationHelper
         o += ' (' + location['country_short'] + ')'
       end
     end
-    
+
     o
   end
-  
+
 end
