@@ -10,7 +10,7 @@ class AddIndexesMass < ActiveRecord::Migration
 	add_index :locations, :latitude
 	add_index :locations, :longitude
 	add_index :sessions, :active
-	add_index :langs, :active
-	add_index :vars, :active
+	#add_index :langs, :active
+	#add_index :vars, :active
   end
 end

@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20141004170749) do
 
   create_table "sessions", force: true do |t|
     t.integer  "user_id"
+    t.integer  "cookie_id_id"
     t.string   "sessid"
     t.datetime "valid_to"
     t.boolean  "remember"
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20141004170749) do
   end
 
   add_index "sessions", ["active"], name: "index_sessions_on_active", using: :btree
+  add_index "sessions", ["cookie_id_id"], name: "index_sessions_on_cookie_id_id", using: :btree
   add_index "sessions", ["sessid"], name: "index_sessions_on_sessid", unique: true, using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
