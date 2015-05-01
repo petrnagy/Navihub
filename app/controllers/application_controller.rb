@@ -106,9 +106,7 @@ class ApplicationController < ActionController::Base
   end
 
   def init_location
-    @location = Location.where(user_id: @user.id, active: true).order('id DESC').first!
-  rescue ActiveRecord::RecordNotFound => e
-    @location = nil
+    @location = Location.where(user_id: @user.id, active: true).order('id DESC').first
   end
 
   private

@@ -13,7 +13,7 @@
     <title>Navihub | Find stuff around you!</title>
     <!-- Favicon -->
     <!-- TODO -->
-    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag 'buildings-rc1.png' %>
     <!-- Styles -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <!-- Font awsome cdn -->
@@ -27,7 +27,7 @@
     <meta property="og:image" content="/assets/logo_square.png">
     <!-- Twitter Meta -->
     <meta name="twitter:card" content="Navihub">
-    <meta name="twitter:url" content="<%= root_path  %>">
+    <meta name="twitter:url" content="<%= root_path %>">
     <meta name="twitter:title" content="Find stuff around you!">
     <meta name="twitter:description" content="Explore the world around you with your browser.">
     <!-- TODO -->
@@ -67,7 +67,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="/" class="navbar-brand">Navihub <small>[beta]</small></a>
+          <a href="/" class="navbar-brand" id="main-logo"><%= image_tag('buildings-rc1.png', size: "50x50") %><div><span>Navihub </span><small>[beta]</small></div></a>
 
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
@@ -131,20 +131,20 @@
               <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="https://www.facebook.com/petr.nagy">fb</a></li>
               <li class="no-mobile no-smartphone no-tablet"><a target="blank" rel="nofollow" href="http://knedlajz.deviantart.com/gallery/">da</a></li>
             </ul>
-            <p class="no-mobile no-smartphone small">Starring:&nbsp;&nbsp;&nbsp; 
-              <a target="_blank" rel="nofollow" href="https://www.ruby-lang.org/en/">#ruby</a> ~ 
-              <a target="_blank" rel="nofollow" href="http://rubyonrails.org/">#rails</a> ~ 
-              <a target="_blank" rel="nofollow" href="http://www.postgresql.org/">#postgresql</a> ~ 
-              <a target="_blank" rel="nofollow" href="http://en.wikipedia.org/wiki/JavaScript">#js</a> ~ 
-              <a target="_blank" rel="nofollow" href="http://coffeescript.org/">#coffeescript</a> ~ 
-              <a target="_blank" rel="nofollow" href="http://jquery.com">#jquery</a> ~ 
-              <a target="_blank" rel="nofollow" href="http://getbootstrap.com">#bootstrap</a> ~ 
-              <a target="_blank" rel="nofollow" href="http://bootswatch.com">#bootswatch</a> ~ 
+            <p class="no-mobile no-smartphone small">Starring:&nbsp;&nbsp;&nbsp;
+              <a target="_blank" rel="nofollow" href="https://www.ruby-lang.org/en/">#ruby</a> ~
+              <a target="_blank" rel="nofollow" href="http://rubyonrails.org/">#rails</a> ~
+              <a target="_blank" rel="nofollow" href="http://www.postgresql.org/">#postgresql</a> ~
+              <a target="_blank" rel="nofollow" href="http://en.wikipedia.org/wiki/JavaScript">#js</a> ~
+              <a target="_blank" rel="nofollow" href="http://coffeescript.org/">#coffeescript</a> ~
+              <a target="_blank" rel="nofollow" href="http://jquery.com">#jquery</a> ~
+              <a target="_blank" rel="nofollow" href="http://getbootstrap.com">#bootstrap</a> ~
+              <a target="_blank" rel="nofollow" href="http://bootswatch.com">#bootswatch</a> ~
               <a target="_blank" rel="nofollow" href="http://git-scm.com">#git</a>
             </p>
-            <p class="no-mobile no-smartphone small">Resources:&nbsp;&nbsp;&nbsp; 
-              <a target="_blank" rel="nofollow" href="https://github.com/tobiasahlin/SpinKit">spinkit</a> ~ 
-              <a target="_blank" rel="nofollow" href="http://theromancee.deviantart.com/art/Coffee-Cup-PSD-editable-381319610">coffee</a> ~ 
+            <p class="no-mobile no-smartphone small">Resources:&nbsp;&nbsp;&nbsp;
+              <a target="_blank" rel="nofollow" href="https://github.com/tobiasahlin/SpinKit">spinkit</a> ~
+              <a target="_blank" rel="nofollow" href="http://theromancee.deviantart.com/art/Coffee-Cup-PSD-editable-381319610">coffee</a> ~
               <a target="_blank" rel="nofollow" href="http://wegraphics.deviantart.com/art/Apple-products-PSD-templates-177631984">macbook</a> ~
               <a target="_blank" rel="nofollow" href="http://www.elegantthemes.com/blog/resources/free-social-media-icon-set">icons</a>
             </p>
