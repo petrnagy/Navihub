@@ -12,8 +12,8 @@
     <!-- Title -->
     <title>Navihub | Find stuff around you!</title>
     <!-- Favicon -->
-    <!-- TODO -->
-    <%= favicon_link_tag 'buildings-rc1.png' %>
+    <!-- TODO - More FAVICONS - http://www.favicomatic.com -->
+    <%= favicon_link_tag 'buildings-rc1-crop.png' %>
     <!-- Styles -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <!-- Font awsome cdn -->
@@ -101,7 +101,10 @@
           </ul>
           <ul class="nav navbar-nav navbar-right" id="menu-loc">
             <li data-template="index">
-              <%= link_to 'Loc:' + pretty_loc(@location), controller: "settings", action: 'location' %>
+                <div id="top-location">
+                    <span class="top-location-top"><%=  'Location: ' + pretty_loc(@location) %></span><br />
+                    <span class="top-location-bottom"><%= link_to 'Not here?', controller: "settings", action: 'location' %></span>
+                </div>
             </li>
           </ul>
         </div>
@@ -109,7 +112,7 @@
     </div>
     <!-- Content -->
     <div class="container">
-      <section id="yeld">
+      <section id="yield">
         <%= yield %>
       </section>
     </div>
@@ -123,6 +126,8 @@
               <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
               <li>&#169; 2013 - <%= Time.now.year %></li>
               <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
+              <li class="no-mobile no-smartphone">~</li>
+              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="http://www.tomatoid.com/">Tomatoid</a></li>
               <li class="no-mobile no-smartphone">~</li>
               <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="http://about.me/petr.nagy">about.me</a></li>
               <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="https://twitter.com/petrnagy">tw</a></li>

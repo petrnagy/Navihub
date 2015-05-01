@@ -15,7 +15,7 @@
  *= require_self
  */
 
- section#yeld { margin-top: 45px; }
+ section#yield { margin-top: 45px; }
  .social-likes { font-weight: normal; font-size: 75%; }
  .social-likes .social-likes__widget { border-radius: .25em; }
 
@@ -28,3 +28,4 @@
  #main-logo div { display: inline-block; padding-left: 5px; }
  /* TODO: padding-top nefunguje ! */
  #main-logo div span { padding-top: 10px; }
+ #top-location { color: gray; text-transform: none; margin-top: 18px; margin-right: 100px; line-height: 14px; }

@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def pretty_loc location
-    return '- - -' if nil == location
+    return '...' if nil == location
 
     o = '';
     no_txt = true
@@ -18,7 +18,7 @@ module ApplicationHelper
     end
 
     if no_txt
-      o += location['latitude'].to_s + ', ' + location['longitude'].to_s
+      o += location['latitude'].round(2).to_s + ', ' + location['longitude'].round(2).to_s
     else
       %w{street2 street1 city2 city country}.each do |interest|
         if location[interest] != nil && location[interest].length > 0
