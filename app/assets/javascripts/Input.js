@@ -38,10 +38,11 @@ Input.prototype = {
         if (values['term'].length) {
             var url = that.buildUrl(values);
             if (url) {
+                // FIXME: Safari stops animation of spinner after that.pushUrl (window.location.href)
+                Spinner.show();
                 that.lock();
                 that.pushUrl(url);
-                Spinner.show();
-            } // end if  
+            } // end if
         } // end if
     }, // end method
 
