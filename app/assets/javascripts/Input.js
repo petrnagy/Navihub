@@ -38,10 +38,10 @@ Input.prototype = {
         if (values['term'].length) {
             var url = that.buildUrl(values);
             if (url) {
-                // FIXME: Safari stops animation of spinner after that.pushUrl (window.location.href)
-                Spinner.show();
                 that.lock();
                 that.pushUrl(url);
+                // FIXME: Safari stops css animations when requesting URL (http://stackoverflow.com/questions/25064619/safari-stop-jquery-animation-when-request-link-with-download-header)
+                that.di.spinner.show();
             } // end if
         } // end if
     }, // end method

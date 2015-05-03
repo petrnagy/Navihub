@@ -102,8 +102,12 @@
           <ul class="nav navbar-nav navbar-right" id="menu-loc">
             <li data-template="index">
                 <div id="top-location">
-                    <span class="top-location-top"><%=  'Location: ' + pretty_loc(@location) %></span><br />
-                    <span class="top-location-bottom"><%= link_to 'Not here?', controller: "settings", action: 'location' %></span>
+                    <span class="top-location-top">Location: <span class="actual"><%= pretty_loc(@location) %></span></span><br />
+                    <span class="top-location-bottom">
+                      Not here?
+                      <%= link_to 'change location', controller: "settings", action: 'location' %> |
+                      <a href="#" onclick="if(confirm('Autodetect location?')) { DI.relocate(DI); }">autodetect</a>
+                    </span>
                 </div>
             </li>
           </ul>

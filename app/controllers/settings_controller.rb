@@ -1,9 +1,10 @@
 class SettingsController < ApplicationController
-  
+
+  # TODO: probably unused
   @json_response
-  
+
   def general
-    respond_to do |format| 
+    respond_to do |format|
       msg = { :status => "error", :message => "Error!", :html => "<b>Not implemented</b>" }
       format.json { render :json => msg }
     end
@@ -13,27 +14,27 @@ class SettingsController < ApplicationController
     data = sanitize_params
     if data['go']
       set_location data
-      
-      respond_to do |format| 
+
+      respond_to do |format|
         msg = { :status => "ok", :message => "Success!", :html => "<b>Success!</b>" }
-        format.json { render :json => msg }  
+        format.json { render :json => msg }
       end
     end
   end
 
   def profile
-    respond_to do |format| 
+    respond_to do |format|
       msg = { :status => "error", :message => "Error!", :html => "<b>Not implemented</b>" }
-      format.json { render :json => msg }  
+      format.json { render :json => msg }
     end
   end
-  
+
   private
-  
+
   def sanitize_params
     data = Hash.new
     data['go'] = true
-    
+
     interests = [ 'set', 'lat', 'lng', 'country', 'country_short', 'city', 'city2', 'street1', 'street2' ]
     interests.each do |param|
       if params.has_key? param
@@ -50,10 +51,10 @@ class SettingsController < ApplicationController
         data['go'] = false
       end
     end
-    
+
     data
   end
-  
+
   def set_location data
     loc = Location.create(
       user_id:        @user.id,
@@ -65,7 +66,7 @@ class SettingsController < ApplicationController
       city2:          data['city2'],
       street1:        data['street1'],
       street2:        data['street2'],
-      active:         true  
+      active:         true
     )
     loc.save
     Location.where(user_id: @user.id).where.not(id: loc.id).update_all(active: false)

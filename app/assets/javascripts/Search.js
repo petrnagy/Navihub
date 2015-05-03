@@ -48,7 +48,7 @@ Search.prototype = {
             if (url) {
                 that.pushUrl(url);
                 that.lock();
-                Spinner.show();
+                that.di.spinner.show();
                 $.ajax({
                     url: url,
                     data: {append: Number(typeof append != 'undefined' && append)},
@@ -58,16 +58,16 @@ Search.prototype = {
                         } else {
                             $("#search-results").html(data);
                         } // end if
-                        Spinner.hide();
+                        that.di.spinner.hide();
                         that.unlock();
                     }, // end func
                     error: function() {
                         //window.location.reload();
-                        Spinner.hide();
+                        that.di.spinner.hide();
                         that.unlock();
                     } // end func
                 });
-            } // end if  
+            } // end if
         } // end if
     }, // end method
 
