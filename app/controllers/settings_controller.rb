@@ -3,6 +3,8 @@ class SettingsController < ApplicationController
   # TODO: probably unused
   @json_response
 
+  include ApplicationHelper
+
   def general
     respond_to do |format|
       msg = { :status => "error", :message => "Error!", :html => "<b>Not implemented</b>" }
@@ -13,10 +15,10 @@ class SettingsController < ApplicationController
   def location
     data = sanitize_params
     if data['go']
-      set_location data
+      loc = set_location data
 
       respond_to do |format|
-        msg = { :status => "ok", :message => "Success!", :html => "<b>Success!</b>" }
+        msg = { :status => "ok", :message => "Success!", :html => ApplicationHelper.pretty_loc(loc) }
         format.json { render :json => msg }
       end
     end
@@ -71,5 +73,6 @@ class SettingsController < ApplicationController
     )
     loc.save
     Location.where(user_id: @user.id).where.not(id: loc.id).update_all(active: false)
+    loc
   end
 end

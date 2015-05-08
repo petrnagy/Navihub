@@ -80,7 +80,7 @@ Locator.prototype = {
             } // end if
         }, "jsonp");
     },
-    _send: function(data, manual) {
+    _send: function(data, manual, write) {
         var that = this;
         var cache = that._getFromCache();
         if ( ! cache || cache.lat !== data.lat || cache.lng !== data.lng ) {
@@ -88,7 +88,10 @@ Locator.prototype = {
             $.ajax({
                 url: '/settings/location',
                 data: data,
-                success: function(){
+                success: function(response) {
+                    if ( write ) {
+                        that.writeLoc(response.html);
+                    } // end if
                     that._saveToCache(data);
                     // load google maps api, do a reverse geocoding and save it as detailed location in local DB
                     var apiUrl = 'https://maps.googleapis.com/maps/api/js?v=3&callback=DI.locator._doReverseGeocoding';
@@ -135,7 +138,7 @@ Locator.prototype = {
           var formatter = new AddressFormatter();
           var formattedAddress = formatter.formatGoogleMapsGeolocatorResults(results);
           if ( formattedAddress ) {
-              $('#top-location .top-location-top .actual').text(formattedAddress);
+              that.writeLoc(formattedAddress);
           } // end if
           that.di.spinner.hide();
           var atomizer = new AddressAtomizer(that.di);
@@ -143,13 +146,19 @@ Locator.prototype = {
           if ( atomized ) {
             atomized.lat = coords.lat;
             atomized.lng = coords.lng;
-            that._send(atomized);
+            that._send(atomized, null, true);
           } // end if
         } else {
           throw new Error("failed to geocoder.geocode(), status: " + status.toString());
         } // end if
       });
     }, // end method
+
+    writeLoc: function(text) {
+      var that = this;
+      $('#top-location .top-location-top .actual').text(text);
+    }, // end method
+
     setSaveCallback: function(func) {
       var that = this;
       if ( 'function' == typeof func ) {
