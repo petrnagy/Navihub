@@ -5,7 +5,7 @@ var NextButton = function(di) {
   this.di = di;
   this.search = di.search;
   this._init();
-} // end func
+}; // end func
 
 NextButton.prototype = {
 
@@ -15,9 +15,9 @@ NextButton.prototype = {
 
   _initButtons: function() {
     var that = this;
-    $(document).delegate("#yeld .load-more button", 'click', function() {
+    $(document).delegate("#yield .load-more button", 'click', function() {
       if ( $(this).prop('disabled') ) { return; } // end if
-      var offset = parseInt($("#yeld .result-box").length, 10);
+      var offset = parseInt($("#yield .result-box").length, 10);
       if ( ! isNaN(offset) ) {
         that.search.$form.find("[name='search[offset]']").val(offset);
         that.search.ajaxSubmit(true);
@@ -28,4 +28,4 @@ NextButton.prototype = {
     });
   }, // end method
 
-} // end prototype
+}; // end prototype

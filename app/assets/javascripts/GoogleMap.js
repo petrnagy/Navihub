@@ -98,7 +98,7 @@ GoogleMap.prototype = {
     loadScripts: function(callback, di) {
         var that = this;
 
-        if ( ! di && that.di ) {
+        if ( ! di && ! that.di ) {
             throw new Error("This method needs DI container instance");
         } // end if
 

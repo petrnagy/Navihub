@@ -106,7 +106,7 @@
                     <span class="top-location-bottom">
                       Not here?
                       <%= link_to 'change location', controller: "settings", action: 'location' %> |
-                      <a href="#" onclick="if(confirm('Autodetect location?')) { DI.relocate(DI); }">autodetect</a>
+                      <a class="top-location-autodetect" href="#" onclick="if(confirm('Autodetect location?')) { DI.relocate(DI, this); }">autodetect</a>
                     </span>
                 </div>
             </li>

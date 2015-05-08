@@ -45,8 +45,10 @@ ready = function(pageLoad) {
         DI.locator.locate();
     } // end if
 
-    DI.relocate = function(di){
+    DI.relocate = function(di, el){
+        $("#top-location .top-location-top .actual").html('loading...');
         di.locator.reset();
+        //di.locator.setSaveCallback(function(){ $(".top-location-autodetect").fadeIn('slow'); });
         di.locator.locate(true);
     }; // end func
 

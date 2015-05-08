@@ -10,7 +10,7 @@ var Detail = function($cube, di) {
         this._columns = 3;
         this._init();
     } // end if
-} // end func
+}; // end func
 
 Detail.prototype = {
     _init: function() {
@@ -88,7 +88,7 @@ Detail.prototype = {
                     });
                 } else {
                     throw new Error('Could not load detail map, no coordinates or address available');
-                } // end if   
+                } // end if
             } catch (e) {
                 return that._processDetailError(e);
             } // end try-catch
@@ -222,4 +222,4 @@ Detail.prototype = {
         // TODO: nejaky normalni handler
         alert(e);
     },
-} // end prototype
+}; // end prototype

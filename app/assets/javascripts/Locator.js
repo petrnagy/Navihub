@@ -10,6 +10,7 @@ var Locator = function(di) {
     };
     this._sent = {browser: false, web: false};
     this._interval = null;
+    this._saveCallback = null;
 }; // end func
 
 Locator.prototype = {
@@ -101,6 +102,9 @@ Locator.prototype = {
                       that.di.spinner.show();
                       that._doReverseGeocoding(that);
                     } // end if
+                    if ( that._saveCallback ) {
+                      that._saveCallback();
+                    } // end if
                 } // end func
             });
         } // end if
@@ -145,5 +149,11 @@ Locator.prototype = {
           throw new Error("failed to geocoder.geocode(), status: " + status.toString());
         } // end if
       });
+    }, // end method
+    setSaveCallback: function(func) {
+      var that = this;
+      if ( 'function' == typeof func ) {
+        that._saveCallback = func;
+      } // end i
     }, // end method
 }; // end prototype

@@ -23,9 +23,10 @@ class SettingsController < ApplicationController
   end
 
   def profile
-    respond_to do |format|
-      msg = { :status => "error", :message => "Error!", :html => "<b>Not implemented</b>" }
-      format.json { render :json => msg }
+    if false
+      render 'logged'
+    else
+      render 'not-logged'
     end
   end
 
