@@ -1,0 +1,50 @@
+<h1>Feedback</h1>
+<%= @errors %>
+<%= form_tag("/feedback", method: "post") do %>
+  <div class="well">
+    <fieldset>
+      <legend>Contact form</legend>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group <%= @errors['name'] ? 'has-error' : '' %>">
+            <%= text_field_tag 'name', @data['name'], placeholder: 'Name', class: 'form-control' %>
+            <% if @errors['name'] %>
+              <%= label_tag 'name', 'Please fill this field before continuing', class: 'control-label' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group <%= @errors['email'] ? 'has-error' : '' %>">
+            <%= text_field_tag 'email', @data['email'], placeholder: 'E-mail', class: 'form-control' %>
+            <% if @errors['email'] %>
+              <%= label_tag 'email', 'Please fill this field before continuing', class: 'control-label' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group <%= @errors['message'] ? 'has-error' : '' %>">
+            <%= text_area_tag 'message', @data['message'], class: 'form-control required', placeholder: 'Your message (required)', maxlength: 500, rows: 3 %>
+            <% if @errors['message'] %>
+              <%= label_tag 'message', 'Please fill this field before continuing', class: 'control-label' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-10">
+          <p class="small">
+            Do you like this page? Have you found a bug? Do you have any questions? Please let me know!
+          </p>
+        </div>
+        <div class="col-lg-2">
+          <div class="form-group">
+            <%= submit_tag 'Submit', class: 'btn btn-primary pull-right btn-submit' %>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+<% end %>

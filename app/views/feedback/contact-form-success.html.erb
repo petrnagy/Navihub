@@ -6,19 +6,19 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="form-group">
-            <%= text_field_tag 'name', nil, placeholder: 'Name', class: 'form-control' %>
+            <%= text_field_tag 'name', @data['name'], disabled: 'disabled', placeholder: 'Name', class: 'form-control' %>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="form-group">
-            <%= text_field_tag 'email', nil, placeholder: 'E-mail', class: 'form-control' %>
+            <%= text_field_tag 'email', @data['email'], disabled: 'disabled', placeholder: 'E-mail', class: 'form-control' %>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
-            <%= text_area_tag 'message', nil, class: 'form-control required', placeholder: 'Your message (required)', maxlength: 500, rows: 3 %>
+            <%= text_area_tag 'message', @data['message'], disabled: 'disabled', class: 'form-control required', placeholder: 'Your message (required)', maxlength: 500, rows: 3 %>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-lg-2">
           <div class="form-group">
-            <%= submit_tag 'Submit', class: 'btn btn-primary pull-right btn-submit' %>
+            <%= submit_tag 'Submit', class: 'btn btn-primary pull-right btn-submit', disabled: 'disabled' %>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <div class="alert alert-success form-success-popup">Your message has been successfully sent, thanks!</div>
+      <div class="alert alert-success form-success-popup">Your message has been successfully saved, thank you!</div>
     </div>
   </div>
 <% end %>

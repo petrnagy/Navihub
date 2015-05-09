@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004170749) do
+ActiveRecord::Schema.define(version: 20150509084235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,19 @@ ActiveRecord::Schema.define(version: 20141004170749) do
 
   add_index "facebook_sessions", ["active"], name: "index_facebook_sessions_on_active", using: :btree
   add_index "facebook_sessions", ["user_id"], name: "index_facebook_sessions_on_user_id", using: :btree
+
+  create_table "forms", force: true do |t|
+    t.string   "type"
+    t.string   "name"
+    t.string   "email"
+    t.text     "text"
+    t.string   "hash"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forms", ["hash"], name: "index_forms_on_hash", unique: true, using: :btree
 
   create_table "google_sessions", force: true do |t|
     t.integer  "user_id"

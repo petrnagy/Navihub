@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'feedback' => 'feedback#index'
 
   get 'about' => 'about#index'
@@ -11,12 +11,14 @@ Rails.application.routes.draw do
   get 'settings/profile'
 
   root 'homepage#index'
-  
+
   get 'search' => 'search#index'
   get 'find' => 'search#find'
   get 'search/:term(/:radius)(/:order)(/:offset)' => 'search#find'
-  
+
   get 'detail/:name/:id/:origin' => 'detail#index'
   get 'detail/:name/:origin' => 'detail#index'
-  
+
+  post 'feedback' => 'feedback#process_contact_form'
+
 end

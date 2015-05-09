@@ -1,30 +1,28 @@
 class Search
-  
+
   require 'json'
   require 'digest/md5'
-  
-  public
-  
+
   protected
-  
+
   @@allowed_orders = %w{distance name rand}
-  # bing openstreet - those are shits
+  # TODO: bing, openstreetmaps
   @@allowed_engines = %w{google nokia yelp foursquare}
   @@max_distance = 20000; # 20km
-  
+
   private
-  
-  @params; @location; @engines; @results; 
+
+  @params; @location; @engines; @results;
   @timeout; @total_cnt; @results_from_cache;
-  
+
   public
-  
+
   attr_reader :results, :params, :total_cnt, :results_from_cache
-  
+
   def self.allowed_engines
     @@allowed_engines
   end
-  
+
   def initialize params, location
     term = params[:term]
     term = term.strip! || term
@@ -38,7 +36,7 @@ class Search
       :step     => 21,
       :append   => params[:append]
     }
-    # FIXME: pri nacteni "more 21 results" 
+    # FIXME: pri nacteni "more 21 results"
     if ! params['is_xhr'] && @params[:offset] > 0 # calculate limit instead of offset for non-ajax requests
       if @params[:offset] % @params[:limit] == 0
         @params[:limit] = @params[:limit] * ( (@params[:offset] / @params[:limit]) + 1 );
@@ -49,7 +47,7 @@ class Search
     @timeout = 3
     @location = location
   end
-  
+
   def search
     key = Digest::MD5.hexdigest([@params, @engines, @location].to_json)
     cached = ApiCache.get_from_cache key
@@ -69,9 +67,9 @@ class Search
     ApiCache.save_to_cache(key, results) if results
     process_results results
   end
-  
+
   private
-  
+
   def process_results results
     unless results.length == 0 then
       results = filter preprocess map flatten results
@@ -80,7 +78,7 @@ class Search
     end
     @results = results
   end
-  
+
   def search_async
     ts_start = Time.now
     results = []
@@ -88,23 +86,23 @@ class Search
     @engines.each do |name|
       engine = "#{name.capitalize}Engine".constantize.new @params, @location
       threads << Thread.new do
-        results << engine.search  
+        results << engine.search
         Thread.exit if results.length == @engines.length || (Time.now - ts_start) > @timeout
       end
     end
     threads.each { |t| t.abort_on_exception = false; t.join }
     results
   end
-  
+
   def search_sync
     results = []
     @engines.each do |name|
       engine = "#{name.capitalize}Engine".constantize.new @params, @location
-      results << engine.search        
+      results << engine.search
     end
     results
   end
-  
+
   def determine_order order
     if order.is_a? String
       order = order.split('-')
@@ -119,19 +117,19 @@ class Search
     end
     { :by => 'distance', :dir => 'asc' }
   end
-  
+
   def determine_offset offset
     offset =~ /^[0-9]+$/ && offset.to_i >= 0 ? offset.to_i : 0
   end
-  
+
   def determine_radius radius
     if radius == nil || radius.to_i <= 0
       @@max_distance
     else
-      radius.to_i  
+      radius.to_i
     end
   end
-  
+
   def determine_search_engines engines
     return @@allowed_engines # This functionality is turned off on FE - ATM
     allowed = []
@@ -140,7 +138,7 @@ class Search
     end if engines.is_a? String
     allowed.length > 0 ? allowed : @@allowed_engines
   end
-  
+
   def flatten results
     flattened = []
     results.each do |result|
@@ -148,12 +146,12 @@ class Search
     end
     flattened
   end
-  
+
   def map results
     mapper = ResultsMapper.new results
     mapper.map_all
   end
-  
+
   def filter results
     processed = []
     results.each do |current|
@@ -165,16 +163,16 @@ class Search
     resolver.resolve
     resolver.resolved
   end
-  
+
   def preprocess results
     processed = []
     results.each do |current|
       current[:mtime] = Time.now.usec
       if current[:geometry][:lat] != nil && current[:geometry][:lat] != nil
         current[:distance] = Location.calculate_distance(
-          @location.latitude.to_f, 
-          @location.longitude.to_f, 
-          current[:geometry][:lat], 
+          @location.latitude.to_f,
+          @location.longitude.to_f,
+          current[:geometry][:lat],
           current[:geometry][:lng]
           # TODO: zajistit, aby bylo vzdy v metrech
         ) unless current[:distance].to_i > 0
@@ -185,16 +183,16 @@ class Search
     end
     processed
   end
-  
+
   def order results
     sorter = ResultsSorter.new results
     sorter.sort(@params[:order][:by], @params[:order][:dir] == 'asc')
   end
-  
+
   def limit results, limit, offset
     results.slice offset, limit
   end
-  
+
   def postprocess results
     processed = []
     generic_engine = SearchEngine.new nil, nil
@@ -225,10 +223,10 @@ class Search
       current[:tags] = tags
       current[:ascii_name] = Mixin.normalize_unicode current[:name]
       current[:json] = current.to_json
-      
+
       processed << current
     end
     processed
   end
-  
+
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  name: MyString
+  email: MyString
+  text: MyText
+  hash: MyString
+  data: MyText
+
+two:
+  type: 
+  name: MyString
+  email: MyString
+  text: MyText
+  hash: MyString
+  data: MyText
