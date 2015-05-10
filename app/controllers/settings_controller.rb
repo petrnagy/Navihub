@@ -18,7 +18,7 @@ class SettingsController < ApplicationController
       loc = set_location data
 
       respond_to do |format|
-        msg = { :status => "ok", :message => "Success!", :html => ApplicationHelper.pretty_loc(loc) }
+        msg = { :status => "ok", :message => "Success!", :html => pretty_loc(loc) }
         format.json { render :json => msg }
       end
     end

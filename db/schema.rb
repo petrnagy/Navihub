@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509084235) do
+ActiveRecord::Schema.define(version: 20150509123757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,13 +71,14 @@ ActiveRecord::Schema.define(version: 20150509084235) do
     t.string   "name"
     t.string   "email"
     t.text     "text"
-    t.string   "hash"
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "spam"
+    t.string   "key"
   end
 
-  add_index "forms", ["hash"], name: "index_forms_on_hash", unique: true, using: :btree
+  add_index "forms", ["key"], name: "index_forms_on_key", unique: true, using: :btree
 
   create_table "google_sessions", force: true do |t|
     t.integer  "user_id"
