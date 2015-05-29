@@ -25,8 +25,8 @@ class FeedbackController < ApplicationController
     end
 
     unless @errors.length > 0
-      form = save_contact_form(@data)
-      send_contact_form_infomail form, @data
+      saved = save_contact_form(@data)
+      send_contact_form_infomail form, @data if saved
       render 'contact-form-success'
     else
       render 'contact-form-error'
@@ -47,8 +47,9 @@ class FeedbackController < ApplicationController
     form = Form.find_by(key: key)
     if nil == form
       Form.create(name: data['name'], email: data['email'], text: data['message'], data: nil, spam: false, key: key)
+      true
     else
-      form
+      false
     end
   end
 
