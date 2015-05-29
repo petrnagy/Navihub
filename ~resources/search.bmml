@@ -1,0 +1,54 @@
+<mockup version="1.0" skin="sketch" measuredW="1610" measuredH="910" mockupW="1600" mockupH="900">
+  <controls>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Image" x="0" y="0" w="-1" h="-1" measuredW="1600" measuredH="900" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>../../../../../../../Pictures/%7EScreens/Screenshot%2520-%252027.9.2014%2520%2C%25200_21_43.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="489" y="193" w="-1" h="-1" measuredW="60" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <size>16</size>
+        <text>%22pizza%22</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Arrow" x="418" y="208" w="185" h="75" measuredW="150" measuredH="100" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <leftArrow>false</leftArrow>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Arrow" x="822" y="384" w="197" h="89" measuredW="150" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <curvature>-1</curvature>
+        <direction>top</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="907" y="400" w="-1" h="-1" measuredW="70" measuredH="29" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <size>16</size>
+        <text>%22coffee%22</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="815" y="164" w="-1" h="-1" measuredW="104" measuredH="29" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <size>16</size>
+        <text>%22restaurant%22</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Arrow" x="776" y="193" w="96" h="89" measuredW="150" measuredH="100" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <curvature>-1</curvature>
+        <direction>bottom</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
