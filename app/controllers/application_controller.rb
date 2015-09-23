@@ -79,7 +79,8 @@ class ApplicationController < ActionController::Base
     sess = Session.find_by(sessid: session.id, active: true)
 
     if ! session.id
-      session[:init] = true # force session init, @see http://stackoverflow.com/questions/14665275/how-force-that-session-is-loaded
+      # force session init, @see http://stackoverflow.com/questions/14665275/how-force-that-session-is-loaded
+      session[:init] = true
     end
 
     if ! sess
