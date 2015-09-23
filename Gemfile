@@ -40,3 +40,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'oauth'
 gem 'text'
+gem 'font-awesome-rails'
