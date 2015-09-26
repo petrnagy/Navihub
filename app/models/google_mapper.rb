@@ -1,5 +1,5 @@
 class GoogleMapper < GenericMapper
-  
+
   def map
     mapped = get_template
 
@@ -11,15 +11,15 @@ class GoogleMapper < GenericMapper
     mapped[:name] = @data[:data]['name']
     mapped[:tags] = @data[:data]['types']
     mapped[:vicinity] = @data[:data]['vicinity']
-    
+
     mapped[:address] = @data[:data]['vicinity']
-    
+
     [mapped]
   end
-  
+
   def map_detail location
     mapped = get_template
-      
+
     mapped[:origin] = 'Google Places'
     mapped[:geometry][:lat] = @data['result']['geometry']['location']['lat']
     mapped[:geometry][:lng] = @data['result']['geometry']['location']['lng']
@@ -32,13 +32,13 @@ class GoogleMapper < GenericMapper
     # - - -
     mapped[:ascii_name] = Mixin.normalize_unicode mapped[:name]
     if mapped[:geometry][:lat] != nil && mapped[:geometry][:lng] != nil
-      
+
       mapped[:pretty_loc] = Location.pretty_loc mapped[:geometry][:lat], mapped[:geometry][:lng]
-      
+
       mapped[:distance] = Location.calculate_distance(
-        location.latitude.to_f, 
-        location.longitude.to_f, 
-        mapped[:geometry][:lat], 
+        location.latitude.to_f,
+        location.longitude.to_f,
+        mapped[:geometry][:lat],
         mapped[:geometry][:lng]
       ).ceil unless mapped[:distance].to_i > 0
       mapped[:distance_in_mins] = DistanceHelper.m_to_min mapped[:distance]
@@ -50,12 +50,12 @@ class GoogleMapper < GenericMapper
         mapped[:distance] = mapped[:distance].to_i
         mapped[:distance_unit] = 'm'
       end
-      
+
     end
     mapped[:detail][:url] = @data['result']['url']
     mapped[:detail][:website_url] = @data['result']['website_url']
     if @data['result']['address_components'].is_a? Array
-      
+
       @data['result']['address_components'].each do |item|
         if item['types'].is_a?(Array) && (item['long_name'] || item['short_name'])
           if item['types'].include? 'premise'
@@ -72,10 +72,10 @@ class GoogleMapper < GenericMapper
           end
         end
       end
-      
+
     end
-    
+
     mapped
   end
-  
+
 end

@@ -1,7 +1,7 @@
 class NokiaMapper < GenericMapper
-  
+
   include ActionView::Helpers::SanitizeHelper
-  
+
   def map
     results = []
     for i in 0..@data[:data].length do
@@ -10,7 +10,7 @@ class NokiaMapper < GenericMapper
         @data[:data][i].each do |item|
           unless item['position'] == nil
             mapped = get_template
-    
+
             mapped[:origin] = @data[:origin]
             mapped[:geometry][:lat] = item['position'][0]
             mapped[:geometry][:lng] = item['position'][1]
@@ -21,21 +21,21 @@ class NokiaMapper < GenericMapper
             mapped[:name] = item['title']
             mapped[:tags] = [item['category']['title']]
             mapped[:vicinity] = item['vicinity']
-      
+
             mapped[:address] = item['vicinity']
-            
+
             results << mapped
           end
         end
       end
-      
+
     end
     results
   end
-  
+
   def map_detail location
     mapped = get_template
-    
+
     mapped[:origin] = 'Nokia Here'
     mapped[:geometry][:lat] = @data['location']['position'][0]
     mapped[:geometry][:lng] = @data['location']['position'][1]
@@ -57,17 +57,17 @@ class NokiaMapper < GenericMapper
     mapped[:tags].uniq!
     mapped[:vicinity] = nil
     mapped[:address] = strip_tags(@data['location']['address']['text'].gsub('<br/>', ' '))
-    
+
     # - - -
     mapped[:ascii_name] = Mixin.normalize_unicode mapped[:name]
     if mapped[:geometry][:lat] != nil && mapped[:geometry][:lng] != nil
-      
+
       mapped[:pretty_loc] = Location.pretty_loc mapped[:geometry][:lat], mapped[:geometry][:lng]
-      
+
       mapped[:distance] = Location.calculate_distance(
-        location.latitude.to_f, 
-        location.longitude.to_f, 
-        mapped[:geometry][:lat], 
+        location.latitude.to_f,
+        location.longitude.to_f,
+        mapped[:geometry][:lat],
         mapped[:geometry][:lng]
       ).ceil unless mapped[:distance].to_i > 0
       mapped[:distance_in_mins] = DistanceHelper.m_to_min mapped[:distance]
@@ -79,7 +79,7 @@ class NokiaMapper < GenericMapper
         mapped[:distance] = mapped[:distance].to_i
         mapped[:distance_unit] = 'm'
       end
-      
+
     end
     mapped[:detail][:url] = @data['view']
     mapped[:detail][:website_url] = nil
@@ -92,7 +92,7 @@ class NokiaMapper < GenericMapper
     if mapped[:detail][:address][:street] && mapped[:detail][:address][:premise] && mapped[:detail][:address][:town] && mapped[:detail][:address][:country]
       mapped[:address] = mapped[:detail][:address][:street] + ' ' + mapped[:detail][:address][:premise] + ', ' + mapped[:detail][:address][:town] + ', ' + mapped[:detail][:address][:country]
     end
-     
+
     if @data['contacts']
       if @data['contacts']['phone'].is_a? Array
         @data['contacts']['phone'].each do |phone|
@@ -100,8 +100,8 @@ class NokiaMapper < GenericMapper
         end
       end
     end
-    
+
     mapped
   end
-  
+
 end

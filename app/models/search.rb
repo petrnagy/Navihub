@@ -215,6 +215,9 @@ class Search
           current[:distance_unit] = 'm'
         end
       end
+      if nil == current[:address] || current[:address].strip.length <= 1 || current[:address].strip =~ /^\d+$/
+        current[:address] = '<i class="unknown-data fa fa-frown-o"></i>'.html_safe
+      end
       # modify labels
       tags = []
       current[:tags].each do |tag|

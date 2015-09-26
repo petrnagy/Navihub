@@ -53,9 +53,7 @@ ready = function(pageLoad) {
     }; // end func
 
     DI.kickstart = 'kickstart_' + DI.controller;
-    typeof window[DI.kickstart] === 'function'
-            ? window[DI.kickstart](DI)
-            : null;
+    typeof window[DI.kickstart] === 'function' ? window[DI.kickstart](DI) : null;
 
 };
 
