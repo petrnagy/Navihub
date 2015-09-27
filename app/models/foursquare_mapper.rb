@@ -2,8 +2,8 @@ class FoursquareMapper < GenericMapper
 
   def map
     mapped = get_template
-    logger = Logger.new(STDOUT)
-    logger.debug 'RESULT: ' + @data.to_s;
+    #logger = Logger.new(STDOUT)
+    #logger.debug 'RESULT: ' + @data.to_s;
     mapped[:origin] = @data[:origin]
     mapped[:geometry][:lat] = @data[:data]['venue']['location']['lat']
     mapped[:geometry][:lng] = @data[:data]['venue']['location']['lng']

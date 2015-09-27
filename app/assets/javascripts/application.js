@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.cookie
 //= require turbolinks
+//= require colorbox-rails
 //= require_tree .
 
 var ready, DI;
@@ -40,6 +41,7 @@ ready = function(pageLoad) {
     controller = action = null;
 
     DI.locator = new Locator(DI);
+    DI.messenger = new Messenger(DI);
 
     if ( DI.documentReady ) {
         DI.locator.locate();
@@ -54,6 +56,8 @@ ready = function(pageLoad) {
 
     DI.kickstart = 'kickstart_' + DI.controller;
     typeof window[DI.kickstart] === 'function' ? window[DI.kickstart](DI) : null;
+
+    DI.google_api_key_pub = 'AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI';
 
 };
 
