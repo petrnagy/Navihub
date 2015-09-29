@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509123757) do
+ActiveRecord::Schema.define(version: 20150929164008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 20150509123757) do
   add_index "facebook_sessions", ["active"], name: "index_facebook_sessions_on_active", using: :btree
   add_index "facebook_sessions", ["user_id"], name: "index_facebook_sessions_on_user_id", using: :btree
 
+  create_table "favorites", force: true do |t|
+    t.string   "venue_origin"
+    t.string   "venue_id"
+    t.integer  "user_id"
+    t.text     "yield"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "forms", force: true do |t|
     t.string   "type"
     t.string   "name"
@@ -114,6 +123,18 @@ ActiveRecord::Schema.define(version: 20150509123757) do
   add_index "locations", ["latitude"], name: "index_locations_on_latitude", using: :btree
   add_index "locations", ["longitude"], name: "index_locations_on_longitude", using: :btree
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
+
+  create_table "permalinks", force: true do |t|
+    t.string   "venue_origin"
+    t.string   "venue_id"
+    t.text     "yield"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "permalink_id"
+  end
+
+  add_index "permalinks", ["permalink_id"], name: "index_permalinks_on_permalink_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.integer  "user_id"

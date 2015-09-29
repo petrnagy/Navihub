@@ -88,7 +88,7 @@
                     <li class="divider"></li>
                     <li><a class="list-visit-website" href="#" onclick="DI.searchResult.list_visit_website(this);return false;"><%= fa_icon("link") %>visit website</a></li>
                     <li><a class="list-open-detail" href="#" onclick="DI.searchResult.list_open_detail(this);return false;"><%= fa_icon("external-link") %>open detail</a></li>
-                    <li><a class="list-open-detail" href="#" onclick="DI.searchResult.list_get_permalink(this);return false;"><%= fa_icon("chain-broken") %>get permalink</a></li>
+                    <li><a class="list-get-permalink" href="#"><%= fa_icon("chain-broken") %>get permalink</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-submenu">
                         <a tabindex="-1" href="#"><%= fa_icon("search") %>search more</a>
@@ -103,9 +103,9 @@
                         <a tabindex="-1" href="#"><%= fa_icon("share") %>Share this</a>
                         <ul class="dropdown-menu">
                             <li><a class="list-send-via-email" href="#"><%= fa_icon("envelope-o") %>send via e-mail</a></li>
-                            <li><a class="list-share-on-facebook" href="#"><%= fa_icon("facebook-official") %>share on facebook</a></li>
-                            <li><a class="list-share-on-twitter" href="#"><%= fa_icon("twitter") %>share on twitter</a></li>
-                            <li><a class="list-share-on-google-plus" href="#"><%= fa_icon("google-plus") %>share on google+</a></li>
+                            <li><a class="list-share-on-facebook" href="#" onclick="DI.searchResult.list_share_on_facebook(this);return false;"><%= fa_icon("facebook-official") %>share on facebook</a></li>
+                            <li><a class="list-share-on-twitter" href="#" onclick="DI.searchResult.list_share_on_twitter(this);return false;"><%= fa_icon("twitter") %>share on twitter</a></li>
+                            <li><a class="list-share-on-google-plus" href="#" onclick="DI.searchResult.list_share_on_google_plus(this);return false;"><%= fa_icon("google-plus") %>share on google+</a></li>
                         </ul>
                     </li>
                 </ul>

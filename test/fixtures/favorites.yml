@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  venue_origin: MyString
+  venue_id: MyString
+  user_id: 1
+  yield: MyText
+
+two:
+  venue_origin: MyString
+  venue_id: MyString
+  user_id: 1
+  yield: MyText

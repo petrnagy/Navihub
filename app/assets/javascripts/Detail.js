@@ -1,6 +1,6 @@
 /**
- * @author PN @since 2014-09-28
- */
+* @author PN @since 2014-09-28
+*/
 var Detail = function($cube, di) {
     if ($cube.length) {
         this.di = di;
@@ -126,50 +126,45 @@ Detail.prototype = {
     _initDetailMap: function(data, defer) {
         var that = this;
         new GoogleMap(that.di, {latitude: data.geometry.lat, longitude: data.geometry.lng}, that._$detail.find('.map-canvas').attr('id'),
-                14,
-                function() {
-                    defer.resolve();
-                    var location = that.di.locator.getLocation();
-                    if (location && that.di.detailGoogleMap) {
-                        that.di.detailGoogleMap.addRoute(
-                                {latitude: location.lat, longitude: location.lng},
-                        {latitude: data.geometry.lat, longitude: data.geometry.lng},
-                        'WALKING');
-                    } // end if
+        14,
+        function() {
+            defer.resolve();
+            var location = that.di.locator.getLocation();
+            if (location && that.di.detailGoogleMap) {
+                that.di.detailGoogleMap.addRoute(
+                    {latitude: location.lat, longitude: location.lng},
+                    {latitude: data.geometry.lat, longitude: data.geometry.lng},
+                    'WALKING');
+                } // end if
 
-                });
-    },
-    _initDetailData: function(data, defer) {
-        var that = this;
-        that._$detail.find('.detail-header-name').text(data.name);
-
-        if (data.origin && data.id) {
-            var url = '';
-            if (!that.di.mixin.isAscii(data.id.toString())) {
-                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.origin.toString() + '?id=' + data.id.toString();
-            } else {
-                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
-            } // end if
-
-            $.ajax({
-                url: url,
-                method: 'get',
-                success: function(response) {
-                    if (response) {
-                        $(".detail-wrapper .detail-body .detail-data").html(response);
-                        $('.social-likes').socialLikes();
-                        defer.resolve();
-                    } // end if
-                },
-                error: defer.reject,
             });
-        }
+        },
+        _initDetailData: function(data, defer) {
+            var that = this;
+            that._$detail.find('.detail-header-name').text(data.name);
 
-        //console.log('init detail data...');
-    },
-    _buildDetailRow: function() {
-        var that = this;
-        var $div = $(
+            if (data.origin && data.id) {
+                var url = that.buildDetailUrl(data);
+
+                $.ajax({
+                    url: url,
+                    method: 'get',
+                    success: function(response) {
+                        if (response) {
+                            $(".detail-wrapper .detail-body .detail-data").html(response);
+                            $('.social-likes').socialLikes();
+                            defer.resolve();
+                        } // end if
+                    },
+                    error: defer.reject,
+                });
+            }
+
+            //console.log('init detail data...');
+        },
+        _buildDetailRow: function() {
+            var that = this;
+            var $div = $(
                 '<div class="col-lg-12 detail-wrapper">' +
                 '  <div class="col-lg-12 detail-header">' +
                 '    <hr>' +
@@ -184,42 +179,56 @@ Detail.prototype = {
                 '    <hr>' +
                 '  </div>' +
                 '</div>'
-                );
-        return $div;
-    },
-    _close: function() {
-        var that = this;
-        if (that.isOpen() && that._$detail) {
-            that._$detail.removeClass('active');
-            that._$cube.removeClass('active');
+            );
+            return $div;
+        },
+        _close: function() {
+            var that = this;
+            if (that.isOpen() && that._$detail) {
+                that._$detail.removeClass('active');
+                that._$cube.removeClass('active');
+                $(".detail-wrapper").slideUp('fast').remove();
+                that._setCloseState();
+            } // end if
+        },
+        _closeOthers: function() {
+            var that = this;
             $(".detail-wrapper").slideUp('fast').remove();
-            that._setCloseState();
-        } // end if
-    },
-    _closeOthers: function() {
-        var that = this;
-        $(".detail-wrapper").slideUp('fast').remove();
-        $(".result-box[data-cube-rel]").removeAttr('data-cube-rel').attr('data-cube-open', 'false');
-    },
-    setOpenState: function() {
-        var that = this;
-        that._$cube.attr('data-cube-open', 'true');
-    },
-    _setCloseState: function() {
-        var that = this;
-        that._$cube.attr('data-cube-open', 'false');
-    },
-    isOpen: function() {
-        var that = this;
-        return (that._$cube.attr('data-cube-open') == 'true');
-    },
-    destroy: function() {
-        var that = this;
-        that._close();
-        that.di.detailGoogleMap = null;
-    },
-    _processDetailError: function(e) {
-        // TODO: nejaky normalni handler
-        alert(e);
-    },
-}; // end prototype
+            $(".result-box[data-cube-rel]").removeAttr('data-cube-rel').attr('data-cube-open', 'false');
+        },
+        setOpenState: function() {
+            var that = this;
+            that._$cube.attr('data-cube-open', 'true');
+        },
+        _setCloseState: function() {
+            var that = this;
+            that._$cube.attr('data-cube-open', 'false');
+        },
+        isOpen: function() {
+            var that = this;
+            return (that._$cube.attr('data-cube-open') == 'true');
+        },
+        destroy: function() {
+            var that = this;
+            that._close();
+            that.di.detailGoogleMap = null;
+        },
+        _processDetailError: function(e) {
+            // TODO: nejaky normalni handler
+            alert(e);
+        },
+        /**
+         * @static
+         * @param  {object} data
+         * @return {String} relative url
+         */
+        buildDetailUrl(data, that) {
+            var that = that || this;
+            if (!that.di.mixin.isAscii(data.id.toString())) {
+                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.origin.toString() + '?id=' + data.id.toString();
+            } else {
+                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
+            } // end if
+            return url;
+        } // end method
+    }; // end prototype

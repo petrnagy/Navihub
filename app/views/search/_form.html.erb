@@ -2,13 +2,13 @@
   <form>
     <div class="col-lg-4">
       <div class="form-group">
-        <input class="form-control" type="text" placeholder="Find anything around you..." value="<%= @tpl_vars[:input_params]['term'] %>" name="search[term]">
+        <input class="form-control" type="text" placeholder="Find anything around you..." value="<%= @tpl_vars[:input_params]['term'] %>" name="search[term]" autofocus>
       </div>
     </div>
     <div class="col-lg-2">
       <div class="form-group">
         <select class="form-control" name="search[radius]">
-          <% [ 
+          <% [
             {:val => 0, :name => 'Any distance'},
             {:val => 500, :name => '< 500m | ~0.3 mi'},
             {:val => 1000, :name => '< 1km | ~0.6 mi'},
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="3">
-      <button type="submit" class="btn btn-success">Search</button> 
+      <button type="submit" class="btn btn-success">Search</button>
     </div>
     <input type="hidden" name="search[offset]" value="0">
   </form>

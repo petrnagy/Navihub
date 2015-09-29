@@ -1,3 +1,6 @@
+/**
+* @author PN @since 2016-09-27
+*/
 var SearchResult = function(di) {
     this.di = di;
     this._init();
@@ -6,13 +9,13 @@ var SearchResult = function(di) {
 SearchResult.prototype = {
 
     _init: function() {
-        var interests = ['list-open-in-maps', 'list-plan-a-route',
-        'list-show-contact', /*'list-visit-website', 'list-open-detail'*/ 'list-send-via-email',
-        'list-share-on-facebook', 'list-share-on-twitter', 'list-share-on-google-plus'];
+        var interests = [
+            'list-open-in-maps', 'list-plan-a-route', 'list-show-contact', 'list-send-via-email', 'list-get-permalink'
+        ];
         var that = this;
 
         $.each(interests, function(key, interest) {
-            $(document).delegate('.' + interest, 'click', function(e){
+            $(document).delegate('.' + interest, 'click', function(e) {
                 e.preventDefault();
                 var method = interest.replace(/\-/g, '_');
                 that[method]($(this));
@@ -25,12 +28,12 @@ SearchResult.prototype = {
         var that = this;
         var data = that.getData($el);
         if ( data ) {
-            var url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.origin.toString() + '?id=' + data.id.toString();
+            var url = that.getDetailUrl(data);
 
             $.ajax({
                 url: url,
                 method: 'get',
-                cache: true, // ! ! !
+                cache: true, // <----------- ! ! !
                 success: function(data) {
                     callback(data);
                 }, // end func
@@ -75,6 +78,28 @@ SearchResult.prototype = {
             });
             that.di.spinner.hide();
         });
+    }, // end method
+
+    list_get_permalink: function($el) {
+      var that = this;
+      var data = that.getData($el);
+      that.di.spinner.show();
+      $.ajax({
+          url: '/setpermalink',
+          method: 'POST',
+          data: { origin: data.origin, id: data.id },
+          success: function(data) {
+              var url = window.location.origin + '/permalink/' + data.id;
+              var txt = '<form class="permalink-form"><textarea onclick="select();">'+url+'</textarea></form><br><a target="_blank" href="'+url+'">Open in new window</a>';
+              that.di.messenger.message('Permalink created !', txt);
+          }, // end func
+          error: function() {
+              that.di.messenger.message('Whoops :-(', 'Something went wrong and we could not create the permalink. Please try again later.');
+          }, // end func
+          complete: function(){
+              that.di.spinner.hide();
+          }
+      }); // end ajax
     }, // end method
 
     list_plan_a_route: function($el) {
@@ -154,35 +179,75 @@ SearchResult.prototype = {
             return;
         } // end if
 
-        var url = '';
-        if ( ! that.di.mixin.isAscii(data.id.toString()) ) {
-            url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.origin.toString() + '?id=' + data.id.toString();
-        } else {
-            url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
-        } // end if
+        var url = that.getDetailUrl(data);
 
         tab.location = url;
         //window.open(url);
     }, // end method
 
-    list_share_on_facebook: function($el) {
+    openSocialShareTab: function(el, tpl) {
         var that = this;
-        //https://www.facebook.com/sharer/sharer.php?u=http%3A//www.navihub.net
+        var $el = $(el).closest('.result-box');
+        var data = that.getData($el);
+        var url = that.getDetailUrl(data);
+        if ( url ) {
+            url = tpl.replace('%%URL%%', url);
+            window.open(url);
+        } else {
+            that.di.messenger.message(':-(', 'Sorry, something went wrong during generating the share url address !');
+        } // end if
+    }, // end method
+
+    getDetailUrl: function(data) {
+        return window.location.origin + Detail.prototype.buildDetailUrl(data, this);
+    }, // end method
+
+    list_send_via_email: function() {
+      var that = this;
+      alert("TODO: Napsat metodu, která zpracuje odeslání e-mailu na vloženou adresu");
+    }, // end method
+
+    list_share_on_facebook: function(el) {
+        this.openSocialShareTab(el, 'https://www.facebook.com/sharer/sharer.php?u=%%URL%%');
+    }, // end method
+
+    list_share_on_twitter: function(el) {
+        // TODO: Add full status support
+        this.openSocialShareTab(el, 'https://twitter.com/home?status=%%URL%%');
+    }, // end method
+
+    list_share_on_google_plus: function(el) {
+        this.openSocialShareTab(el, 'https://plus.google.com/share?url=%%URL%%');
     }, // end method
 
     _processDetailError: function(e) {
         // TODO: nejaky normalni handler
-        console.log(e);
+        //console.log(e);
         alert(e);
     },
 
     generateContactPopup: function(data) {
         var that = this;
         var o = '';
-        o += '<p class="generic-popup-wrapper">';
-        o += '<i class="fa fa-phone"></i>' + ' ' + '- - -' + '<br>';
-        o += '<i class="fa fa-mobile"></i>' + ' ' + '- - -' + '<br>';
-        o += '<i class="fa fa-map-o"></i>' + ' ' + '- - -' + '<br>';
+        o += '<p class="message-title text-center">' + data.name + '</p>';
+        o += '<p class="contact-popup-content">';
+        if ( data.detail.phones.length ) {
+            o += '<i class="fa fa-phone"></i>' + ' ';
+            $.each(data.detail.phones, function(key, val) {
+                if (key > 0) o += ', ';
+                o += '<a href="tel:'+val+'">' + val + '</a>';
+            }); // end foreach
+            o += '<br>';
+        } else {
+            o += '<i class="fa fa-phone"></i>' + ' ' + 'Not found'  + '<br>';
+        } // end if
+
+        o += '<i class="fa fa-envelope"></i>' + ' ' + (data.detail.email ? '<a href="mailto:'+data.detail.email+'">' + data.detail.email + '</a>' : 'Not found') + '<br>';
+
+        o += '<i class="fa fa-map-o"></i>' + ' ' + data.address + '<br>';
+        o += '<i class="fa fa-map-marker"></i>' + ' ' + data.pretty_loc.lat[0] + '° ' + data.pretty_loc.lat[1] + "' " + data.pretty_loc.lat[2] + '" ' + data.pretty_loc.lat[3] + ', ';
+        o += data.pretty_loc.lng[0] + '° ' + data.pretty_loc.lng[1] + "' " + data.pretty_loc.lng[2] + '" ' + data.pretty_loc.lng[3] + '<br>';
+
         o += '</p>';
         return o;
     }, // end method

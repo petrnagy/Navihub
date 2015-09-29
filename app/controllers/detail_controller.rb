@@ -16,6 +16,19 @@ class DetailController < ApplicationController
         render 'empty', :status => 404
     end
 
+    def permalink
+        row = Permalink.find_by(permalink_id: params['permalink_id'])
+        if row
+            @data = YAML.load row.yield
+            return render 'detail'
+        else render 'empty', :status => 404
+        end
+    end
+
+    def loadDetail origin, id
+        return load origin, id
+    end
+
     private
 
     def load origin, id
