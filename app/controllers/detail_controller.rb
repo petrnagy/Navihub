@@ -1,23 +1,23 @@
 class DetailController < ApplicationController
 
     def index
-        if params.has_key?('origin') && params.has_key?('id')
-            @data = load params['origin'], params['id']
-            if @data
-                if request.xhr?
-                    return render json: @data
-                else
-                    return render 'detail'
-                end
+        parameters = index_params
+        @data = load parameters['origin'], parameters['id']
+        if @data
+            if request.xhr?
+                return render json: @data
+            else
+                return render 'detail'
             end
         end
-        @data = { :origin => params['origin'] || 'unknown', :id => params['id'] || 'unknown' }
+        @data = { :origin => parameters['origin'] || 'unknown', :id => parameters['id'] || 'unknown' }
         @failsafe = true
         render 'empty', :status => 404
     end
 
     def permalink
-        row = Permalink.find_by(permalink_id: params['permalink_id'])
+        parameters = permalink_params
+        row = Permalink.find_by(permalink_id: parameters['permalink_id'])
         if row
             @data = YAML.load row.yield
             return render 'detail'
@@ -25,7 +25,7 @@ class DetailController < ApplicationController
         end
     end
 
-    def loadDetail origin, id
+    def load_detail origin, id
         return load origin, id
     end
 
@@ -36,6 +36,16 @@ class DetailController < ApplicationController
             loader = "#{origin.capitalize}VenueLoader".constantize.new id
             return loader.load @location
         end
+    end
+
+    def index_params
+        params.require(:origin)
+        params.require(:id)
+        params.permit(:origin, :id)
+    end
+    def permalink_params
+        params.require(:permalink_id)
+        params.permit(:permalink_id)
     end
 
 end

@@ -14648,3 +14648,1064 @@ Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/applicati
 Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
 Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
 Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:9	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:9	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_parameters	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_parameters$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+process_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def process_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+process_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def process_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+process_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def process_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+process_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def process_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+process_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def process_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+process_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def process_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+process_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def process_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+process_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def process_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_params$/;"	method	line:10	class:SharerController
+SharerController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^class SharerController < ApplicationController$/;"	class	line:1
+share_venue_via_email	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def share_venue_via_email$/;"	method	line:3	class:SharerController
+sharer_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/sharer_controller.rb	/^    def sharer_params$/;"	method	line:10	class:SharerController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:19	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:29	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:35	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:42	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:19	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:29	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:35	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:42	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:20	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:30	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:36	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:43	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:20	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:30	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:36	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:43	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:20	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:30	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:36	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:43	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:20	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:30	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:36	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:43	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:20	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:30	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:36	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:43	class:DetailController
+permalink_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink_params$/;"	method	line:48	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:20	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:30	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:36	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:43	class:DetailController
+permalink_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink_params$/;"	method	line:48	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:20	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:30	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:36	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:43	class:DetailController
+permalink_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink_params$/;"	method	line:48	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:20	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:30	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:36	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:43	class:DetailController
+permalink_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink_params$/;"	method	line:48	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:18	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:28	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:34	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:41	class:DetailController
+permalink_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink_params$/;"	method	line:46	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:18	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:28	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:34	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:41	class:DetailController
+permalink_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink_params$/;"	method	line:46	class:DetailController
+DetailController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^class DetailController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def index$/;"	method	line:3	class:DetailController
+permalink	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink$/;"	method	line:18	class:DetailController
+loadDetail	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def loadDetail origin, id$/;"	method	line:28	class:DetailController
+load	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def load origin, id$/;"	method	line:34	class:DetailController
+detail_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def detail_params$/;"	method	line:41	class:DetailController
+permalink_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/detail_controller.rb	/^    def permalink_params$/;"	method	line:46	class:DetailController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^  def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^  def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^  def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^  def settings_params$/;"	method	line:37	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^  def set_location data$/;"	method	line:61	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:62	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:59	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:61	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:61	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:61	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:60	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:58	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:58	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:58	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:58	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:58	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:58	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:58	class:SettingsController
+SettingsController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	class	line:1
+general	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def general$/;"	method	line:8	class:SettingsController
+location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def location$/;"	method	line:15	class:SettingsController
+profile	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def profile$/;"	method	line:27	class:SettingsController
+settings_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def settings_params$/;"	method	line:38	class:SettingsController
+set_location	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/settings_controller.rb	/^    def set_location data$/;"	method	line:58	class:SettingsController
+FavoritesController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^class FavoritesController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def create$/;"	method	line:3	class:FavoritesController
+delete	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def delete$/;"	method	line:23	class:FavoritesController
+delete_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def delete_params$/;"	method	line:40	class:FavoritesController
+FavoritesController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^class FavoritesController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def create$/;"	method	line:3	class:FavoritesController
+delete	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def delete$/;"	method	line:23	class:FavoritesController
+delete_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def delete_params$/;"	method	line:40	class:FavoritesController
+FavoritesController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^class FavoritesController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def create$/;"	method	line:3	class:FavoritesController
+delete	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def delete$/;"	method	line:23	class:FavoritesController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def create_params$/;"	method	line:40	class:FavoritesController
+delete_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def delete_params$/;"	method	line:46	class:FavoritesController
+FavoritesController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^class FavoritesController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def create$/;"	method	line:3	class:FavoritesController
+delete	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def delete$/;"	method	line:23	class:FavoritesController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def create_params$/;"	method	line:40	class:FavoritesController
+delete_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^  def delete_params$/;"	method	line:47	class:FavoritesController
+FavoritesController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^class FavoritesController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^    def create$/;"	method	line:3	class:FavoritesController
+delete	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^    def delete$/;"	method	line:23	class:FavoritesController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^    def create_params$/;"	method	line:39	class:FavoritesController
+delete_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^    def delete_params$/;"	method	line:46	class:FavoritesController
+FavoritesController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^class FavoritesController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^    def create$/;"	method	line:3	class:FavoritesController
+delete	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^    def delete$/;"	method	line:22	class:FavoritesController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^    def create_params$/;"	method	line:38	class:FavoritesController
+delete_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/favorites_controller.rb	/^    def delete_params$/;"	method	line:45	class:FavoritesController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:31	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:38	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:51	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:55	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:62	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:31	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:38	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:51	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:55	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:62	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:31	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:38	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:51	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:55	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:62	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:31	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:38	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:51	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:55	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:62	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:31	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:38	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:51	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:55	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:62	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:31	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:38	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:51	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:55	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:62	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:34	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:41	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:54	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:58	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:65	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:34	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:41	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:54	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:58	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:65	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:30	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:37	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:50	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:54	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:61	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:30	class:SearchController.find
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:37	class:SearchController.find
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:50	class:SearchController.find
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:54	class:SearchController.find
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:61	class:SearchController.find
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^        def empty$/;"	method	line:30	class:SearchController.find
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^        def process_search params$/;"	method	line:37	class:SearchController.find
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^        def init_template_vars params$/;"	method	line:50	class:SearchController.find
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^        def init_default_template_params$/;"	method	line:54	class:SearchController.find
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^        def find_params$/;"	method	line:61	class:SearchController.find
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:30	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:37	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:50	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:54	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:61	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:29	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:36	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:49	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:53	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:60	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:48	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:52	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:59	class:SearchController
+SearchController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	class	line:1
+index	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def index$/;"	method	line:7	class:SearchController
+find	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find$/;"	method	line:12	class:SearchController
+empty	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def empty$/;"	method	line:28	class:SearchController
+process_search	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def process_search params$/;"	method	line:35	class:SearchController
+init_template_vars	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_template_vars params$/;"	method	line:47	class:SearchController
+init_default_template_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def init_default_template_params$/;"	method	line:51	class:SearchController
+find_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/search_controller.rb	/^    def find_params$/;"	method	line:58	class:SearchController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:37	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:37	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:37	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:36	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:36	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:36	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:36	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:36	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:36	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:36	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:36	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:5	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:38	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+NoDataLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NoDataLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:8	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+NoDataLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NoDataLoaded < StandardError end$/;"	class	line:3	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:8	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+NoDataLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NoDataLoaded < StandardError end$/;"	class	line:3	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:7	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:40	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+NoDataLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NoDataLoaded < StandardError end$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError end$/;"	class	line:4	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:8	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError end$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError end$/;"	class	line:4	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:8	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError end$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError end$/;"	class	line:4	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError end$/;"	class	line:5	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:9	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:42	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError end$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError end$/;"	class	line:4	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError end$/;"	class	line:5	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:9	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:42	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:43	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:43	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:43	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:43	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:45	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:45	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:45	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:45	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:45	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:41	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:43	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:43	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:43	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:44	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:44	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:44	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:44	class:PermalinksController
+PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
+DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
+EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
+NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
+create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
+create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:44	class:PermalinksController

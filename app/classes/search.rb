@@ -6,7 +6,6 @@ class Search
     protected
 
     @@allowed_orders = %w{distance name rand}
-    # TODO: bing, openstreetmaps
     @@allowed_engines = %w{google nokia yelp foursquare}
     @@max_distance = 20000; # 20km
 
@@ -24,27 +23,27 @@ class Search
         @@allowed_engines
     end
 
-    def initialize params, location, user
-        term = params[:term]
+    def initialize parameters, location, user
+        term = parameters['term']
         term = term.strip! || term
         term = term.gsub(%r{\ +}, ' ')
         @params = {
             :term     => term,
-            :order    => determine_order(params['order']),
-            :offset   => determine_offset(params['offset']),
-            :radius   => determine_radius(params['radius']),
-            :limit    => 21,
+            :order    => determine_order(parameters['order']),
+            :offset   => determine_offset(parameters['offset']),
+            :radius   => determine_radius(parameters['radius']),
+            :limit    => parameters['limit'],
             :step     => 21,
-            :append   => params[:append]
+            :append   => parameters['append']
         }
         # FIXME: pri nacteni "more 21 results"
-        if ! params['is_xhr'] && @params[:offset] > 0 # calculate limit instead of offset for non-ajax requests
+        if ! parameters['is_xhr'] && @params[:offset] > 0 # calculate limit instead of offset for non-ajax requests
             if @params[:offset] % @params[:limit] == 0
                 @params[:limit] = @params[:limit] * ( (@params[:offset] / @params[:limit]) + 1 );
             end
             @params[:offset] = 0
         end
-        @engines = determine_search_engines params['engines']
+        @engines = determine_search_engines parameters['engines']
         @timeout = 3
         @location = location
         @user = user

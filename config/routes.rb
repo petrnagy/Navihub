@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     post 'feedback' => 'feedback#process_contact_form'
 
+    get 'sharer/email' => 'sharer#share_venue_via_email'
+
     root 'homepage#index'
 
 end
