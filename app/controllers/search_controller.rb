@@ -1,9 +1,9 @@
 class SearchController < ApplicationController
 
   public
-  
+
   @results; @tpl_vars
-  
+
   def index
     init_default_template_params
     render 'index'
@@ -29,15 +29,15 @@ class SearchController < ApplicationController
 
   def empty
   end
-  
+
   protected
-  
+
   private
-  
+
   def process_search params
     ts_start = Time.now
     params['is_xhr'] = request.xhr?
-    search = Search.new params, @location
+    search = Search.new params, @location, @user
     results = search.search
     @tpl_vars[:total_cnt] = search.total_cnt
     @tpl_vars[:total_time] = (Time.now - ts_start).round(2)
@@ -46,16 +46,16 @@ class SearchController < ApplicationController
     #@debug = Rails.application.config.foursquare_client_secret
     results
   end
-  
+
   def init_template_vars params
     @tpl_vars[:input_params] = params
   end
-  
+
   def init_default_template_params
     @tpl_vars = {}
     @tpl_vars[:input_params] = Hash.new
     @tpl_vars[:input_params]['term'] = ''
     @tpl_vars[:input_params]['radius'] = 0
   end
-  
+
 end

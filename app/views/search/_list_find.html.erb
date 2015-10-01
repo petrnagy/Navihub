@@ -75,7 +75,7 @@
         <div class="details-wrapper">
             <div class="vendor-logo col-lg-10">
                 <%= image_tag 'powered-by-' + result[:origin] + '.jpg', class: "powered-by-icon", title: "This result was loaded using " + result[:origin].upcase + " API" %>
-                <a href="#" class="detail-fav-switch list-fav-switch"><%= fa_icon("star-o") %></a>
+                <a href="#" class="detail-fav-switch list-fav-switch <%= result[:favorite] ? 'exists' : '' %>"><%= fa_icon( result[:favorite] ? 'star' : 'star-o' ) %></a>
             </div>
             <div class="dots col-lg-2">
 

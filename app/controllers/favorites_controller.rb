@@ -1,74 +1,38 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: [:show, :edit, :update, :destroy]
 
-  # GET /favorites
-  # GET /favorites.json
-  def index
-    @favorites = Favorite.all
-  end
-
-  # GET /favorites/1
-  # GET /favorites/1.json
-  def show
-  end
-
-  # GET /favorites/new
-  def new
-    @favorite = Favorite.new
-  end
-
-  # GET /favorites/1/edit
-  def edit
-  end
-
-  # POST /favorites
-  # POST /favorites.json
   def create
-    @favorite = Favorite.new(favorite_params)
-
-    respond_to do |format|
-      if @favorite.save
-        format.html { redirect_to @favorite, notice: 'Favorite was successfully created.' }
-        format.json { render :show, status: :created, location: @favorite }
-      else
-        format.html { render :new }
-        format.json { render json: @favorite.errors, status: :unprocessable_entity }
+      if request.xhr?
+          if params.has_key?('origin') && params.has_key?('id') && params.has_key?('yield')
+              if @user && @user.id != nil
+                  if ! Favorite.find_by(user_id: @user.id, venue_origin: params['origin'], venue_id: params['id'])
+                      favorite = Favorite.new
+                      favorite.user_id = @user.id
+                      favorite.venue_id = params['id']
+                      favorite.venue_origin = params['origin']
+                      # FIXME: DANGEROUS construct ! ! ! ! ! ! ! !
+                      favorite.yield = params['yield']
+                      favorite.save
+                  end
+                  return render json: { status: 'OK', id: nil }
+              end
+          end
       end
-    end
+      render json: { status: 'ERROR', id: nil }, :status => 400
   end
 
-  # PATCH/PUT /favorites/1
-  # PATCH/PUT /favorites/1.json
-  def update
-    respond_to do |format|
-      if @favorite.update(favorite_params)
-        format.html { redirect_to @favorite, notice: 'Favorite was successfully updated.' }
-        format.json { render :show, status: :ok, location: @favorite }
-      else
-        format.html { render :edit }
-        format.json { render json: @favorite.errors, status: :unprocessable_entity }
+  def delete
+      if request.xhr?
+          if params.has_key?('origin') && params.has_key?('id')
+              if @user && @user.id != nil
+                  favorite = Favorite.find_by(user_id: @user.id, venue_origin: params['origin'], venue_id: params['id'])
+                  if favorite
+                      favorite.delete
+                  end
+                  return render json: { status: 'OK', id: nil }
+              end
+          end
       end
-    end
+      render json: { status: 'ERROR', id: nil }, :status => 400
   end
 
-  # DELETE /favorites/1
-  # DELETE /favorites/1.json
-  def destroy
-    @favorite.destroy
-    respond_to do |format|
-      format.html { redirect_to favorites_url, notice: 'Favorite was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_favorite
-      @favorite = Favorite.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def favorite_params
-      params.require(:favorite).permit(:venue_origin, :venue_id, :user_id, :yield)
-    end
 end

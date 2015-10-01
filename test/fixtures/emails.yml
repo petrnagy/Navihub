@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipient: MyString
+  sender: MyString
+  subject: MyText
+  content: MyText
+  type: 
+  tries: 1
+  sent: 2015-10-01 09:55:39
+  hash: MyString
+
+two:
+  recipient: MyString
+  sender: MyString
+  subject: MyText
+  content: MyText
+  type: 
+  tries: 1
+  sent: 2015-10-01 09:55:39
+  hash: MyString

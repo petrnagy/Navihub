@@ -88,7 +88,8 @@ background-color: rgb(246,246,246);
 .details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-google-plus { color: rgb(203,40,38); }
 
 .detail-fav-switch { float: right; color: gray; font-size: 23px; margin-top: 4px; }
-.detail-fav-switch i.fa.fa-star-o:hover { color: #AFAF16; }
+.detail-fav-switch i.fa.fa-star-o:hover { color: #D2D21E; }
+.detail-fav-switch.exists { color: #D2D21E; }
 
 .powered-by-icon { max-height: 35px; max-width: 250px; position: absolute; bottom: 0; left: 0; }
 /* ~~~~~~~ */
@@ -141,4 +142,9 @@ background-color: rgb(246,246,246);
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
-.permalink-form textarea { width: 100%; height: 50px; margin: 0px; }
+.permalink-form textarea { width: 100%; height: 50px; margin: 10px; }
+.send-via-email-form input[type=text] { width: 100%; margin: 0px; }
+.send-via-email-form input[type=submit] { margin-top: 12px; line-height: 14px; }
+.send-via-email-msg { height: 20px; }
+.send-via-email-msg.err { color: red; }
+.send-via-email-msg.ok { color: green; }

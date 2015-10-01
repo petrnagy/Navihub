@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929164008) do
+ActiveRecord::Schema.define(version: 20151001095539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,19 @@ ActiveRecord::Schema.define(version: 20150929164008) do
   add_index "credentials", ["active"], name: "index_credentials_on_active", using: :btree
   add_index "credentials", ["email"], name: "index_credentials_on_email", unique: true, using: :btree
   add_index "credentials", ["user_id"], name: "index_credentials_on_user_id", using: :btree
+
+  create_table "emails", force: true do |t|
+    t.string   "recipient"
+    t.string   "sender"
+    t.text     "subject"
+    t.text     "content"
+    t.string   "type"
+    t.integer  "tries"
+    t.datetime "sent"
+    t.string   "hash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "facebook_sessions", force: true do |t|
     t.integer  "user_id"

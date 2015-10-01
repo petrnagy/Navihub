@@ -13,7 +13,7 @@ class PermalinksController < ApplicationController
 
                 data = detail.loadDetail params['origin'], params['id']
 
-                if data
+                if data && @user.id != nil
                     data_yield = YAML::dump data
                     key = Digest::MD5.hexdigest(data_yield)
                     if ! Permalink.find_by(permalink_id: key)
@@ -29,7 +29,7 @@ class PermalinksController < ApplicationController
                 end
             end
         end
-        render json: { status: 'ERROR', id: nil }, :status => 500
+        render json: { status: 'ERROR', id: nil }, :status => 400
     end
 
 end
