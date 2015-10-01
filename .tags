@@ -14632,3 +14632,19 @@ _processDetailError	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/
 SearchResult._processDetailError	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/assets/javascripts/SearchResult.js	/^    }, \/\/ end method$/;"	method	line:309
 generateContactPopup	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/assets/javascripts/SearchResult.js	/^    generateContactPopup: function(data) {$/;"	function	line:317
 SearchResult.generateContactPopup	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/assets/javascripts/SearchResult.js	/^    },$/;"	method	line:315
+Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
+Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
+Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
+Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
+Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
+Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
+Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
+Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
+Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
+Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
+Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
+Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
+Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
+Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
+Navihub	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^module Navihub$/;"	module	line:9
+Application	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10	class:Navihub
