@@ -32,8 +32,8 @@ section#yield { margin-top: 45px; }
 #main-logo div span { padding-top: 10px; }
 #top-location { color: gray; text-transform: none; margin-top: 18px; margin-right: 0px; line-height: 14px; width: 350px; }
 #top-location .top-location-top .actual { text-overflow: ellipsis; white-space: nowrap; width: 300px; display: inline-block; overflow: hidden; }
-#colorbox:focus {outline:none !important;}
-#cboxWrapper:focus {outline:none !important;}
+#colorbox:focus, #colorbox:focus * {outline:none !important;}
+#cboxWrapper:focus, #cboxWrapper:focus * {outline:none !important;}
 #cboxClose { position: absolute; top: 0; }
 #cboxLoadedContent { overflow: hidden !important; height: 100% !important; }
 .message-title { font-size: 20px; font-weight: bold; margin-bottom: 34px; }

@@ -6,8 +6,6 @@ Messenger.prototype = {
 
     message: function(title, txt) {
       var that = this;
-      console.log(title);
-      console.log(txt);
       $.colorbox({
           html: '<p class="message-title text-center">' + title.toString() + '</p><p class="message-txt text-center">' + txt.toString() + '</p>',
           width: '400px',

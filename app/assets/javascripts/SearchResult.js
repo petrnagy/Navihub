@@ -265,7 +265,7 @@ SearchResult.prototype = {
         var that = this;
         $(document).delegate('.send-via-email-form', 'submit', function(e){
             e.preventDefault();
-            var $form = $(this).parent();
+            var $form = $(this);
             var $msgwrap = $form.find('.send-via-email-msg');
             var $inputs = $form.find('input');
             var val = $form.find('input[type=text]').val();
@@ -275,6 +275,7 @@ SearchResult.prototype = {
                 that.di.spinner.show();
                 $.ajax({
                     url: '/sharer/email',
+                    method: 'post',
                     data: { email: val, origin: $form.attr('data-origin').toString(), id: $form.attr('data-id').toString() },
                     success: function(data) {
                         $msgwrap.removeClass('err').addClass('ok').text('Success! You can check filled e-mail address inbox.');

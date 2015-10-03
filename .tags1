@@ -4,9 +4,3 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-PermalinksController	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^class PermalinksController < ApplicationController$/;"	class	line:1
-DataNotLoaded	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class DataNotLoaded < StandardError$/;"	class	line:3	class:PermalinksController
-EmptyUserId	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class EmptyUserId < StandardError$/;"	class	line:5	class:PermalinksController
-NotXhrRequest	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    class NotXhrRequest < StandardError$/;"	class	line:7	class:PermalinksController
-create	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create$/;"	method	line:12	class:PermalinksController
-create_params	/Users/petr-nagy/Documents/Projekty [svazek]/e) Navihub/app/controllers/permalinks_controller.rb	/^    def create_params$/;"	method	line:44	class:PermalinksController

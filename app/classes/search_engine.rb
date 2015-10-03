@@ -1,33 +1,33 @@
 class SearchEngine
-  
+
   require 'net/http'
   require 'net/https'
   require 'uri'
-  
+
   public
-  
+
   attr_reader :google_api_key # do not touch
-  
+
   class MethodNotOverridden < StandardError
   end
-  
+
   def initialize params, location
     @params = params
     @location = location
     init_keys
   end
-  
+
   def search
     raise MethodNotOverridden
   end
-  
+
   protected
-  
+
   def get url
     https = HttpsRequest.new url
     https.get
   end
-  
+
   def parse response
     if response.instance_of?(Net::HTTPOK)
       JSON.parse response.body
@@ -35,7 +35,7 @@ class SearchEngine
       nil
     end
   end
-  
+
   def map data
     venues = []
     if data['results'].length > 0
@@ -48,14 +48,14 @@ class SearchEngine
   rescue
     []
   end
-  
+
   def map_venue venue
     return {
       :origin => @me,
       :data => venue
     }
   end
-  
+
   def init_keys
     # TODO: presunout do pole
     @google_api_key = Rails.configuration.google_api_key
@@ -69,5 +69,5 @@ class SearchEngine
     @foursquare_client_id = Rails.configuration.foursquare_client_id
     @foursquare_client_secret = Rails.configuration.foursquare_client_secret
   end
-  
+
 end
