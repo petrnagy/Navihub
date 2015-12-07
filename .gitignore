@@ -18,7 +18,6 @@
 
 # Ignore trash-files
 .idea
-/ecp_core/__ECP_1.3.2_FINAL/*
 *.bak
 *.tmp
 *.swp
