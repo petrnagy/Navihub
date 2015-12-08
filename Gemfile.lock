@@ -64,6 +64,8 @@ GEM
     pg (0.18.4-x86-mingw32)
     polyglot (0.3.5)
     rack (1.5.5)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.4)
@@ -111,6 +113,9 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.5.3)
       coffee-rails
+    turnout (2.2.0)
+      rack (~> 1.3)
+      rack-accept (~> 0.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     tzinfo-data (1.2015.7)
@@ -138,5 +143,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   text
   turbolinks
+  turnout
   tzinfo-data
   uglifier (>= 1.3.0)
