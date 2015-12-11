@@ -68,7 +68,7 @@ SearchResult.prototype = {
             } else {
                 url += data.address;
             } // end if
-            url += '&key=' + that.di.google_api_key_pub;
+            url += '&key=' + that.di.config.googleApiPublicKey;
             $.colorbox({
                 html: '<iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="' + url + '" allowfullscreen></iframe>',
                 width: '95%',
@@ -170,7 +170,7 @@ SearchResult.prototype = {
             } else {
                 return that._processDetailError("NULL by that.di.locator.getLocation()");
             } // end if
-            url += '&key=' + that.di.google_api_key_pub;
+            url += '&key=' + that.di.config.googleApiPublicKey;
             $.colorbox({
                 html: '<iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="' + url + '" allowfullscreen></iframe>',
                 width: '95%',

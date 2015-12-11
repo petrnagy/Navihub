@@ -125,7 +125,7 @@ Detail.prototype = {
     },
     _initDetailMap: function(data, defer) {
         var that = this;
-        new GoogleMap(that.di, {latitude: data.geometry.lat, longitude: data.geometry.lng}, that._$detail.find('.map-canvas').attr('id'),
+        new VenueDetailGoogleMap(that.di, {latitude: data.geometry.lat, longitude: data.geometry.lng}, that._$detail.find('.map-canvas').attr('id'),
         14,
         function() {
             defer.resolve();

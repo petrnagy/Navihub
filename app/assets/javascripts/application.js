@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.cookie
+//= require isInViewport.js
 //= require turbolinks
 //= require colorbox-rails
 //= require_tree .
@@ -30,35 +31,37 @@ ready = function(pageLoad) {
     DI = {
         pageLoad: pageLoad,
         documentReady: ! pageLoad,
-        controller: controller,
-        action: action,
+        controller: serverData.controller,
+        action: serverData.action,
         mixin: Mixin,
         spinner: Spinner,
         browser: Browser,
         turbolinksStorage: new TurbolinksStorage()
     };
 
-    controller = action = null;
-
+    DI.scriptLoader = new ScriptLoader(DI);
     DI.locator = new Locator(DI);
     DI.messenger = new Messenger(DI);
 
-    if ( DI.documentReady ) {
+    if ( serverData.loc.lock ) {
+        DI.locator.lock();
+    } // end if
+
+    serverData = null;
+
+    if ( DI.documentReady && ! DI.locator.isLocked() ) {
         DI.locator.locate();
     } // end if
 
-    DI.relocate = function(di, el){
-        $("#top-location .top-location-top .actual").html('loading...');
-        di.locator.reset();
-        //di.locator.setSaveCallback(function(){ $(".top-location-autodetect").fadeIn('slow'); });
-        di.locator.locate(true);
-    }; // end func
+    DI.config = {};
+    DI.config.googleApiPublicKey = 'AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI';
+    DI.config.googleMapsLibraryUrl = 'https://maps.googleapis.com/maps/api/js?v=3&libraries=places&callback=';
+    DI.config.mockLocation = { lat: 50.0865876, lng: 14.4159757, origin: 'browser', city: null,
+    city2: null, country: null, country_short: null, street1: null, street2: null };
 
+    // Run the app
     DI.kickstart = 'kickstart_' + DI.controller;
     typeof window[DI.kickstart] === 'function' ? window[DI.kickstart](DI) : null;
-
-    DI.google_api_key_pub = 'AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI';
-
 };
 
 $(document).ready(function(){ ready(false); });

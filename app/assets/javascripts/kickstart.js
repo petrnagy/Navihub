@@ -16,30 +16,23 @@ function kickstart_search(di) {
         di.search = new Search(21, di); // 21 results per page
         di.btn = new NextButton(di);
         di.searchResult = new SearchResult(di);
+        di.lazyLoader = new SearchResultsLazyLoader(di);
+        di.lazyLoader.lazyLoadSearchResultsImages();
         /*
         $(document).delegate('.btn-detail', 'click', function(e) {
-            // TODO: rozeznavat, zda je open/closed
-            e.preventDefault();
-            DetailFactory.activate($(this), di);
-            return false;
-        });
-        */
-    } // end if
+        // TODO: rozeznavat, zda je open/closed
+        e.preventDefault();
+        DetailFactory.activate($(this), di);
+        return false;
+    });
+    */
+} // end if
 } // end func
 
 function kickstart_settings(di) {
     if ($("form#settings-location").length) {
-        var interval = setInterval(function(){
-            // TODO: nějaký interval, kdyby to nic nenačetlo (implicitní lokace, hodíme prahu s velkým zoomem...)
-            var location = di.locator.getLocation();
-            if (location !== null) {
-                clearInterval(interval);
-                if (!di.locationSettingsMap) {
-                    di.locationSettingsMap = new LocationSettingsMap(di, location);
-                } // end if
-                di.locationSettingsMap.init();
-            } // end if
-        }, 100);
-
+        // FIXME: pokud existuje lokace, tak nastavit !!!
+        di.locationSettingsMap = new LocationSettingsMap(di, di.config.mockLocation);
+        di.locationSettingsMap.init();
     } // end if
 } // end func

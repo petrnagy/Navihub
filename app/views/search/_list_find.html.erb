@@ -2,7 +2,11 @@
 <div class="col-lg-12">
     <div class="col-lg-6">
         <h2>Search results for '<%= @data[:data][:input_params][:term] %>'</h2>
-        <p>Showing first <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> from approximately <b><%= @data[:data][:total_cnt] %></b> results. Search completed in <%= @data[:data][:total_time] %> s.</p>
+        <% if @data[:data][:total_cnt] > @data[:data][:params][:step] %>
+          <p>Showing first <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> from <%= (@data[:data][:total_cnt] > @data[:data][:params][:step] ? 'approximately' : '') %> <b><%= @data[:data][:total_cnt] %></b> results. Search completed in <%= @data[:data][:total_time] %> s.</p>
+        <% else %>
+          <p>Showing <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> results. Search completed in <%= @data[:data][:total_time] %> s.</p>
+        <% end %>
     </div>
 </div>
 <% end %>
@@ -16,7 +20,7 @@
         </h3>
         <div class="map-wrapper">
             <% if result[:map] %>
-            <%= image_tag result[:map] %>
+            <%= image_tag 'result-unknown-loc.png', size: '340x100', alt: result[:name], lazysrc: result[:map] %>
             <% else %>
             <%= image_tag 'result-unknown-loc.png' %>
             <% end %>

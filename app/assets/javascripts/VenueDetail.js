@@ -19,7 +19,7 @@ VenueDetail.prototype = {
             var location = that.di.locator.getLocation();
             if (location && typeof location.lat !== 'undefined' && typeof location.lng !== 'undefined') {
                 clearInterval(interval);
-                new GoogleMap(that.di, {latitude: location.lat, longitude: location.lng}, 'map_canvas', 14, function() {
+                new VenueDetailGoogleMap(that.di, {latitude: location.lat, longitude: location.lng}, 'map_canvas', 14, function() {
                     if (that.di.detailGoogleMap && that._data) {
                         that.di.detailGoogleMap.addRoute(
                                 {latitude: location.lat, longitude: location.lng},

@@ -4,7 +4,7 @@ class GoogleMap
     o = 'http://maps.googleapis.com/maps/api/staticmap'
     o += '?center=' + lat.to_s + ',' + lng.to_s
     o += '&zoom=15'
-    o += '&size=340x100'
+    o += '&size=340x100&scale=2'
     o += '&sensor=false'
     o += '&key=' + key
     o += '&markers=size:small|color:green|' + lat.to_s + ',' + lng.to_s
@@ -15,7 +15,7 @@ class GoogleMap
     o = 'http://maps.googleapis.com/maps/api/staticmap'
     o += '?center=' + URI.escape(addr)
     o += '&zoom=15'
-    o += '&size=340x100'
+    o += '&size=340x100&scale=2'
     o += '&sensor=false'
     o += '&key=' + key
     o += '&markers=size:small|color:green|' + URI.escape(addr)

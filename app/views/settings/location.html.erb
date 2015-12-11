@@ -2,25 +2,14 @@
 <p>
 <form class="form-horizontal" id="settings-location">
   <fieldset>
-    <input id="settings-location-autocomplete" class="form-control" type="text" placeholder="Enter a location">
+    <input autofocus id="settings-location-autocomplete" class="form-control" type="text" placeholder="Enter a location">
     <div id="settings-location-canvas"></div>
   </fieldset>
   <fieldset>
     <div class="form-group">
-      <label for="inputEmail" class="col-lg-1 control-label">Address</label>
-      <div class="col-lg-5">
-        <input type="text" class="form-control" id="settings-location-address" readonly="readonly">
-      </div>
-      <label for="inputEmail" class="col-lg-1 control-label">Coordinates</label>
-      <div class="col-lg-5">
-        <input type="text" class="form-control" id="settings-location-coordinates" readonly="readonly">
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <div class="col-lg-2 col-lg-offset-10">
-        <button class="btn btn-default">Autodetect</button>
-        <button type="submit" class="btn btn-success">Save</button>
+      <div class="col-lg-2 col-lg-offset-10 pull-right">
+        <button class="btn btn-default autodetect-button">Autodetect</button>
+        <button type="submit" class="btn btn-success" id="settings-location-save">Save</button>
       </div>
     </div>
   </fieldset>

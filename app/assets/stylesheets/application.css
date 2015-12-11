@@ -39,3 +39,4 @@ section#yield { margin-top: 45px; }
 .message-title { font-size: 20px; font-weight: bold; margin-bottom: 34px; }
 .message-txt {  }
 p.contact-popup-content i { width: 30px; text-align: center; }
+#top-location .top-location-top .actual i { color: white; font-weight: bold; }

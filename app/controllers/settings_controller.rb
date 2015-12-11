@@ -13,14 +13,18 @@ class SettingsController < ApplicationController
     end
 
     def location
-        data = location_params
-        if data['go']
-            loc = set_location data
+        if request.xhr?
+            data = location_params
+            if data['go']
+                loc = set_location data
 
-            respond_to do |format|
-                msg = { :status => "ok", :message => "Success!", :html => pretty_loc(loc) }
-                format.json { render :json => msg }
+                respond_to do |format|
+                    msg = { :status => "ok", :message => "Success!", :html => pretty_loc(loc) }
+                    format.json { render :json => msg }
+                end
             end
+        else
+
         end
     end
 
@@ -39,20 +43,19 @@ class SettingsController < ApplicationController
         data = Hash.new
         data['go'] = true
 
-        interests = [ 'set', 'lat', 'lng', 'country', 'country_short', 'city', 'city2', 'street1', 'street2' ]
+        interests = [ 'set', 'lat', 'lng', 'country', 'country_short', 'city', 'city2', 'street1', 'street2', 'lock' ]
         interests.each do |param|
             params.require(param) unless params.has_key?(param) && params[param].is_a?(String)
-            data[param] = params[param]
+            data[param] = ( params[param].length > 0 ? params[param] : nil )
         end
         data['set'] = !! data['set']
         data['lat'] = data['lat'].to_f
         data['lng'] = data['lng'].to_f
+        data['lock'] = ( data['lock'] == '1' ? true : false )
         if ! Location.possible data['lat'], data['lng']
             raise 'Location not possible, debug: ' + data.to_s
         end
         data
-    #rescue
-    #    {'go' => false}
     end
 
     def set_location data
@@ -60,6 +63,7 @@ class SettingsController < ApplicationController
         user_id:        @user.id,
         latitude:       data['lat'],
         longitude:      data['lng'],
+        lock:           data['lock'],
         country:        data['country'],
         country_short:  data['country_short'],
         city:           data['city'],

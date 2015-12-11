@@ -52,8 +52,15 @@
   <body id="body" class="<%= @device_cls %> <%= @is_logged_in_cls %>">
     <!-- Inline scripts -->
     <script>
-      var controller = '<%= params[:controller] %>';
-      var action = '<%= params[:action] %>';
+      serverData = {
+        controller: '<%= params[:controller] %>',
+        action: '<%= params[:action] %>',
+        loc: {
+          lat: <%= @location == nil ? 'null' : @location.latitude %>,
+          lng: <%= @location == nil ? 'null' : @location.longitude %>,
+          lock: <%= @location == nil ? 'null' : ( @location.lock == true ? 'true' : 'false' ) %>
+        }
+      }
     </script>
     <!-- noscript #2 -->
     <noscript>
@@ -106,7 +113,7 @@
                     <span class="top-location-bottom">
                       Not here?
                       <%= link_to 'change location', controller: "settings", action: 'location' %> |
-                      <a class="top-location-autodetect" href="#" onclick="if(confirm('Autodetect location?')) { DI.relocate(DI, this); }">autodetect</a>
+                      <a class="top-location-autodetect autodetect-button" href="#">autodetect</a>
                     </span>
                 </div>
             </li>

@@ -61,6 +61,9 @@ class SearchController < ApplicationController
         params['step'] = 21
         params['engines'] = Search.allowed_engines
         params['append'] = params.has_key?('append') ? params['append'].to_i : 0
+        params['order'] = params.has_key?('order') ? params['order'] : 'distance-asc'
+        params['offset'] = params.has_key?('offset') ? params['offset'] : '0'
+        params['radius'] = params.has_key?('radius') ? params['radius'] : '0'
 
         %W{term order offset radius}.each do |key|
             params.require(key)

@@ -7,27 +7,24 @@
  * @param {Object} center { latidude: float, longitude: float }
  * @param {String} canvas
  * @param {Number} zoom
- * @returns {GoogleMap}
+ * @returns {VenueDetailGoogleMap}
  */
-var GoogleMap = function(di, center, canvas, zoom, callback, googleMapApiSrc) {
+var VenueDetailGoogleMap = function(di, center, canvas, zoom, callback) {
     this.di = di;
     this.center = center;
     this.canvas = canvas;
     this.zoom = zoom;
     this.callback = callback || function(){};
     this.map = null;
-    this._loadedScripts = [];
-    this.storageKey = 'loaded_google_maps';
 
     this._$wrapper = $("#" + this.canvas);
-    this._googleMapApiSrc = googleMapApiSrc || 'https://maps.googleapis.com/maps/api/js?v=3&callback=DI.detailGoogleMap.initGoogleMap';
 
     if (this._$wrapper.length) {
         this._init();
     } // end if
 }; // end func
 
-GoogleMap.prototype = {
+VenueDetailGoogleMap.prototype = {
 
     /**
      * @return {void}
@@ -36,9 +33,11 @@ GoogleMap.prototype = {
     _init: function() {
         var that = this;
         that.di.detailGoogleMap = that;
-        if (!GoogleMap.googleApiLoaded) {
-            that.loadScripts(function() {
-                GoogleMap.googleApiLoaded = true;
+        if (!VenueDetailGoogleMap.googleApiLoaded) {
+            var apiUrl = that.di.config.googleMapsLibraryUrl;
+            var apiCallback = 'DI.detailGoogleMap.initGoogleMap';
+            that.di.scriptLoader.load(apiUrl, apiCallback, function() {
+                VenueDetailGoogleMap.googleApiLoaded = true;
             });
         } else {
             that.initGoogleMap();
@@ -64,7 +63,8 @@ GoogleMap.prototype = {
           DI.detailGoogleMap.map = new google.maps.Map(mapCanvas, mapOptions);
           DI.detailGoogleMap.callback();
         } else {
-          // GoogleMap.js loaded from external script
+            console.log("VenueDetailGoogleMap.js loaded from external script");
+          // VenueDetailGoogleMap.js loaded from external script
         } // end if
         //});
     }, // end method
@@ -89,34 +89,5 @@ GoogleMap.prototype = {
         });
         //
     },
-    /**
-     * @param {function} callback
-     * @returns {void}
-     * @access public
-     * @author PN @since 2014-10-07
-     */
-    loadScripts: function(callback, di) {
-        var that = this;
-
-        if ( ! di && ! that.di ) {
-            throw new Error("This method needs DI container instance");
-        } // end if
-
-        that.di = di || that.di;
-
-        callback = (typeof callback === 'function' ? callback : function() {});
-        var storageKey = that.storageKey;
-        var loadedScripts = that.di.turbolinksStorage.get(storageKey);
-        loadedScripts = ( null === loadedScripts ? [] : loadedScripts );
-
-        if ( loadedScripts.indexOf(that._googleMapApiSrc) >= 0 ) {
-            callback();
-        } else {
-            loadedScripts.push(that._googleMapApiSrc);
-            that.di.turbolinksStorage.set(storageKey, loadedScripts);
-            $.getScript(that._googleMapApiSrc, callback);
-        } // end if
-    }, // end method
-
 
 }; // end prototype
