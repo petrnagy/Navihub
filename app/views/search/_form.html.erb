@@ -5,7 +5,7 @@
         <input class="form-control" type="text" placeholder="Find anything around you..." value="<%= @tpl_vars[:input_params]['term'] %>" name="search[term]" autofocus>
       </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-2 radius-wrapper">
       <div class="form-group">
         <select class="form-control" name="search[radius]">
           <% [
@@ -20,7 +20,7 @@
         </select>
       </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-2 sort-wrapper">
       <div class="form-group">
         <select class="form-control" name="search[sort]">
           <%[
@@ -33,8 +33,8 @@
         </select>
       </div>
     </div>
-    <div class="3">
-      <button type="submit" class="btn btn-success">Search</button>
+    <div class="search-btn-wrapper">
+      <button type="submit" class="btn btn-success search-btn">Search</button>
     </div>
     <input type="hidden" name="search[offset]" value="0">
   </form>

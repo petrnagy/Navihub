@@ -4,7 +4,7 @@
 var Locator = function(di) {
     this.di = di;
     this._locked = false;
-    this._key = '<i class="fa fa-key" title="Address is locked. To unlock it, click on \'autodetect\'"></i>&nbsp;';
+    this._key = '<i class="fa fa-key" title="Address is locked. Click \'autodetect\' to unlock it."></i>&nbsp;';
     this._data = {browser: null, web: null};
     this._envelope = {
         lat: null, lng: null, country: null, country_short: null,
@@ -49,6 +49,8 @@ Locator.prototype = {
     }, // end method
 
     /**
+    * Manually sets location
+    *
     * @param  {Object} location
     * @return {Boolean}
     * @access public

@@ -13,10 +13,18 @@
 *= require bootswatch.min.css
 *= require font-awesome
 *= require colorbox-rails
+*= require homepage
+*= require media-w1200
+*= require media-w992
+*= require media-w700-768
+*= require media-w640
+*= require media-w568
 *= require_tree .
 *= require_self
 */
 
+#burger-menu, #marker-menu { display: none; }
+#burger-menu a i, #marker-menu a i { text-shadow: black 0px 0px 2px; }
 section#yield { margin-top: 45px; }
 .social-likes { font-weight: normal; font-size: 75%; }
 .social-likes .social-likes__widget { border-radius: .25em; }
@@ -31,7 +39,7 @@ section#yield { margin-top: 45px; }
 /* TODO: padding-top nefunguje ! */
 #main-logo div span { padding-top: 10px; }
 #top-location { color: gray; text-transform: none; margin-top: 18px; margin-right: 0px; line-height: 14px; width: 350px; }
-#top-location .top-location-top .actual { text-overflow: ellipsis; white-space: nowrap; width: 300px; display: inline-block; overflow: hidden; }
+/* #top-location .top-location-top .actual { text-overflow: ellipsis; white-space: nowrap; width: 300px; display: inline-block; overflow: hidden; } */
 #colorbox:focus, #colorbox:focus * {outline:none !important;}
 #cboxWrapper:focus, #cboxWrapper:focus * {outline:none !important;}
 #cboxClose { position: absolute; top: 0; }
@@ -39,4 +47,4 @@ section#yield { margin-top: 45px; }
 .message-title { font-size: 20px; font-weight: bold; margin-bottom: 34px; }
 .message-txt {  }
 p.contact-popup-content i { width: 30px; text-align: center; }
-#top-location .top-location-top .actual i { color: white; font-weight: bold; }
+#top-location .top-location-top .actual i { color: lightgray; font-weight: bold; }

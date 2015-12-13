@@ -39,6 +39,8 @@ ready = function(pageLoad) {
         turbolinksStorage: new TurbolinksStorage()
     };
 
+    DI.burger = new BurgerMenu(DI);
+    DI.marker = new MarkerMenu(DI);
     DI.scriptLoader = new ScriptLoader(DI);
     DI.locator = new Locator(DI);
     DI.messenger = new Messenger(DI);

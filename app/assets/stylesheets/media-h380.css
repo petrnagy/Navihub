@@ -1,0 +1,7 @@
+@media only screen and (max-height: 380px) {
+
+    #dd-myaccount .social-signin-txt { display: none; }
+    #dd-myaccount .social-btn { display: inline-block; width: 30px !important; margin-right: 30px; }
+    #dd-myaccount .social-btn i { border-right: none; position: absolute; left: 10px; }
+
+}

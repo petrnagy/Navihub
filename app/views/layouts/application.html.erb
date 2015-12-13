@@ -12,8 +12,28 @@
     <!-- Title -->
     <title>Navihub | Find stuff around you!</title>
     <!-- Favicon -->
-    <!-- TODO - More FAVICONS - http://www.favicomatic.com -->
-    <%= favicon_link_tag 'buildings-rc1-crop.png' %>
+    <%= favicon_link_tag 'logo/buildings_100x100.png' %>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/logo/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/logo/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/logo/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/logo/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/logo/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/logo/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/logo/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/logo/icons/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/assets/logo/icons/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/assets/logo/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/logo/icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/logo/icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/assets/logo/icons/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Navihub"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/assets/logo/icons/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/assets/logo/icons/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/assets/logo/icons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/assets/logo/icons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/assets/logo/icons/mstile-310x310.png" />
+
     <!-- Styles -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <!-- Font awsome cdn -->
@@ -73,20 +93,29 @@
     <!-- Navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-        <div class="navbar-header">
-          <a href="/" class="navbar-brand" id="main-logo"><%= image_tag('buildings-rc1.png', size: "50x50") %><div><span>Navihub </span><small>[beta]</small></div></a>
-
+        <div id="burger-menu">
+          <a href="#"><i class="fa fa-bars"></i></a>
         </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-
+        <div id="marker-menu">
+          <a href="#"><i class="fa fa-map-marker"></i></a>
+        </div>
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand" id="main-logo"><%= image_tag('buildings-rc1.png', size: "50x50") %><div id="appname"><span>Navihub </span><small id="appname-beta">[beta]</small></div></a>
+        </div>
+        <div class="" id="navbar-main">
           <ul class="nav navbar-nav" id="menu-top">
             <li data-template="index"><%= link_to 'Search', controller: "search" %></li>
-            <li data-template="index"><%= link_to 'About', controller: "about" %></li>
-            <li data-template="index"><%= link_to 'Feedback', controller: "feedback" %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+              <ul class="dropdown-menu" id="dd-more">
+                <li><%= link_to 'About', controller: "about" %></li>
+                <li><%= link_to 'Feedback', controller: "feedback" %></li>
+              </ul>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" id="menu-alt">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My account <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-my">My</span> <span id="myacc-acc">acc</span><span id="myacc-ount">ount</span> <b class="caret"></b></a>
               <ul class="dropdown-menu" id="dd-myaccount">
                 <li>
                   <%= link_to 'Create account', {controller: "settings", action: 'profile'}, class: 'create-account' %>
@@ -94,13 +123,13 @@
                 <li class="divider"></li>
                 <li>
                   <div class="social-btn">
-                    <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i>Sign in with Facebook</a>
+                    <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i><span class="social-signin-txt">Sign in with Facebook</span></a>
                   </div>
                   <div class="social-btn">
-                    <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i>Sign in with Twitter</a>
+                    <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i><span class="social-signin-txt">Sign in with Twitter</span></a>
                   </div>
                   <div class="social-btn">
-                    <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i>Sign in with Google</a>
+                    <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i><span class="social-signin-txt">Sign in with Google</span></a>
                   </div>
                 </li>
               </ul>
@@ -109,7 +138,7 @@
           <ul class="nav navbar-nav navbar-right" id="menu-loc">
             <li data-template="index">
                 <div id="top-location">
-                    <span class="top-location-top">Location: <span class="actual"><%= pretty_loc(@location) %></span></span><br />
+                    <span class="top-location-top"><span>Location:</span> <span class="actual"><%= pretty_loc(@location) %></span></span><br />
                     <span class="top-location-bottom">
                       Not here?
                       <%= link_to 'change location', controller: "settings", action: 'location' %> |
