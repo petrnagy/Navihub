@@ -105,8 +105,10 @@ Search.prototype = {
                 ascii = false;
             }
         });
+        var loc = that.di.locator.getLocation();
+        var ll = 'll=' + loc.lat.toString() + ',' + loc.lng.toString();
         if (ascii) {
-            return url;
+            return url + '?' + ll;
         } else {
             url = baseUrl;
             url += '/find';
@@ -117,7 +119,7 @@ Search.prototype = {
                     char = '&';
                 } // end if
             });
-            return url;
+            return url + '&' + ll;
         } // end if
     }, // end method
 

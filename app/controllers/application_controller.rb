@@ -108,6 +108,24 @@ class ApplicationController < ActionController::Base
 
   def init_location
     @location = Location.where(user_id: @user.id, active: true).order('id DESC').first
+    # if I open a link from anyone else, i might not have any location yet
+    # so we will try to set it from url params
+    if @location == nil && params.has_key?('ll')
+      ll = params['ll'].split(',')
+      lat = ll[0].to_f
+      lng = ll[1].to_f
+      if Location.possible lat, lng
+        loc = Location.create(
+        user_id:        @user.id,
+        latitude:       lat,
+        longitude:      lng,
+        lock:           false,
+        active:         true
+        )
+        loc.save
+        @location = loc
+      end
+    end
   end
 
   private

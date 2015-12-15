@@ -21,10 +21,10 @@
         <div class="map-wrapper">
             <% if result[:map] %>
             <a class="list-open-in-maps" href="#">
-            <%= image_tag 'result-unknown-loc.png', size: '340x100', alt: result[:name], lazysrc: result[:map] %>
+            <%= image_tag 'lazyload.png', size: '340x100', alt: result[:name], lazysrc: result[:map] %>
             </a>
             <% else %>
-            <%= image_tag 'result-unknown-loc.png' %>
+            <%= image_tag 'noimage.png' %>
             <% end %>
         </div>
         <div class="geometry-wrapper">

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :facebook_sessions
   has_many :twitter_sessions
   has_many :google_sessions
-  has_many :permalinks
+  has_many :favorites
 
   public
 

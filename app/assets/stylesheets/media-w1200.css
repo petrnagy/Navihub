@@ -18,6 +18,7 @@
     .result-box .col-lg-10 { width: 83.33333333%; float: left; }
     .result-box .col-lg-2 { width: 16.66666667%; float: left; }
     #search-results > .col-lg-12:nth-child(1) { display: inline-block; }
+    #search-input-wrapper { background-position-y: 18px; }
 
 }
 
