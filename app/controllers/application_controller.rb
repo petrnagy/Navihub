@@ -27,6 +27,15 @@ class ApplicationController < ActionController::Base
     @page_robots = Rails.env.production? ? 'index, follow' : 'noindex, nofollow'
     @device_cls = determine_device
     @is_logged_in_cls = determine_login_status
+    # FIXME: Move strings to config/application.rb (but its not loaded at this stage of the application inicialization !)
+    @page_name = Rails.configuration.app_name 
+    @page_title = Rails.configuration.app_title
+    @page_desc = Rails.configuration.app_description
+    @version = Rails.configuration.app_version
+    @build = Rails.configuration.app_build
+    request.protocol
+    request.port.blank?
+    @root_url = request.base_url
   end
 
   def determine_lang # @todo lang
@@ -108,8 +117,8 @@ class ApplicationController < ActionController::Base
 
   def init_location
     @location = Location.where(user_id: @user.id, active: true).order('id DESC').first
-    # if I open a link from anyone else, i might not have any location yet
-    # so we will try to set it from url params
+    # if I open a link from anyone else, i might not have any location assigned yet...
+    # ...so we will try to set it from url params
     if @location == nil && params.has_key?('ll')
       ll = params['ll'].split(',')
       lat = ll[0].to_f

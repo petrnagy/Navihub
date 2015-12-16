@@ -2,6 +2,7 @@
 function kickstart_homepage(di) {
     if ($("#search-input").length) {
         di.input = new Input(21, di);
+        di.hpSearchBox = new HomepageSearchBox(di);
     } // end if
 } // end func
 

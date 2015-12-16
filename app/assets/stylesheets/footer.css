@@ -1,0 +1,39 @@
+hr.footer { margin-top: 10px; margin-bottom: 10px; color: #585858; background-color: #585858; height: 1px; border: 0px; }
+footer { background-color: #333; margin-bottom: 0px; padding-bottom: 30px; color: lightgray; }
+
+footer .disclaimer { color: #c7c7c7; font-size: small; margin-top: 5px; }
+footer .gray { color: gray; }
+.footer-version { float: right; color: #4A4A4A !important; }
+
+footer .list-vertical li { width: 100%; margin-bottom: 3px; }
+footer .container { max-width: 900px; }
+.hire-me { color: gray; }
+.busy { color: darkred; }
+.available { color: green; }
+div.container.footer { padding-top: 30px; }
+.my-cv { color: gray; margin-top: 30px; font-size: 75%; }
+
+.footer-col .h4 { text-transform: uppercase; }
+.footer-col i.fa-facebook { color: rgb(43,65,133); }
+.footer-col i.fa-twitter { color: rgb(66,152,237); }
+.footer-col i.fa-google-plus { color: rgb(229,42,34); }
+.footer-col i.fa-linkedin { color: rgb(0,96,168); }
+.footer-col i.fa-deviantart { color: rgb(12,200,48); }
+
+.footer-col { float: left; display: inline-block; width: 33%; }
+
+@media screen and (max-width: 991px) {
+  .footer-col { float: left; display: inline-block; width: 33%; }
+}
+
+@media screen and (max-width: 640px) {
+  .footer-col { font-size: 90%; }
+}
+
+@media screen and (max-width: 500px) {
+    .footer-col { display: block; text-align: center; float: none; margin-left: auto; margin-right: auto; width: 100%; }
+    body.mobile .footer-col, body.mobile ul.list-unstyled { font-size: 120%; }
+    body.mobile .footer-col div.h4 { font-size: 200%; }
+    .footer-col div.h4.more-space { margin-top: 15px; }
+    .footer-col { float: left; }
+  }

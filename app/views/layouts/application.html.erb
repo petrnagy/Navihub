@@ -2,15 +2,16 @@
 <html lang="<%= @page_lang_cls %>">
   <head>
     <!-- Meta -->
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="robots" content="<%= @page_robots %>" />
     <meta name="description" content="Explore the world around you with your browser." />
     <meta name="keywords" content="navihub, explore, maps, geolocation" />
     <meta name="author" content="Petr Nagy" />
+    <meta name="google" content="notranslate" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0' />
     <%= csrf_meta_tags %>
     <!-- Title -->
-    <title>Navihub | Find stuff around you!</title>
+    <title><%= @page_title %> | <%= @page_name %></title>
     <!-- Favicon -->
     <%= favicon_link_tag 'logo/buildings_stroke_100x100.png' %>
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/logo/icons/stroke/apple-touch-icon-57x57.png" />
@@ -33,27 +34,25 @@
     <meta name="msapplication-square150x150logo" content="/assets/logo/icons/stroke/mstile-150x150.png" />
     <meta name="msapplication-wide310x150logo" content="/assets/logo/icons/stroke/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/assets/logo/icons/stroke/mstile-310x310.png" />
-
-
     <!-- Styles -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <!-- Font awsome cdn -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font awesome cdn -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
     <!-- Facebook & Linkedin Meta -->
-    <meta property="og:site_name" content="Navihub">
-    <meta property="og:title" content="Find stuff around you!">
-    <meta property="og:url" content="<%= root_path %>">
-    <meta property="og:description" content="Explore the world around you with your browser.">
-    <!-- TODO -->
-    <meta property="og:image" content="/assets/logo_square.png">
+    <meta property="og:site_name" content="<%= @page_name %>" />
+    <meta property="og:title" content="<%= @page_title %> | <%= @page_name %>" />
+    <meta property="og:url" content="<%= root_url %>" />
+    <meta property="og:description" content="<%= @page_desc %>" />
+    <meta property="og:image" content="/assets/logo/buildings_stroke_500x500.png" />
     <!-- Twitter Meta -->
-    <meta name="twitter:card" content="Navihub">
-    <meta name="twitter:url" content="<%= root_path %>">
-    <meta name="twitter:title" content="Find stuff around you!">
-    <meta name="twitter:description" content="Explore the world around you with your browser.">
-    <!-- TODO -->
-    <meta name="twitter:image" content="/assets/logo_square.png">
-
+    <meta name="twitter:card" content="<%= @page_name %>" />
+    <meta name="twitter:url" content="<%= root_url %>" />
+    <meta name="twitter:title" content="<%= @page_title %> | <%= @page_name %>" />
+    <meta name="twitter:description" content="<%= @page_desc %>" />
+    <meta name="twitter:image" content="/assets/logo/buildings_stroke_500x500.png" />
+    <!-- Site verification -->
+    <meta name="google-site-verification" content="TODO" />
+    <meta name="msvalidate.01" content="TODO" />
     <!-- noscript #1 -->
     <noscript>
     <style type="text/css">
@@ -86,7 +85,7 @@
     <!-- noscript #2 -->
     <noscript>
     <div>
-      <h1>Javascript</h1>
+      <p class="h1">Javascript</p>
       <p>We're sorry! This site requires JavaScript enabled to work properly.</p>
       <div class="form-group"><a target="blank" href="https://www.google.com/search?q=how+to+enable+javascript" class="btn btn-primary btn-lg">How to enable Javascript</a></div>
     </div>
@@ -159,49 +158,68 @@
     </div>
     <footer>
       <div class="container footer">
-        <hr class="footer">
+
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-12 col-lg-minimized">
 
             <ul class="list-unstyled">
               <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
-              <li>&#169; 2013 - <%= Time.now.year %></li>
+              <li>&#169; 2013 - <%= Date.today.strftime("%Y") %></li>
               <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
-              <li class="no-mobile no-smartphone">~</li>
-              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="http://www.tomatoid.com/">Tomatoid</a></li>
-              <li class="no-mobile no-smartphone">~</li>
-              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="http://about.me/petr.nagy">about.me</a></li>
-              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="https://twitter.com/petrnagy">tw</a></li>
-              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="http://www.linkedin.com/pub/petr-nagy/60/176/781">ln</a></li>
-              <li class="no-mobile no-smartphone"><a href="https://plus.google.com/108570974371249066128?rel=author">g+</a></li>
-              <li class="no-mobile no-smartphone"><a target="blank" rel="nofollow" href="https://www.facebook.com/petr.nagy">fb</a></li>
-              <li class="no-mobile no-smartphone no-tablet"><a target="blank" rel="nofollow" href="http://knedlajz.deviantart.com/gallery/">da</a></li>
             </ul>
-            <p class="no-mobile no-smartphone small">Starring:&nbsp;&nbsp;&nbsp;
-              <a target="_blank" rel="nofollow" href="https://www.ruby-lang.org/en/">#ruby</a> ~
-              <a target="_blank" rel="nofollow" href="http://rubyonrails.org/">#rails</a> ~
-              <a target="_blank" rel="nofollow" href="http://www.postgresql.org/">#postgresql</a> ~
-              <a target="_blank" rel="nofollow" href="http://en.wikipedia.org/wiki/JavaScript">#js</a> ~
-              <a target="_blank" rel="nofollow" href="http://coffeescript.org/">#coffeescript</a> ~
-              <a target="_blank" rel="nofollow" href="http://jquery.com">#jquery</a> ~
-              <a target="_blank" rel="nofollow" href="http://getbootstrap.com">#bootstrap</a> ~
-              <a target="_blank" rel="nofollow" href="http://bootswatch.com">#bootswatch</a> ~
-              <a target="_blank" rel="nofollow" href="http://git-scm.com">#git</a>
-            </p>
-            <p class="no-mobile no-smartphone small">Resources:&nbsp;&nbsp;&nbsp;
-              <a target="_blank" rel="nofollow" href="https://github.com/tobiasahlin/SpinKit">spinkit</a> ~
-              <a target="_blank" rel="nofollow" href="http://theromancee.deviantart.com/art/Coffee-Cup-PSD-editable-381319610">coffee</a> ~
-              <a target="_blank" rel="nofollow" href="http://wegraphics.deviantart.com/art/Apple-products-PSD-templates-177631984">macbook</a> ~
-              <a target="_blank" rel="nofollow" href="http://www.elegantthemes.com/blog/resources/free-social-media-icon-set">icons</a>
-            </p>
-            <p class="text-center disclaimer">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus <br>
-              feugiat lorem diam, sed euismod dolor faucibus eu. Donec varius <br>
-              diam at elit ultricies aliquam.
-            </p>
           </div>
         </div>
-
+        <hr class="footer">
+        <div class="row">
+            <div class="col-lg-4 footer-col">
+                <div class="h4">My links</div>
+                <ul class="list-unstyled list-vertical">
+                  <li class=""><a href="http://www.petrnagy.cz">Petr Nagy</a></li>
+                  <li class=""><a rel="nofollow" href="https://www.facebook.com/petr.nagy">Facebook</a> <i class="fa fa-facebook"></i></li>
+                  <li class=""><a rel="nofollow" href="https://twitter.com/petrnagy">Twitter</a> <i class="fa fa-twitter"></i></li>
+                  <li class=""><a rel="nofollow" href="https://plus.google.com/+PetrNagyCz">Google+</a> <i class="fa fa-google-plus"></i></li>
+                  <li class=""><a rel="nofollow" href="http://cz.linkedin.com/in/petrnagy">LinkedIn</a> <i class="fa fa-linkedin"></i></li>
+                  <li class=""><a rel="nofollow" href="http://petr-nagy.deviantart.com/">DeviantArt</a> <i class="fa fa-deviantart"></i></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 footer-col">
+                <div class="more-space h4">My projects</div>
+                <ul class="list-unstyled list-vertical">
+                  <li class=""><a href="http://www.navihub.net/">Navihub</a> <small class="gray">&#8592; you are here</small></li>
+                  <li class=""><a href="http://www.tomatoid.com/">Tomatoid</a></li>
+                  <li class=""><a href="http://www.petrnagy.cz/#projects">Daily menu</a></li>
+                  <li class=""><a href="http://www.petrnagy.cz/#projects">EventCal</a></li>
+                  <li class=""><a href="http://www.petrnagy.cz/#projects">Shitlib</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 footer-col">
+                <div class="more-space h4">Hire me</div>
+                <p class='hire-me'>I am currently <span class='busy'>busy</span>.<br />
+                  For more details,<br />
+                  please <a href='http://www.petrnagy.cz/#contact'>contact me</a>. <br />
+                </p>
+                <p class='my-cv'>My CV: <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_en.pdf'>English</a> | <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_cz.pdf'>Czech</a></p>
+            </div>
+        </div>
+        <hr class="footer">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="text-center disclaimer gray">
+                  There will be. <br>
+                  Some very very clever. <br>
+                  Disclaimer!
+                </p>
+                <p class="text-center small footer-images gray">Images:&nbsp;&nbsp;&nbsp;
+                  <a target="_blank" rel="nofollow" href="http://www.morguefile.com/creative/mconnors">tomato</a> ~
+                  <a target="_blank" rel="nofollow" href="http://theromancee.deviantart.com/art/Coffee-Cup-PSD-editable-381319610">coffee</a> ~
+                  <a target="_blank" rel="nofollow" href="http://wegraphics.deviantart.com/art/Apple-products-PSD-templates-177631984">macbook</a> ~
+                  <a target="_blank" rel="nofollow" href="http://www.elegantthemes.com/blog/resources/free-social-media-icon-set">icons</a>
+                </p>
+                <p>
+                    <small class="gray footer-version">Version <%= @version %> (build <%= @build %>)</small>
+                </p>
+            </div>
+        </div>
       </div>
     </footer>
     <!-- Spinner -->
