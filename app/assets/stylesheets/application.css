@@ -49,3 +49,4 @@ section#yield { margin-top: 45px; }
 p.contact-popup-content i { width: 30px; text-align: center; }
 #top-location .top-location-top .actual i { color: lightgray; font-weight: bold; }
 /*img.img-border-1px { border: 1px dotted lightgray; }*/
+img.img-border-1px { border-width: 1px; border-style: dotted; border-color: lightgray; }
