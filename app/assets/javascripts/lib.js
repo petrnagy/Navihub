@@ -27,3 +27,11 @@
      timer = setTimeout(callback, ms);
    };
  })();
+
+ /**
+ * @returns {String}
+ * @author PN @since 2013-09-29
+ */
+ function uniqueid() {
+     return new Date().getTime() + '-' + Math.floor( 1 + Math.random() * 100 );
+ } // end func

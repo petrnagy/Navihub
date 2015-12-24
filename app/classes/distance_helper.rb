@@ -1,5 +1,8 @@
 class DistanceHelper
 
+  class NotImplementedError < StandardError
+  end
+
   # meters to kilometers
   def self.m_to_km meters, separator = '.', rounding = 2
     (meters / 1000).round(rounding).to_s.gsub('.', separator)
@@ -40,8 +43,41 @@ class DistanceHelper
       return (minutes / 60).to_s + ':' + (minutes % 60).to_s + ( (minutes % 60).to_s.length == 1 ? '0' : '' ) + ' h'
     elsif minutes > 0
       return minutes.to_s + ' min' + (minutes == 1 ? '' : 's')
+    elsif minutes < 0
+      return '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
     else
       return '< 1 min'
+    end
+  end
+
+  def self.pretty_distance meters, unit_in, unit_out
+    # TODO: not implemented yet
+    unit_in = 'm'
+    unit_out = 'km'
+    meters = meters.to_f
+
+    if unit_in != 'm'
+      raise NotImplementedError
+    end
+    if unit_out != 'km'
+      raise NotImplementedError
+    end
+
+    return self.pretty_distance_m2km meters.to_i
+
+  end
+
+  private
+
+  def self.pretty_distance_m2km meters
+    if meters < 0
+      return '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
+    elsif 0 == meters
+      return '0 m'
+    elsif meters > 999
+      return (meters.to_f / 1000).round(1).to_s + ' km'
+    else
+      return meters + ' m'
     end
   end
 

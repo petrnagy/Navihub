@@ -5,7 +5,7 @@
     .search-btn-wrapper { float: right; margin-right: 15px; }
     .radius-wrapper, .sort-wrapper { width: 33%; }
     .result-box { margin-left: 10px !important; margin-right: 10px !important; }
-
+     /*#search-results > div:nth-child(1) { margin-top: 113px; } */
 }
 
 @media only screen and (max-width: 769px) {

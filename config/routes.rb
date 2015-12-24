@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'detail/:name/:id/:origin' => 'detail#index'
     get 'detail/:name/:origin' => 'detail#index'
 
-    get 'permalink/:permalink_id' => 'detail#permalink'
+    get 'permalink/:permalink_id' => 'permalinks#show'
     put 'setpermalink' => 'permalinks#create'
 
     get 'search' => 'search#index'
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     put 'favorites' => 'favorites#create'
     delete 'favorites' => 'favorites#delete'
-    get 'favorites' => 'search#favorites'
+    get 'favorites' => 'favorites#index'
 
     post 'feedback' => 'feedback#process_contact_form'
 

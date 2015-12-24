@@ -26,8 +26,8 @@ class FeedbackController < ApplicationController
 
     unless @errors.length > 0
       saved = save_contact_form(@data)
-      send_contact_form_infomail form, @data if saved
-      render 'contact-form-success'
+      render 'contact-form-success' if saved
+      render 'contact-form-internal-error' if not saved
     else
       render 'contact-form-error'
     end

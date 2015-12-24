@@ -50,7 +50,7 @@ class Search
     end
 
     def search
-        key = Digest::MD5.hexdigest([@params, @engines, @location].to_json)
+        key = Digest::MD5.hexdigest([@params, @engines, @location, @user.id].to_json)
         cached = ApiCache.get_from_cache key
         if cached != nil
             results = cached

@@ -91,9 +91,12 @@ SearchResult.prototype = {
             method: 'PUT',
             data: { origin: data.origin, id: data.id },
             success: function(data) {
+                var id = 'ta' + uniqueid();
                 var url = window.location.origin + '/permalink/' + data.id;
-                var txt = '<form class="permalink-form"><textarea onclick="select();">'+url+'</textarea></form><br><a target="_blank" href="'+url+'">Open in new window</a>';
-                that.di.messenger.message('Permalink created !', txt);
+                var txt = '<form class="permalink-form"><textarea id="'+id+'">'+url+'</textarea></form><br><a target="_blank" href="'+url+'">Open in new window</a>';
+                that.di.messenger.message('Permalink created !', txt, { onComplete: function(){
+                    $('#'+id).focus().select();
+                } });
             }, // end func
             error: function() {
                 that.di.messenger.message('Whoops :-(', 'Something went wrong and we could not create the permalink. Please try again later.');
@@ -121,27 +124,32 @@ SearchResult.prototype = {
                         $el.addClass('exists');
                         $el.find('i').removeClass('fa-star-o').addClass('fa-star');
                     }, // end func
-                    error: function(data) {}, // end func
+                    error: function(data) { that.di.messenger.error('Oh no !', 'There was an error and we could not add a new favorite item. Please try again later.'); }, // end func
                     complete: function(){
                         that._setCooldown($el);
                         that.di.spinner.hide();
                     }, // end func
                 }); // end ajax
             } else {
-                $.ajax({
-                    url: '/favorites',
-                    data: { origin: data.origin, id: data.id },
-                    method: 'DELETE',
-                    success: function(data) {
-                        $el.removeClass('exists');
-                        $el.find('i').removeClass('fa-star').addClass('fa-star-o');
-                    }, // end func
-                    error: function(data) {}, // end func
-                    complete: function(){
-                        that._setCooldown($el);
-                        that.di.spinner.hide();
-                    }, // end func
-                }); // end ajax
+                var cont = confirm("Remove favorite '"+data.name+"'?");
+                if ( true === cont ) {
+                    $.ajax({
+                        url: '/favorites',
+                        data: { origin: data.origin, id: data.id },
+                        method: 'DELETE',
+                        success: function(data) {
+                            $el.removeClass('exists');
+                            $el.find('i').removeClass('fa-star').addClass('fa-star-o');
+                        }, // end func
+                        error: function(data) { that.di.messenger.error('Oh no !', 'There was an error and we could not remove this favorite item. Please try again later.'); }, // end func
+                        complete: function(){
+                            that._setCooldown($el);
+                            that.di.spinner.hide();
+                        }, // end func
+                    }); // end ajax
+                } else {
+                    that.di.spinner.hide();
+                } // end if-else
             } // end if
         } // end if
     }, // end method
@@ -310,9 +318,8 @@ SearchResult.prototype = {
     }, // end method
 
     _processDetailError: function(e) {
-        // TODO: nejaky normalni handler
-        //console.log(e);
-        alert(e);
+        that.di.messenger.error('Whoops !', 'The application has encountered an unexpected error. If the problem persists, please contact us with the following details:<br /> ' + '<pre>' + e.message + '</pre>');
+        console && console.log(e);
     },
 
     generateContactPopup: function(data) {

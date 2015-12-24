@@ -55,19 +55,25 @@ Locator.prototype = {
     * @return {Boolean}
     * @access public
     */
-    set: function(location) {
+    set: function(location, shallow) {
         var that = this;
         // mask custom location as browser location, thus it will have top priority
         location.origin = 'browser';
         location.lock = 1;
         that._data = {browser: location, web: null};
+
+        if ( shallow ) {
+            return;
+        } // end if
+
         if ( that._interval ) {
             clearInterval(that._interval);
         } // end if
+
         that._interval = null;
         that._send(that._data.browser, true, false, true);
         that._sent = {browser: true, web: true};
-        if ( location.formatted.length ) {
+        if ( location.formatted ) {
             that.writeLoc(location.formatted);
         } // end if
     }, // end method

@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     @device_cls = determine_device
     @is_logged_in_cls = determine_login_status
     # FIXME: Move strings to config/application.rb (but its not loaded at this stage of the application inicialization !)
-    @page_name = Rails.configuration.app_name 
+    @page_name = Rails.configuration.app_name
     @page_title = Rails.configuration.app_title
     @page_desc = Rails.configuration.app_description
     @version = Rails.configuration.app_version

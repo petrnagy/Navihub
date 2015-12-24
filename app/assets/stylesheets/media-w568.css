@@ -8,5 +8,5 @@
     #menu-loc li { padding: 9px; }
     #menu-loc li #top-location { margin-top: 0px !important; }
     .radius-wrapper, .sort-wrapper { width: 50%; }
-
+    /*#search-results > div:nth-child(1) { margin-top: 160px; }*/
 }

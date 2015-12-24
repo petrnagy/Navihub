@@ -12,6 +12,12 @@ function kickstart_detail(di) {
     } // end if
 } // end func
 
+function kickstart_permalinks(di) {
+    if ( 'show' === di.action ) {
+        kickstart_detail(di);
+    } // end if
+} // end func
+
 function kickstart_search(di) {
     if ($("#search-form").length) {
         di.search = new Search(21, di); // 21 results per page
@@ -19,15 +25,17 @@ function kickstart_search(di) {
         di.searchResult = new SearchResult(di);
         di.lazyLoader = new SearchResultsLazyLoader(di);
         di.lazyLoader.lazyLoadSearchResultsImages();
-        /*
-        $(document).delegate('.btn-detail', 'click', function(e) {
-        // TODO: rozeznavat, zda je open/closed
-        e.preventDefault();
-        DetailFactory.activate($(this), di);
-        return false;
-    });
-    */
-} // end if
+    } // end if
+} // end func
+
+function kickstart_favorites(di){
+    if ($(".result-box").length) {
+        //di.search = new Search(21, di); // 21 results per page
+        //di.btn = new NextButton(di);
+        di.searchResult = new SearchResult(di);
+        di.lazyLoader = new SearchResultsLazyLoader(di);
+        di.lazyLoader.lazyLoadSearchResultsImages();
+    } // end if
 } // end func
 
 function kickstart_settings(di) {

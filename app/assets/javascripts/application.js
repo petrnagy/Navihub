@@ -45,8 +45,19 @@ ready = function(pageLoad) {
     DI.locator = new Locator(DI);
     DI.messenger = new Messenger(DI);
 
+    DI.config = {};
+    DI.config.googleApiPublicKey = 'AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI';
+    DI.config.googleMapsLibraryUrl = 'https://maps.googleapis.com/maps/api/js?v=3&libraries=places&callback=';
+    DI.config.mockLocation = { lat: 50.0865876, lng: 14.4159757, origin: 'browser', city: null,
+    city2: null, country: null, country_short: null, street1: null, street2: null };
+
     if ( serverData.loc.lock ) {
         DI.locator.lock();
+        var mock = DI.config.mockLocation;
+        mock.lat = serverData.loc.lat;
+        mock.lng = serverData.loc.lng;
+        DI.locator.set(mock, true);
+        mock = null;
     } // end if
 
     serverData = null;
@@ -54,12 +65,6 @@ ready = function(pageLoad) {
     if ( DI.documentReady && ! DI.locator.isLocked() ) {
         DI.locator.locate();
     } // end if
-
-    DI.config = {};
-    DI.config.googleApiPublicKey = 'AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI';
-    DI.config.googleMapsLibraryUrl = 'https://maps.googleapis.com/maps/api/js?v=3&libraries=places&callback=';
-    DI.config.mockLocation = { lat: 50.0865876, lng: 14.4159757, origin: 'browser', city: null,
-    city2: null, country: null, country_short: null, street1: null, street2: null };
 
     // Run the app
     DI.kickstart = 'kickstart_' + DI.controller;

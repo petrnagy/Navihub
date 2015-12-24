@@ -15,16 +15,6 @@ class DetailController < ApplicationController
         render 'empty', :status => 404
     end
 
-    def permalink
-        parameters = permalink_params
-        row = Permalink.find_by(permalink_id: parameters['permalink_id'])
-        if row
-            @data = YAML.load row.yield
-            return render 'detail'
-        else render 'empty', :status => 404
-        end
-    end
-
     def load_detail origin, id
         return load origin, id
     end
@@ -42,10 +32,6 @@ class DetailController < ApplicationController
         params.require(:origin)
         params.require(:id)
         params.permit(:origin, :id)
-    end
-    def permalink_params
-        params.require(:permalink_id)
-        params.permit(:permalink_id)
     end
 
 end

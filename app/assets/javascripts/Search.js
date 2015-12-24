@@ -17,7 +17,7 @@ var Search = function(step, di) {
     } else {
         throw new Error();
     } // end if
-} // end func
+}; // end func
 
 Search.prototype = {
     _init: function() {
@@ -56,16 +56,16 @@ Search.prototype = {
                         if (append) {
                             $("#search-results").append(data);
                         } else {
-                            $("#search-results").html(data);
+                            $("#search-results").html(data).removeClass('search-start');
                         } // end if
                         that.di.spinner.hide();
                         that.unlock();
                         that.di.lazyLoader.lazyLoadSearchResultsImages();
                     }, // end func
                     error: function() {
-                        //window.location.reload();
                         that.di.spinner.hide();
                         that.unlock();
+                        that.di.messenger.error('Whoops !', 'We are sorry, the server has encountered an unexpected error and could not complete your request. Please try again later.');
                     } // end func
                 });
             } // end if
@@ -127,10 +127,11 @@ Search.prototype = {
         var that = this;
         try {
             if (url != window.location.href) {
-                window.history.pushState(null, null, url)
+                window.history.pushState(null, null, url);
             } // end if
             return true;
         } catch (e) { // IE9 and lower
+            // FIXME: Jak false? co s tim dal???
             return false;
         } // end try-catch
     }, // end method
@@ -145,4 +146,4 @@ Search.prototype = {
         that.$form.find('input, select, option, button').prop('disabled', false);
     }, // end method
 
-} // end prototype
+}; // end prototype

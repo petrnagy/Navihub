@@ -148,3 +148,5 @@ background-color: rgb(246,246,246);
 .send-via-email-msg { height: 20px; }
 .send-via-email-msg.err { color: red; }
 .send-via-email-msg.ok { color: green; }
+
+#search-results > div:nth-child(1) p { text-align: center; }

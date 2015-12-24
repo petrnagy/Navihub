@@ -11,9 +11,9 @@ SearchResultsLazyLoader.prototype = {
 
     _initSearchResultsStaticImagesLazyLoading: function() {
       var that = this;
-      $(window).scroll(function(e) {
-          that.lazyLoadSearchResultsImages();
-      });
+      $(window).scroll(function(e) { that.lazyLoadSearchResultsImages(); });
+      $(window).resize(function(e) { that.lazyLoadSearchResultsImages(); });
+      $(window).on("orientationchange",function() { that.lazyLoadSearchResultsImages(); });
     }, // end method
 
     lazyLoadSearchResultsImages: function() {

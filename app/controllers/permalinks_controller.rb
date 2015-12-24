@@ -39,12 +39,27 @@ class PermalinksController < ApplicationController
         return render json: { status: 'OK', id: key }
     end
 
+    def show
+        parameters = show_params
+        row = Permalink.find_by(permalink_id: parameters['permalink_id'])
+        if row
+            @data = YAML.load row.yield
+             return render 'detail/detail'
+        else render 'empty', :status => 404
+        end
+    end
+
     private
 
     def create_params
         params.require(:origin)
         params.require(:id)
         params.permit(:origin, :id)
+    end
+
+    def show_params
+        params.require(:permalink_id)
+        params.permit(:permalink_id)
     end
 
 end

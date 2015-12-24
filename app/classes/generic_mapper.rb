@@ -1,24 +1,24 @@
 class GenericMapper
-  
+
   protected
-  
-  @data; 
-  
+
+  @data;
+
   public
-  
+
   class MethodNotOverridden < StandardError
   end
-  
+
   def initialize data
     @data = data
   end
-  
+
   def map
-    raise MethodNotOverridden 
+    raise MethodNotOverridden
   end
-  
+
   protected
-  
+
   def get_template
     {
       :origin     => nil,
@@ -37,22 +37,22 @@ class GenericMapper
       :address    => nil,
       # - - -
       :detail     => {
-        :url          => nil, 
-        :website_url  => nil, 
+        :url          => nil,
+        :website_url  => nil,
         :phones       => [],
         :email        => nil,
         :address      => {
           :country        => nil,
-          :country_short  => nil, 
-          :town           => nil, 
-          :zip            => nil, 
-          :street         => nil, 
-          :premise        => nil, 
+          :country_short  => nil,
+          :town           => nil,
+          :zip            => nil,
+          :street         => nil,
+          :premise        => nil,
         },
       },
     }
   end
-  
+
   private
-  
+
 end

@@ -69,7 +69,7 @@
       <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <% end %>
   </head>
-  <body id="body" class="<%= @device_cls %> <%= @is_logged_in_cls %>">
+  <body id="body" class="<%= @device_cls %> <%= @is_logged_in_cls %> c-<%= params[:controller] %> a-<%= params[:action] %>">
     <!-- Inline scripts -->
     <script>
       serverData = {
@@ -104,11 +104,14 @@
         </div>
         <div class="" id="navbar-main">
           <ul class="nav navbar-nav" id="menu-top">
-            <li data-template="index"><%= link_to 'Search', controller: "search" %></li>
+            <li data-template="index">
+              <%= link_to 'Search', controller: "search" %>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
               <ul class="dropdown-menu" id="dd-more">
-                <li><%= link_to 'About', controller: "about" %></li>
+                <li><%= link_to 'My favorites', controller: "favorites", action: "index" %></li>
+                <li><%= link_to 'About navihub', controller: "about" %></li>
                 <li><%= link_to 'Feedback', controller: "feedback" %></li>
               </ul>
             </li>
@@ -221,14 +224,14 @@
             </div>
         </div>
       </div>
+      <!-- Spinner -->
+      <div class="spinner" id="spinner" style="display: none;">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
     </footer>
-    <!-- Spinner -->
-    <div class="spinner" id="spinner" style="display: none;">
-      <div class="rect1"></div>
-      <div class="rect2"></div>
-      <div class="rect3"></div>
-      <div class="rect4"></div>
-      <div class="rect5"></div>
-    </div>
   </body>
 </html>
