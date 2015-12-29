@@ -42,7 +42,7 @@ class DistanceHelper
     if minutes > 60
       return (minutes / 60).to_s + ':' + (minutes % 60).to_s + ( (minutes % 60).to_s.length == 1 ? '0' : '' ) + ' h'
     elsif minutes > 0
-      return minutes.to_s + ' min' + (minutes == 1 ? '' : 's')
+      return minutes.to_s + ' min' #+ (minutes == 1 ? '' : 's')
     elsif minutes < 0
       return '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
     else
@@ -51,25 +51,29 @@ class DistanceHelper
   end
 
   def self.pretty_distance meters, unit_in, unit_out
+    unit_in = unit_in.to_s
     # TODO: not implemented yet
-    unit_in = 'm'
     unit_out = 'km'
     meters = meters.to_f
 
-    if unit_in != 'm'
-      raise NotImplementedError
+    unless ['m', 'km'].include? unit_in
+      raise NotImplementedError, 'debug: ' + unit_in.to_s
     end
     if unit_out != 'km'
-      raise NotImplementedError
+      raise NotImplementedError, 'debug: ' + unit_out.to_s
     end
 
-    return self.pretty_distance_m2km meters.to_i
+    method = 'pretty_distance_' + unit_in + '2' + unit_out
+
+    return send(method, meters)
 
   end
 
   private
 
   def self.pretty_distance_m2km meters
+    meters = meters.to_i
+
     if meters < 0
       return '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
     elsif 0 == meters
@@ -77,7 +81,21 @@ class DistanceHelper
     elsif meters > 999
       return (meters.to_f / 1000).round(1).to_s + ' km'
     else
-      return meters + ' m'
+      return meters.to_s + ' m'
+    end
+  end
+
+  def self.pretty_distance_km2km kilometers
+    kilometers = kilometers.round(1)
+
+    if kilometers < 0
+      return '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
+    elsif 0 == kilometers
+      return '0 km'
+    elsif kilometers < 1.00
+      return (kilometers * 1000).round.to_s + ' m'
+    else
+      return kilometers.to_s + ' km'
     end
   end
 

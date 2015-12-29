@@ -21,54 +21,12 @@
 var ready, DI;
 ready = function(pageLoad) {
 
-    $.cookie.json = true;
+    Configurator.configure();
 
-    $.ajaxSetup({
-        cache: false,
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    });
+    DI = Container.build(pageLoad, serverData, Configurator);
 
-    DI = {
-        pageLoad: pageLoad,
-        documentReady: ! pageLoad,
-        controller: serverData.controller,
-        action: serverData.action,
-        mixin: Mixin,
-        spinner: Spinner,
-        browser: Browser,
-        turbolinksStorage: new TurbolinksStorage()
-    };
-
-    DI.burger = new BurgerMenu(DI);
-    DI.marker = new MarkerMenu(DI);
-    DI.scriptLoader = new ScriptLoader(DI);
-    DI.locator = new Locator(DI);
-    DI.messenger = new Messenger(DI);
-
-    DI.config = {};
-    DI.config.googleApiPublicKey = 'AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI';
-    DI.config.googleMapsLibraryUrl = 'https://maps.googleapis.com/maps/api/js?v=3&libraries=places&callback=';
-    DI.config.mockLocation = { lat: 50.0865876, lng: 14.4159757, origin: 'browser', city: null,
-    city2: null, country: null, country_short: null, street1: null, street2: null };
-
-    if ( serverData.loc.lock ) {
-        DI.locator.lock();
-        var mock = DI.config.mockLocation;
-        mock.lat = serverData.loc.lat;
-        mock.lng = serverData.loc.lng;
-        DI.locator.set(mock, true);
-        mock = null;
-    } // end if
-
-    serverData = null;
-
-    if ( DI.documentReady && ! DI.locator.isLocked() ) {
-        DI.locator.locate();
-    } // end if
-
-    // Run the app
-    DI.kickstart = 'kickstart_' + DI.controller;
     typeof window[DI.kickstart] === 'function' ? window[DI.kickstart](DI) : null;
+    
 };
 
 $(document).ready(function(){ ready(false); });

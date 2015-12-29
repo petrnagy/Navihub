@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     get 'search' => 'search#index'
     get 'find' => 'search#find'
     get 'search/:term(/:radius)(/:order)(/:offset)' => 'search#find'
+    get 'lazy/geocode' => 'search#geocode'
+    get 'lazy/reversegeocode' => 'search#reverse_geocode'
+    #get 'lazy/ipinfo' => 'search#ipinfo'
 
     put 'favorites' => 'favorites#create'
     delete 'favorites' => 'favorites#delete'

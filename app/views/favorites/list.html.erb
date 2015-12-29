@@ -52,10 +52,10 @@
                   <div class="results-icon"><%= fa_icon("arrows-h") %></div><span class=""><%= DistanceHelper.pretty_distance(result['distance'], result['distance_unit'], 'km') %></span>
               </div>
               <div class="col-lg-4 result-walking-distance">
-                  <div class="results-icon"><%= fa_icon("male") %></div><span class=""><%= DistanceHelper.pretty_minutes(result['distance_in_mins']) %></span>
+                  <div class="results-icon"><%= fa_icon("male") %></div><span class=""><%= DistanceHelper.pretty_minutes(DistanceHelper.m_to_min(result['distance'])) %></span>
               </div>
               <div class="col-lg-4 result-car-distance">
-                  <div class="results-icon"><%= fa_icon("car") %></div><span class=""><%= DistanceHelper.pretty_minutes(result['car_distance_in_mins']) %></span>
+                  <div class="results-icon"><%= fa_icon("car") %></div><span class=""><%= DistanceHelper.pretty_minutes(DistanceHelper.car_m_to_min(result['distance'])) %></span>
               </div>
               <% end %>
 

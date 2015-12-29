@@ -29,25 +29,25 @@ MarkerMenu.prototype = {
     }, // end method
 
     active: function() {
-      var that = this;
-      var $marker = $(that.marker);
-      return $marker.is(':visible');
+        var that = this;
+        var $marker = $(that.marker);
+        return $marker.is(':visible');
     }, // end method
 
     open: function() {
-      var that = this;
-      if ( that.active() ) {
-          var $menu = $(that.menu);
-          $menu.show();
-      } // end if
+        var that = this;
+        if ( that.active() ) {
+            var $menu = $(that.menu);
+            $menu.slideDown();
+        } // end if
     }, // end method
 
     close: function() {
-      var that = this;
-      if ( that.active() ) {
-          var $menu = $(that.menu);
-          $menu.hide();
-      } // end if
+        var that = this;
+        if ( that.active() ) {
+            var $menu = $(that.menu);
+            $menu.slideUp();
+        } // end if
     }, // end method
 
 }; // end prototype

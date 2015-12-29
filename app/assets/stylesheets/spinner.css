@@ -59,4 +59,6 @@
 #spinner > div { background-color: white; }
 #spinner { background-color: gray; border-radius: 0px 0px 5px 5px; }
 
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
 @media only screen and (max-width: 991px) { #spinner { top: -50px; } }

@@ -29,16 +29,16 @@ BurgerMenu.prototype = {
     }, // end method
 
     active: function() {
-      var that = this;
-      var $burger = $(that.burger);
-      return $burger.is(':visible');
+        var that = this;
+        var $burger = $(that.burger);
+        return $burger.is(':visible');
     }, // end method
 
     open: function() {
         var that = this;
         if ( that.active() ) {
             var $menus = $(that.menus);
-            $menus.show();
+            $menus.slideDown();
         } // end if
     }, // end method
 
@@ -46,7 +46,7 @@ BurgerMenu.prototype = {
         var that = this;
         if ( that.active() ) {
             var $menus = $(that.menus);
-            $menus.hide();
+            $menus.slideUp();
         } // end if
     }, // end method
 

@@ -24,7 +24,7 @@ function kickstart_search(di) {
         di.btn = new NextButton(di);
         di.searchResult = new SearchResult(di);
         di.lazyLoader = new SearchResultsLazyLoader(di);
-        di.lazyLoader.lazyLoadSearchResultsImages();
+        di.lazyLoader.lazyLoad();
     } // end if
 } // end func
 
@@ -34,7 +34,7 @@ function kickstart_favorites(di){
         //di.btn = new NextButton(di);
         di.searchResult = new SearchResult(di);
         di.lazyLoader = new SearchResultsLazyLoader(di);
-        di.lazyLoader.lazyLoadSearchResultsImages();
+        di.lazyLoader.lazyLoad();
     } // end if
 } // end func
 

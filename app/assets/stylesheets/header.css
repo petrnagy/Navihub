@@ -1,0 +1,64 @@
+#burger-menu, #marker-menu { display: none; }
+#burger-menu a i, #marker-menu a i { text-shadow: black 0px 0px 2px; }
+
+#dd-myaccount .social-btn { width: 92%; }
+#dd-myaccount .social-btn a { height: 28px; margin: 10px; padding-top: 4px; border-radius: 0px; }
+
+#menu-loc { margin-right: 50px; }
+#main-logo { padding-top: 7px; }
+#main-logo div { display: inline-block; padding-left: 5px; }
+/* TODO: padding-top nefunguje ! */
+#main-logo div span { padding-top: 10px; }
+#top-location { color: gray; text-transform: none; margin-top: 18px; margin-right: 0px; line-height: 14px; width: 350px; }
+/* #top-location .top-location-top .actual { text-overflow: ellipsis; white-space: nowrap; width: 300px; display: inline-block; overflow: hidden; } */
+
+.navbar-nav > li > .dropdown-menu { margin-top: 1px; }
+#top-location .top-location-top .actual i { color: lightgray; font-weight: bold; }
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+@media only screen and (max-width: 991px) {
+    #myacc-my { display: none; }
+    #main-logo img { width: 35px; height: 35px; }
+    #appname { font-size: 75%; }
+    #appname-beta { font-size: 75%; color: lightgray; }
+    #menu-top li > a { padding-left: 5px; padding-right: 5px; padding-top: 15px; padding-bottom: 10px; }
+    #menu-alt li > a { padding-left: 5px; padding-right: 5px; padding-top: 15px; padding-bottom: 10px; }
+    #menu-loc { margin-right: 0px !important; }
+    #top-location { margin-top: 12px !important; }
+    body > .navbar-fixed-top { height: 50px; min-height: 50px; }
+}
+@media only screen and (min-width: 768px) {
+    #menu-top, #menu-alt { display: block !important; }
+}
+@media only screen and (max-width: 767px) {
+
+    #burger-menu { float: right; color: white; font-size: 36px; display: block !important; }
+    #appname { font-size: 100%; position: relative; top: 3px; }
+    #appname-beta { font-size: 100%; color: lightgray; }
+
+    #menu-top, #menu-alt { display: none; }
+    #navbar-main { background-color: #545454; float: right; width: 200px; box-shadow: gray -4px 6px 10px;
+        margin-top: -10px; margin-right: -15px; }
+    #menu-top, #menu-alt, #menu-loc { margin: 0px }
+    #navbar-main li.dropdown.open { background-color: #32332B; }
+    #navbar-main li.dropdown.open li.divider { background-color: black; }
+    #menu-loc { position: absolute; top: 0px; left: 200px; }
+    #top-location { width: 310px !important; }
+}
+@media only screen and (min-width: 568px) {
+    #menu-loc { display: block !important; }
+}
+@media only screen and (max-width: 567px) {
+    #marker-menu { float: right; color: white; font-size: 36px; display: block !important; margin-right: 35px;
+    margin-top: 0px; }
+    #menu-loc { display: none; }
+    #menu-loc { left: 0px !important; top: 50px !important; width: 100% !important; background-color: #2B2B2B; }
+    #menu-loc li { padding: 9px; }
+    #menu-loc li #top-location { margin-top: 0px !important; }
+}
+@media only screen and (max-height: 380px) {
+    #dd-myaccount .social-signin-txt { display: none; }
+    #dd-myaccount .social-btn { display: inline-block; width: 30px !important; margin-right: 30px; }
+    #dd-myaccount .social-btn i { border-right: none; position: absolute; left: 10px; }
+}

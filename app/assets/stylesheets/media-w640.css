@@ -1,8 +1,0 @@
-@media only screen and (max-width: 639px) {
-
-    #search-input-wrapper #search-input .col-lg-12 { width: 100% !important; }
-    #search-input-wrapper #search-input .col-lg-12 input[type=text] { width: 100% !important; }
-    #search-input-wrapper #search-input .col-lg-12 button { margin-top: 10px; }
-    #search-input-wrapper { background-image: none; }
-
-}

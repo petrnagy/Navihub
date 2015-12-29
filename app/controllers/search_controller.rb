@@ -21,11 +21,48 @@ class SearchController < ApplicationController
             @data = {:results => @results, :search => @search, :data => @tpl_vars}
             render '_list_find', :layout => false if request.xhr?
         end
-    #rescue => e
-    #    index
+        #rescue => e
+        #    index
     end
 
     def empty
+    end
+
+    def geocode
+        if request.xhr?
+            data = geocode_params
+            geocoder = Geocoder.new
+            data = geocoder.geocode data['addr']
+            respond_to do |format|
+                msg = { :status => "ok", :message => "Success!", :data => data,
+                        :html => Location.pretty_loc( data['lat'], data['lng'] ) }
+                format.json { render :json => msg }
+            end
+        end
+    end
+
+    def reverse_geocode
+        if request.xhr?
+            data = reverse_geocode_params
+            geocoder = Geocoder.new
+            data = geocoder.reverse_geocode data['lat'], data['lng']
+            respond_to do |format|
+                msg = { :status => "ok", :message => "Success!", :html => data }
+                format.json { render :json => msg }
+            end
+        end
+    end
+
+    def ipinfo
+        if request.xhr?
+            data = ipinfo_params
+            ipinfo = Ipinfo.new
+            data = ipinfo.dig data['ip']
+            respond_to do |format|
+                msg = { :status => "ok", :message => "Success!", :data => data }
+                format.json { render :json => msg }
+            end
+        end
     end
 
     protected
@@ -72,5 +109,22 @@ class SearchController < ApplicationController
 
         params.permit(:term, :order, :offset, :radius, :limit, :step, :engines, :is_xhr, :append)
     end
+
+    def geocode_params
+        params.require 'addr'
+        params.permit(:addr)
+    end
+
+    def reverse_geocode_params
+        params.require 'lat'
+        params.require 'lng'
+        params.permit(:lat, :lng)
+    end
+
+    def ipinfo_params
+        params.require 'ip'
+        params.permit(:ip)
+    end
+
 
 end

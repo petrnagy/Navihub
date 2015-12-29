@@ -220,18 +220,11 @@ class Search
                 current[:map] = GoogleMap.get_result_tn_by_address current[:address], key
             end
             if current[:distance] != nil
-                current[:distance_in_mins] = DistanceHelper.m_to_min current[:distance]
-                current[:car_distance_in_mins] = DistanceHelper.car_m_to_min current[:distance]
-                if current[:distance] > 1000
-                    current[:distance] = DistanceHelper.m_to_km current[:distance], '.', 1
-                    current[:distance_unit] = 'km'
-                else
-                    current[:distance] = current[:distance].to_i
-                    current[:distance_unit] = 'm'
-                end
+                current[:distance] = current[:distance].to_i
+                current[:distance_unit] = 'm'
             end
             if nil == current[:address] || current[:address].strip.length <= 1 || current[:address].strip =~ /^\d+$/
-                current[:address] = '<i class="unknown-data fa fa-frown-o"></i>'.html_safe
+                current[:address] = '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
             end
             # modify labels
             tags = []

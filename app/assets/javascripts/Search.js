@@ -60,7 +60,7 @@ Search.prototype = {
                         } // end if
                         that.di.spinner.hide();
                         that.unlock();
-                        that.di.lazyLoader.lazyLoadSearchResultsImages();
+                        that.di.lazyLoader.lazyLoad();
                     }, // end func
                     error: function() {
                         that.di.spinner.hide();

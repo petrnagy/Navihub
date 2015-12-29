@@ -61,6 +61,9 @@ class FavoritesController < ApplicationController
             #results << JSON.parse(favorite.yield, object_class: OpenStruct)
             result = YAML.load(favorite.yield)
 
+            l = Logger.new(STDOUT)
+            l.debug result['distance'].to_i
+
             result['mtime'] = Time.now.usec
             if result['geometry']['lat'] != nil && result['geometry']['lat'] != nil
                 result['distance'] = Location.calculate_distance(
@@ -70,6 +73,10 @@ class FavoritesController < ApplicationController
                 result['geometry']['lng']
                 # TODO: zajistit, aby bylo vzdy v metrech
                 )
+                result['distance_unit'] = 'm'
+            elsif result['distance'] != nil && result['distance'].to_f > 0.00
+                result['distance'] = result['distance'].to_f
+                result['distance_unit'] = ( result['distance_unit'] ? result['distance_unit'] : 'm' )
             else
                 result['distance'] = -1
                 result['distance_unit'] = nil
@@ -77,7 +84,13 @@ class FavoritesController < ApplicationController
                 result['car_distance_in_mins'] = -1
             end
 
+            # FIXME: Tohle je nebezpecne
+            if /^<i.*>.*<\/i>$/i.match result['address']
+                result['address'] = '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
+            end
+
             result['json'] = JSON.dump(YAML.load(favorite.yield))
+            result['favorite'] = true
             results << result
         end
         results

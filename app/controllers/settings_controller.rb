@@ -1,5 +1,8 @@
 class SettingsController < ApplicationController
 
+    class ImpossibleLocation < StandardError
+    end
+
     # TODO: probably unused
     @json_response
 
@@ -53,7 +56,7 @@ class SettingsController < ApplicationController
         data['lng'] = data['lng'].to_f
         data['lock'] = ( data['lock'] == '1' ? true : false )
         if ! Location.possible data['lat'], data['lng']
-            raise 'Location not possible, debug: ' + data.to_s
+            raise ImpossibleLocation, 'debug: ' + data.to_s
         end
         data
     end

@@ -4,8 +4,11 @@
 
 
 #detail-results .detail-links .link { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; }
-#detail-results .detail-body table, 
-#detail-results .detail-body tbody, 
+#detail-results .detail-body table,
+#detail-results .detail-body tbody,
 #detail-results .detail-body td { max-width: 280px; }
 
 #detail-results #map_canvas { width: 730px; height: 400px; }
+
+.social-likes { font-weight: normal; font-size: 75%; }
+.social-likes .social-likes__widget { border-radius: .25em; }

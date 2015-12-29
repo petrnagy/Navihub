@@ -58,6 +58,22 @@ SearchResult.prototype = {
         return result;
     }, // end method
 
+    updateData: function($el, data) {
+      var that = this;
+      var $box = $el.closest('.result-box');
+      var jsonAttr = $box.attr('data-result-json');
+      try {
+          result = JSON.parse(jsonAttr);
+          combined = $.extend(result, data);
+          serialized = JSON.stringify(combined);
+          $box.attr('data-result-json', serialized);
+          return true;
+      } catch (e) {
+          that._processDetailError(e);
+      } // end try-catch
+      return false;
+    }, // end method
+
     list_open_in_maps: function($el) {
         var that = this;
         that.di.spinner.show();

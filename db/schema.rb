@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211183511) do
+ActiveRecord::Schema.define(version: 20151228103014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,22 +50,6 @@ ActiveRecord::Schema.define(version: 20151211183511) do
   add_index "credentials", ["active"], name: "index_credentials_on_active", using: :btree
   add_index "credentials", ["email"], name: "index_credentials_on_email", unique: true, using: :btree
   add_index "credentials", ["user_id"], name: "index_credentials_on_user_id", using: :btree
-
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "emails", force: true do |t|
     t.string   "recipient"
@@ -118,6 +102,17 @@ ActiveRecord::Schema.define(version: 20151211183511) do
 
   add_index "forms", ["key"], name: "index_forms_on_key", unique: true, using: :btree
 
+  create_table "geocode_caches", force: true do |t|
+    t.string   "addr"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "geocode_caches", ["addr"], name: "index_geocode_caches_on_addr", unique: true, using: :btree
+  add_index "geocode_caches", ["latitude", "longitude"], name: "index_geocode_caches_on_latitude_and_longitude", unique: true, using: :btree
+
   create_table "google_sessions", force: true do |t|
     t.integer  "user_id"
     t.datetime "valid_to"
@@ -132,6 +127,16 @@ ActiveRecord::Schema.define(version: 20151211183511) do
 
   add_index "google_sessions", ["active"], name: "index_google_sessions_on_active", using: :btree
   add_index "google_sessions", ["user_id"], name: "index_google_sessions_on_user_id", using: :btree
+
+  create_table "ipinfo_caches", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ipv4"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  add_index "ipinfo_caches", ["ipv4"], name: "index_ipinfo_caches_on_ipv4", unique: true, using: :btree
 
   create_table "locations", force: true do |t|
     t.integer  "user_id"
@@ -165,6 +170,14 @@ ActiveRecord::Schema.define(version: 20151211183511) do
   end
 
   add_index "permalinks", ["permalink_id"], name: "index_permalinks_on_permalink_id", using: :btree
+
+  create_table "reverse_geocode_caches", force: true do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "addr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", force: true do |t|
     t.integer  "user_id"
