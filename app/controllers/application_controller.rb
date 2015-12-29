@@ -56,11 +56,11 @@ class ApplicationController < ActionController::Base
     cookie = init_cookie
     if sess.user_id == cookie.user_id
       if sess.user_id == nil
-        user = User.create(active: true); user.save
+        user = User.user_create
         sess.user_id = user.id
         cookie.user_id = user.id
       else
-        user = User.find_by(id: sess.user_id, active: true)
+        user = User.user_find_by_session_user_id sess.user_id
       end
     else
       if sess.user_id && cookie.user_id
@@ -73,11 +73,11 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-    user = User.find_by(id: sess.user_id, active: true) unless user
+    user = User.user_find_by_session_user_id sess.user_id unless user
     if user
       @user = user
     else
-      @user = User.create(active: true); @user.save
+      @user = User.user_create
       sess.user_id = @user.id
       cookie.user_id = @user.id
     end
@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
   end
 
   def init_session
-    sess = Session.find_by(sessid: session.id, active: true)
+    sess = Session.find_user_sess session.id
 
     if ! session.id
       # force session init, @see http://stackoverflow.com/questions/14665275/how-force-that-session-is-loaded
@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
     end
 
     if ! sess
-      sess = Session.create(sessid: session.id, active: true, user_id: nil)
+      sess = Session.create_user_sess session.id
     elsif ! session.id
       raise EmptySessionId
     end
@@ -116,7 +116,7 @@ class ApplicationController < ActionController::Base
   end
 
   def init_location
-    @location = Location.where(user_id: @user.id, active: true).order('id DESC').first
+    @location = Location.get_user_loc @user.id
     # if I open a link from anyone else, i might not have any location assigned yet...
     # ...so we will try to set it from url params
     if @location == nil && params.has_key?('ll')

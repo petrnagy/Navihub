@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228103014) do
+ActiveRecord::Schema.define(version: 20151229150549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20151228103014) do
 
   add_index "facebook_sessions", ["active"], name: "index_facebook_sessions_on_active", using: :btree
   add_index "facebook_sessions", ["user_id"], name: "index_facebook_sessions_on_user_id", using: :btree
+  add_index "facebook_sessions", ["valid_to"], name: "index_facebook_sessions_on_valid_to", using: :btree
 
   create_table "favorites", force: true do |t|
     t.string   "venue_origin"
@@ -87,6 +88,8 @@ ActiveRecord::Schema.define(version: 20151228103014) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "forms", force: true do |t|
     t.string   "type"
@@ -127,6 +130,7 @@ ActiveRecord::Schema.define(version: 20151228103014) do
 
   add_index "google_sessions", ["active"], name: "index_google_sessions_on_active", using: :btree
   add_index "google_sessions", ["user_id"], name: "index_google_sessions_on_user_id", using: :btree
+  add_index "google_sessions", ["valid_to"], name: "index_google_sessions_on_valid_to", using: :btree
 
   create_table "ipinfo_caches", force: true do |t|
     t.datetime "created_at"
@@ -137,6 +141,7 @@ ActiveRecord::Schema.define(version: 20151228103014) do
   end
 
   add_index "ipinfo_caches", ["ipv4"], name: "index_ipinfo_caches_on_ipv4", unique: true, using: :btree
+  add_index "ipinfo_caches", ["updated_at"], name: "index_ipinfo_caches_on_updated_at", using: :btree
 
   create_table "locations", force: true do |t|
     t.integer  "user_id"
@@ -170,6 +175,7 @@ ActiveRecord::Schema.define(version: 20151228103014) do
   end
 
   add_index "permalinks", ["permalink_id"], name: "index_permalinks_on_permalink_id", using: :btree
+  add_index "permalinks", ["user_id"], name: "index_permalinks_on_user_id", using: :btree
 
   create_table "reverse_geocode_caches", force: true do |t|
     t.float    "latitude"
@@ -178,6 +184,8 @@ ActiveRecord::Schema.define(version: 20151228103014) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "reverse_geocode_caches", ["updated_at"], name: "index_reverse_geocode_caches_on_updated_at", using: :btree
 
   create_table "sessions", force: true do |t|
     t.integer  "user_id"

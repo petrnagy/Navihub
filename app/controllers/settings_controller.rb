@@ -62,21 +62,6 @@ class SettingsController < ApplicationController
     end
 
     def set_location data
-        loc = Location.create(
-        user_id:        @user.id,
-        latitude:       data['lat'],
-        longitude:      data['lng'],
-        lock:           data['lock'],
-        country:        data['country'],
-        country_short:  data['country_short'],
-        city:           data['city'],
-        city2:          data['city2'],
-        street1:        data['street1'],
-        street2:        data['street2'],
-        active:         true
-        )
-        loc.save
-        Location.where(user_id: @user.id).where.not(id: loc.id).update_all(active: false)
-        loc
+        Location.update_user_loc data, @user.id
     end
 end

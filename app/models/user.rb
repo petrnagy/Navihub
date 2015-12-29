@@ -8,11 +8,16 @@ class User < ActiveRecord::Base
   has_many :twitter_sessions
   has_many :google_sessions
   has_many :favorites
+  has_many :permalinks
 
-  public
+  def self.user_create
+    user = User.create(active: true)
+    user.save
+    user
+  end
 
-  protected
-
-  private
+  def self.user_find_by_session_user_id session_user_id
+    return User.find_by(id: session_user_id, active: true)
+  end
 
 end
