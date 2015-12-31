@@ -14,8 +14,6 @@ var Search = function(step, di) {
     this.interests = ['term', 'radius', 'sort', 'offset'];
     if (this.$form.length) {
         this._init();
-    } else {
-        throw new Error();
     } // end if
 }; // end func
 

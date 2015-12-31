@@ -18,14 +18,14 @@ class FavoritesController < ApplicationController
         raise EmptyUserId, @user.id.to_s unless @user.id.is_a?(Integer)
 
         parameters = create_params
-        if ! Favorite.find_by(user_id: @user.id, venue_origin: parameters['origin'], venue_id: parameters['id'])
-            favorite = Favorite.new
-            favorite.user_id = @user.id
-            favorite.venue_id = parameters['id']
-            favorite.venue_origin = parameters['origin']
-            # FIXME: DANGEROUS construct ! ! ! ! ! ! ! !
-            favorite.yield = YAML.dump(JSON.parse(parameters['yield']))#favorite.yield = parameters['yield']
-            favorite.save
+        if ! Favorite.find_by_params @user.id, parameters['origin'], parameters['id']
+            Favorite.create_with_yield(
+            @user.id,
+            parameters['origin'],
+            parameters['id'],
+            # FIXME: DANGEROUS construct !
+            YAML.dump(JSON.parse(parameters['yield']))
+            )
         end
         return render json: { status: 'OK', id: nil }
     end
@@ -36,7 +36,7 @@ class FavoritesController < ApplicationController
 
         parameters = delete_params
 
-        favorite = Favorite.find_by(user_id: @user.id, venue_origin: parameters['origin'], venue_id: parameters['id'])
+        favorite = Favorite.find_by_params @user.id, parameters['origin'], parameters['id']
         if favorite
             favorite.delete
         end
@@ -57,7 +57,9 @@ class FavoritesController < ApplicationController
 
     def load_results
         results = []
-        Favorite.where(user_id: @user.id).order(created_at: :desc).find_each do |favorite|
+        favorites = Favorite.load_by_user_id @user.id
+        return results if favorites.length == 0
+        favorites.each do |favorite|
             #results << JSON.parse(favorite.yield, object_class: OpenStruct)
             result = YAML.load(favorite.yield)
 

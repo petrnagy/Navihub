@@ -21,6 +21,7 @@ SearchResultsLazyLoader.prototype = {
         that._lazyLoadSearchResultsImages();
         that._lazyLoadSearchResultsGeometries();
         that._lazyLoadSearchResultsAddresses();
+        that._lazyLoadSearchResultsTagLinks();
     }, // end method
 
     _lazyLoadSearchResultsImages: function() {
@@ -55,6 +56,23 @@ SearchResultsLazyLoader.prototype = {
                 that.di.locator.doLazyReverseGeocoding(data.geometry, $(this));
                 // TODO: nejaky delay
             } // end if
+        });
+    }, // end method
+
+    _lazyLoadSearchResultsTagLinks: function() {
+        var that = this;
+        $set = $('#yield #search-results .result-tags .label:in-viewport').not('.done');
+        $set.each(function(){
+            $(this).addClass('done');
+            var label = $(this).text().replace('-', ' ');
+            if (that.di.controller === 'search') {
+                var searchData = that.di.search.getValues();
+            } else if (that.di.controller === 'favorites') {
+                var searchData = that.di.search.defaults;
+            } // end if-else-if
+            searchData.term = label;
+            var url = that.di.search.buildUrl(searchData);
+            $(this).parent().attr('href', url);
         });
     }, // end method
 

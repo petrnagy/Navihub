@@ -27,18 +27,23 @@ var Container = {
         // DI.config.mockLocation = { lat: 50.0865876, lng: 14.4159757, origin: 'browser', city: null,
         // city2: null, country: null, country_short: null, street1: null, street2: null };
 
-
-        if ( serverData.loc.lock ) {
-            DI.locator.lock();
+        if ( serverData.loc.lat !== null && serverData.loc.lng !== null ) {
             var mock = DI.config.mockLocation;
+            if ( serverData.loc.lock ) {
+                DI.locator.lock();
+            } // end if
             mock.lat = serverData.loc.lat;
             mock.lng = serverData.loc.lng;
             DI.locator.set(mock, true);
             mock = null;
         } // end if
 
+        /* @see: pageLoad is not real page load ! */
         if ( ! DI.pageLoad ) {
-            DI.locator.locate();
+            if ( ! DI.locator.isLocked() ) {
+                DI.locator.reset();
+                DI.locator.locate();
+            } // end if
         } else {
             DI.locator.setFromCache();
         } // end if

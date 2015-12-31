@@ -30,8 +30,7 @@ function kickstart_search(di) {
 
 function kickstart_favorites(di){
     if ($(".result-box").length) {
-        //di.search = new Search(21, di); // 21 results per page
-        //di.btn = new NextButton(di);
+        di.search = new Search(null, di);
         di.searchResult = new SearchResult(di);
         di.lazyLoader = new SearchResultsLazyLoader(di);
         di.lazyLoader.lazyLoad();

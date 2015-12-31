@@ -59,19 +59,19 @@ SearchResult.prototype = {
     }, // end method
 
     updateData: function($el, data) {
-      var that = this;
-      var $box = $el.closest('.result-box');
-      var jsonAttr = $box.attr('data-result-json');
-      try {
-          result = JSON.parse(jsonAttr);
-          combined = $.extend(result, data);
-          serialized = JSON.stringify(combined);
-          $box.attr('data-result-json', serialized);
-          return true;
-      } catch (e) {
-          that._processDetailError(e);
-      } // end try-catch
-      return false;
+        var that = this;
+        var $box = $el.closest('.result-box');
+        var jsonAttr = $box.attr('data-result-json');
+        try {
+            result = JSON.parse(jsonAttr);
+            combined = $.extend(result, data);
+            serialized = JSON.stringify(combined);
+            $box.attr('data-result-json', serialized);
+            return true;
+        } catch (e) {
+            that._processDetailError(e);
+        } // end try-catch
+        return false;
     }, // end method
 
     list_open_in_maps: function($el) {
@@ -282,7 +282,9 @@ SearchResult.prototype = {
         var that = this;
         var data = that.getData($el);
         var html = '<form class="send-via-email-form" data-id="'+data.id+'" data-origin="'+data.origin+'"><input type="text"><div class="send-via-email-msg"></div><input type="submit" class="btn btn-success pull-right"></form>';
-        that.di.messenger.message('Enter your e-mail address', html);
+        that.di.messenger.message('Enter your e-mail address', html, {onComplete: function(){
+            $('.send-via-email-form > input[type=text]').focus();
+        }});
     }, // end method
 
     observeSendViaEmail: function() {

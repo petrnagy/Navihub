@@ -199,8 +199,7 @@ class Search
         generic_engine = SearchEngine.new nil, nil
         key = generic_engine.google_api_key
 
-
-        favorites = Favorite.select('venue_id, venue_origin', conditions: { user_id: @user.id } )
+        favorites = Favorite.find_by_user_id @user.id
         results.each do |current|
 
             # FIXME: this is SLOOOOW !!!

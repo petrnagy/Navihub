@@ -67,7 +67,7 @@
                   <div class="results-icon"><%= fa_icon("tags") %></div>
                   <div>
                       <% result['tags'].each do |label| %>
-                      <span class="label label-default"><%= label %></span>
+                      <a href="#"><span class="label label-default"><%= label %></span></a>
                       <% end %>
                   </div>
               </div>
@@ -78,10 +78,6 @@
           <%#= image_tag(result[:icon], class: 'result-icon', alt: 'Icon') if result[:icon] %>
           <%#*</div>%>
           <div class="details-wrapper">
-              <div class="vendor-logo col-lg-10">
-                  <%= image_tag 'powered-by-' + result['origin'] + '.jpg', class: "powered-by-icon", title: "This result was loaded using " + result['origin'].upcase + " API" %>
-                  <a href="#" class="detail-fav-switch list-fav-switch <%= result['favorite'] ? 'exists' : '' %>"><%= fa_icon( result['favorite'] ? 'star' : 'star-o' ) %></a>
-              </div>
               <div class="dots col-lg-2">
 
                   <a href="#" class="btn-detail" data-toggle="dropdown"><%= fa_icon("ellipsis-h") %></a>
@@ -115,6 +111,10 @@
                       </li>
                   </ul>
 
+              </div>
+              <div class="vendor-logo col-lg-10">
+                  <%= image_tag 'powered-by-' + result['origin'] + '.jpg', class: "powered-by-icon", title: "This result was loaded using " + result['origin'].upcase + " API" %>
+                  <a href="#" class="detail-fav-switch list-fav-switch <%= result['favorite'] ? 'exists' : '' %>"><%= fa_icon( result['favorite'] ? 'star' : 'star-o' ) %></a>
               </div>
           </div>
       </div>

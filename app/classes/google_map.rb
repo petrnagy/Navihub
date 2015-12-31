@@ -7,7 +7,8 @@ class GoogleMap
     o += '&size=340x100&scale=2'
     o += '&sensor=false'
     o += '&key=' + key
-    o += '&markers=size:small|color:green|' + lat.to_s + ',' + lng.to_s
+    #o += '&markers=size:small|scale:2|color:green|' + lat.to_s + ',' + lng.to_s
+    o += '&markers=scale:2|color:green|' + lat.to_s + ',' + lng.to_s
     o
   end
 
@@ -18,7 +19,8 @@ class GoogleMap
     o += '&size=340x100&scale=2'
     o += '&sensor=false'
     o += '&key=' + key
-    o += '&markers=size:small|color:green|' + URI.escape(addr)
+    #o += '&markers=size:small|scale:2|color:green|' + URI.escape(addr)
+    o += '&markers=scale:2|color:green|' + URI.escape(addr)
     o
   end
 
