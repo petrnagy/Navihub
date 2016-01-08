@@ -24,6 +24,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider :virtualbox do |vb|
     #vb.gui = true
+    config.vm.provision "shell", inline: "cd /vagrant && rails server", run: "always"
   end
 
 end

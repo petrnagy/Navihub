@@ -20,6 +20,8 @@ else
 	exit 1
 fi
 
+# TODO: New bundles may have been installed. If so, deployment will incorrectly end with
+# 'Could not start maintenance mode'
 echo "Shutting down application..."
 maintenance_status=`rake maintenance:start reason="We're sorry, but the page is currently unavailable because of short maintenance window.<br><br>Stay tuned! This should not take more than a few seconds."`
 if [[ "$maintenance_status" == *"Created tmp/maintenance.yml"* ]]
@@ -51,6 +53,9 @@ fi
 
 echo "Reseting repository..."
 git reset --hard origin/devel
+
+#echo "Updating bundles..."
+#sudo bundle update
 
 echo "Installing bundles..."
 sudo bundle install

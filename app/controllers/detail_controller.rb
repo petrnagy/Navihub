@@ -24,8 +24,22 @@ class DetailController < ApplicationController
     def load origin, id
         if Search.allowed_engines.include? origin
             loader = "#{origin.capitalize}VenueLoader".constantize.new id
-            return loader.load @location
+            postprocess loader.load @location
         end
+    end
+
+    def postprocess detail
+
+        generic_engine = SearchEngine.new nil, nil
+        key = generic_engine.google_api_key
+
+        if detail[:geometry][:lat] != nil && detail[:geometry][:lat] != nil
+            detail[:map] = GoogleMap.get_email_map detail[:geometry][:lat], detail[:geometry][:lng], key
+            detail[:pretty_loc] = Location.pretty_loc detail[:geometry][:lat], detail[:geometry][:lng]
+        elsif detail[:address] != nil
+            detail[:map] = GoogleMap.get_email_map_by_address detail[:address], key
+        end
+        detail
     end
 
     def index_params

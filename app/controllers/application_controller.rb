@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
     @page_desc = Rails.configuration.app_description
     @version = Rails.configuration.app_version
     @build = Rails.configuration.app_build
+    # TODO: wtf is this?
     request.protocol
     request.port.blank?
     @root_url = request.base_url
