@@ -16,7 +16,8 @@
   text-overflow: ellipsis;*/
 }
 .result-geometry { border-left: 2px solid white; border-bottom: 2px solid white; }
-
+#search-results .result-box .result-geometry i.fa-frown-o,
+#search-results .result-box .result-address i.fa-frown-o { color: gray; font-size: 20px; margin-left: 5px; }
 .result-distance { border-top: 2px solid white; border-bottom: 2px solid white; border-right: 2px solid white; }
 .result-walking-distance { border-top: 2px solid white; border-bottom: 2px solid white; border-right: 2px solid white; border-left: 2px solid white; }
 .result-car-distance { border-top: 2px solid white; border-bottom: 2px solid white; border-left: 2px solid white; }

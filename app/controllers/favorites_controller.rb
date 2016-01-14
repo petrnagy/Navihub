@@ -99,15 +99,18 @@ class FavoritesController < ApplicationController
     end
 
     def create_params
-        params.require(:origin)
-        params.require(:id)
-        params.require(:yield)
+        %w{origin id yield}.each do |required|
+            params.require required
+            params[required] = Mixin.sanitize(params[required]) unless required == 'yield' # yield je JSON
+        end
         params.permit(:id, :origin, :yield)
     end
 
     def delete_params
-        params.require(:origin)
-        params.require(:id)
+        %w{origin id}.each do |required|
+            params.require required
+            params[required] = Mixin.sanitize(params[required])
+        end
         params.permit(:id, :origin)
     end
 

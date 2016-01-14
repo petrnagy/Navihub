@@ -141,7 +141,7 @@
           <ul class="nav navbar-nav navbar-right" id="menu-loc">
             <li data-template="index">
                 <div id="top-location">
-                    <span class="top-location-top"><span>Location:</span> <span class="actual"><%= pretty_loc(@location) %></span></span><br />
+                    <span class="top-location-top"><span>Location:</span> <span class="actual"><%= sanitize pretty_loc(@location) %></span></span><br />
                     <span class="top-location-bottom">
                       Not here?
                       <%= link_to 'change location', controller: "settings", action: 'location' %> |

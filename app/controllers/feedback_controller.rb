@@ -38,7 +38,8 @@ class FeedbackController < ApplicationController
   def process_contact_form_params
     %w{name email message}.each do |required|
       params.require required
-      raise ParamWasNotString unless params[required].is_a(String)
+      raise ParamWasNotString unless params[required].is_a?(String)
+      params[required] = Mixin.sanitize(params[required])
     end
 
   end

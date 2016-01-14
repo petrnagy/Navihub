@@ -34,8 +34,12 @@ class SearchController < ApplicationController
             geocoder = Geocoder.new
             data = geocoder.geocode data['addr']
             respond_to do |format|
-                msg = { :status => "ok", :message => "Success!", :data => data,
-                        :html => Location.pretty_loc( data['lat'], data['lng'] ) }
+                if data == nil || data['lat'] == nil || data['lng'] == nil
+                    html = '<i class="fa fa-frown-o"></i>'.html_safe
+                else
+                    html = Location.pretty_loc( data['lat'], data['lng'] )
+                end
+                msg = { :status => "ok", :message => "Success!", :data => data, :html => html }
                 format.json { render :json => msg }
             end
         end
@@ -47,7 +51,12 @@ class SearchController < ApplicationController
             geocoder = Geocoder.new
             data = geocoder.reverse_geocode data['lat'], data['lng']
             respond_to do |format|
-                msg = { :status => "ok", :message => "Success!", :html => data }
+                if data == nil || data.addr == nil
+                    html = '<i class="fa fa-frown-o"></i>'.html_safe
+                else
+                    html = data.addr
+                end
+                msg = { :status => "ok", :message => "Success!", :html => data.addr }
                 format.json { render :json => msg }
             end
         end
@@ -106,23 +115,28 @@ class SearchController < ApplicationController
             params.require(key)
             raise "'"+key.to_s+"' was not a String" unless params[key].is_a?(String)
         end
+        params['term'] = Mixin.sanitize(params['term']).strip
 
         params.permit(:term, :order, :offset, :radius, :limit, :step, :engines, :is_xhr, :append)
     end
 
     def geocode_params
         params.require 'addr'
+        params[:addr] = Mixin.sanitize(params[:addr])
         params.permit(:addr)
     end
 
     def reverse_geocode_params
-        params.require 'lat'
-        params.require 'lng'
+        %w{lat lng}.each do |required|
+            params.require required
+            params[required] = params[required].to_f
+        end
         params.permit(:lat, :lng)
     end
 
     def ipinfo_params
         params.require 'ip'
+        params[:ip] = Mixin.sanitize(params[:ip])
         params.permit(:ip)
     end
 

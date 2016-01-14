@@ -9,7 +9,13 @@ class GeocodeCache < ActiveRecord::Base
         end
     end
 
-    def self.save addr, lat, lng
+    def self.save addr, loc
+        unless loc == nil
+            lat = loc['lat']
+            lng = loc['lng']
+        else
+            lat = lng = nil
+        end
         old = self.find_by(addr: addr)
         if old == nil
             cache = self.create(

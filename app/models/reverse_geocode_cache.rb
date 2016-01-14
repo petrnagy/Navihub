@@ -1,9 +1,9 @@
 class ReverseGeocodeCache < ActiveRecord::Base
 
     def self.load lat, lng
-        loc = ReverseGeocodeCache.where(latitude: lat).where(longitude: lng).where('updated_at >= ?', 1.month.ago).first
+        loc = self.where(latitude: lat).where(longitude: lng).where('updated_at >= ?', 1.month.ago).first
         unless loc == nil
-            return  loc.addr
+            return loc
         else
             return nil
         end
@@ -18,10 +18,12 @@ class ReverseGeocodeCache < ActiveRecord::Base
             longitude: lng
             )
             cache.save
+            return cache
         else
             old.latitude = lat
             old.longitude = lng
             old.save
+            return old
         end
     end
 

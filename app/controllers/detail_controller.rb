@@ -1,5 +1,8 @@
 class DetailController < ApplicationController
 
+    class UnknownEngine < StandardError
+    end
+
     def index
         parameters = index_params
         @data = load parameters['origin'], parameters['id']
@@ -25,6 +28,8 @@ class DetailController < ApplicationController
         if Search.allowed_engines.include? origin
             loader = "#{origin.capitalize}VenueLoader".constantize.new id
             postprocess loader.load @location
+        else
+            raise UnknownEngine, 'debug: ' + origin.to_s
         end
     end
 
@@ -43,8 +48,10 @@ class DetailController < ApplicationController
     end
 
     def index_params
-        params.require(:origin)
-        params.require(:id)
+        %w{origin id}.each do |required|
+            params.require(required)
+            params[required] = Mixin.sanitize(params[required])
+        end
         params.permit(:origin, :id)
     end
 

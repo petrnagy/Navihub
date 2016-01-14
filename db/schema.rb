@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229150549) do
+ActiveRecord::Schema.define(version: 20160114142345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20151229150549) do
   end
 
   add_index "geocode_caches", ["addr"], name: "index_geocode_caches_on_addr", unique: true, using: :btree
-  add_index "geocode_caches", ["latitude", "longitude"], name: "index_geocode_caches_on_latitude_and_longitude", unique: true, using: :btree
+  add_index "geocode_caches", ["latitude", "longitude"], name: "index_geocode_caches_on_latitude_and_longitude", using: :btree
 
   create_table "google_sessions", force: true do |t|
     t.integer  "user_id"
@@ -185,6 +185,8 @@ ActiveRecord::Schema.define(version: 20151229150549) do
     t.datetime "updated_at"
   end
 
+  add_index "reverse_geocode_caches", ["addr"], name: "index_reverse_geocode_caches_on_addr", using: :btree
+  add_index "reverse_geocode_caches", ["latitude", "longitude"], name: "index_reverse_geocode_caches_on_latitude_and_longitude", unique: true, using: :btree
   add_index "reverse_geocode_caches", ["updated_at"], name: "index_reverse_geocode_caches_on_updated_at", using: :btree
 
   create_table "sessions", force: true do |t|

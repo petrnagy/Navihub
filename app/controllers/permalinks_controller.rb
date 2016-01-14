@@ -52,13 +52,16 @@ class PermalinksController < ApplicationController
     private
 
     def create_params
-        params.require(:origin)
-        params.require(:id)
+        %w{origin id}.each do |required|
+            params.require(required)
+            params[required] = Mixin.sanitize(params[required])
+        end
         params.permit(:origin, :id)
     end
 
     def show_params
         params.require(:permalink_id)
+        params[:permalink_id] = Mixin.sanitize(params[:permalink_id])
         params.permit(:permalink_id)
     end
 

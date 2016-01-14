@@ -1,35 +1,34 @@
 Rails.application.routes.draw do
 
     # feedback page
-    get 'feedback' => 'feedback#index' # [safe]
-    post 'feedback' => 'feedback#process_contact_form' # [refactored, not-checked]
+    get 'feedback' => 'feedback#index' # [xss-safe]
+    post 'feedback' => 'feedback#process_contact_form' # [xss-safe]
     # about page
-    get 'about' => 'about#index' # [safe]
+    get 'about' => 'about#index' # [xss-safe]
     # settings
-    get 'settings/general' # []
-    get 'settings/location' => 'settings#location' # []
-    get 'settings/profile' # []
+    get 'settings/general' # [not-implemented]
+    get 'settings/location' => 'settings#location' # [xss-safe]
+    get 'settings/profile' # [not-implemented]
     # detail
-    get 'detail/:name/:id/:origin' => 'detail#index' # []
-    get 'detail/:name/:origin' => 'detail#index' # []
+    get 'detail/:name/:id/:origin' => 'detail#index' # [xss-safe]
+    get 'detail/:name/:origin' => 'detail#index' # [xss-safe]
     # permalinks
-    get 'permalink/:permalink_id' => 'permalinks#show' # []
-    put 'setpermalink' => 'permalinks#create' # []
+    get 'permalink/:permalink_id' => 'permalinks#show' # [xss-safe]
+    put 'setpermalink' => 'permalinks#create' # [xss-safe]
     # search
-    get 'search' => 'search#index' # []
-    get 'find' => 'search#find' # []
-    get 'search/:term(/:radius)(/:order)(/:offset)' => 'search#find' # []
+    get 'search' => 'search#index' # [xss-safe]
+    get 'find' => 'search#find' # [xss-safe]
+    get 'search/:term(/:radius)(/:order)(/:offset)' => 'search#find' # [xss-safe]
     # lazy search-related endpoints
-    get 'lazy/geocode' => 'search#geocode' # []
-    get 'lazy/reversegeocode' => 'search#reverse_geocode' # []
-    #get 'lazy/ipinfo' => 'search#ipinfo' # working but unused (cannot determine user IP from JS)
+    get 'lazy/geocode' => 'search#geocode' # [xss-safe]
+    get 'lazy/reversegeocode' => 'search#reverse_geocode' # [xss-safe]
     #favorites
-    put 'favorites' => 'favorites#create' # []
-    delete 'favorites' => 'favorites#delete' # []
-    get 'favorites' => 'favorites#index' # []
+    put 'favorites' => 'favorites#create' # [not-safe]
+    delete 'favorites' => 'favorites#delete' # [xss-safe]
+    get 'favorites' => 'favorites#index' # [xss-safe]
     # sharing
-    post 'sharer/email' => 'sharer#email' # []
+    post 'sharer/email' => 'sharer#email' # [xss-safe]
     # homepage
-    root 'homepage#index' # []
+    root 'homepage#index' # [xss-safe]
 
 end

@@ -34,6 +34,7 @@ class SharerController < ApplicationController
         %w{id origin email}.each do |param|
             params.require(param)
             raise "'"+param+"' was not a String" unless params[param].is_a?(String)
+            params[param] = Mixin.sanitize(params[param])
         end
         params.permit(:id, :origin, :email)
     end

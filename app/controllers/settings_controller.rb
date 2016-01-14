@@ -48,7 +48,7 @@ class SettingsController < ApplicationController
         interests = %w{set lat lng country country_short city city2 street1 street2 lock}
         interests.each do |param|
             params.require(param) unless params.has_key?(param) && params[param].is_a?(String)
-            data[param] = ( params[param].length > 0 ? params[param] : nil )
+            data[param] = ( params[param].length > 0 ? Mixin.sanitize(params[param]) : nil )
         end
         data['set'] = data['set'] == 1 ? true : false
         data['lat'] = data['lat'].to_f

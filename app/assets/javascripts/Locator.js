@@ -352,14 +352,19 @@ doLazyGeocoding: function(addr, $context) {
         cache: true,
         success: function(data) {
             if ( data && 'ok' == data.status ) {
-                var pretty = data.html.lat[0] + '&#176; ';
-                pretty += data.html.lat[1] + "' ";
-                pretty += data.html.lat[2] + '" ';
-                pretty += data.html.lat[3] + '<br>';
-                pretty += data.html.lng[0] + '&#176; ';
-                pretty += data.html.lng[1] + "' ";
-                pretty += data.html.lng[2] + '" ';
-                pretty += data.html.lng[3];
+                var pretty = '';
+                if (typeof data.html == 'object') {
+                    pretty += data.html.lat[0] + '&#176; ';
+                    pretty += data.html.lat[1] + "' ";
+                    pretty += data.html.lat[2] + '" ';
+                    pretty += data.html.lat[3] + '<br>';
+                    pretty += data.html.lng[0] + '&#176; ';
+                    pretty += data.html.lng[1] + "' ";
+                    pretty += data.html.lng[2] + '" ';
+                    pretty += data.html.lng[3];
+                } else {
+                    pretty += data.html;
+                } // end if-else
                 $context.replaceWith(pretty);
             } // end if
         }, // end func

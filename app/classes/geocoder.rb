@@ -14,7 +14,7 @@ class Geocoder
 
     url = 'https://maps.googleapis.com/maps/api/geocode/json?key=' + @key + '&address=' + addr.to_s
     loc = map parse get(url)
-    GeocodeCache.save addr, loc['lat'], loc['lng']
+    GeocodeCache.save addr, loc
     loc
   end
 
@@ -24,13 +24,13 @@ class Geocoder
 
     url = 'https://maps.googleapis.com/maps/api/geocode/json?key=' + @key + '&latlng=' + lat.to_s + ',' + lng.to_s
     addr = map_reverse parse get(url)
-    ReverseGeocodeCache.save lat, lng, addr
-    addr
+    return ReverseGeocodeCache.save lat, lng, addr
   end
 
   private
 
   def map data
+    return nil if data['status'] == 'ZERO_RESULTS'
     {
       'lat' => data['results'].first['geometry']['location']['lat'],
       'lng' => data['results'].first['geometry']['location']['lng']
@@ -38,6 +38,7 @@ class Geocoder
   end
 
   def map_reverse data
+    return nil if data['status'] == 'ZERO_RESULTS'
     data['results'].first['formatted_address']
   end
 
