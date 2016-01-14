@@ -39,14 +39,12 @@ var Container = {
         } // end if
 
         /* @see: pageLoad is not real page load ! */
-        if ( ! DI.pageLoad ) {
+        if ( ! DI.pageLoad || ! DI.locator.setFromCache() ) {
             if ( ! DI.locator.isLocked() ) {
                 DI.locator.reset();
                 DI.locator.locate();
             } // end if
-        } else {
-            DI.locator.setFromCache();
-        } // end if
+        }  // end if
 
         //if ( ! DI.pageLoad && null === DI.locator.getLocation() ) {
 

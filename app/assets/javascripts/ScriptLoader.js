@@ -16,32 +16,43 @@ ScriptLoader.prototype = {
         var that = this;
 
         callback = ( typeof callback == 'function' ? callback : function(){} );
-        var lambda = that._prepareLambdaFunction(script, param);
+        var lambdaData = that._prepareLambdaFunction(script, param);
+        var lambda = ( typeof lambdaData == 'object' ? lambdaData.name : '' );
 
         var storageKey = 'javascripts';
         var loadedScripts = that.di.turbolinksStorage.get(storageKey);
         loadedScripts = ( null === loadedScripts ? [] : loadedScripts );
 
-        console.log(loadedScripts.indexOf(script));
-
-        if ( loadedScripts.indexOf(script) >= 0 ) {
-            // FIXME: script muze byt v policku, ale nemusi byt nutne nacteny !
-            // TODO: no, ted to mam v lambde, to je super... ale jeste tam musi byt nejaky priznak, zda se to jeste nacita...
-            if ( lambda.length ) {
-                eval(lambda + '()');
-            } // end if
-            callback();
-        } else {
-            loadedScripts.push(script);
+        if ( loadedScripts[script] === undefined ) { // adding script to queue
+            loadedScripts[script] = false; // false = "loading"
             that.di.turbolinksStorage.set(storageKey, loadedScripts);
-            $.getScript(script + lambda, callback);
+            $.getScript(script + lambda, function(){
+                var loadedScripts = that.di.turbolinksStorage.get(storageKey);
+                loadedScripts[script] = true;
+                that.di.turbolinksStorage.set(storageKey, loadedScripts);
+                callback();
+            });
+        } else { // script already in queue
+            // FIXME: script muze byt v policku, ale nemusi byt nutne nacteny !
+            var interval = setInterval(function(){
+                var loadedScripts = that.di.turbolinksStorage.get(storageKey);
+                if ( loadedScripts[script] === true ) {
+                    clearInterval(interval);
+                    // FIXME: ma tady vubec byt spusteni lambdy?
+                    if ( lambda.length ) {
+                        eval(lambda + '()');
+                    } // end if
+                    callback();
+                } // end if
+                // TODO: mozna zmensit interval?
+            }, 1000);
         } // end if
     }, // end method
 
     _prepareLambdaFunction: function(script, func) {
         var that = this;
         if ( ! func ) {
-            return '';
+            return null;
         } else {
             return that._createLambdaFunction(script, func);
         } // end if
@@ -55,19 +66,18 @@ ScriptLoader.prototype = {
 
         if ( typeof lambdaName === 'function' ) {
             window[lambdaQueue].push(func + '()');
-            return ''
+            return null;
         } else {
             window[lambdaQueue] = [];
             window[lambdaQueue].push(func + '()');
-
-            var lambdaEval = 'function ' + lambdaName + '() {\n';
-            lambdaEval += '  for (var i = 0; i < window[' + lambdaQueue + '].length; i++) {\n';
-            lambdaEval += '    eval(window[' + lambdaQueue + '][i]);\n';
-            lambdaEval += '  } // end for  ;\n';
+            var lambdaEval = 'window.' + lambdaName + ' = function() {\n';
+            lambdaEval += '  $.each(window["' + lambdaQueue + '"], function(key, val) {\n';
+            lambdaEval += '    eval(val);\n';
+            lambdaEval += '  }); // end foreach\n';
             lambdaEval += '};';
 
             eval(lambdaEval);
-            return lambdaName;
+            return { name: lambdaName, queue: lambdaQueue };
         } // end if
     }, // end method
 

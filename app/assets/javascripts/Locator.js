@@ -219,7 +219,12 @@ _clearCache: function() {
 setFromCache: function() {
     var that = this;
     var cache = that._getFromCache();
-    that.set(cache, true);
+    if ( cache === null ) {
+        return false;
+    } else {
+        that.set(cache, true);
+        return true;
+    } // end if-else
 }, // end method
 
 getLocation: function() {
