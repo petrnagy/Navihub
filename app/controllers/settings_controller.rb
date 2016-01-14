@@ -2,9 +2,8 @@ class SettingsController < ApplicationController
 
     class ImpossibleLocation < StandardError
     end
-
-    # TODO: probably unused
-    @json_response
+    class ParamWasNotString < StandardError
+    end
 
     include ApplicationHelper
 
@@ -46,12 +45,12 @@ class SettingsController < ApplicationController
         data = Hash.new
         data['go'] = true
 
-        interests = [ 'set', 'lat', 'lng', 'country', 'country_short', 'city', 'city2', 'street1', 'street2', 'lock' ]
+        interests = %w{set lat lng country country_short city city2 street1 street2 lock}
         interests.each do |param|
             params.require(param) unless params.has_key?(param) && params[param].is_a?(String)
             data[param] = ( params[param].length > 0 ? params[param] : nil )
         end
-        data['set'] = !! data['set']
+        data['set'] = data['set'] == 1 ? true : false
         data['lat'] = data['lat'].to_f
         data['lng'] = data['lng'].to_f
         data['lock'] = ( data['lock'] == '1' ? true : false )

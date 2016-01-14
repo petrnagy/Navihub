@@ -1,7 +1,7 @@
 class FeedbackController < ApplicationController
 
-  require 'json'
-  require 'digest/md5'
+  class ParamWasNotString < StandardError
+  end
 
   @errors = nil, @data = nil
 
@@ -9,23 +9,22 @@ class FeedbackController < ApplicationController
   end
 
   def process_contact_form
-    required = ['name', 'email', 'message']
+    parameters = process_contact_form_params
     @errors = {}
     @data = {}
 
-    required.each do |field|
-      field = field.to_s
+    parameters.each do |field|
       @data[field] = ''
 
-      if params.has_key?(field) && params[field].length > 0 && validate_contact_form_field(field, params[field])
-        @data[field] = params[field].to_s
+      if validate_contact_form_field(field, params[field])
+        @data[field] = params[field]
       else
         @errors[field] = true
       end
     end
 
     unless @errors.length > 0
-      saved = save_contact_form(@data)
+      saved = Form.save_contact_feedback_form(@data)
       render 'contact-form-success' if saved
       render 'contact-form-internal-error' if not saved
     else
@@ -36,25 +35,17 @@ class FeedbackController < ApplicationController
 
   private
 
-  def validate_contact_form_field field, value
-    # TODO: validovat e-mail a délky
-    true
-  end
-
-  def save_contact_form data
-    data['type'] = 'Contact form - /feedback'
-    key = Digest::MD5.hexdigest([data['name'], data['email'], data['message']].to_json)
-    form = Form.find_by(key: key)
-    if nil == form
-      Form.create(name: data['name'], email: data['email'], text: data['message'], data: nil, spam: false, key: key)
-      true
-    else
-      false
+  def process_contact_form_params
+    %w{name email message}.each do |required|
+      params.require required
+      raise ParamWasNotString unless params[required].is_a(String)
     end
+
   end
 
-  def send_contact_form_infomail form, data
-    # TODO: not implemented
+  def validate_contact_form_field field, value
+    # TODO: validovat e-mail a délky (ne jen  > 0)
+    value.length > 0
   end
 
 end
