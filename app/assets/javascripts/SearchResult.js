@@ -16,7 +16,7 @@ SearchResult.prototype = {
         var that = this;
 
         $.each(interests, function(key, interest) {
-            $(document).delegate('.' + interest, 'click', function(e) {
+            $(document).undelegate('.' + interest, 'click').delegate('.' + interest, 'click', function(e) {
                 e.preventDefault();
                 var method = interest.replace(/\-/g, '_');
                 that[method]($(this));

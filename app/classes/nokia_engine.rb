@@ -1,14 +1,20 @@
 class NokiaEngine < SearchEngine
-  
-  @me
-  
-  def search
+
+  def preflight
     @me = 'nokia'
-    map parse get prepare
+    @request = HttpsRequest.new prepare
   end
-  
-  private
-  
+
+  def download
+    @request.get
+  end
+
+  def finalize response
+    map parse response
+  end
+
+  protected
+
   def prepare
     term = @params[:term]
     url = 'https://places.cit.api.here.com/places/v1/discover/search'
@@ -21,5 +27,5 @@ class NokiaEngine < SearchEngine
     url += '&app_code=' + @nokia_app_code
     URI::escape(url)
   end
-  
+
 end

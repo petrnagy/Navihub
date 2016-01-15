@@ -67,7 +67,7 @@ class FavoritesController < ApplicationController
             l.debug result['distance'].to_i
 
             result['mtime'] = Time.now.usec
-            if result['geometry']['lat'] != nil && result['geometry']['lat'] != nil
+            if result['geometry']['lat'] != nil && result['geometry']['lng'] != nil
                 result['distance'] = Location.calculate_distance(
                 @location.latitude.to_f,
                 @location.longitude.to_f,

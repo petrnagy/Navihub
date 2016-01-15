@@ -17,7 +17,15 @@ class SearchEngine
     init_keys
   end
 
-  def search
+  def preflight
+    raise MethodNotOverridden
+  end
+
+  def download
+    raise MethodNotOverridden
+  end
+
+  def finalize
     raise MethodNotOverridden
   end
 
@@ -38,15 +46,18 @@ class SearchEngine
 
   def map data
     venues = []
-    if data['results'].length > 0
-      data['results'].each do |venue|
-        mapped = map_venue venue
-        venues << mapped if mapped
+    if data == nil
+      l = Logger.new(STDOUT)
+      l.debug 'Engine ' + @me + ' returned nil'
+    else
+      if data['results'].length > 0
+        data['results'].each do |venue|
+          mapped = map_venue venue
+          venues << mapped if mapped
+        end
       end
     end
     venues
-  rescue
-    []
   end
 
   def map_venue venue

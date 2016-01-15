@@ -21,8 +21,6 @@ class SearchController < ApplicationController
             @data = {:results => @results, :search => @search, :data => @tpl_vars}
             render '_list_find', :layout => false if request.xhr?
         end
-        #rescue => e
-        #    index
     end
 
     def empty
@@ -71,6 +69,17 @@ class SearchController < ApplicationController
                 msg = { :status => "ok", :message => "Success!", :data => data }
                 format.json { render :json => msg }
             end
+        end
+    end
+
+    def get_static_map_image
+        parameters = validate_static_image_params
+        image = GoogleMap.load_static_image parameters['src']
+        unless image == nil
+            send_data image, type: 'image/png', disposition: 'inline'
+        else
+            img_path = Rails.root.join('app', 'assets', 'images', 'noimage.png')
+            send_file img_path, type: 'image/png', disposition: 'inline'
         end
     end
 
@@ -140,5 +149,10 @@ class SearchController < ApplicationController
         params.permit(:ip)
     end
 
+    def validate_static_image_params
+        params.require 'src'
+        params[:src] = Mixin.sanitize(params[:src])
+        params.permit(:src)
+    end
 
 end

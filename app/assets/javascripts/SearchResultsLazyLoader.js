@@ -28,8 +28,10 @@ SearchResultsLazyLoader.prototype = {
         var that = this;
         $set = $('#yield #search-results .map-wrapper img[lazysrc]:in-viewport');
         $set.each(function(){
-            $(this).attr('src', $(this).attr('lazysrc'));
-            $(this).removeAttr('lazysrc');
+            var lazySrc = '/lazy/static-map-img?src=' + encodeURIComponent($(this).attr('lazysrc'));
+            var $img = $(this);
+            $img.attr('src', lazySrc);
+            $img.removeAttr('lazysrc');
         });
     }, // end method
 
@@ -49,7 +51,7 @@ SearchResultsLazyLoader.prototype = {
     _lazyLoadSearchResultsAddresses: function() {
         var that = this;
         $set = $('#yield #search-results .result-address .fa-spinner:in-viewport').not('.pending');
-        $set.each(function(){
+        $set.each(function() {
             $(this).addClass('pending');
             var data = that.di.searchResult.getData($(this));
             if ( data && data.geometry ) {
@@ -65,11 +67,12 @@ SearchResultsLazyLoader.prototype = {
         $set.each(function(){
             $(this).addClass('done');
             var label = $(this).text().replace('-', ' ');
+            var searchData = {};
             if (that.di.controller === 'search') {
-                var searchData = that.di.search.getValues();
+                searchData = that.di.search.getValues();
             } else if (that.di.controller === 'favorites') {
-                var searchData = that.di.search.defaults;
-            } // end if-else-if
+                searchData = that.di.search.defaults;
+            }  // end if-else-if
             searchData.term = label;
             var url = that.di.search.buildUrl(searchData);
             $(this).parent().attr('href', url);

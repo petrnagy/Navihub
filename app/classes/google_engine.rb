@@ -1,14 +1,20 @@
 class GoogleEngine < SearchEngine
-  
-  @me
-  
-  def search
+
+  def preflight
     @me = 'google'
-    map parse get prepare
+    @request = HttpsRequest.new prepare
   end
-  
-  private
-  
+
+  def download
+    @request.get
+  end
+
+  def finalize response
+    map parse response
+  end
+
+  protected
+
   def prepare
     term = @params[:term]
     url = 'https://maps.googleapis.com/maps/api/place/search/json'
@@ -19,5 +25,5 @@ class GoogleEngine < SearchEngine
     url += '&key=' + @google_api_key
     URI::escape(url)
   end
-  
+
 end
