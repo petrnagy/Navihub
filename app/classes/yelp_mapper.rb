@@ -28,7 +28,7 @@ class YelpMapper < GenericMapper
   def map_detail location
     mapped = get_template
 
-    mapped[:origin] = 'Yelp Business'
+    mapped[:origin] = 'yelp'
     unless nil === @data['location'] || nil === @data['location']['coordinate']
       mapped[:geometry][:lat] = @data['location']['coordinate']['latitude'].to_f
       mapped[:geometry][:lng] = @data['location']['coordinate']['longitude'].to_f

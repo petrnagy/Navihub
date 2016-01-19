@@ -23,7 +23,7 @@ class FoursquareMapper < GenericMapper
   def map_detail location
     mapped = get_template
 
-    mapped[:origin] = 'FourSquare Venues'
+    mapped[:origin] = 'foursquare'
     mapped[:geometry][:lat] = @data['response']['venue']['location']['lat']
     mapped[:geometry][:lng] = @data['response']['venue']['location']['lng']
     mapped[:id] = @data['response']['venue']['id']

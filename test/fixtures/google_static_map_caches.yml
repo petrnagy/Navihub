@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  found: false
+  x_staticmap_api_warning: MyString
+
+two:
+  url: MyString
+  found: false
+  x_staticmap_api_warning: MyString

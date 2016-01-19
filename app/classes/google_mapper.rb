@@ -20,7 +20,7 @@ class GoogleMapper < GenericMapper
   def map_detail location
     mapped = get_template
 
-    mapped[:origin] = 'Google Places'
+    mapped[:origin] = 'google'
     mapped[:geometry][:lat] = @data['result']['geometry']['location']['lat']
     mapped[:geometry][:lng] = @data['result']['geometry']['location']['lng']
     mapped[:id] = @data['result']['place_id']

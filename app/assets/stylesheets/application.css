@@ -16,6 +16,7 @@
 *= require homepage
 *= require_tree .
 *= require_self
+*= stub responsive-email
 */
 
 section#yield { margin-top: 45px; }

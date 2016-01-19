@@ -7,9 +7,7 @@ class SharerMailerPreview < ActionMailer::Preview
         detail.instance_variable_set(:@location, Location.last)
 
         data = detail.load_detail 'foursquare', '4f358579e4b0d605a5783660'
-        l = Logger.new(STDOUT)
-        l.debug data
-
+        
         SharerMailer.share_via_email 'foo@bar.com', data
     end
 end

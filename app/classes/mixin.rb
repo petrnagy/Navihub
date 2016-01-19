@@ -1,5 +1,7 @@
 class Mixin
 
+  require 'digest/md5'
+
   def self.normalize_unicode str
     require 'iconv'
     str.force_encoding('UTF-8')
@@ -12,6 +14,14 @@ class Mixin
 
   def self.sanitize txt
     ActionController::Base.helpers.sanitize(txt)
+  end
+
+  def self.is_ascii txt
+    txt =~ /^[\x00-\x7F]+$/
+  end
+
+  def self.generate_random_hash len
+    (Digest::MD5.hexdigest(Random.new_seed)).str(0, len)
   end
 
 end

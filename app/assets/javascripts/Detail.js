@@ -225,9 +225,9 @@ Detail.prototype = {
         buildDetailUrl(data, that) {
             var that = that || this;
             if (!that.di.mixin.isAscii(data.id.toString())) {
-                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.origin.toString() + '?id=' + data.id.toString();
+                url = '/detail/' + encodeURIComponent(data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + encodeURIComponent(data.origin.toString()) + '?id=' + data.id.toString();
             } else {
-                url = '/detail/' + (data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + data.id.toString() + '/' + data.origin.toString();
+                url = '/detail/' + encodeURIComponent(data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + encodeURIComponent(data.id.toString()) + '/' + data.origin.toString();
             } // end if
             return url;
         } // end method

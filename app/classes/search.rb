@@ -88,12 +88,11 @@ class Search
         results = []
         threads = []
         @engines.each do |name|
-            engines[name] = engine = "#{name.capitalize}Engine".constantize.new @params, @location
+            engines[name] = "#{name.capitalize}Engine".constantize.new @params, @location
             engines[name].preflight
             threads << Thread.new do
                 responses[name] = engines[name].download
             end
-            results << engine.finalize(responses[name])
         end
         threads.each { |t| t.abort_on_exception = false; t.join }
         engines.each do |name, engine|

@@ -63,9 +63,6 @@ class FavoritesController < ApplicationController
             #results << JSON.parse(favorite.yield, object_class: OpenStruct)
             result = YAML.load(favorite.yield)
 
-            l = Logger.new(STDOUT)
-            l.debug result['distance'].to_i
-
             result['mtime'] = Time.now.usec
             if result['geometry']['lat'] != nil && result['geometry']['lng'] != nil
                 result['distance'] = Location.calculate_distance(

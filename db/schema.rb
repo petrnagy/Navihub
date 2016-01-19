@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114142345) do
+ActiveRecord::Schema.define(version: 20160116192301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20160114142345) do
     t.string   "sender"
     t.text     "subject"
     t.text     "content"
-    t.string   "type"
+    t.string   "email_type"
     t.integer  "tries"
     t.datetime "sent"
-    t.string   "hash"
+    t.string   "email_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -131,6 +131,17 @@ ActiveRecord::Schema.define(version: 20160114142345) do
   add_index "google_sessions", ["active"], name: "index_google_sessions_on_active", using: :btree
   add_index "google_sessions", ["user_id"], name: "index_google_sessions_on_user_id", using: :btree
   add_index "google_sessions", ["valid_to"], name: "index_google_sessions_on_valid_to", using: :btree
+
+  create_table "google_static_map_caches", force: true do |t|
+    t.string   "url"
+    t.boolean  "found"
+    t.string   "x_staticmap_api_warning"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "google_static_map_caches", ["found"], name: "index_google_static_map_caches_on_found", using: :btree
+  add_index "google_static_map_caches", ["url"], name: "index_google_static_map_caches_on_url", unique: true, using: :btree
 
   create_table "ipinfo_caches", force: true do |t|
     t.datetime "created_at"
@@ -235,5 +246,13 @@ ActiveRecord::Schema.define(version: 20160114142345) do
   add_index "users", ["id_fb"], name: "index_users_on_id_fb", using: :btree
   add_index "users", ["id_gp"], name: "index_users_on_id_gp", using: :btree
   add_index "users", ["id_tw"], name: "index_users_on_id_tw", using: :btree
+
+  create_table "venue_detail_caches", force: true do |t|
+    t.string   "venue_origin"
+    t.string   "venue_id"
+    t.text     "yield"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -36,7 +36,7 @@ class NokiaMapper < GenericMapper
   def map_detail location
     mapped = get_template
 
-    mapped[:origin] = 'Nokia Here'
+    mapped[:origin] = 'nokia'
     mapped[:geometry][:lat] = @data['location']['position'][0]
     mapped[:geometry][:lng] = @data['location']['position'][1]
     mapped[:id] = @data['placeId']

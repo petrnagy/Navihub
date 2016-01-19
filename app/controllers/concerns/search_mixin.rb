@@ -1,9 +1,11 @@
 module SearchMixin
 
+    require 'uri'
+
     # result-specific methods
 
     def load_result_geometry result
-        if result[:geometry][:lat] != nil && result[:geometry][:lng] != nil
+        if has_geometry result
             return result[:geometry]
         elsif result[:address].is_a?(String) && result[:address].length > 0
             loc = GeocodeCache.load result[:address]
@@ -17,7 +19,7 @@ module SearchMixin
     def load_result_distance result
         if result[:distance].to_i > 0
             return result[:distance]
-        elsif result[:geometry][:lat] != nil && result[:geometry][:lng] != nil
+        elsif has_geometry result
             return Location.calculate_distance(
             @location.latitude.to_f,
             @location.longitude.to_f,
@@ -30,9 +32,9 @@ module SearchMixin
     end
 
     def result_pretty_loc result
-        if result[:geometry][:lat] != nil && result[:geometry][:lng] != nil
+        if has_geometry result
             return Location.pretty_loc result[:geometry][:lat], result[:geometry][:lng]
-        elsif result[:geometry][:cached] == true
+        elsif result[:geometry] != nil && result[:geometry][:cached] == true
             return '<i class="fa fa-frown-o"></i>'.html_safe
         else
             return nil
@@ -40,7 +42,7 @@ module SearchMixin
     end
 
     def result_map result, key
-        if result[:geometry][:lat] != nil && result[:geometry][:lat] != nil
+        if has_geometry result
             return GoogleMap.get_result_tn result[:geometry][:lat], result[:geometry][:lng], key
         elsif result[:address] != nil
             return GoogleMap.get_result_tn_by_address result[:address], key
@@ -72,7 +74,7 @@ module SearchMixin
     def result_confirm_address result
         if nil == result[:address] || result[:address].strip.length <= 1 || result[:address].strip =~ /^\d+$/
             spinner = '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
-            if result[:geometry][:lat] != nil && result[:geometry][:lat] != nil
+            if has_geometry result
                 cached = ReverseGeocodeCache.load result[:geometry][:lat], result[:geometry][:lng]
                 if cached == nil
                     return spinner
@@ -88,6 +90,36 @@ module SearchMixin
             end
         else
             return result[:address]
+        end
+    end
+
+    def email_map detail, key
+        if has_geometry detail
+            return GoogleMap.get_email_map detail[:geometry][:lat], detail[:geometry][:lng], key
+        elsif detail[:address] != nil
+            return GoogleMap.get_email_map_by_address detail[:address], key
+        else
+            return nil
+        end
+    end
+
+    def has_geometry data
+        if data[:geometry] != nil && data[:geometry][:lat] != nil &&  data[:geometry][:lng] != nil
+            return true
+        else
+            return false
+        end
+    end
+
+    def make_friendly_url detail
+        ascii_name = URI.encode(detail[:ascii_name].length ? detail[:ascii_name] : Mixin.generate_random_hash(5))
+        id = URI.encode(detail[:id])
+        origin = detail[:origin].to_str
+
+        if Mixin.is_ascii detail[:id]
+            return '/detail/' + ascii_name + '/' + id + '/' + origin
+        else
+            return '/detail/' + ascii_name + '/' + origin + '?id=' + id
         end
     end
 

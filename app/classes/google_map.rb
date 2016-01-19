@@ -21,14 +21,19 @@ class GoogleMap
   end
 
   def self.load_static_image url
+    cached = GoogleStaticMapCache.load url
+    return nil if cached != nil && cached.found == false
+
     uri = URI URI.encode url.to_str
     http = Net::HTTP.new uri.host, uri.port
     response = http.get(uri.request_uri)
     warn = response.header['X-Staticmap-API-Warning']
     return response.body if warn == nil
     if warn.index 'Error geocoding'
+      GoogleStaticMapCache.save url, false, warn
       return nil
     else
+      GoogleStaticMapCache.save url, true, nil
       return response.body
     end
   end
