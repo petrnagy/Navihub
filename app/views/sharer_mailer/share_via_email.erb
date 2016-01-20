@@ -68,7 +68,7 @@
 							This e-mail was sent to: <i><%= @recipient %></i>
 						</p>
 						<p>
-							Search more at <a href="https://www.google.cz/?#q=<%=@data[:name]%>">Google</a>, <a href="http://www.bing.com/search?q=<%=@data[:name]%>">Bing</a> or <a href="https://duckduckgo.com/?q=<%=@data[:name]%>">DuckDuckGo</a>
+							Search more about <%=@data[:name]%> at <a href="https://www.google.cz/?#q=<%=@data[:name]%>">Google</a>, <a href="http://www.bing.com/search?q=<%=@data[:name]%>">Bing</a> or <a href="https://duckduckgo.com/?q=<%=@data[:name]%>">DuckDuckGo</a>
 						</p>
 						<% unless @data[:email_map] == nil %>
 						<p>

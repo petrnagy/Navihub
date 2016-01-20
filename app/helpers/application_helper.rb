@@ -2,6 +2,8 @@
 
 module ApplicationHelper
 
+  require 'uri'
+
   def javascript(*files)
     content_for(:footer_js) { javascript_include_tag(*files) }
   end
@@ -54,6 +56,10 @@ module ApplicationHelper
     o += ' '
     o += lng_degrees.to_s.rjust(2, '0') + '°' + lng_minutes.to_s.rjust(2, '0') + "'" + lng_seconds.to_s.rjust(2, '0') + '"' + lng_direction
     o
+  end
+
+  def tag_search_link tag
+    '/search/' + URI.escape(tag) + '/0/distance-asc/0'
   end
 
 end

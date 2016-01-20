@@ -6,6 +6,7 @@ class SearchController < ApplicationController
 
     def index
         init_default_template_params
+        index_rewrite_html_variables
         render 'index'
     end
 
@@ -14,6 +15,7 @@ class SearchController < ApplicationController
         @tpl_vars = {} # is filled from several methods
         @results = process_search parameters
         init_template_vars parameters
+        find_rewrite_html_variables parameters
         if @results.length == 0
             tpl = ( request.xhr? ? '_' : '' ) + 'empty'
             render tpl, :layout => ! request.xhr?
@@ -101,6 +103,14 @@ class SearchController < ApplicationController
 
     def init_template_vars parameters
         @tpl_vars[:input_params] = parameters
+    end
+
+    def find_rewrite_html_variables parameters
+        @page_title = "Searching '" + parameters['term']
+    end
+
+    def index_rewrite_html_variables
+        
     end
 
     def init_default_template_params

@@ -3,6 +3,7 @@ class DetailController < ApplicationController
     def index
         parameters = index_params
         @data = load_detail parameters[:origin], parameters[:id]
+        rewrite_html_variables
         if @data
             if request.xhr?
                 return render json: @data
@@ -21,6 +22,10 @@ class DetailController < ApplicationController
     end
 
     private
+
+    def rewrite_html_variables
+        @page_title = @data[:name]
+    end
 
     def index_params
         %w{origin id}.each do |required|

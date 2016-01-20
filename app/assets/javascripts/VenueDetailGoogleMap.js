@@ -58,7 +58,8 @@ VenueDetailGoogleMap.prototype = {
               center: new google.maps.LatLng(DI.detailGoogleMap.center.latitude, DI.detailGoogleMap.center.longitude),
               zoom: DI.detailGoogleMap.zoom,
               mapTypeId: google.maps.MapTypeId.ROADMAP,
-              streetViewControl: false
+              streetViewControl: true,
+              scrollwheel: false
           };
           DI.detailGoogleMap.map = new google.maps.Map(mapCanvas, mapOptions);
           DI.detailGoogleMap.callback();
