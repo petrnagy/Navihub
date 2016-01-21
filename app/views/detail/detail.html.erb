@@ -87,7 +87,7 @@
           <% if @data[:detail][:website_url] %>
           The place homepage can be found <%= link_to 'here', @data[:detail][:website_url], :target => '_blank' %>.
           <% elsif @data[:detail][:url] %>
-          More informations can be found here <%= link_to 'here', @data[:detail][:url], :target => '_blank' %>, on this <i><%=@data[:origin]%></i> site.
+          More informations can be found on <%= link_to 'this', @data[:detail][:url], :target => '_blank' %> <i><%=@data[:origin]%></i> site.
           <% else %>
           Want little more informations? try <a href="https://www.google.cz/?#q=<%=@data[:name]%>">Google</a>, <a href="http://www.bing.com/search?q=<%=@data[:name]%>">Bing</a> or <a href="https://duckduckgo.com/?q=<%=@data[:name]%>">DuckDuckGo</a>.
           <% end %>
@@ -120,38 +120,56 @@
     </div>
     <% end %>
   </div>
-  <div class="col-lg-12">
-    <div class="dots col-lg-2">
-      <!-- <a href="#" class="detail-fav-switch list-fav-switch <%= @data[:favorite] ? 'exists' : '' %>"><%= fa_icon( @data[:favorite] ? 'star' : 'star-o' ) %></a> -->
-    </div>
-    <div class="vendor-logo col-lg-10">
-      <!-- <%= image_tag 'powered-by-' + @data[:origin] + '.jpg', class: "powered-by-icon", title: "data loaded using " + @data[:origin].upcase + " API" %> -->
-    </div>
-  </div>
   <div class="col-lg-12"><hr></div>
   <div class="col-lg-12"><div id="map_canvas"></div></div>
-  <div class="col-lg-12"><hr></div>
-  <div class="col-lg-12">
+  <div class="col-lg-12 text-center">
     <h2 class="text-center">Share <%=@data[:name]%> with your friends</h2>
-    <div class="text-center">
-      <div class="social-likes" data-counters="no" data-url="<% request.original_url %>">
+    <hr>
+    <div class="col-lg-3 col-lg-offset-3 col-share-via-email">
+      <form id="detail-share-via-email">
+        <fieldset>
+          <legend>
+            Share via e-mail
+          </legend>
+          <input class="form-control" type="text" placeholder="your@email.com" value="" name="detailshare[email]">
+          <button type="submit" class="btn btn-success">Send details via e-mail</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-lg-3 col-social-share">
+      <div class="social-likes social-likes_vertical" data-counters="no" data-url="<% request.original_url %>">
         <div class="facebook" title="Share link on Facebook">Facebook</div>
         <div class="twitter" title="Share link on Twitter">Twitter</div>
         <div class="plusone" title="Share link on Google+">Google+</div>
+        <div class="pinterest" title="Share image on Pinterest" data-media="">Pinterest</div>
       </div>
     </div>
   </div>
-  <div class="col-lg-12"><hr></div>
-  <div class="col-lg-12">
+  <div class="col-lg-12 col-search-more">
     <h2 class="text-center">Search more about <%=@data[:name]%></h2>
-    <div class="text-center">
+    <hr>
+    <div class="col-lg-3 col-lg-offset-3">
+      <h3>Search engines</h3>
       <ul>
-        <li>on Google</li>
-        <li>on Bing</li>
-        <li>on DuckDuckGo</li>
+        <li><a>Search on Google</a></li>
+        <li><a>Search on Bing</a></li>
+        <li><a>Search on DuckDuckGo</a></li>
       </ul>
     </div>
-
+    <div class="col-lg-3">
+      <h3>Maps</h3>
+      <ul>
+        <li><a>Search on Google Maps</a></li>
+        <li><a>Search on Bing Maps</a></li>
+        <li><a>Search on OpenStreet Map</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-12 col-source">
     <hr>
+    <p class="text-center">
+      These informations were provided with the help of:<br />
+      <%= image_tag 'powered-by-' + @data[:origin] + '.jpg', class: "powered-by-icon", title: "data loaded using " + @data[:origin].upcase + " API" %>
+    </p>
   </div>
 </div>

@@ -219,7 +219,7 @@ background-color: rgb(246,246,246);
     #search-results h2 { font-size: 20px; }
     .search-info { font-size: 13px; }
     .geometry-wrapper, .distance-wrapper, .labels-wrapper { font-size: 12px; }
-    .geometry-wrapper i, .distance-wrapper i, .labels-wrapper i { font-size: 20px; position: relative; top: -2px; }
+    #search-results .geometry-wrapper i, #search-results .distance-wrapper i, #search-results .labels-wrapper i { font-size: 20px; position: relative; top: -2px; }
     .geometry-wrapper .label, .distance-wrapper .label, .labels-wrapper .label { font-size: 10px; }
     #search-results h3 { font-size: 20px; }
     .result-box { width: 250px; }

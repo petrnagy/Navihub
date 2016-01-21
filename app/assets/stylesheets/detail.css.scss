@@ -35,3 +35,51 @@
 
 #detail-results .results-icon { padding-right: 30px; }
 p.detail-window-p { margin-bottom: 0px;}
+#detail-share-via-email input[type="text"] { height: 35px; }
+#detail-share-via-email legend { margin-bottom: 15px; }
+#detail-share-via-email button { height: 35px; padding: 0px 12px 0px 12px; margin-top: 20px; }
+.col-share-via-email { border-right: 1px solid lightgray; }
+
+#detail-results .detail-iframe iframe { width: 100%; border: 0px; height: 300px; overflow: hidden; }
+#detail-results .powered-by-icon { max-height: none; max-width: none; position: static; }
+#detail-results h3 { color: gray; font-size: 20px; }
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+@media only screen and (max-width: 1199px) {
+    #detail-results .col-share-via-email { margin-left: 25%; width: 25%; float: left; }
+    #detail-results .col-social-share { width: 25%; float: left; }
+    #detail-results .col-search-more { margin-top: 180px; }
+
+    #detail-results .col-search-more .col-lg-offset-3 { margin-left: 25%; }
+    #detail-results .col-search-more .col-lg-3 { width: 30%; float: left; }
+    #detail-results .col-source { width: 100%; float: left; }
+}
+@media only screen and (max-width: 991px) {
+    #detail-results .col-share-via-email { margin-left: 15%; width: 35%; float: left; }
+
+    #detail-results .col-search-more .col-lg-offset-3 { margin-left: 15%; }
+    #detail-results .col-search-more .col-lg-3 { width: 35%; float: left; }
+}
+@media only screen and (max-width: 768px) {
+    #detail-results .col-search-more .col-lg-offset-3 { margin-left: 10%; }
+    #detail-results .col-search-more .col-lg-3 { width: 40%; float: left; }
+}
+@media only screen and (max-width: 640px) {
+    #detail-results .col-search-more .col-lg-offset-3 { margin-left: 0px; }
+    #detail-results .col-search-more .col-lg-3 { width: 50%; float: left; }
+}
+
+@media only screen and (max-width: 590px) {
+    #detail-results .col-share-via-email { margin-left: 5%; width: 45%; float: left; }
+
+    #detail-results .col-search-more .col-lg-offset-3 { margin-left: none; }
+    #detail-results .col-search-more .col-lg-3 { width: 100%; float: none; text-align: center; }
+    #detail-results .col-search-more .col-lg-3 ul { list-style-type: none; padding-left: 0px; }
+}
+@media only screen and (max-width: 475px) {
+    #detail-results .col-share-via-email { margin-left: 0%; width: 100%; float: none; border-right: none;
+        border-bottom: 1px solid lightgray; padding-bottom: 20px; }
+    #detail-results .col-social-share { width: 100%; float: none; margin-top: 20px; }
+    #detail-results .col-search-more { margin-top: 0px; }
+}
