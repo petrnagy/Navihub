@@ -1,9 +1,15 @@
 <div id="detail-results" data-detail-json="<%= @data.to_json %>">
+  <% if @notice != nil %>
+  <div class="alert alert-dismissible alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= @notice.html_safe %>
+  </div>
+  <% end %>
   <div class="col-lg-12 detail-header">
     <h1 class="text-center"><span class="detail-header-name"><%= @data[:name] %></span></h1>
     <hr>
   </div>
-  <div class="col-lg-12">
+  <div class="col-lg-12 col-detail-top">
     <div class="geometry-wrapper">
       <div class="col-lg-7 result-address">
         <div class="results-icon"><%= fa_icon("map") %></div>
@@ -35,7 +41,7 @@
 
     </div>
   </div>
-  <div class="col-lg-12">
+  <div class="col-lg-12 col-detail-top">
     <div class="distance-wrapper">
       <% if @data[:distance] != nil %>
       <div class="col-lg-4 result-distance">
@@ -59,7 +65,7 @@
       <% end %>
     </div>
   </div>
-  <div class="col-lg-12">
+  <div class="col-lg-12 col-detail-top">
     <div class="contacts-wrapper">
       <div class="col-lg-4 result-phone">
         <div class="results-icon"><%= fa_icon 'phone' %></div>
@@ -67,7 +73,7 @@
           <% unless @data[:phone] == nil %>
           You can contact this place by dialing <a href="tel:<%=@data[:phone]%>"><%=@data[:phone]%></a>.
           <% else %>
-          Sorry, we could not find any phone contact. You could try <a href="https://www.google.com?#q=<%=@data[:name]%> phone">find it on Google</a>.
+          We could not find any phone contact. You could try <a href="https://www.google.com?#q=<%=@data[:name]%> phone">your luck elsewhere <i class="fa fa-external-link"></i></a>.
           <% end %>
         </p>
       </div>
@@ -77,7 +83,7 @@
           <% unless @data[:email] == nil %>
           You can contact this place via e-mail address <a href="mailto:<%=@data[:email]%>"><%=@data[:email]%></a>.
           <% else %>
-          Sorry, we could not find any e-mail contact. You could try <a href="https://www.google.com?#q=<%=@data[:name]%> e-mail">Googling it</a>.
+          We could not find any e-mail contact. You could try <a href="https://www.google.com?#q=<%=@data[:name]%> e-mail">Googling it <i class="fa fa-external-link"></i></a>.
           <% end %>
         </p>
       </div>
@@ -85,17 +91,17 @@
         <div class="results-icon"><%= fa_icon 'link' %></div>
         <p class="detail-window-p">
           <% if @data[:detail][:website_url] %>
-          The place homepage can be found <%= link_to 'here', @data[:detail][:website_url], :target => '_blank' %>.
+          The place homepage can be found <%= link_to 'here', @data[:detail][:website_url] %>.
           <% elsif @data[:detail][:url] %>
-          More informations can be found on <%= link_to 'this', @data[:detail][:url], :target => '_blank' %> <i><%=@data[:origin]%></i> site.
+          More informations can be found on <%= link_to 'this <i class="fa fa-external-link"></i>'.html_safe, @data[:detail][:url] %> <i><%=@data[:origin]%></i> site.
           <% else %>
-          Want little more informations? try <a href="https://www.google.cz/?#q=<%=@data[:name]%>">Google</a>, <a href="http://www.bing.com/search?q=<%=@data[:name]%>">Bing</a> or <a href="https://duckduckgo.com/?q=<%=@data[:name]%>">DuckDuckGo</a>.
+          Need little more informations? try <a href="https://www.google.cz/?#q=<%=@data[:name]%>">Google</a>, <a href="http://www.bing.com/search?q=<%=@data[:name]%>">Bing</a> or <a href="https://duckduckgo.com/?q=<%=@data[:name]%>">DuckDuckGo</a>.
           <% end %>
         </p>
       </div>
     </div>
   </div>
-  <div class="col-lg-12">
+  <div class="col-lg-12 col-detail-top">
     <% if @data[:tags].is_a? Array %>
     <div class="labels-wrapper">
       <div class="result-tags col-lg-6">
@@ -111,7 +117,7 @@
         <div class="results-icon"><a href="#" class="detail-fav-switch list-fav-switch <%= @data[:favorite] ? 'exists' : '' %>"><%= fa_icon( @data[:favorite] ? 'star' : 'star-o' ) %></a></div>
         <p class="detail-window-p">
           <% if @data[:favorite] %>
-
+          This place is listed in your <%= link_to 'favorite places list', controller: 'favorites', action: 'index' %>. You can easily access the places you saved from the <i>top menu</i>.
           <% else %>
           Clicking on this star will add this place to your <%= link_to 'favorite places list', controller: 'favorites', action: 'index' %>. After that, you can easily access the places you like from the <i>top menu</i>.
           <% end %>
@@ -126,13 +132,14 @@
     <h2 class="text-center">Share <%=@data[:name]%> with your friends</h2>
     <hr>
     <div class="col-lg-3 col-lg-offset-3 col-share-via-email">
-      <form id="detail-share-via-email">
+      <form id="detail-share-via-email" method="POST">
         <fieldset>
           <legend>
             Share via e-mail
+            <!-- <span class="badge">?</span> -->
           </legend>
-          <input class="form-control" type="text" placeholder="your@email.com" value="" name="detailshare[email]">
-          <button type="submit" class="btn btn-success">Send details via e-mail</button>
+          <input class="form-control" type="text" placeholder="your@email.com" value="" name="detailshare-email">
+          <button type="submit" class="btn btn-success">Send the stuff</button>
         </fieldset>
       </form>
     </div>
@@ -149,19 +156,19 @@
     <h2 class="text-center">Search more about <%=@data[:name]%></h2>
     <hr>
     <div class="col-lg-3 col-lg-offset-3">
-      <h3>Search engines</h3>
+      <h3>Find on web</h3>
       <ul>
-        <li><a>Search on Google</a></li>
-        <li><a>Search on Bing</a></li>
-        <li><a>Search on DuckDuckGo</a></li>
+        <li><a>Google <%= fa_icon 'external-link' %></a></li>
+        <li><a>Bing <%= fa_icon 'external-link' %></a></li>
+        <li><a>Duck Duck Go <%= fa_icon 'external-link' %></a></li>
       </ul>
     </div>
     <div class="col-lg-3">
-      <h3>Maps</h3>
+      <h3>Find in maps</h3>
       <ul>
-        <li><a>Search on Google Maps</a></li>
-        <li><a>Search on Bing Maps</a></li>
-        <li><a>Search on OpenStreet Map</a></li>
+        <li><a>Google Maps <%= fa_icon 'external-link' %></a></li>
+        <li><a>Bing Maps <%= fa_icon 'external-link' %></a></li>
+        <li><a>Open Street Map <%= fa_icon 'external-link' %></a></li>
       </ul>
     </div>
   </div>

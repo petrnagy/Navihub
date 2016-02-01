@@ -9,6 +9,7 @@ function kickstart_homepage(di) {
 function kickstart_detail(di) {
     if ($("#detail-results").length) {
         di.venueDetail = new VenueDetail(di);
+        di.venueDetailLazyLoader = new DetailLazyLoader(di);
     } // end if
 } // end func
 

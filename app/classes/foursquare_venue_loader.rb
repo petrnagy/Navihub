@@ -1,15 +1,11 @@
 class FoursquareVenueLoader < GenericVenueLoader
-  
+
   def load location
-    data = parse get prepare
-    if data
-      mapper = FoursquareMapper.new data
-      return mapper.map_detail location
-    end
+    parse get prepare
   end
-  
+
   private
-  
+
   def prepare
     url = 'https://api.foursquare.com/v2/venues/'
     url += @id.to_s + '/'
@@ -18,5 +14,5 @@ class FoursquareVenueLoader < GenericVenueLoader
     url += '&client_secret=' + @foursquare_client_secret
     URI::escape(url)
   end
-  
+
 end

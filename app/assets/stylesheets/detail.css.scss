@@ -22,7 +22,10 @@
 #detail-results .result-walking-distance,
 #detail-results .result-car-distance,
 #detail-results .result-tags,
-#detail-results .result-star { padding: 20px 30px 20px 30px; max-height: none; }
+#detail-results .result-star { padding: 20px 20px 20px 20px; max-height: none; }
+#detail-results a.detail-fav-switch:active, #detail-results a.detail-fav-switch:hover,
+#detail-results a.detail-fav-switch:focus { color: #D2D21E; }
+.result-box a.list-fav-switch:focus { color: gray; }
 
 // #detail-results .result-tags, #detail-results .result-star { padding-top: 5px; padding-bottom: 10px; }
 #detail-results .result-tags .label { font-size: 90%; }
@@ -41,7 +44,7 @@ p.detail-window-p { margin-bottom: 0px;}
 .col-share-via-email { border-right: 1px solid lightgray; }
 
 #detail-results .detail-iframe iframe { width: 100%; border: 0px; height: 300px; overflow: hidden; }
-#detail-results .powered-by-icon { max-height: none; max-width: none; position: static; }
+#detail-results .powered-by-icon { max-height: none; max-width: 100%; position: static; }
 #detail-results h3 { color: gray; font-size: 20px; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -54,13 +57,35 @@ p.detail-window-p { margin-bottom: 0px;}
     #detail-results .col-search-more .col-lg-offset-3 { margin-left: 25%; }
     #detail-results .col-search-more .col-lg-3 { width: 30%; float: left; }
     #detail-results .col-source { width: 100%; float: left; }
+
+    #detail-results .col-detail-top { width: 100%; float: left; }
+    #detail-results .col-detail-top .col-lg-4 { width: 33.33333333%; }
+    #detail-results .col-detail-top .col-lg-5 { width: 41.66666667%; }
+    #detail-results .col-detail-top .col-lg-6 { width: 50%; }
+    #detail-results .col-detail-top .col-lg-7 { width: 58.33333333%; }
+
+    #detail-results .col-detail-top .col-lg-4,
+    #detail-results .col-detail-top .col-lg-5,
+    #detail-results .col-detail-top .col-lg-6,
+    #detail-results .col-detail-top .col-lg-7 { float: left; height: 102px; display: flex; align-items: center; }
 }
 @media only screen and (max-width: 991px) {
     #detail-results .col-share-via-email { margin-left: 15%; width: 35%; float: left; }
 
     #detail-results .col-search-more .col-lg-offset-3 { margin-left: 15%; }
     #detail-results .col-search-more .col-lg-3 { width: 35%; float: left; }
-}
+
+    #detail-results .col-detail-top { width: 100%; float: none; }
+
+    #detail-results .col-detail-top .col-lg-4,
+    #detail-results .col-detail-top .col-lg-5,
+    #detail-results .col-detail-top .col-lg-6,
+    #detail-results .col-detail-top .col-lg-7 {
+        float: none; height: auto; width: 100%; padding: 10px 30px 10px 30px; height: auto; min-height: 85px;
+        border-top: 2px solid white; border-bottom: 2px solid white; border-right: none; border-left: none;
+    }
+    #detail-results .results-icon { width: 50px; }
+    }
 @media only screen and (max-width: 768px) {
     #detail-results .col-search-more .col-lg-offset-3 { margin-left: 10%; }
     #detail-results .col-search-more .col-lg-3 { width: 40%; float: left; }
@@ -82,4 +107,16 @@ p.detail-window-p { margin-bottom: 0px;}
         border-bottom: 1px solid lightgray; padding-bottom: 20px; }
     #detail-results .col-social-share { width: 100%; float: none; margin-top: 20px; }
     #detail-results .col-search-more { margin-top: 0px; }
+}
+
+@media only screen and (max-width: 405px) {
+    #detail-results .col-detail-top .col-lg-4,
+    #detail-results .col-detail-top .col-lg-5,
+    #detail-results .col-detail-top .col-lg-6,
+    #detail-results .col-detail-top .col-lg-7 { font-size: 12px; }
+}
+
+@media only screen and (max-height: 400px) {
+    /* iphone 5s */
+    #detail-results #map_canvas { height: 250px; }
 }

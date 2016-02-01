@@ -47,6 +47,7 @@ class FoursquareMapper < GenericMapper
         mapped[:geometry][:lat],
         mapped[:geometry][:lng]
       ).ceil unless mapped[:distance].to_i > 0
+
       mapped[:distance_in_mins] = DistanceHelper.m_to_min mapped[:distance]
       mapped[:car_distance_in_mins] = DistanceHelper.car_m_to_min mapped[:distance]
       if mapped[:distance] > 1000

@@ -2,7 +2,7 @@ class Favorite < ActiveRecord::Base
     belongs_to :user
 
     def self.find_by_user_id user_id
-        return Favorite.select('venue_id, venue_origin', conditions: { user_id: user_id } )
+        return Favorite.select('venue_id, venue_origin').where(user_id: user_id)
     end
 
     def self.load_by_user_id user_id

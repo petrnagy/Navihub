@@ -54,10 +54,10 @@
   position: fixed;
   top: -37px;
   left: 45%;
-  z-index: 10000;
+  z-index: 1000;
 }
 #spinner > div { background-color: white; }
-#spinner { background-color: gray; border-radius: 0px 0px 5px 5px; }
+#spinner { background-color: dimgray; border-radius: 0px 0px 5px 5px; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 

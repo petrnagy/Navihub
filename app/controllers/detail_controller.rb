@@ -17,7 +17,7 @@ class DetailController < ApplicationController
     end
 
     def load_detail origin, id
-        detail = Detail.new origin, id, @location
+        detail = Detail.new origin, id, @location, @user
         return detail.load
     end
 

@@ -61,14 +61,6 @@ class Search
         end
         ApiCache.save_to_cache key, results if results && ! @results_from_cache
         process_results results
-    # rescue
-    #     l = Logger.new(STDOUT)
-    #     l.debug 'non-threadsafe code raised error: ' + e.to_str
-    #     # ! ! ! ! ! ! ! ! ! ! ! ! ! HACK ! ! ! ! ! ! ! ! ! ! ! ! !
-    #     # if non-threadsafe code raised error, we request the APIs again, without multithreading
-    #     results = search_sync
-    #     ApiCache.save_to_cache(key, results) if results
-    #     process_results results
     end
 
     private

@@ -44,7 +44,8 @@ class PermalinksController < ApplicationController
         row = Permalink.find_by(permalink_id: parameters['permalink_id'])
         if row
             @data = YAML.load row.yield
-             return render 'detail/detail'
+            @notice = 'Friendly notice - this is a <b>permalink</b> page! The content is statically saved in our database and may not reflect your current location or any other infromation change. '
+            return render 'detail/detail'
         else render 'empty', :status => 404
         end
     end

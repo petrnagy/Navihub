@@ -3,5 +3,8 @@
 #cboxClose { position: absolute; top: 0; }
 #cboxLoadedContent { overflow: hidden !important; height: 100% !important; }
 .message-title { font-size: 20px; font-weight: bold; margin-bottom: 34px; }
-.message-txt {  }
+.message-txt { box-shadow: lightgray 0px 0px 14px 0px; }
 p.contact-popup-content i { width: 30px; text-align: center; }
+.message-txt.type-error { box-shadow: #F7B7B7 0px 0px 14px 0px; }
+.message-txt.type-success { box-shadow: #AADAAA 0px 0px 14px 0px; }
+.message-txt.type-warning { box-shadow: #F3D6A1 0px 0px 14px 0px; }

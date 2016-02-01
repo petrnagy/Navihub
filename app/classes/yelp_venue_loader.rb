@@ -1,15 +1,11 @@
 class YelpVenueLoader < GenericVenueLoader
-  
+
   def load location
-    data = parse get
-    if data
-      mapper = YelpMapper.new data
-      return mapper.map_detail location
-    end
+    parse get
   end
-  
+
   private
-  
+
   def get
     consumer = OAuth::Consumer.new(
       @yelp_consumer_key,
@@ -25,5 +21,5 @@ class YelpVenueLoader < GenericVenueLoader
     url += '/' + @id.to_s
     access_token.get(URI::escape url)
   end
-  
+
 end

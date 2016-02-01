@@ -125,9 +125,8 @@ SearchResult.prototype = {
 
     list_fav_switch: function($el) {
         var that = this;
-        if ( $el.hasClass('pending') ) {
-            return;
-        } else {
+        if ( ! $el.hasClass('pending') ) {
+            $el.addClass('pending');
             var data = that.getData($el);
             that.di.spinner.show();
 
@@ -140,7 +139,7 @@ SearchResult.prototype = {
                         $el.addClass('exists');
                         $el.find('i').removeClass('fa-star-o').addClass('fa-star');
                     }, // end func
-                    error: function(data) { that.di.messenger.error('Oh no !', 'There was an error and we could not add a new favorite item. Please try again later.'); }, // end func
+                    error: function(data) { that.di.messenger.error('Oh no !', 'There was an error, and we could not add a new favorite item. Please try again later.'); }, // end func
                     complete: function(){
                         that._setCooldown($el);
                         that.di.spinner.hide();
@@ -275,7 +274,12 @@ SearchResult.prototype = {
     }, // end method
 
     getDetailUrl: function(data) {
-        return window.location.origin + Detail.prototype.buildDetailUrl(data, this);
+        var that = this;
+        var loc = that.di.locator.getLocation();
+        var ll = 'll=' + loc.lat.toString() + ',' + loc.lng.toString();
+        var url =  window.location.origin + Detail.prototype.buildDetailUrl(data, this);
+        var fullUrl = url + ( url.indexOf('?') == -1 ? '?' : '&' ) + ll;
+        return fullUrl;
     }, // end method
 
     list_send_via_email: function($el) {

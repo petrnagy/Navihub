@@ -11,14 +11,14 @@
       <% i = 0; %>
       <% @data[:results].each do |result| %>
       <% i = i + 1; %>
-      <div class="col-lg-4 result-box origin-<%= result['origin'] %>" data-result-json="<%= result['json'] %>" id="<%= Digest::MD5.hexdigest result['json'] %>">
-          <h3 title="<%= result['name'] %>">
-              <%= result['name'] %>
+      <div class="col-lg-4 result-box origin-<%= result[:origin] %>" data-result-json="<%= result[:json] %>" id="<%= Digest::MD5.hexdigest result[:json] %>">
+          <h3 title="<%= result[:name] %>">
+              <%= result[:name] %>
           </h3>
           <div class="map-wrapper">
-              <% if result['map'] %>
+              <% if result[:map] %>
               <a class="list-open-in-maps" href="#">
-              <%= image_tag 'lazyload.png', size: '340x100', alt: result['name'], lazysrc: result['map'] %>
+              <%= image_tag 'lazyload.png', size: '340x100', alt: result[:name], lazysrc: result[:map] %>
               </a>
               <% else %>
               <%= image_tag 'noimage.png', size: '340x100' %>
@@ -27,18 +27,18 @@
           <div class="geometry-wrapper">
               <div class="col-lg-7 result-address">
                   <div class="results-icon"><%= fa_icon("map") %></div>
-                  <% if result['address'] %>
-                  <%= result['address'] %>
+                  <% if result[:address] %>
+                  <%= result[:address] %>
                   <% else %>
                   unknown address
                   <% end %>
               </div>
               <div class="col-lg-5 result-geometry">
                   <div class="results-icon"><%= fa_icon("map-marker") %></div>
-                  <% if result['pretty_loc'] %>
+                  <% if result[:pretty_loc] %>
                   <div>
-                  <%= result['pretty_loc']['lat'][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= result['pretty_loc']['lat'][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= result['pretty_loc']['lat'][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= result['pretty_loc']['lat'][3].to_s %><br>
-                  <%= result['pretty_loc']['lng'][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= result['pretty_loc']['lng'][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= result['pretty_loc']['lng'][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= result['pretty_loc']['lng'][3].to_s %>
+                  <%= result[:pretty_loc][:lat][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][3].to_s %><br>
+                  <%= result[:pretty_loc][:lng][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][3].to_s %>
                   </div>
                   <% else %>
                   <i class="unknown-data fa fa-spinner fa-spin"></i>
@@ -47,26 +47,26 @@
 
           </div>
           <div class="distance-wrapper">
-              <% if result['distance'] %>
+              <% if result[:distance] %>
               <div class="col-lg-4 result-distance">
-                  <div class="results-icon"><%= fa_icon("arrows-h") %></div><span class=""><%= DistanceHelper.pretty_distance(result['distance'], result['distance_unit'], 'km', false) %></span>
+                  <div class="results-icon"><%= fa_icon("arrows-h") %></div><span class=""><%= DistanceHelper.pretty_distance(result[:distance], result[:distance_unit], 'km', false) %></span>
               </div>
               <div class="col-lg-4 result-walking-distance">
-                  <div class="results-icon"><%= fa_icon("male") %></div><span class=""><%= DistanceHelper.pretty_minutes(DistanceHelper.m_to_min(result['distance']), false) %></span>
+                  <div class="results-icon"><%= fa_icon("male") %></div><span class=""><%= DistanceHelper.pretty_minutes(DistanceHelper.m_to_min(result[:distance]), false) %></span>
               </div>
               <div class="col-lg-4 result-car-distance">
-                  <div class="results-icon"><%= fa_icon("car") %></div><span class=""><%= DistanceHelper.pretty_minutes(DistanceHelper.car_m_to_min(result['distance']), false) %></span>
+                  <div class="results-icon"><%= fa_icon("car") %></div><span class=""><%= DistanceHelper.pretty_minutes(DistanceHelper.car_m_to_min(result[:distance]), false) %></span>
               </div>
               <% end %>
 
           </div>
 
-          <% if result['tags'].is_a? Array %>
+          <% if result[:tags].is_a? Array %>
           <div class="labels-wrapper">
               <div class="result-tags col-lg-12">
                   <div class="results-icon"><%= fa_icon("tags") %></div>
                   <div>
-                      <% result['tags'].each do |label| %>
+                      <% result[:tags].each do |label| %>
                       <a href="#"><span class="label label-default"><%= label %></span></a>
                       <% end %>
                   </div>
@@ -94,10 +94,10 @@
                       <li class="dropdown-submenu">
                           <a tabindex="-1" href="#"><%= fa_icon("search") %>search more</a>
                           <ul class="dropdown-menu">
-                              <li><a target="_blank" class="list-search-more-google" href="https://www.google.cz/?#q=<%= result['name'] %>"><%= fa_icon("google") %>google.com</a></li>
-                              <li><a target="_blank" class="list-search-more-bing" href="http://www.bing.com/search?q=<%= result['name'] %>"><%= fa_icon("search-plus") %>bing.com</a></li>
-                              <li><a target="_blank" class="list-search-more-yahoo" href="https://search.yahoo.com/search?p=<%= result['name'] %>"><%= fa_icon("yahoo") %>yahoo.com</a></li>
-                              <li><a target="_blank" class="list-search-more-duck" href="https://duckduckgo.com/?q=<%= result['name'] %>"><%= fa_icon("user-secret") %>duckduckgo.com</a></li>
+                              <li><a target="_blank" class="list-search-more-google" href="https://www.google.cz/?#q=<%= result[:name] %>"><%= fa_icon("google") %>google.com</a></li>
+                              <li><a target="_blank" class="list-search-more-bing" href="http://www.bing.com/search?q=<%= result[:name] %>"><%= fa_icon("search-plus") %>bing.com</a></li>
+                              <li><a target="_blank" class="list-search-more-yahoo" href="https://search.yahoo.com/search?p=<%= result[:name] %>"><%= fa_icon("yahoo") %>yahoo.com</a></li>
+                              <li><a target="_blank" class="list-search-more-duck" href="https://duckduckgo.com/?q=<%= result[:name] %>"><%= fa_icon("user-secret") %>duckduckgo.com</a></li>
                           </ul>
                       </li>
                       <li class="dropdown-submenu">
@@ -113,8 +113,8 @@
 
               </div>
               <div class="vendor-logo col-lg-10">
-                  <%= image_tag 'powered-by-' + result['origin'] + '.jpg', class: "powered-by-icon", title: "This result was loaded using " + result['origin'].upcase + " API" %>
-                  <a href="#" class="detail-fav-switch list-fav-switch <%= result['favorite'] ? 'exists' : '' %>"><%= fa_icon( result['favorite'] ? 'star' : 'star-o' ) %></a>
+                  <%= image_tag 'powered-by-' + result[:origin] + '.jpg', class: "powered-by-icon", title: "This result was loaded using " + result[:origin].upcase + " API" %>
+                  <a href="#" class="detail-fav-switch list-fav-switch <%= result[:favorite] ? 'exists' : '' %>"><%= fa_icon( result[:favorite] ? 'star' : 'star-o' ) %></a>
               </div>
           </div>
       </div>

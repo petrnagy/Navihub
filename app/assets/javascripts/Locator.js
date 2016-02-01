@@ -230,6 +230,11 @@ setFromCache: function() {
 getLocation: function() {
     var that = this;
     return that._data.browser ? that._data.browser : that._data.web;
+    // if ( loc ) {
+    //     loc.lat = loc.lat.round(6);
+    //     loc.lng = loc.lng.round(6);
+    // } // end if
+    // return loc;
 }, // end method
 
 /**

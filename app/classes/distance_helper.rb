@@ -18,7 +18,7 @@ class DistanceHelper
     (m.to_f * 3.281).to_i
   end
 
-  # kilometres to miles
+  # kilometers to miles
   def self.km_to_mi km
     (km * 0.6214).round 2
   end
@@ -101,7 +101,9 @@ class DistanceHelper
     elsif 0 == meters
       return '0 ' + m_unit
     elsif meters > 999
-      return (meters.to_f / 1000).round(1).to_s + ' ' + km_unit
+      distance = (meters.to_f / 1000).round(1)
+      distance = distance.floor == distance ? distance.to_i : distance
+      return distance.to_s + ' ' + km_unit
     else
       return meters.to_s + ' ' + m_unit
     end
@@ -111,7 +113,6 @@ class DistanceHelper
     kilometers = kilometers.round(1)
     m_unit = long_units ? 'meters' : 'm'
     km_unit = long_units ? 'kilometers' : 'km'
-
     if kilometers < 0
       return '<i class="unknown-data fa fa-spinner fa-spin"></i>'.html_safe
     elsif 0 == kilometers
@@ -119,6 +120,7 @@ class DistanceHelper
     elsif kilometers < 1.00
       return (kilometers * 1000).round.to_s + ' ' + m_unit
     else
+      kilometers = kilometers.floor == kilometers ? kilometers.to_i : kilometers
       return kilometers.to_s + ' ' + km_unit
     end
   end

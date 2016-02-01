@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   class EmptySessionId < StandardError
   end
+  class CouldNotSetLocation < StandardError
+  end
 
   @failsafe;
 
@@ -136,6 +138,7 @@ class ApplicationController < ActionController::Base
         @location = loc
       end
     end
+    #raise CouldNotSetLocation if @location == nil
   end
 
   private

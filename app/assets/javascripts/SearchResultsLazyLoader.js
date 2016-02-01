@@ -22,6 +22,7 @@ SearchResultsLazyLoader.prototype = {
         that._lazyLoadSearchResultsGeometries();
         that._lazyLoadSearchResultsAddresses();
         that._lazyLoadSearchResultsTagLinks();
+        that._lazyLoadSearchResultsDistances();
     }, // end method
 
     _lazyLoadSearchResultsImages: function() {
@@ -77,6 +78,11 @@ SearchResultsLazyLoader.prototype = {
             var url = that.di.search.buildUrl(searchData);
             $(this).parent().attr('href', url);
         });
+    }, // end method
+
+    _lazyLoadSearchResultsDistances: function() {
+      var that = this;
+      console.log("_lazyLoadSearchResultsDistances - not implemented");
     }, // end method
 
 }; // end prototype
