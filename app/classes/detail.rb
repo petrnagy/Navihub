@@ -16,6 +16,7 @@ class Detail
         if Search.allowed_engines.include? @origin
             loader = "#{@origin.capitalize}VenueLoader".constantize.new @id
             data = VenueDetailCache.load @origin, @id
+            data = nil
             if data == nil
                 data = loader.load(@location)
                 VenueDetailCache.save @origin, @id, data
@@ -39,6 +40,7 @@ class Detail
         detail[:distance] = detail[:distance].to_i unless detail[:distance] == nil
         detail[:distance_unit] = 'm' unless detail[:distance] != nil
         detail[:address] = result_confirm_address detail
+        detail[:address] = nil
         detail[:tags] = result_normalize_tags detail
         detail[:ascii_name] = Mixin.normalize_unicode detail[:name]
         detail[:url] = make_friendly_url detail

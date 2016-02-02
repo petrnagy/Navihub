@@ -30,21 +30,27 @@ DetailLazyLoader.prototype = {
         var that = this;
         $spinner = $('#detail-results .result-address .fa-spinner');
         if ( $spinner.length && that._data.geometry ) {
-            that.di.locator.doLazyReverseGeocoding(that._data.geometry, $spinner);
+            that.di.locator.doLazyReverseGeocoding(that._data.geometry, $spinner, that._data.name);
         } // end if
     }, // end method
 
     _lazyLoadTagLinks: function() {
         var that = this;
-        $set = $('#detail-results .result-tags .label');
-        var search = new Search(null, that.di);
-        $set.each(function(){
-            var label = $(this).text().replace('-', ' ');
-            var searchData = search.defaults;
-            searchData.term = label;
-            var url = search.buildUrl(searchData);
-            $(this).parent().attr('href', url);
-        });
+        var interval = setInterval(function() {
+            if ( that.di.locator.getLocation() !== null ) {
+                clearInterval(interval);
+
+                $set = $('#detail-results .result-tags .label');
+                var search = new Search(null, that.di);
+                $set.each(function(){
+                    var label = $(this).text().replace('-', ' ');
+                    var searchData = search.defaults;
+                    searchData.term = label;
+                    var url = search.buildUrl(searchData);
+                    $(this).parent().attr('href', url);
+                });
+            } // end if
+        }, 1000);
     }, // end method
 
     _lazyLoadDistance: function() {

@@ -16,4 +16,13 @@ module DetailHelper
         o += '</p>'
         o.html_safe
     end
+
+    def self.detail_pretty_address name, address
+        o = ''
+        o += '<p class="detail-window-p">'
+        o += 'The place ' + name + ' is located at <b>' + address + '</b>.'
+        o += '</p>'
+        o.html_safe
+    end
+
 end

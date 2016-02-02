@@ -64,20 +64,26 @@ SearchResultsLazyLoader.prototype = {
 
     _lazyLoadSearchResultsTagLinks: function() {
         var that = this;
-        $set = $('#yield #search-results .result-tags .label:in-viewport').not('.done');
-        $set.each(function(){
-            $(this).addClass('done');
-            var label = $(this).text().replace('-', ' ');
-            var searchData = {};
-            if (that.di.controller === 'search') {
-                searchData = that.di.search.getValues();
-            } else if (that.di.controller === 'favorites') {
-                searchData = that.di.search.defaults;
-            }  // end if-else-if
-            searchData.term = label;
-            var url = that.di.search.buildUrl(searchData);
-            $(this).parent().attr('href', url);
-        });
+        var interval = setInterval(function(){
+            if ( that.di.locator.getLocation() !== null ) {
+                clearInterval(interval);
+
+                $set = $('#yield #search-results .result-tags .label:in-viewport').not('.done');
+                $set.each(function(){
+                    $(this).addClass('done');
+                    var label = $(this).text().replace('-', ' ');
+                    var searchData = {};
+                    if (that.di.controller === 'search') {
+                        searchData = that.di.search.getValues();
+                    } else if (that.di.controller === 'favorites') {
+                        searchData = that.di.search.defaults;
+                    }  // end if-else-if
+                    searchData.term = label;
+                    var url = that.di.search.buildUrl(searchData);
+                    $(this).parent().attr('href', url);
+                });
+            } // end if
+        }, 1000);
     }, // end method
 
     _lazyLoadSearchResultsDistances: function() {

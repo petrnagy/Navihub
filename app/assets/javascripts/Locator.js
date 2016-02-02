@@ -229,12 +229,12 @@ setFromCache: function() {
 
 getLocation: function() {
     var that = this;
-    return that._data.browser ? that._data.browser : that._data.web;
-    // if ( loc ) {
-    //     loc.lat = loc.lat.round(6);
-    //     loc.lng = loc.lng.round(6);
-    // } // end if
-    // return loc;
+    var loc = that._data.browser ? that._data.browser : that._data.web;
+    if ( loc !== null ) {
+        loc.lat = parseFloat(loc.lat);
+        loc.lng = parseFloat(loc.lng);
+    } // end if
+    return loc;
 }, // end method
 
 /**
@@ -380,11 +380,12 @@ doLazyGeocoding: function(addr, $context, callback) {
     }); // end ajax
 }, // end method
 
-doLazyReverseGeocoding: function(loc, $context) {
+doLazyReverseGeocoding: function(loc, $context, name) {
     var that = this;
+    name = name || null;
     $.ajax({
         url: '/lazy/reversegeocode',
-        data: { lat: loc.lat, lng: loc.lng },
+        data: { lat: loc.lat, lng: loc.lng, source: that.di.controller, name: name },
         cache: true,
         success: function(data) {
             if ( data && 'ok' == data.status ) {

@@ -55,16 +55,20 @@ class SearchController < ApplicationController
 
     def reverse_geocode
         if request.xhr?
-            data = reverse_geocode_params
+            parameters = reverse_geocode_params
             geocoder = Geocoder.new
-            data = geocoder.reverse_geocode data['lat'], data['lng']
+            data = geocoder.reverse_geocode parameters['lat'], parameters['lng']
             respond_to do |format|
                 if data == nil || data.addr == nil
                     html = '<i class="fa fa-frown-o"></i>'.html_safe
                 else
-                    html = data.addr
+                    if %w{detail permalink}.include? parameters['source']
+                        html = DetailHelper.detail_pretty_address parameters['name'], data.addr
+                    else
+                        html = data.addr
+                    end
                 end
-                msg = { :status => "ok", :message => "Success!", :html => data.addr }
+                msg = { :status => "ok", :message => "Success!", :html => html }
                 format.json { render :json => msg }
             end
         end
@@ -156,11 +160,12 @@ class SearchController < ApplicationController
     end
 
     def reverse_geocode_params
-        %w{lat lng}.each do |required|
+        %w{lat lng source}.each do |required|
             params.require required
-            params[required] = params[required].to_f
+            params[required] = params[required].to_f unless 'source' === required
         end
-        params.permit(:lat, :lng)
+        params['name'] = Mixin.sanitize params['name'] if params.has_key? 'name'
+        params.permit(:lat, :lng, :source, :name)
     end
 
     def ipinfo_params
