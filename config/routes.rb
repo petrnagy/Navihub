@@ -10,15 +10,21 @@ Rails.application.routes.draw do
     get 'settings/location' => 'settings#location' # [xss-safe]
     get 'settings/profile' # [not-implemented]
     # detail
-    get 'detail/:name/:id/:origin' => 'detail#index' # [xss-safe]
-    get 'detail/:name/:origin' => 'detail#index' # [xss-safe]
+    get 'detail/:name/:id/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe]
+        :constraints => { :lat => /\d+(\.\d+)?/, :lng => /\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
+    get 'detail/:name/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe]
+        :constraints => { :lat => /\d+(\.\d+)?/, :lng => /\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
     # permalinks
     get 'permalink/:permalink_id' => 'permalinks#show' # [xss-safe]
     put 'setpermalink' => 'permalinks#create' # [xss-safe]
     # search
     get 'search' => 'search#index' # [xss-safe]
-    get 'find' => 'search#find' # [xss-safe]
-    get 'search/:term(/:radius)(/:order)(/:offset)' => 'search#find' # [xss-safe]
+    get 'search/:order/:radius/:offset/@/:lat,:lng' => 'search#find', # [xss-safe]
+        :constraints => { :order => /\w+\-\w+/, :radius => /\d+/, :offset => /\d+/,
+            :lat => /\d+(\.\d+)?/, :lng => /\d+(\.\d+)?/ }
+    get 'search/:term/:order/:radius/:offset/@/:lat,:lng' => 'search#find', # [xss-safe]
+        :constraints => { :order => /\w+\-\w+/, :radius => /\d+/, :offset => /\d+/,
+            :lat => /\d+(\.\d+)?/, :lng => /\d+(\.\d+)?/ }
     # lazy search-related endpoints
     get 'lazy/geocode' => 'search#geocode' # [xss-safe]
     get 'lazy/reversegeocode' => 'search#reverse_geocode' # [xss-safe]

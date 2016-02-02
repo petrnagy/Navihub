@@ -1,8 +1,9 @@
 class SearchController < ApplicationController
 
-    public
+    include DetailHelper
+    require 'location'
 
-    @results; @tpl_vars
+    public
 
     def index
         init_default_template_params
@@ -30,14 +31,21 @@ class SearchController < ApplicationController
 
     def geocode
         if request.xhr?
-            data = geocode_params
+            parameters = geocode_params
             geocoder = Geocoder.new
-            data = geocoder.geocode data['addr']
+            data = geocoder.geocode parameters['addr']
             respond_to do |format|
                 if data == nil || data['lat'] == nil || data['lng'] == nil
                     html = '<i class="fa fa-frown-o"></i>'.html_safe
                 else
-                    html = Location.pretty_loc( data['lat'], data['lng'] )
+                    if %w{detail permalink}.include? parameters['source']
+                        html = DetailHelper.detail_pretty_loc(
+                            Location.pretty_loc(data['lat'], data['lng']),
+                            { :lat => data['lat'], :lng => data['lng'] }
+                        )
+                    else
+                        html = Location.pretty_loc( data['lat'], data['lng'] )
+                    end
                 end
                 msg = { :status => "ok", :message => "Success!", :data => data, :html => html }
                 format.json { render :json => msg }
@@ -110,7 +118,7 @@ class SearchController < ApplicationController
     end
 
     def index_rewrite_html_variables
-        
+
     end
 
     def init_default_template_params
@@ -140,9 +148,11 @@ class SearchController < ApplicationController
     end
 
     def geocode_params
-        params.require 'addr'
-        params[:addr] = Mixin.sanitize(params[:addr])
-        params.permit(:addr)
+        %w{addr source}.each do |required|
+            params.require required
+            params[required] = Mixin.sanitize(params[required])
+        end
+        params.permit(:addr, :source)
     end
 
     def reverse_geocode_params

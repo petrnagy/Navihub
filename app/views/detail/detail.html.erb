@@ -24,16 +24,7 @@
       <div class="col-lg-5 result-geometry">
         <div class="results-icon"><%= fa_icon("map-marker") %></div>
         <% if @data[:pretty_loc] != nil && @data[:geometry] != nil %>
-        <p class="detail-window-p">
-          The GPS coordinates are<b>
-            <% if @data[:pretty_loc].is_a?(String) %>
-            <%= @data[:pretty_loc] %>
-            <% else %>
-            <%= @data[:pretty_loc][:lat][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= @data[:pretty_loc][:lat][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= @data[:pretty_loc][:lat][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= @data[:pretty_loc][:lat][3].to_s %>,
-            <%= @data[:pretty_loc][:lng][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= @data[:pretty_loc][:lng][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= @data[:pretty_loc][:lng][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= @data[:pretty_loc][:lng][3].to_s %>
-            <% end %>
-          </b>, alternatively <i>lat <%=@data[:geometry][:lat].round(6)%> lng <%=@data[:geometry][:lng].round(6)%></i>.
-        </p>
+        <%= DetailHelper.detail_pretty_loc @data[:pretty_loc], @data[:geometry] %>
         <% else %>
         <i class="unknown-data fa fa-spinner fa-spin"></i>
         <% end %>
@@ -107,10 +98,14 @@
       <div class="result-tags col-lg-6">
         <div class="results-icon"><%= fa_icon("tags") %></div>
         <p class="detail-window-p">
-          This place is marked with the following tags:
-          <% @data[:tags].each do |label| %>
-          <a href="<%= tag_search_link(label) %>"><span class="label label-default"><%= label %></span></a>
-          <% end %>
+            <% if @data[:tags].any? %>
+                This place is marked with the following tags:
+                <% @data[:tags].each do |label| %>
+                <a href="<%= tag_search_link(label) %>"><span class="label label-default"><%= label %></span></a>
+            <% end %>
+            <% else %>
+                This place has no tags or categories assigned.
+            <% end %>
         </p>
       </div>
       <div class="result-star col-lg-6">
@@ -126,8 +121,8 @@
     </div>
     <% end %>
   </div>
-  <div class="col-lg-12"><hr></div>
-  <div class="col-lg-12"><div id="map_canvas"></div></div>
+  <div class="col-lg-12 hr-line-before-map"><hr></div>
+  <div class="col-lg-12 map-canvas-wrapper"><div id="map_canvas"></div></div>
   <div class="col-lg-12 text-center">
     <h2 class="text-center">Share <%=@data[:name]%> with your friends</h2>
     <hr>

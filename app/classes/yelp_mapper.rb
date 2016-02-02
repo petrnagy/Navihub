@@ -37,8 +37,10 @@ class YelpMapper < GenericMapper
     mapped[:icon] = nil
     mapped[:name] = @data['name']
     mapped[:tags] = []
-    @data['categories'].each do |cat|
-      mapped[:tags] << cat[1] unless cat[1] == nil
+    if @data['categories'].is_a? Array
+        @data['categories'].each do |cat|
+          mapped[:tags] << cat[1] unless cat[1] == nil
+        end
     end
     mapped[:vicinity] = nil
     mapped[:address] = @data['location']['display_address'].join ', '

@@ -122,10 +122,9 @@ class ApplicationController < ActionController::Base
     @location = Location.get_user_loc @user.id
     # if I open a link from anyone else, i might not have any location assigned yet...
     # ...so we will try to set it from url params
-    if @location == nil && params.has_key?('ll')
-      ll = params['ll'].split(',')
-      lat = ll[0].to_f
-      lng = ll[1].to_f
+    if @location == nil && ( params.has_key?('lat') && params.has_key?('lng') )
+      lat = params['lat'].to_f
+      lng = params['lng'].to_f
       if Location.possible lat, lng
         loc = Location.create(
         user_id:        @user.id,

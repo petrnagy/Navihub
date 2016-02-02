@@ -349,11 +349,11 @@ isLocked: function() {
     return this._locked;
 }, // end method
 
-doLazyGeocoding: function(addr, $context) {
+doLazyGeocoding: function(addr, $context, callback) {
     var that = this;
     $.ajax({
         url: '/lazy/geocode',
-        data: { addr: addr },
+        data: { addr: addr, source: that.di.controller },
         cache: true,
         success: function(data) {
             if ( data && 'ok' == data.status ) {
@@ -371,6 +371,10 @@ doLazyGeocoding: function(addr, $context) {
                     pretty += data.html;
                 } // end if-else
                 $context.replaceWith(pretty);
+
+                if ( typeof callback == 'function' ) {
+                    callback(data);
+                } // end if
             } // end if
         }, // end func
     }); // end ajax

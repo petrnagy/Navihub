@@ -11,7 +11,7 @@ var Search = function(step, di) {
         radius: 0,
     };
     // order matters !
-    this.interests = ['term', 'radius', 'sort', 'offset'];
+    this.interests = ['term', 'sort', 'radius', 'offset'];
     if (this.$form.length) {
         this._init();
     } // end if
@@ -79,8 +79,8 @@ Search.prototype = {
         var that = this;
         return {
             term: that.$form.find("[name='search[term]']").val().trim(),
-            radius: parseInt(that.$form.find("[name='search[radius]'] option:selected").val(), 10),
             sort: that.$form.find("[name='search[sort]'] option:selected").val(),
+            radius: parseInt(that.$form.find("[name='search[radius]'] option:selected").val(), 10),
             offset: parseInt(that.$form.find("[name='search[offset]']").val(), 10),
         };
     }, // end method
@@ -97,28 +97,26 @@ Search.prototype = {
         var ascii = true;
         url += '/search';
         $.each(that.interests, function(k, v) {
-            var val = (typeof values[v] != 'undefined' && values[v] ? values[v] : that.defaults[v]);
-            url += '/' + encodeURIComponent(val);
+            var val = (typeof values[v] !== 'undefined' && values[v] ? values[v] : that.defaults[v]);
+            if ( 'term' === v ) {
+                url += '/%%term%%';
+            } else {
+                url += '/' + encodeURIComponent(val);
+            } // end if-else
             if (!that.di.mixin.isAscii(val)) {
                 ascii = false;
-            }
+            } // end if
         });
         var loc = that.di.locator.getLocation();
-        var ll = 'll=' + loc.lat.toString() + ',' + loc.lng.toString();
-        if (ascii) {
-            return url + '?' + ll;
+        var ll = loc.lat.toFixed(8).toString() + ',' + loc.lng.toFixed(8).toString();
+        url += '/@/' + ll;
+        if ( ascii ) {
+            url = url.replace('/%%term%%', '/' + values.term);
         } else {
-            url = baseUrl;
-            url += '/find';
-            var char = '?';
-            $.each(that.interests, function(k, v) {
-                if (typeof values[v] != 'undefined' && values[v] && values[v] != that.defaults[v]) {
-                    url += char + v + '=' + encodeURIComponent(values[v]);
-                    char = '&';
-                } // end if
-            });
-            return url + '&' + ll;
-        } // end if
+            url = url.replace('/%%term%%', '');
+            url += '?term=' + values.term;
+        } // end if-else
+        return url;
     }, // end method
 
     pushUrl: function(url) {
@@ -129,7 +127,7 @@ Search.prototype = {
             } // end if
             return true;
         } catch (e) { // IE9 and lower
-            // FIXME: Jak false? co s tim dal???
+            window.location = url;
             return false;
         } // end try-catch
     }, // end method

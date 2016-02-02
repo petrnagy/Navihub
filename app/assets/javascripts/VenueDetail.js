@@ -12,17 +12,21 @@ VenueDetail.prototype = {
         var that = this;
         that._data = that._loadDetailData();
         that._initDetailMap();
-        this._initEmailSharing();
-        this._initFavoriteBtn();
+        that._initEmailSharing();
+        that._initFavoriteBtn();
     },
     getData: function() {
       return this._data;
+    }, // end method
+    setVenueLocation: function(loc) {
+      var that = this;
+      that._data.geometry = loc;
     }, // end method
     _initDetailMap: function() {
         var that = this;
         var interval = setInterval(function() {
             var location = that.di.locator.getLocation();
-            if (location && typeof location.lat !== 'undefined' && typeof location.lng !== 'undefined') {
+            if ( location && that._data.geometry ) {
                 clearInterval(interval);
                 new VenueDetailGoogleMap(that.di, {latitude: location.lat, longitude: location.lng}, 'map_canvas', 14, function() {
                     if (that.di.detailGoogleMap && that._data) {

@@ -17,7 +17,12 @@ DetailLazyLoader.prototype = {
         var that = this;
         $spinner = $('#detail-results .result-geometry .fa-spinner');
         if ( $spinner.length && that._data.address ) {
-            that.di.locator.doLazyGeocoding(that._data.address, $spinner);
+            that.di.locator.doLazyGeocoding(that._data.address, $spinner, function(data){
+                that.di.venueDetail.setVenueLocation({
+                    lat: data.data.lat,
+                    lng: data.data.lng
+                });
+            });
         } // end if
     }, // end method
 

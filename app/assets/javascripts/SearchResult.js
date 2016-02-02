@@ -274,12 +274,7 @@ SearchResult.prototype = {
     }, // end method
 
     getDetailUrl: function(data) {
-        var that = this;
-        var loc = that.di.locator.getLocation();
-        var ll = 'll=' + loc.lat.toString() + ',' + loc.lng.toString();
-        var url =  window.location.origin + Detail.prototype.buildDetailUrl(data, this);
-        var fullUrl = url + ( url.indexOf('?') == -1 ? '?' : '&' ) + ll;
-        return fullUrl;
+        return window.location.origin + Detail.prototype.buildDetailUrl(data, this);
     }, // end method
 
     list_send_via_email: function($el) {

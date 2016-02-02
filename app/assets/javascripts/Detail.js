@@ -223,11 +223,17 @@ Detail.prototype = {
          * @return {String} relative url
          */
         buildDetailUrl(data, that) {
-            var that = that || this;
-            if (!that.di.mixin.isAscii(data.id.toString())) {
-                url = '/detail/' + encodeURIComponent(data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + encodeURIComponent(data.origin.toString()) + '?id=' + data.id.toString();
+            that = that || this;
+            var loc = that.di.locator.getLocation();
+            var ll = loc.lat.toFixed(8).toString() + ',' + loc.lng.toFixed(8).toString();
+            var name = encodeURIComponent(data.ascii_name ? data.ascii_name.toString() : 'show');
+            var origin = encodeURIComponent(data.origin.toString());
+            var id = encodeURIComponent(data.id.toString());
+
+            if ( ! that.di.mixin.isAscii(data.id.toString())) {
+                url = '/detail/' + name + '/' + origin + '/@/' + ll + '?id=' + id;
             } else {
-                url = '/detail/' + encodeURIComponent(data.ascii_name ? data.ascii_name.toString() : that.di.mixin.generateRandomHash(5)) + '/' + encodeURIComponent(data.id.toString()) + '/' + data.origin.toString();
+                url = '/detail/' + name + '/' + id + '/' + origin + '/@/' + ll;
             } // end if
             return url;
         } // end method
