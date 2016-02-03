@@ -35,21 +35,18 @@
       <% if @data[:distance] != nil %>
       <div class="col-lg-4 result-distance">
         <div class="results-icon"><%= fa_icon("arrows-h") %></div>
-        <p class="detail-window-p">
-          This place is approximately <b><%= DistanceHelper.pretty_distance(@data[:distance], @data[:distance_unit], 'km', true) %></b> away from your current location.
-        </p>
+        <%= DetailHelper.detail_pretty_distance(@data[:distance], @data[:distance_unit]) %>
+        <i class="unknown-data fa fa-spinner fa-spin"></i>
       </div>
       <div class="col-lg-4 result-walking-distance">
         <div class="results-icon"><%= fa_icon("male") %></div>
-        <p class="detail-window-p">
-          If you are going by foot, you will be there approximately in <b><%= DistanceHelper.pretty_minutes(DistanceHelper.m_to_min(@data[:distance]), true) %></b>.
-        </p>
+        <%= DetailHelper.detail_pretty_distance_foot(@data[:distance]) %>
+        <i class="unknown-data fa fa-spinner fa-spin"></i>
       </div>
       <div class="col-lg-4 result-car-distance">
         <div class="results-icon"><%= fa_icon("car") %></div>
-        <p class="detail-window-p">
-          If you take the car, you will arrive in <b><%= DistanceHelper.pretty_minutes(DistanceHelper.car_m_to_min(@data[:distance]), true) %></b>.
-        </p>
+        <%= DetailHelper.detail_pretty_distance_car(@data[:distance]) %>
+        <i class="unknown-data fa fa-spinner fa-spin"></i>
       </div>
       <% end %>
     </div>
@@ -121,6 +118,19 @@
   </div>
   <div class="col-lg-12 hr-line-before-map"><hr></div>
   <div class="col-lg-12 map-canvas-wrapper"><div id="map_canvas"></div></div>
+  <div class="col-lg-12 text-center">
+    <h2 class="text-center">Save this page forever</h2>
+    <hr>
+    <div class="col-lg-6 col-lg-offset-3 col-make-permalink">
+      <form id="detail-make-permalink">
+        <fieldset>
+          <legend>Make yourself a permalink</legend>
+          <input class="form-control" type="text" placeholder="Click on the button to generate permalink" value="" name="detail-permalink" disabled>
+          <button type="submit" class="btn btn-success btn-permalink">Get link</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
   <div class="col-lg-12 text-center">
     <h2 class="text-center">Share <%=@data[:name]%> with your friends</h2>
     <hr>

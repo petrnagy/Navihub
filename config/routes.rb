@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get 'lazy/geocode' => 'search#geocode' # [xss-safe]
     get 'lazy/reversegeocode' => 'search#reverse_geocode' # [xss-safe]
     get 'lazy/static-map-img' => 'search#get_static_map_image' # [xss-safe]
+    get 'lazy/distance-matrix' => 'search#distance_matrix' # [xss-safe]
     #favorites
     put 'favorites' => 'favorites#create' # [not-safe]
     delete 'favorites' => 'favorites#delete' # [xss-safe]

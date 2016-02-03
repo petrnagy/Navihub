@@ -25,4 +25,36 @@ module DetailHelper
         o.html_safe
     end
 
+    def self.detail_pretty_distance distance, distance_unit
+        o = ''
+        o += '<p class="detail-window-p">'
+        o += '  This place is approximately <b>' + DistanceHelper.pretty_distance(distance, distance_unit, 'km', true) + '</b> away from your current location.'
+        o += '</p>'
+        o.html_safe
+    end
+
+    def self.detail_pretty_distance_foot distance
+        o = ''
+        o += '<p class="detail-window-p">'
+        o += '  If you are going by foot, you will be there approximately in <b>' + DistanceHelper.pretty_minutes(DistanceHelper.m_to_min(distance), true) + '</b>.'
+        o += '</p>'
+        o.html_safe
+    end
+
+    def self.detail_pretty_distance_car distance
+        o = ''
+        o += '<p class="detail-window-p">'
+        o += '  If you take the car, you will arrive in <b>' + DistanceHelper.pretty_minutes(DistanceHelper.car_m_to_min(distance), true) + '</b>.'
+        o += '</p>'
+        o.html_safe
+    end
+
+    def self.detail_pretty_distance_car_precomputed minutes
+        o = ''
+        o += '<p class="detail-window-p">'
+        o += '  If you take the car, you will arrive in <b>' + DistanceHelper.pretty_minutes(minutes, true) + '</b>.'
+        o += '</p>'
+        o.html_safe
+    end
+
 end

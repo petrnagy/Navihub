@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160116192301) do
+ActiveRecord::Schema.define(version: 20160203120834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 20160116192301) do
   add_index "credentials", ["active"], name: "index_credentials_on_active", using: :btree
   add_index "credentials", ["email"], name: "index_credentials_on_email", unique: true, using: :btree
   add_index "credentials", ["user_id"], name: "index_credentials_on_user_id", using: :btree
+
+  create_table "distance_matrix_caches", force: true do |t|
+    t.string   "source"
+    t.string   "destination"
+    t.text     "result"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "distance_matrix_caches", ["source", "destination"], name: "index_distance_matrix_caches_on_source_and_destination", unique: true, using: :btree
 
   create_table "emails", force: true do |t|
     t.string   "recipient"

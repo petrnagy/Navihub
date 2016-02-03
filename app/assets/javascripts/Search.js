@@ -41,7 +41,7 @@ Search.prototype = {
     ajaxSubmit: function(append) {
         var that = this;
         var values = that.getValues();
-        if (values['term'].length) {
+        if (values.term.length) {
             var url = that.buildUrl(values);
             if (url) {
                 that.pushUrl(url);

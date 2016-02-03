@@ -15,7 +15,7 @@ DetailLazyLoader.prototype = {
 
     _lazyLoadGeometry: function() {
         var that = this;
-        $spinner = $('#detail-results .result-geometry .fa-spinner');
+        var $spinner = $('#detail-results .result-geometry .fa-spinner');
         if ( $spinner.length && that._data.address ) {
             that.di.locator.doLazyGeocoding(that._data.address, $spinner, function(data){
                 that.di.venueDetail.setVenueLocation({
@@ -28,7 +28,7 @@ DetailLazyLoader.prototype = {
 
     _lazyLoadAddress: function() {
         var that = this;
-        $spinner = $('#detail-results .result-address .fa-spinner');
+        var $spinner = $('#detail-results .result-address .fa-spinner');
         if ( $spinner.length && that._data.geometry ) {
             that.di.locator.doLazyReverseGeocoding(that._data.geometry, $spinner, that._data.name);
         } // end if
@@ -55,7 +55,43 @@ DetailLazyLoader.prototype = {
 
     _lazyLoadDistance: function() {
         var that = this;
-        console.log("_lazyLoadDistance - not implemented");
+        var interval = setInterval(function(){
+            if ( that.di.locator.getLocation() !== null ) {
+                clearInterval(interval);
+
+                var loc = that.di.locator.getLocation();
+                var origin = loc.lat.toString() + ',' + loc.lng.toString();
+                var destination = null;
+                if ( typeof that._data.geometry === 'object' ) {
+                    destination = that._data.geometry.lat.toString() + ',' + that._data.geometry.lng.toString();
+                } else if ( typeof that._data.address === 'string' && that._data.address.length > 1 ) {
+                    destination = that._data.address;
+                } // end if
+
+                if ( destination !== null ) {
+                    $.ajax({
+                        url: '/lazy/distance-matrix',
+                        data: { origins: [origin], destinations: [destination] },
+                        cache: true,
+                        success: function(response) {
+                            var $distance = $('#detail-results .distance-wrapper .result-distance');
+                            var $walkingDistance = $('#detail-results .distance-wrapper .result-walking-distance');
+                            var $carDistance = $('#detail-results .distance-wrapper .result-car-distance');
+                            $.each([$distance, $walkingDistance, $carDistance], function(){
+                                $(this).find('p.detail-window-p').remove();
+                                $(this).find('i.fa-spinner').remove();
+                            });
+                            $distance.append(response.data.distance);
+                            $walkingDistance.append(response.data.foot_distance);
+                            $carDistance.append(response.data.car_distance);
+                        }, // end func
+                        error: function(response) {
+                            $('#detail-results .distance-wrapper i.fa-spinner').remove();
+                        }, // end func
+                    }); // end ajax
+                } // end if
+            } // end if
+        }, 1000);
     }, // end method
 
 }; // end prototype

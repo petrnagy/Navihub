@@ -40,7 +40,6 @@ class Detail
         detail[:distance] = detail[:distance].to_i unless detail[:distance] == nil
         detail[:distance_unit] = 'm' unless detail[:distance] != nil
         detail[:address] = result_confirm_address detail
-        detail[:address] = nil
         detail[:tags] = result_normalize_tags detail
         detail[:ascii_name] = Mixin.normalize_unicode detail[:name]
         detail[:url] = make_friendly_url detail

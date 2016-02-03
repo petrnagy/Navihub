@@ -380,7 +380,7 @@ doLazyGeocoding: function(addr, $context, callback) {
     }); // end ajax
 }, // end method
 
-doLazyReverseGeocoding: function(loc, $context, name) {
+doLazyReverseGeocoding: function(loc, $context, name, callback) {
     var that = this;
     name = name || null;
     $.ajax({
@@ -390,6 +390,9 @@ doLazyReverseGeocoding: function(loc, $context, name) {
         success: function(data) {
             if ( data && 'ok' == data.status ) {
                 $context.replaceWith(data.html);
+                if ( typeof callback === 'function' ) {
+                    callback(data);
+                } // end if
             } // end if
         }, // end func
     }); // end ajax

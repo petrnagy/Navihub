@@ -97,6 +97,28 @@ class SearchController < ApplicationController
         end
     end
 
+    def distance_matrix
+        if request.xhr?
+            parameters = distance_matrix_params
+            matrix = DistanceMatrix.new parameters['origins'], parameters['destinations'], Rails.configuration.google_api_key
+            results = matrix.load
+            respond_to do |format|
+                if results != nil
+                    result = results[0]['elements'][0]
+                    data = {
+                        :distance => DetailHelper.detail_pretty_distance(result['distance']['value'].to_i, 'm'),
+                        :foot_distance => DetailHelper.detail_pretty_distance_foot(result['distance']['value'].to_i),
+                        :car_distance => DetailHelper.detail_pretty_distance_car_precomputed(result['duration']['value'].to_i / 60)
+                    }
+                    msg = { :status => "ok", :message => "Success!", :data => data }
+                    format.json { render :json => msg }
+                else
+                    format.json { render :json => nil, :status => 500 }
+                end
+            end
+        end
+    end
+
     protected
 
     private
@@ -178,6 +200,17 @@ class SearchController < ApplicationController
         params.require 'src'
         params[:src] = Mixin.sanitize(params[:src])
         params.permit(:src)
+    end
+
+    def distance_matrix_params
+        %w{origins destinations}.each do |required|
+            params.require required
+            raise 'Param' + required + ' was not an array' unless params[required].is_a? Array
+        end
+        unless params['origins'].length === params['destinations'].length
+            raise 'There was not the same count of origins as destinations'
+        end
+        params.permit(:origins => [], :destinations => [])
     end
 
 end

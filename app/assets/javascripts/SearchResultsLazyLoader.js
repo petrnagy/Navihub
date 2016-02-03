@@ -13,7 +13,7 @@ SearchResultsLazyLoader.prototype = {
         var that = this;
         $(window).scroll(function() { that.lazyLoad(); });
         $(window).resize(function() { that.lazyLoad(); });
-        $(window).on("orientationchange",function() { that.lazyLoad(); });
+        $(window).on("orientationchange", function() { that.lazyLoad(); });
     }, // end method
 
     lazyLoad: function() {
@@ -22,12 +22,12 @@ SearchResultsLazyLoader.prototype = {
         that._lazyLoadSearchResultsGeometries();
         that._lazyLoadSearchResultsAddresses();
         that._lazyLoadSearchResultsTagLinks();
-        that._lazyLoadSearchResultsDistances();
+        that._lazyInitEllipsis();
     }, // end method
 
     _lazyLoadSearchResultsImages: function() {
         var that = this;
-        $set = $('#yield #search-results .map-wrapper img[lazysrc]:in-viewport');
+        var $set = $('#yield #search-results .map-wrapper img[lazysrc]:in-viewport');
         $set.each(function(){
             var lazySrc = '/lazy/static-map-img?src=' + encodeURIComponent($(this).attr('lazysrc'));
             var $img = $(this);
@@ -38,26 +38,26 @@ SearchResultsLazyLoader.prototype = {
 
     _lazyLoadSearchResultsGeometries: function() {
         var that = this;
-        $set = $('#yield #search-results .result-geometry .fa-spinner:in-viewport').not('.pending');
+        var $set = $('#yield #search-results .result-geometry .fa-spinner:in-viewport').not('.pending');
         $set.each(function(){
             $(this).addClass('pending');
             var data = that.di.searchResult.getData($(this));
             if ( data && data.address.length ) {
                 that.di.locator.doLazyGeocoding(data.address, $(this));
-                // TODO: nejaky delay
             } // end if
         });
     }, // end method
 
     _lazyLoadSearchResultsAddresses: function() {
         var that = this;
-        $set = $('#yield #search-results .result-address .fa-spinner:in-viewport').not('.pending');
+        var $set = $('#yield #search-results .result-address .fa-spinner:in-viewport').not('.pending');
         $set.each(function() {
             $(this).addClass('pending');
             var data = that.di.searchResult.getData($(this));
             if ( data && data.geometry ) {
-                that.di.locator.doLazyReverseGeocoding(data.geometry, $(this));
-                // TODO: nejaky delay
+                that.di.locator.doLazyReverseGeocoding(data.geometry, $(this), null, function(){
+                    that._lazyInitEllipsis();
+                });
             } // end if
         });
     }, // end method
@@ -68,7 +68,7 @@ SearchResultsLazyLoader.prototype = {
             if ( that.di.locator.getLocation() !== null ) {
                 clearInterval(interval);
 
-                $set = $('#yield #search-results .result-tags .label:in-viewport').not('.done');
+                var $set = $('#yield #search-results .result-tags .label:in-viewport').not('.done');
                 $set.each(function(){
                     $(this).addClass('done');
                     var label = $(this).text().replace('-', ' ');
@@ -86,9 +86,12 @@ SearchResultsLazyLoader.prototype = {
         }, 1000);
     }, // end method
 
-    _lazyLoadSearchResultsDistances: function() {
-      var that = this;
-      console.log("_lazyLoadSearchResultsDistances - not implemented");
+    _lazyInitEllipsis: function() {
+        var that = this;
+        var $set = $('#yield #search-results .result-address:in-viewport').filter(function(){
+            return ( $(this).find('i.unknown-data').length === 0 );
+        });
+        $set.dotdotdot();
     }, // end method
 
 }; // end prototype
