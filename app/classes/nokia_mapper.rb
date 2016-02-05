@@ -82,7 +82,6 @@ class NokiaMapper < GenericMapper
 
     end
     mapped[:detail][:url] = @data['view']
-    mapped[:detail][:website_url] = nil
     mapped[:detail][:address][:premise] = @data['location']['address']['house']
     mapped[:detail][:address][:street] = @data['location']['address']['street']
     mapped[:detail][:address][:town] = @data['location']['address']['city']
@@ -95,10 +94,34 @@ class NokiaMapper < GenericMapper
 
     if @data['contacts']
       if @data['contacts']['phone'].is_a? Array
-        @data['contacts']['phone'].each do |phone|
-          mapped[:detail][:phones] << phone['value']
-        end
+        mapped[:detail][:phone] = @data['contacts']['phone'].first['value']
       end
+      if @data['contacts']['website'].is_a? Array
+          mapped[:detail][:website_url] = @data['contacts']['website'].first['value']
+      end
+    end
+
+    # Here.com probably doesnt contains any ratings anymore, because on their website,
+    # they are loading them from TripAdvisor
+    # TODO: If some venue really has ratings or reviews, check this calculations:
+    mapped[:detail][:rating] = nil
+    ratings = 0
+    ratings_cnt = 0
+
+    @data['media']['ratings']['items'].each do |rating|
+        unless rating['average'] == nil || rating['average'].to_f == 0.00
+            ratings_cnt += 1
+            ratings+= rating['average']
+        end
+    end
+    @data['media']['reviews']['items'].each do |review|
+        unless review['rating'] == nil || review['rating'].to_f == 0.00
+            ratings_cnt += 1
+            ratings+= review['rating']
+        end
+    end
+    unless ratings == 0
+        mapped[:detail][:rating] = Mixin.round5(ratings / ratings_cnt)
     end
 
     mapped

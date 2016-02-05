@@ -1,0 +1,21 @@
+<div class="col-lg-12 col-detail-top">
+    <div class="geometry-wrapper">
+        <div class="col-lg-7 result-address">
+            <div class="results-icon"><%= fa_icon("map") %></div>
+            <% if @data[:address] %>
+            <%= DetailHelper.detail_pretty_address @data[:name], @data[:address] %>
+            <% else %>
+            <i class="unknown-data fa fa-spinner fa-spin"></i>
+            <% end %>
+        </div>
+        <div class="col-lg-5 result-geometry">
+            <div class="results-icon"><%= fa_icon("map-marker") %></div>
+            <% if @data[:pretty_loc] != nil && @data[:geometry] != nil %>
+            <%= DetailHelper.detail_pretty_loc @data[:pretty_loc], @data[:geometry] %>
+            <% else %>
+            <i class="unknown-data fa fa-spinner fa-spin"></i>
+            <% end %>
+        </div>
+
+    </div>
+</div>

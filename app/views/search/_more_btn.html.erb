@@ -1,0 +1,5 @@
+<% if (@data[:data][:params][:offset] + @data[:data][:params][:limit]) < @data[:data][:total_cnt] %>
+<div class="col-lg-12 load-more text-center">
+    <button class="btn btn-warning">Show next <%= @data[:data][:params][:step] %> results </button>
+</div>
+<% end %>

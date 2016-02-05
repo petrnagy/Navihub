@@ -18,7 +18,7 @@ class YelpMapper < GenericMapper
 
     mapped[:distance] = @data[:data]['distance']
     mapped[:url] = @data[:data]['url']
-    mapped[:phone] = @data[:data]['dislay_phone']
+    mapped[:phone] = @data[:data]['display_phone']
 
     mapped[:address] = @data[:data]['location']['address'][0].to_s + ', ' + @data[:data]['location']['city'].to_s;
 
@@ -68,8 +68,17 @@ class YelpMapper < GenericMapper
       end
     end
     mapped[:detail][:url] = @data['url']
+    mapped[:detail][:phone] = @data['display_phone']
     mapped[:detail][:website_url] = nil
-
+    mapped[:detail][:rating] = @data['rating']
+    unless nil == mapped[:detail][:rating]
+        if mapped[:detail][:rating].to_f == 0.00
+            mapped[:detail][:rating] = nil
+        else
+            mapped[:detail][:rating] = Mixin.round5(mapped[:detail][:rating])
+        end
+    end
+    
     mapped[:detail][:address][:premise] = nil
     mapped[:detail][:address][:street] = nil
     mapped[:detail][:address][:town] = @data['location']['city']

@@ -1,0 +1,32 @@
+<div class="dots col-lg-2">
+    <a href="#" class="btn-detail" data-toggle="dropdown"><%= fa_icon("ellipsis-h") %></a>
+    <ul class="dropdown-menu">
+        <li><a class="list-open-detail" href="#" onclick="DI.searchResult.list_open_detail(this);return false;"><%= fa_icon("external-link") %>open detail</a></li>
+        <li><a class="list-open-in-maps" href="#"><%= fa_icon("map-o") %>Open in maps</a></li>
+        <li><a class="list-plan-a-route" href="#"><%= fa_icon("map-signs") %>plan a route</a></li>
+
+        <li class="divider"></li>
+        <li><a class="list-visit-website" href="#" onclick="DI.searchResult.list_visit_website(this);return false;"><%= fa_icon("link") %>visit website</a></li>
+
+        <li><a class="list-get-permalink" href="#"><%= fa_icon("chain-broken") %>get permalink</a></li>
+        <li class="divider"></li>
+        <li class="dropdown-submenu">
+            <a tabindex="-1" href="#"><%= fa_icon("share") %>Share this</a>
+            <ul class="dropdown-menu">
+                <li><a class="list-send-via-email" href="#"><%= fa_icon("envelope-o") %>send via e-mail</a></li>
+                <li><a class="list-share-on-facebook" href="#" onclick="DI.searchResult.list_share_on_facebook(this);return false;"><%= fa_icon("facebook-official") %>share on facebook</a></li>
+                <li><a class="list-share-on-twitter" href="#" onclick="DI.searchResult.list_share_on_twitter(this);return false;"><%= fa_icon("twitter") %>share on twitter</a></li>
+                <li><a class="list-share-on-google-plus" href="#" onclick="DI.searchResult.list_share_on_google_plus(this);return false;"><%= fa_icon("google-plus") %>share on google+</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu">
+            <a tabindex="-1" href="#"><%= fa_icon("search") %>search more</a>
+            <ul class="dropdown-menu">
+                <li><a class="list-search-more-google" href="https://www.google.cz/?#q=<%= result[:name] %>"><%= fa_icon("google") %>google.com</a></li>
+                <li><a class="list-search-more-bing" href="http://www.bing.com/search?q=<%= result[:name] %>"><%= fa_icon("search-plus") %>bing.com</a></li>
+                <li><a class="list-search-more-yahoo" href="https://search.yahoo.com/search?p=<%= result[:name] %>"><%= fa_icon("yahoo") %>yahoo.com</a></li>
+                <li><a class="list-search-more-duck" href="https://duckduckgo.com/?q=<%= result[:name] %>"><%= fa_icon("user-secret") %>duckduckgo.com</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

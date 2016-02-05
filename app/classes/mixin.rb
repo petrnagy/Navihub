@@ -24,4 +24,8 @@ class Mixin
     (Digest::MD5.hexdigest(Random.new_seed)).str(0, len)
   end
 
+  def self.round5 num
+      (num * 2).round.to_f / 2
+  end
+
 end

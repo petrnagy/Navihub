@@ -1,0 +1,25 @@
+<div class="col-lg-12 col-stars">
+    <p class="text-center stars">
+    <% if @data[:detail][:rating] != nil %>
+        <% @data[:detail][:rating].floor.times do %>
+            <%= fa_icon("star", :class => 'rated') %>
+        <% end %>
+        <% if @data[:detail][:rating] > @data[:detail][:rating].floor %>
+            <%= fa_icon("star-half-o", :class => 'rated') %>
+            <% (5 - @data[:detail][:rating].ceil).times do %>
+                <%= fa_icon("star-o", :class => 'rated') %>
+            <% end %>
+        <% else %>
+            <% (5 - @data[:detail][:rating]).times do %>
+                <%= fa_icon("star-o", :class => 'rated') %>
+            <% end %>
+        <% end %>
+        <br/><span class="rated-txt">Want to rate this place? Follow <a href="<%= @data[:detail][:url] %>">this link <%= fa_icon("external-link") %></a>.</span>
+    <% else %>
+        <% 5.times do %>
+            <%= fa_icon("star-o", :class => 'not-rated') %>
+        <% end %>
+        <br/><span class="not-rated-txt">This place hasn't been rated yet. Be the first one to <a href="<%= @data[:detail][:url] %>">rate it <%= fa_icon("external-link") %></a>.</span>
+    <% end %>
+    </p>
+</div>

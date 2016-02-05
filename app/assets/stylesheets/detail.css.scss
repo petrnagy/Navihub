@@ -50,9 +50,13 @@ p.detail-window-p { margin-bottom: 0px;}
 #detail-results #detail-make-permalink button.btn-permalink, #detail-results .btn-permalink-created { margin-top: 10px; }
 #detail-results .result-distance i.fa-spinner,
 #detail-results .result-walking-distance i.fa-spinner,
-#detail-results .result-car-distance i.fa-spinner {
-    color: gray;
-}
+#detail-results .result-car-distance i.fa-spinner { color: gray; }
+.col-stars i.fa-star, .col-stars i.fa-star-half-o, .col-stars i.fa-star-o { font-size: 20px; }
+.col-stars i.not-rated { color: gray; cursor: not-allowed; }
+.col-stars i.rated { color: #3C3C3C; cursor: not-allowed; }
+.col-stars span.not-rated-txt { color: #6D6D6D; }
+.col-stars span.rated-txt { color: #6D6D6D; }
+.col-permalink { padding-top: 10px; margin-bottom: -17px; color: #6D6D6D; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
@@ -126,6 +130,7 @@ p.detail-window-p { margin-bottom: 0px;}
     #detail-results .col-detail-top .col-lg-5,
     #detail-results .col-detail-top .col-lg-6,
     #detail-results .col-detail-top .col-lg-7 { font-size: 12px; }
+    .col-stars span.not-rated-txt, .col-stars span.rated-txt { font-size: 12px; }
 }
 
 @media only screen and (max-height: 400px) {

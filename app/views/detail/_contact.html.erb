@@ -1,0 +1,36 @@
+<div class="col-lg-12 col-detail-top">
+    <div class="contacts-wrapper">
+        <div class="col-lg-4 result-phone">
+            <div class="results-icon"><%= fa_icon 'phone' %></div>
+            <p class="detail-window-p">
+                <% unless @data[:detail][:phone] == nil %>
+                You can contact this place by dialing <a href="tel:<%=@data[:detail][:phone]%>"><%=@data[:detail][:phone]%></a>.
+                <% else %>
+                We could not find any phone contact. You could try <a href="https://www.google.com?#q=<%=@data[:name]%> phone">your luck elsewhere <i class="fa fa-external-link"></i></a>.
+                <% end %>
+            </p>
+        </div>
+        <div class="col-lg-4 result-email">
+            <div class="results-icon"><%= fa_icon 'envelope' %></div>
+            <p class="detail-window-p">
+                <% unless @data[:email] == nil %>
+                You can contact this place via e-mail address <a href="mailto:<%=@data[:email]%>"><%=@data[:email]%></a>.
+                <% else %>
+                We could not find any e-mail contact. You could try <a href="https://www.google.com?#q=<%=@data[:name]%> e-mail">Googling it <i class="fa fa-external-link"></i></a>.
+                <% end %>
+            </p>
+        </div>
+        <div class="col-lg-4 result-link">
+            <div class="results-icon"><%= fa_icon 'link' %></div>
+            <p class="detail-window-p">
+                <% if @data[:detail][:website_url] %>
+                The place homepage can be found <%= link_to 'here', @data[:detail][:website_url] %>.
+                <% elsif @data[:detail][:url] %>
+                More informations can be found on <%= link_to 'this <i class="fa fa-external-link"></i>'.html_safe, @data[:detail][:url] %> <i><%=@data[:origin]%></i> site.
+                <% else %>
+                Need little more informations? try <a href="https://www.google.cz/?#q=<%=@data[:name]%>">Google</a>, <a href="http://www.bing.com/search?q=<%=@data[:name]%>">Bing</a> or <a href="https://duckduckgo.com/?q=<%=@data[:name]%>">DuckDuckGo</a>.
+                <% end %>
+            </p>
+        </div>
+    </div>
+</div>

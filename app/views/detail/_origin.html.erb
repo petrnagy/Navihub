@@ -1,0 +1,7 @@
+<div class="col-lg-12 col-source">
+    <hr>
+    <p class="text-center">
+        These informations were provided with the help of:<br />
+        <%= image_tag 'powered-by-' + @data[:origin] + '.jpg', class: "powered-by-icon", title: "data loaded using " + @data[:origin].upcase + " API" %>
+    </p>
+</div>

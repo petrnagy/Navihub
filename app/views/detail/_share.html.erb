@@ -1,0 +1,24 @@
+<div class="col-lg-12 text-center">
+    <h2 class="text-center">Share <%=@data[:name]%> with your friends</h2>
+    <hr>
+    <div class="col-lg-3 col-lg-offset-3 col-share-via-email">
+        <form id="detail-share-via-email" method="POST">
+            <fieldset>
+                <legend>
+                    Share via e-mail
+                    <!-- <span class="badge">?</span> -->
+                </legend>
+                <input class="form-control" type="text" placeholder="your@email.com" value="" name="detailshare-email">
+                <button type="submit" class="btn btn-success">Send the stuff</button>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-lg-3 col-social-share">
+        <div class="social-likes social-likes_vertical" data-counters="no" data-url="<% request.original_url %>">
+            <div class="facebook" title="Share link on Facebook">Facebook</div>
+            <div class="twitter" title="Share link on Twitter">Twitter</div>
+            <div class="plusone" title="Share link on Google+">Google+</div>
+            <div class="pinterest" title="Share image on Pinterest" data-media="">Pinterest</div>
+        </div>
+    </div>
+</div>

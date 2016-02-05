@@ -150,27 +150,31 @@ VenueDetail.prototype = {
 
     _initPermalinkBtn: function() {
       var that = this;
-      var $form = $('form#detail-make-permalink');
-      var $input = $form.find('input[name=detail-permalink]');
-      var $btn = $form.find('button.btn-permalink');
+      var $btn = $('.col-permalink .btn-permalink');
 
-      $form.submit(function(e){
-          console.log("submit");
+      $btn.click(function(e){
           e.preventDefault();
           if ( $btn.prop('disabled') !== true ) {
+              that.di.spinner.show();
               $btn.prop('disabled', true);
               $.ajax({
                   url: '/setpermalink',
                   data: { id: that._data.id, origin: that._data.origin },
                   method: 'PUT',
                   success: function(data) {
+                      var id = 'ta' + uniqueid();
                       var url = window.location.origin + '/permalink/' + data.id;
-                      $input.val(url).prop('disabled', false).focus().select();
-                      $btn.replaceWith('<a href="'+url+'" class="btn btn-warning btn-permalink-created">Open permalink</a>');
+                      var txt = '<form class="permalink-form"><textarea id="'+id+'">'+url+'</textarea></form><br><a target="_blank" href="'+url+'">Open in new window</a>';
+                      that.di.messenger.success('Permalink created', txt, { onComplete: function(){
+                          $('#'+id).focus().select();
+                      } });
+                      $btn.prop('disabled', false);
+                      that.di.spinner.hide();
                   }, // end func
                   error: function() {
                       that.di.messenger.error('Whoops :-(', 'Something went wrong while creating the permalink. Please try again later.');
                       $btn.prop('disabled', false);
+                      that.di.spinner.hide();
                   }, // end func
               }); // end ajax
           } // end if

@@ -1,0 +1,27 @@
+<div class="col-lg-12 col-detail-top">
+    <div class="labels-wrapper">
+        <div class="result-tags col-lg-6">
+            <div class="results-icon"><%= fa_icon("tags") %></div>
+            <p class="detail-window-p">
+                <% if @data[:tags].any? %>
+                    This place is marked with the following tags:
+                    <% @data[:tags].each do |label| %>
+                        <a href="<%= tag_search_link(label) %>"><span class="label label-default"><%= label %></span></a>
+                    <% end %>
+                <% else %>
+                    This place has no tags or categories assigned.
+                <% end %>
+            </p>
+        </div>
+        <div class="result-star col-lg-6">
+            <div class="results-icon"><a href="#" class="detail-fav-switch list-fav-switch <%= @data[:favorite] ? 'exists' : '' %>"><%= fa_icon( @data[:favorite] ? 'star' : 'star-o' ) %></a></div>
+            <p class="detail-window-p">
+                <% if @data[:favorite] %>
+                This place is listed in your <%= link_to 'favorite places list', controller: 'favorites', action: 'index' %>. You can easily access the places you saved from the <i>top menu</i>.
+                <% else %>
+                Clicking on this star will add this place to your <%= link_to 'favorite places list', controller: 'favorites', action: 'index' %>. After that, you can easily access the places you like from the <i>top menu</i>.
+                <% end %>
+            </p>
+        </div>
+    </div>
+</div>

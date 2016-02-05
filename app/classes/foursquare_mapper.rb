@@ -60,7 +60,17 @@ class FoursquareMapper < GenericMapper
 
     end
     mapped[:detail][:url] = URI.decode @data['response']['venue']['canonicalUrl']
-    mapped[:detail][:website_url] = nil
+    mapped[:detail][:website_url] = @data['response']['venue']['url']
+    mapped[:detail][:phone] = @data['response']['venue']['contact']['formattedPhone']
+
+    mapped[:detail][:rating] = @data['response']['venue']['rating']
+    unless nil == mapped[:detail][:rating]
+        if mapped[:detail][:rating].to_f == 0.00
+            mapped[:detail][:rating] = nil
+        else
+            mapped[:detail][:rating] = Mixin.round5(mapped[:detail][:rating] / 2)
+        end
+    end
 
     mapped[:detail][:address][:premise] = nil
     mapped[:detail][:address][:street] = nil

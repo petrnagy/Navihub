@@ -54,6 +54,21 @@ class GoogleMapper < GenericMapper
     end
     mapped[:detail][:url] = @data['result']['url']
     mapped[:detail][:website_url] = @data['result']['website_url']
+
+    mapped[:detail][:phone] = @data['result']['formatted_phone_number']
+    if mapped[:detail][:phone].to_s == ''
+        mapped[:detail][:phone] = @data['result']['international_phone_number']
+    end
+
+    mapped[:detail][:rating] = @data['result']['rating']
+    unless nil == mapped[:detail][:rating]
+        if mapped[:detail][:rating].to_f == 0.00
+            mapped[:detail][:rating] = nil
+        else
+            mapped[:detail][:rating] = Mixin.round5(mapped[:detail][:rating])
+        end
+    end
+
     if @data['result']['address_components'].is_a? Array
 
       @data['result']['address_components'].each do |item|

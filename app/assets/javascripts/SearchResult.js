@@ -110,7 +110,7 @@ SearchResult.prototype = {
                 var id = 'ta' + uniqueid();
                 var url = window.location.origin + '/permalink/' + data.id;
                 var txt = '<form class="permalink-form"><textarea id="'+id+'">'+url+'</textarea></form><br><a target="_blank" href="'+url+'">Open in new window</a>';
-                that.di.messenger.message('Permalink created !', txt, { onComplete: function(){
+                that.di.messenger.success('Permalink created !', txt, { onComplete: function(){
                     $('#'+id).focus().select();
                 } });
             }, // end func
@@ -224,7 +224,7 @@ SearchResult.prototype = {
     list_visit_website: function(el) {
         var that = this;
         var $el = $(el).closest('.result-box');
-        var tab = window.open('about:blank');
+        //var tab = window.open('about:blank');
         that.di.spinner.show();
         var detail = that.loadDetail($el, function(data){
             var url = data.detail.website_url;
@@ -232,32 +232,37 @@ SearchResult.prototype = {
                 if ( data.detail.url ) {
                     url = data.detail.url;
                 } else {
-                    tab.close();
+                    //tab.close();
+                    that.di.spinner.hide();
                     that.di.messenger.message(':-(', 'Sorry, could not load the website url address !');
+                    return false;
                 } // end if
             } // end if
             that.di.spinner.hide();
-            tab.location = url;
-            //window.open(url);
+            //tab.location = url;
+            window.location = url;
         });
     }, // end method
 
     list_open_detail: function(el) {
         var that = this;
         var $el = $(el).closest('.result-box');
-        var tab = window.open('about:blank');
+        //var tab = window.open('about:blank');
+        that.di.spinner.show();
         var data = that.getData($el);
 
         if ( ! data ) {
-            tab.close();
-            that.di.messenger.message(':-(', 'Sorry, something went wrong during generating the detail url address !');
-            return;
+            //tab.close();
+            that.di.spinner.hide();
+            that.di.messenger.message(':-(', 'Sorry, something went wrong while obtaining the detail url address !');
+            return false;
         } // end if
 
         var url = that.getDetailUrl(data);
 
-        tab.location = url;
-        //window.open(url);
+        that.di.spinner.hide();
+        //tab.location = url;
+        window.location = url;
     }, // end method
 
     openSocialShareTab: function(el, tpl) {

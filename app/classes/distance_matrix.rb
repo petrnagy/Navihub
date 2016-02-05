@@ -5,7 +5,6 @@ class DistanceMatrix
     require 'uri'
 
     def initialize origins, destinations, key
-        Rails.logger.debug origins
         @origins = origins
         @destinations = destinations
         @key = key
