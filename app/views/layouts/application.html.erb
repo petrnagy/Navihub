@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="<%= @page_lang_cls %>">
-  <head>
+<head>
     <!-- Meta -->
     <meta charset="utf-8" />
     <meta name="robots" content="<%= @page_robots %>" />
-    <meta name="description" content="Explore the world around you with your browser." />
-    <meta name="keywords" content="navihub, explore, maps, geolocation" />
-    <meta name="author" content="Petr Nagy" />
+    <meta name="description" content="<%= @page_desc %>" />
+    <meta name="keywords" content="<%= @page_keywords %>" />
+    <meta name="author" content="<%= @page_author %>" />
     <meta name="google" content="notranslate" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0' />
     <%= csrf_meta_tags %>
@@ -27,7 +27,7 @@
     <link rel="icon" type="image/png" href="/assets/logo/icons/stroke/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/assets/logo/icons/stroke/favicon-16x16.png" sizes="16x16" />
     <link rel="icon" type="image/png" href="/assets/logo/icons/stroke/favicon-128.png" sizes="128x128" />
-    <meta name="application-name" content="Navihub.net | Find places around you!"/>
+    <meta name="application-name" content="<%= @page_name %>"/>
     <meta name="msapplication-TileColor" content="#FFFFFF" />
     <meta name="msapplication-TileImage" content="/assets/logo/icons/stroke/mstile-144x144.png" />
     <meta name="msapplication-square70x70logo" content="/assets/logo/icons/stroke/mstile-70x70.png" />
@@ -51,188 +51,179 @@
     <meta name="twitter:description" content="<%= @page_desc %>" />
     <meta name="twitter:image" content="/assets/logo/buildings_stroke_500x500.png" />
     <!-- Site verification -->
-    <meta name="google-site-verification" content="TODO" />
-    <meta name="msvalidate.01" content="TODO" />
+    <meta name="google-site-verification" content="<%= @google_site_verification %>" />
+    <meta name="msvalidate.01" content="<%= @ms_site_verification %>" />
     <!-- noscript #1 -->
     <noscript>
     <style type="text/css">
-      div, footer { display: none; }
-      noscript div { display: block !important; }
-      body { color: #333; background: white; width: 500px; margin: 100px auto; }
-      h1 { font: bold 47px/1.5 sans-serif; margin: .6em 0; }
-      p { font: 21px/1.5 Georgia,serif; margin: 1.5em 0; }
-      small { font-size: 70%; color: gray; }
+    div, footer { display: none; }
+    noscript div { display: block !important; }
+    body { color: #333; background: white; width: 500px; margin: 100px auto; }
+    h1 { font: bold 47px/1.5 sans-serif; margin: .6em 0; }
+    p { font: 21px/1.5 Georgia,serif; margin: 1.5em 0; }
+    small { font-size: 70%; color: gray; }
     </style>
-    </noscript>
-    <!-- Scripts -->
-    <% if @failsafe != true %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <% end %>
-  </head>
-  <body id="body" class="<%= @device_cls %> <%= @is_logged_in_cls %> c-<%= params[:controller] %> a-<%= params[:action] %>">
+</noscript>
+<!-- Scripts -->
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+<body id="body" class="<%= @device_cls %> <%= @is_logged_in_cls %> c-<%= params[:controller] %> a-<%= params[:action] %>">
     <!-- Inline scripts -->
     <script>
-      serverData = {
+    serverData = {
         controller: '<%= params[:controller] %>',
         action: '<%= params[:action] %>',
         loc: {
-          lat: <%= @location == nil ? 'null' : @location.latitude %>,
-          lng: <%= @location == nil ? 'null' : @location.longitude %>,
-          lock: <%= @location == nil ? 'null' : ( @location.lock == true ? 'true' : 'false' ) %>
+            lat: <%= @location == nil ? 'null' : @location.latitude %>,
+            lng: <%= @location == nil ? 'null' : @location.longitude %>,
+            lock: <%= @location == nil ? 'null' : ( @location.lock == true ? 'true' : 'false' ) %>
         }
-      }
+    }
     </script>
     <!-- noscript #2 -->
     <noscript>
-    <div>
-      <p class="h1">Javascript</p>
-      <p>We're sorry! This site requires JavaScript enabled to work properly.</p>
-      <div class="form-group"><a target="blank" href="https://www.google.com/search?q=how+to+enable+javascript" class="btn btn-primary btn-lg">How to enable Javascript</a></div>
-    </div>
+        <div>
+            <p class="h1">Javascript</p>
+            <p>We're sorry! This site requires JavaScript enabled to work properly.</p>
+            <div class="form-group"><a target="blank" href="https://www.google.com/search?q=how+to+enable+javascript" class="btn btn-primary btn-lg">How to enable Javascript</a></div>
+        </div>
     </noscript>
     <!-- Navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div id="burger-menu">
-          <a href="#"><i class="fa fa-bars"></i></a>
+        <div class="container">
+            <div id="burger-menu">
+                <a href="#"><i class="fa fa-bars"></i></a>
+            </div>
+            <div id="marker-menu">
+                <a href="#"><i class="fa fa-map-marker"></i></a>
+            </div>
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand" id="main-logo"><%= image_tag('logo/buildings_stroke_100x100.png', size: "50x50") %><div id="appname"><span><%= @page_name %> </span><small id="appname-beta">[beta]</small></div></a>
+            </div>
+            <div class="" id="navbar-main">
+                <ul class="nav navbar-nav" id="menu-top">
+                    <li><%= link_to 'Search', controller: "search", action: "index" %></li>
+                    <li><%= link_to 'Favorites', controller: "favorites", action: "index" %></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="menu-alt">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-my">My</span> <span id="myacc-acc">acc</span><span id="myacc-ount">ount</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="dd-myaccount">
+                            <li>
+                                <%= link_to 'Create account', {controller: "settings", action: 'profile'}, class: 'create-account' %>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="social-btn">
+                                    <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i><span class="social-signin-txt">Sign in with Facebook</span></a>
+                                </div>
+                                <div class="social-btn">
+                                    <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i><span class="social-signin-txt">Sign in with Twitter</span></a>
+                                </div>
+                                <div class="social-btn">
+                                    <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i><span class="social-signin-txt">Sign in with Google</span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="menu-loc">
+                    <li>
+                        <div id="top-location">
+                            <span class="top-location-top"><span>Location:</span> <span class="actual"><%= sanitize pretty_loc(@location) %></span></span><br />
+                            <span class="top-location-bottom">
+                                Not here?
+                                <%= link_to 'change location', controller: "settings", action: 'location' %> |
+                                <a class="top-location-autodetect autodetect-button" href="#">autodetect</a> <span class="top-location-lock">|</span>
+                                <a class="top-location-lock loc-lock-button" href="#">lock</a>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="marker-menu">
-          <a href="#"><i class="fa fa-map-marker"></i></a>
-        </div>
-        <div class="navbar-header">
-          <a href="/" class="navbar-brand" id="main-logo"><%= image_tag('logo/buildings_stroke_100x100.png', size: "50x50") %><div id="appname"><span><%= @page_name %> </span><small id="appname-beta">[beta]</small></div></a>
-        </div>
-        <div class="" id="navbar-main">
-          <ul class="nav navbar-nav" id="menu-top">
-            <li data-template="index">
-              <%= link_to 'Search', controller: "search" %>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
-              <ul class="dropdown-menu" id="dd-more">
-                <li><%= link_to 'My favorites', controller: "favorites", action: "index" %></li>
-                <li><%= link_to 'About navihub', controller: "about" %></li>
-                <li><%= link_to 'Feedback', controller: "feedback" %></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right" id="menu-alt">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-my">My</span> <span id="myacc-acc">acc</span><span id="myacc-ount">ount</span> <b class="caret"></b></a>
-              <ul class="dropdown-menu" id="dd-myaccount">
-                <li>
-                  <%= link_to 'Create account', {controller: "settings", action: 'profile'}, class: 'create-account' %>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <div class="social-btn">
-                    <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i><span class="social-signin-txt">Sign in with Facebook</span></a>
-                  </div>
-                  <div class="social-btn">
-                    <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i><span class="social-signin-txt">Sign in with Twitter</span></a>
-                  </div>
-                  <div class="social-btn">
-                    <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i><span class="social-signin-txt">Sign in with Google</span></a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right" id="menu-loc">
-            <li data-template="index">
-                <div id="top-location">
-                    <span class="top-location-top"><span>Location:</span> <span class="actual"><%= sanitize pretty_loc(@location) %></span></span><br />
-                    <span class="top-location-bottom">
-                      Not here?
-                      <%= link_to 'change location', controller: "settings", action: 'location' %> |
-                      <a class="top-location-autodetect autodetect-button" href="#">autodetect</a> <span class="top-location-lock">|</span>
-                      <a class="top-location-lock loc-lock-button" href="#">lock</a>
-                    </span>
-                </div>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
     <!-- Content -->
     <div class="container">
-      <section id="yield">
-        <%= yield %>
-      </section>
+        <section id="yield">
+            <%= yield %>
+        </section>
     </div>
     <footer>
-      <div class="container footer">
+        <div class="container footer">
 
-        <div class="row">
-          <div class="col-lg-12 col-lg-minimized">
+            <div class="row">
+                <div class="col-lg-12 col-lg-minimized">
 
-            <ul class="list-unstyled">
-              <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
-              <li>&#169; 2013 - <%= Date.today.strftime("%Y") %></li>
-              <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
-            </ul>
-          </div>
+                    <ul class="list-unstyled">
+                        <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
+                        <li>&#169; 2013 - <%= Date.today.strftime("%Y") %></li>
+                        <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer">
+            <div class="row">
+                <div class="col-lg-4 footer-col">
+                    <div class="h4">My links</div>
+                    <ul class="list-unstyled list-vertical">
+                        <li class=""><a href="http://www.petrnagy.cz">Petr Nagy</a></li>
+                        <li class=""><a rel="nofollow" href="https://www.facebook.com/petr.nagy">Facebook</a> <i class="fa fa-facebook"></i></li>
+                        <li class=""><a rel="nofollow" href="https://twitter.com/petrnagy">Twitter</a> <i class="fa fa-twitter"></i></li>
+                        <li class=""><a rel="nofollow" href="https://plus.google.com/+PetrNagyCz">Google+</a> <i class="fa fa-google-plus"></i></li>
+                        <li class=""><a rel="nofollow" href="http://cz.linkedin.com/in/petrnagy">LinkedIn</a> <i class="fa fa-linkedin"></i></li>
+                        <li class=""><a rel="nofollow" href="http://petr-nagy.deviantart.com/">DeviantArt</a> <i class="fa fa-deviantart"></i></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 footer-col">
+                    <div class="more-space h4">My projects</div>
+                    <ul class="list-unstyled list-vertical">
+                        <li class=""><a href="http://www.navihub.net/">Navihub</a> <small class="gray">&#8592; you are here</small></li>
+                        <li class=""><a href="http://www.tomatoid.com/">Tomatoid</a></li>
+                        <li class=""><a href="http://www.petrnagy.cz/#projects">Daily menu</a></li>
+                        <li class=""><a href="http://www.petrnagy.cz/#projects">EventCal</a></li>
+                        <li class=""><a href="http://www.petrnagy.cz/#projects">Shitlib</a></li>
+                        <li class=""><a href="http://blog.petrnagy.cz/">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 footer-col">
+                    <div class="more-space h4">Hire me</div>
+                    <p class='hire-me'>I am currently <span class='busy'>busy</span>.<br />
+                        For more details,<br />
+                        please <a href='http://www.petrnagy.cz/#contact'>contact me</a>. <br />
+                    </p>
+                    <p class='my-cv'>My CV: <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_en.pdf'>English</a> | <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_cz.pdf'>Czech</a></p>
+                </div>
+            </div>
+            <hr class="footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-center disclaimer gray">
+                        Tady musi byt napsane ze zobrazene vysledky jsou zobrazene pomoci API1? API2, API3 atd.. <br>
+                        Dale pak informace o tom, ze to jsou registrovane znacky a ze Navihub s nima nema nic spolecneho.
+                    </p>
+                    <p class="text-center small footer-images gray">
+                        <%= link_to 'About', controller: "pages", action: "about" %> ~
+                        <%= link_to 'Feedback', controller: "feedback", action: "index" %> ~
+                        <%= link_to 'Terms', controller: "pages", action: "terms_of_use" %> ~
+                        <%= link_to 'Privacy', controller: "pages", action: "privacy_policy" %> ~
+                        <%= link_to 'Cookies', controller: "pages", action: "cookie_policy" %> ~
+                        <%= link_to 'Data Sources', controller: "pages", action: "data_sources" %>
+                    </p>
+                    <p>
+                        <small class="gray footer-version">Version <%= @version %> (build <%= @build %>)</small>
+                    </p>
+                </div>
+            </div>
         </div>
-        <hr class="footer">
-        <div class="row">
-            <div class="col-lg-4 footer-col">
-                <div class="h4">My links</div>
-                <ul class="list-unstyled list-vertical">
-                  <li class=""><a href="http://www.petrnagy.cz">Petr Nagy</a></li>
-                  <li class=""><a rel="nofollow" href="https://www.facebook.com/petr.nagy">Facebook</a> <i class="fa fa-facebook"></i></li>
-                  <li class=""><a rel="nofollow" href="https://twitter.com/petrnagy">Twitter</a> <i class="fa fa-twitter"></i></li>
-                  <li class=""><a rel="nofollow" href="https://plus.google.com/+PetrNagyCz">Google+</a> <i class="fa fa-google-plus"></i></li>
-                  <li class=""><a rel="nofollow" href="http://cz.linkedin.com/in/petrnagy">LinkedIn</a> <i class="fa fa-linkedin"></i></li>
-                  <li class=""><a rel="nofollow" href="http://petr-nagy.deviantart.com/">DeviantArt</a> <i class="fa fa-deviantart"></i></li>
-                </ul>
-            </div>
-            <div class="col-lg-4 footer-col">
-                <div class="more-space h4">My projects</div>
-                <ul class="list-unstyled list-vertical">
-                  <li class=""><a href="http://www.navihub.net/">Navihub</a> <small class="gray">&#8592; you are here</small></li>
-                  <li class=""><a href="http://www.tomatoid.com/">Tomatoid</a></li>
-                  <li class=""><a href="http://www.petrnagy.cz/#projects">Daily menu</a></li>
-                  <li class=""><a href="http://www.petrnagy.cz/#projects">EventCal</a></li>
-                  <li class=""><a href="http://www.petrnagy.cz/#projects">Shitlib</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-4 footer-col">
-                <div class="more-space h4">Hire me</div>
-                <p class='hire-me'>I am currently <span class='busy'>busy</span>.<br />
-                  For more details,<br />
-                  please <a href='http://www.petrnagy.cz/#contact'>contact me</a>. <br />
-                </p>
-                <p class='my-cv'>My CV: <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_en.pdf'>English</a> | <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_cz.pdf'>Czech</a></p>
-            </div>
+        <!-- Spinner -->
+        <div class="spinner" id="spinner" style="display: none;">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
         </div>
-        <hr class="footer">
-        <div class="row">
-            <div class="col-lg-12">
-                <p class="text-center disclaimer gray">
-                  There will be. <br>
-                  Some very very clever. <br>
-                  Disclaimer!
-                </p>
-                <p class="text-center small footer-images gray">Images:&nbsp;&nbsp;&nbsp;
-                  <a target="_blank" rel="nofollow" href="http://www.morguefile.com/creative/mconnors">tomato</a> ~
-                  <a target="_blank" rel="nofollow" href="http://theromancee.deviantart.com/art/Coffee-Cup-PSD-editable-381319610">coffee</a> ~
-                  <a target="_blank" rel="nofollow" href="http://wegraphics.deviantart.com/art/Apple-products-PSD-templates-177631984">macbook</a> ~
-                  <a target="_blank" rel="nofollow" href="http://www.elegantthemes.com/blog/resources/free-social-media-icon-set">icons</a>
-                </p>
-                <p>
-                    <small class="gray footer-version">Version <%= @version %> (build <%= @build %>)</small>
-                </p>
-            </div>
-        </div>
-      </div>
-      <!-- Spinner -->
-      <div class="spinner" id="spinner" style="display: none;">
-        <div class="rect1"></div>
-        <div class="rect2"></div>
-        <div class="rect3"></div>
-        <div class="rect4"></div>
-        <div class="rect5"></div>
-      </div>
     </footer>
-  </body>
+</body>
 </html>

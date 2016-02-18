@@ -4,3 +4,7 @@
 
 /*img.img-border-1px { border: 1px dotted lightgray; }*/
 img.img-border-1px { border-width: 1px; border-style: dotted; border-color: lightgray; }
+
+@media only screen and (min-width: 992px) {
+    body.c-feedback.a-index #yield { width: 870px; margin-left: auto; margin-right: auto; }
+}

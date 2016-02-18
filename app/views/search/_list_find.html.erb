@@ -4,15 +4,15 @@
     <% @data[:results].each do |result| %>
     <% i = i + 1; %>
     <div class="col-lg-4 result-box origin-<%= result[:origin] %>" data-result-json="<%= result[:json] %>" id="<%= Digest::MD5.hexdigest result[:json] %>">
-        <%= render 'result_header', :result => result %>
-        <%= render 'result_map', :result => result %>
-        <%= render 'result_location', :result => result %>
-        <%= render 'result_distance', :result => result %>
-        <%= render 'result_tags', :result => result %>
+        <%= render 'search/result_header', :result => result %>
+        <%= render 'search/result_map', :result => result %>
+        <%= render 'search/result_location', :result => result %>
+        <%= render 'search/result_distance', :result => result %>
+        <%= render 'search/result_tags', :result => result %>
 
         <div class="details-wrapper">
-            <%= render 'result_dropdown', :result => result %>
-            <%= render 'result_origin', :result => result %>
+            <%= render 'search/result_dropdown', :result => result %>
+            <%= render 'search/result_origin', :result => result %>
         </div>
     </div>
     <% if i.to_i % 3 === 0 %>

@@ -69,7 +69,7 @@ VenueDetail.prototype = {
           that.di.spinner.show();
           $.ajax({
               url: '/sharer/email',
-              method: 'post',
+              method: 'POST',
               data: data,
               success: function(result) {
                   if ( result.status == 'ok' ) {

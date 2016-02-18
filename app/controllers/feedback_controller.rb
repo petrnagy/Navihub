@@ -46,6 +46,7 @@ class FeedbackController < ApplicationController
 
   def validate_contact_form_field field, value
     # TODO: validovat e-mail a délky (ne jen  > 0)
+    # validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
     value.length > 0
   end
 

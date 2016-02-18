@@ -2,6 +2,6 @@
     <hr>
     <p class="text-center">
         These informations were provided with the help of:<br />
-        <%= image_tag 'powered-by-' + @data[:origin] + '.jpg', class: "powered-by-icon", title: "data loaded using " + @data[:origin].upcase + " API" %>
+        <%= image_tag 'powered-by/' + @data[:origin] + '@2x.png', class: "powered-by-icon", title: "data loaded using " + @data[:origin].upcase + " API", onload: "this.width/=2;this.onload=null;" %>
     </p>
 </div>

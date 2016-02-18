@@ -1,4 +1,4 @@
 <div class="vendor-logo col-lg-10">
     <a href="#" class="detail-fav-switch list-fav-switch <%= result[:favorite] ? 'exists' : '' %>"><%= fa_icon( result[:favorite] ? 'star' : 'star-o' ) %></a>
-    <%= image_tag 'powered-by-' + result[:origin] + '.jpg', class: "powered-by-icon", title: "This result was loaded using " + result[:origin].upcase + " API" %>
+    <%= image_tag 'powered-by/icon/' + result[:origin] + '@2x.png', alt: 'Powered by ' + result[:origin].capitalize, class: "powered-by-icon", title: "This result was loaded using " + result[:origin].upcase + " API", onload: "this.width/=2;this.onload=null;" %>
 </div>

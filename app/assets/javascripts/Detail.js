@@ -148,7 +148,7 @@ Detail.prototype = {
 
                 $.ajax({
                     url: url,
-                    method: 'get',
+                    method: 'GET',
                     success: function(response) {
                         if (response) {
                             $(".detail-wrapper .detail-body .detail-data").html(response);

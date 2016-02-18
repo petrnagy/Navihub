@@ -12,7 +12,6 @@ class DetailController < ApplicationController
             end
         end
         @data = { :origin => parameters['origin'] || 'unknown', :id => parameters['id'] || 'unknown' }
-        @failsafe = true
         render 'empty', :status => 404
     end
 

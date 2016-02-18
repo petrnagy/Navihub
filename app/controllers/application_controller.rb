@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
   class CouldNotSetLocation < StandardError
   end
 
-  @failsafe;
-
   protect_from_forgery with: :exception
 
   before_filter :init
@@ -21,18 +19,21 @@ class ApplicationController < ActionController::Base
     init_html_variables
     init_user
     init_location
-    @failsafe = false
   end
 
   def init_html_variables
+    # BEWARE! The config is loaded only once, with start of the webserver
     @page_lang_cls = determine_lang
     @page_robots = Rails.env.production? ? 'index, follow' : 'noindex, nofollow'
     @device_cls = determine_device
     @is_logged_in_cls = determine_login_status
-    # FIXME: Move strings to config/application.rb (but its not loaded at this stage of the application inicialization !)
     @page_name = Rails.configuration.app_name
     @page_title = Rails.configuration.app_title
     @page_desc = Rails.configuration.app_description
+    @page_keywords = Rails.configuration.app_keywords
+    @google_site_verification = Rails.configuration.google_site_verification
+    @ms_site_verification = Rails.configuration.ms_site_verification
+    @page_author = Rails.configuration.app_author
     @version = Rails.configuration.app_version
     @build = Rails.configuration.app_build
     # TODO: wtf is this?
@@ -41,7 +42,8 @@ class ApplicationController < ActionController::Base
     @root_url = request.base_url
   end
 
-  def determine_lang # @todo lang
+  def determine_lang
+      # TODO: lang
     'en'
   end
 
@@ -137,7 +139,6 @@ class ApplicationController < ActionController::Base
         @location = loc
       end
     end
-    #raise CouldNotSetLocation if @location == nil
   end
 
   private

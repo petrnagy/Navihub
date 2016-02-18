@@ -23,6 +23,7 @@ SearchResultsLazyLoader.prototype = {
         that._lazyLoadSearchResultsAddresses();
         that._lazyLoadSearchResultsTagLinks();
         that._lazyInitEllipsis();
+        that._lazyLoadSearchResultsOpenDetail();
     }, // end method
 
     _lazyLoadSearchResultsImages: function() {
@@ -92,6 +93,26 @@ SearchResultsLazyLoader.prototype = {
             return ( $(this).find('i.unknown-data').length === 0 );
         });
         $set.dotdotdot();
+    }, // end method
+
+    _lazyLoadSearchResultsOpenDetail: function() {
+        var that = this;
+        var interval = setInterval(function(){
+            if ( that.di.locator.getLocation() !== null ) {
+                clearInterval(interval);
+
+                var $set = $('#yield #search-results .details-wrapper ul.dropdown-menu .list-open-detail').filter(function(){
+                    return ( $(this).attr('href') === '#' );
+                });
+                $set.each(function(){
+                    var data = that.di.searchResult.getData($(this));
+                    if ( data ) {
+                        var url = window.location.origin + Detail.prototype.buildDetailUrl(data, that);
+                        $(this).attr('href', url);
+                    } // end if
+                });
+            } // end if
+        }, 1000);
     }, // end method
 
 }; // end prototype

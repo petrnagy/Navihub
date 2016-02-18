@@ -9,21 +9,29 @@ var SearchResult = function(di) {
 SearchResult.prototype = {
 
     _init: function() {
-        var interests = [
-            'list-open-in-maps', 'list-plan-a-route', 'list-show-contact',
-            'list-send-via-email', 'list-get-permalink', 'list-fav-switch'
-        ];
         var that = this;
+        that._observeInterests();
+        that._observeSendViaEmail();
+    }, // end method
 
-        $.each(interests, function(key, interest) {
-            $(document).undelegate('.' + interest, 'click').delegate('.' + interest, 'click', function(e) {
-                e.preventDefault();
-                var method = interest.replace(/\-/g, '_');
-                that[method]($(this));
-                return false;
-            });
-        }); // end foreach
-        that.observeSendViaEmail();
+    _observeInterests: function() {
+      var that = this;
+      var interests = [
+          'list-open-in-maps', 'list-plan-a-route', 'list-send-via-email', 'list-get-permalink',
+          'list-fav-switch', 'list-share-on-facebook', 'list-share-on-twitter', 'list-share-on-google-plus',
+          'list-visit-website'
+      ];
+
+      $.each(interests, function(key, interest) {
+          $(document)
+          .undelegate('.result-box .' + interest, 'click')
+          .delegate('.result-box .' + interest, 'click', function(e) {
+              e.preventDefault();
+              var method = interest.replace(/\-/g, '_');
+              that[method]($(this));
+              return false;
+          });
+      }); // end foreach
     }, // end method
 
     loadDetail: function($el, callback) {
@@ -34,7 +42,7 @@ SearchResult.prototype = {
 
             $.ajax({
                 url: url,
-                method: 'get',
+                method: 'GET',
                 cache: true, // <----------- ! ! !
                 success: function(data) {
                     callback(data);
@@ -47,6 +55,7 @@ SearchResult.prototype = {
     }, // end method
 
     getData: function($el) {
+        // TODO: lokalni (globalni) cache
         var that = this;
         var jsonAttr = $el.closest('.result-box').attr('data-result-json');
         var result = null;
@@ -77,6 +86,7 @@ SearchResult.prototype = {
     list_open_in_maps: function($el) {
         var that = this;
         that.di.spinner.show();
+        // TODO: potrebuje tohle loadDetail?
         var detail = that.loadDetail($el, function(data){
             var url = 'https://www.google.com/maps/embed/v1/place?q=';
             if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
@@ -207,20 +217,6 @@ SearchResult.prototype = {
         });
     }, // end method
 
-    list_show_contact: function($el) {
-        var that = this;
-        that.di.spinner.show();
-        var detail = that.loadDetail($el, function(data){
-            $.colorbox({
-                html: that.generateContactPopup(data),
-                opacity: 0.5,
-                width: '400px',
-                height: '200px'
-            });
-            that.di.spinner.hide();
-        });
-    }, // end method
-
     list_visit_website: function(el) {
         var that = this;
         var $el = $(el).closest('.result-box');
@@ -242,27 +238,6 @@ SearchResult.prototype = {
             //tab.location = url;
             window.location = url;
         });
-    }, // end method
-
-    list_open_detail: function(el) {
-        var that = this;
-        var $el = $(el).closest('.result-box');
-        //var tab = window.open('about:blank');
-        that.di.spinner.show();
-        var data = that.getData($el);
-
-        if ( ! data ) {
-            //tab.close();
-            that.di.spinner.hide();
-            that.di.messenger.message(':-(', 'Sorry, something went wrong while obtaining the detail url address !');
-            return false;
-        } // end if
-
-        var url = that.getDetailUrl(data);
-
-        that.di.spinner.hide();
-        //tab.location = url;
-        window.location = url;
     }, // end method
 
     openSocialShareTab: function(el, tpl) {
@@ -291,7 +266,7 @@ SearchResult.prototype = {
         }});
     }, // end method
 
-    observeSendViaEmail: function() {
+    _observeSendViaEmail: function() {
         var that = this;
         $(document).delegate('.send-via-email-form', 'submit', function(e){
             e.preventDefault();
@@ -305,7 +280,7 @@ SearchResult.prototype = {
                 that.di.spinner.show();
                 $.ajax({
                     url: '/sharer/email',
-                    method: 'post',
+                    method: 'POST',
                     data: { email: val, origin: $form.attr('data-origin').toString(), id: $form.attr('data-id').toString() },
                     success: function(data) {
                         $msgwrap.removeClass('err').addClass('ok').text('Success! You can check filled e-mail address inbox.');

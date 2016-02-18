@@ -1,42 +1,55 @@
 Rails.application.routes.draw do
 
+    # homepage
+    root 'homepage#index' # [xss-safe] [csrf-part-safe]
+    # account management
+    get 'account/index'
+    get 'account/login'
+    get 'account/logout'
+    get 'account/register'
+    get 'account/google_login'
+    get 'account/facebook_login'
+    get 'account/twitter_login'
+    get 'account/social_login'
     # feedback page
-    get 'feedback' => 'feedback#index' # [xss-safe]
-    post 'feedback' => 'feedback#process_contact_form' # [xss-safe]
-    # about page
-    get 'about' => 'about#index' # [xss-safe]
+    get 'feedback' => 'feedback#index' # [xss-safe] [csrf-part-safe]
+    post 'feedback' => 'feedback#process_contact_form' # [xss-safe] [csrf-part-safe]
     # settings
     get 'settings/general' # [not-implemented]
-    get 'settings/location' => 'settings#location' # [xss-safe]
+    post 'settings/location' => 'settings#location' # [xss-safe] [csrf-part-safe]
     get 'settings/profile' # [not-implemented]
     # detail
-    get 'detail/:name/:id/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe]
+    get 'detail/:name/:id/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe] [csrf-part-safe]
         :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
-    get 'detail/:name/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe]
+    get 'detail/:name/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe] [csrf-part-safe]
         :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
     # permalinks
-    get 'permalink/:permalink_id' => 'permalinks#show' # [xss-safe]
-    put 'setpermalink' => 'permalinks#create' # [xss-safe]
+    get 'permalink/:permalink_id' => 'permalinks#show' # [xss-safe] [csrf-part-safe]
+    put 'setpermalink' => 'permalinks#create' # [xss-safe] [csrf-part-safe]
     # search
-    get 'search' => 'search#index' # [xss-safe]
-    get 'search/:order/:radius/:offset/@/:lat,:lng' => 'search#find', # [xss-safe]
+    get 'search' => 'search#index' # [xss-safe] [csrf-part-safe]
+    get 'search/:order/:radius/:offset/@/:lat,:lng' => 'search#find', # [xss-safe] [csrf-part-safe]
         :constraints => { :order => /\w+\-\w+/, :radius => /\d+/, :offset => /\d+/,
             :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/ }
-    get 'search/:term/:order/:radius/:offset/@/:lat,:lng' => 'search#find', # [xss-safe]
+    get 'search/:term/:order/:radius/:offset/@/:lat,:lng' => 'search#find', # [xss-safe] [csrf-part-safe]
         :constraints => { :order => /\w+\-\w+/, :radius => /\d+/, :offset => /\d+/,
             :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/ }
     # lazy search-related endpoints
-    get 'lazy/geocode' => 'search#geocode' # [xss-safe]
-    get 'lazy/reversegeocode' => 'search#reverse_geocode' # [xss-safe]
-    get 'lazy/static-map-img' => 'search#get_static_map_image' # [xss-safe]
-    get 'lazy/distance-matrix' => 'search#distance_matrix' # [xss-safe]
+    get 'lazy/geocode' => 'search#geocode' # [xss-safe] [csrf-part-safe]
+    get 'lazy/reversegeocode' => 'search#reverse_geocode' # [xss-safe] [csrf-part-safe]
+    get 'lazy/static-map-img' => 'search#get_static_map_image' # [xss-safe] [csrf-part-safe]
+    get 'lazy/distance-matrix' => 'search#distance_matrix' # [xss-safe] [csrf-part-safe]
     #favorites
-    put 'favorites' => 'favorites#create' # [not-safe]
-    delete 'favorites' => 'favorites#delete' # [xss-safe]
-    get 'favorites' => 'favorites#index' # [xss-safe]
+    put 'favorites' => 'favorites#create' # [xss-safe] [csrf-part-safe]
+    delete 'favorites' => 'favorites#delete' # [xss-safe] [csrf-part-safe]
+    get 'favorites' => 'favorites#index' # [xss-safe] [csrf-part-safe]
     # sharing
-    post 'sharer/email' => 'sharer#email' # [xss-safe]
-    # homepage
-    root 'homepage#index' # [xss-safe]
+    post 'sharer/email' => 'sharer#email' # [xss-safe] [csrf-part-safe]
+    # static pages
+    get 'privacy-policy' => 'pages#privacy_policy' # [xss-safe] [csrf-part-safe]
+    get 'cookie-policy' => 'pages#cookie_policy' # [xss-safe] [csrf-part-safe]
+    get 'terms-of-use' => 'pages#terms_of_use' # [xss-safe] [csrf-part-safe]
+    get 'data-sources' => 'pages#data_sources' # [xss-safe] [csrf-part-safe]
+    get 'about' => 'pages#about' # [xss-safe] [csrf-part-safe]
 
 end

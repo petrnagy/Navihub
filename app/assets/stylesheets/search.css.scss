@@ -78,7 +78,7 @@ background-color: rgb(246,246,246);
 .result-origin-icon { height: 31px; float: right; position: relative; top: -10px; }
 .link-white { color: white; }
 .link-white:hover { color: white; }
-.search-start { background-image: url(arrow.png); background-repeat: no-repeat; min-height: 250px; background-position: 230px 55px; }
+.search-start { min-height: 250px; }
 .result-address, .result-geometry, .result-distance, .result-walking-distance, .result-car-distance, .result-tags {
   display: flex; align-items: center;
 }
@@ -96,7 +96,7 @@ background-color: rgb(246,246,246);
 .detail-fav-switch i.fa.fa-star-o:hover { color: #D2D21E; }
 .detail-fav-switch.exists { color: #D2D21E; }
 
-.powered-by-icon { max-height: 35px; max-width: 250px; position: absolute; bottom: 0; right: 0; }
+.powered-by-icon { position: absolute; bottom: 0; right: 0; }
 /* ~~~~~~~ */
 
 

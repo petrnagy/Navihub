@@ -145,6 +145,7 @@ _send: function(data, manual, write, lock) {
         data.set = 1;
         data.lock = ( lock ? 1 : 0 );
         $.ajax({
+            method: 'POST',
             url: '/settings/location',
             data: data,
             success: function(response) {

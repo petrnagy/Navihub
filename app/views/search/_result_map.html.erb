@@ -1,9 +1,9 @@
 <div class="map-wrapper">
     <% if result[:map] %>
     <a class="list-open-in-maps" href="#">
-    <%= image_tag 'lazyload.png', size: '340x100', alt: result[:name], lazysrc: result[:map] %>
+    <%= image_tag 'system/lazyload.png', size: '340x100', alt: result[:name], lazysrc: result[:map] %>
     </a>
     <% else %>
-    <%= image_tag 'noimage.png', size: '340x100' %>
+    <%= image_tag 'system/noimage.png', size: '340x100' %>
     <% end %>
 </div>

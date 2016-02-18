@@ -9,6 +9,8 @@ var Configurator = {
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         });
 
+        $('a[href^="#"]').smoothScroll();
+
     }, // end method
 
     config: {

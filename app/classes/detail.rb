@@ -2,6 +2,8 @@ class Detail
 
     class UnknownEngine < StandardError
     end
+    class BadEngineResponse < StandardError
+    end
 
     include SearchMixin
 
@@ -16,9 +18,9 @@ class Detail
         if Search.allowed_engines.include? @origin
             loader = "#{@origin.capitalize}VenueLoader".constantize.new @id
             data = VenueDetailCache.load @origin, @id
-            data = nil
             if data == nil
                 data = loader.load(@location)
+                raise BadEngineResponse, 'debug: ' + [@id, @origin].to_s if data == nil
                 VenueDetailCache.save @origin, @id, data
             end
             mapper = "#{@origin.capitalize}Mapper".constantize.new data
