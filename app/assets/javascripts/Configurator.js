@@ -7,6 +7,7 @@ var Configurator = {
         $.ajaxSetup({
             cache: false,
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            accepts: 'application/json',
         });
 
         $('a[href^="#"]').smoothScroll();

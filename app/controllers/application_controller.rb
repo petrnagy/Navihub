@@ -22,24 +22,21 @@ class ApplicationController < ActionController::Base
   end
 
   def init_html_variables
-    # BEWARE! The config is loaded only once, with start of the webserver
-    @page_lang_cls = determine_lang
-    @page_robots = Rails.env.production? ? 'index, follow' : 'noindex, nofollow'
-    @device_cls = determine_device
-    @is_logged_in_cls = determine_login_status
-    @page_name = Rails.configuration.app_name
-    @page_title = Rails.configuration.app_title
-    @page_desc = Rails.configuration.app_description
-    @page_keywords = Rails.configuration.app_keywords
-    @google_site_verification = Rails.configuration.google_site_verification
-    @ms_site_verification = Rails.configuration.ms_site_verification
-    @page_author = Rails.configuration.app_author
-    @version = Rails.configuration.app_version
-    @build = Rails.configuration.app_build
-    # TODO: wtf is this?
-    request.protocol
-    request.port.blank?
-    @root_url = request.base_url
+    # BEWARE! The config is loaded only once, during webserver startup
+    @page_lang_cls              = determine_lang
+    @page_robots                = Rails.env.production? ? 'index, follow' : 'noindex, nofollow'
+    @device_cls                 = determine_device
+    @is_logged_in_cls           = determine_login_status
+    @page_name                  = Rails.configuration.app_name
+    @page_title                 = Rails.configuration.app_title
+    @page_desc                  = Rails.configuration.app_description
+    @page_keywords              = Rails.configuration.app_keywords
+    @google_site_verification   = Rails.configuration.google_site_verification
+    @ms_site_verification       = Rails.configuration.ms_site_verification
+    @page_author                = Rails.configuration.app_author
+    @version                    = Rails.configuration.app_version
+    @build                      = Rails.configuration.app_build
+    @root_url                   = request.base_url
   end
 
   def determine_lang

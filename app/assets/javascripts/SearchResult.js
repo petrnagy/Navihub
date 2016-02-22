@@ -18,18 +18,19 @@ SearchResult.prototype = {
       var that = this;
       var interests = [
           'list-open-in-maps', 'list-plan-a-route', 'list-send-via-email', 'list-get-permalink',
-          'list-fav-switch', 'list-share-on-facebook', 'list-share-on-twitter', 'list-share-on-google-plus',
-          'list-visit-website'
+          'list-fav-switch', 'list-visit-website'
       ];
 
       $.each(interests, function(key, interest) {
           $(document)
           .undelegate('.result-box .' + interest, 'click')
           .delegate('.result-box .' + interest, 'click', function(e) {
-              e.preventDefault();
               var method = interest.replace(/\-/g, '_');
-              that[method]($(this));
-              return false;
+              var ret = that[method]($(this), e);
+              if ( ret === false ) {
+                  e.preventDefault();
+              } // end if
+              return ret;
           });
       }); // end foreach
     }, // end method
@@ -58,7 +59,6 @@ SearchResult.prototype = {
         // TODO: lokalni (globalni) cache
         var that = this;
         var jsonAttr = $el.closest('.result-box').attr('data-result-json');
-        var result = null;
         return JSON.parse(jsonAttr);
     }, // end method
 
@@ -73,29 +73,31 @@ SearchResult.prototype = {
         return true;
     }, // end method
 
-    list_open_in_maps: function($el) {
+    list_open_in_maps: function($el, e) {
         var that = this;
-        that.di.spinner.show();
-        // TODO: potrebuje tohle loadDetail?
-        var detail = that.loadDetail($el, function(data){
-            var url = 'https://www.google.com/maps/embed/v1/place?q=';
-            if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
-                url += data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
-            } else {
-                url += data.address;
-            } // end if
-            url += '&key=' + that.di.config.googleApiPublicKey;
-            $.colorbox({
-                html: '<iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="' + url + '" allowfullscreen></iframe>',
-                width: '95%',
-                height: '95%',
-                //closeButton: false,
-                transition: "none",
-                fadeOut: 0,
-                fixed: true
-            });
-            that.di.spinner.hide();
+
+        if ( e.which !== 1 ) { // not a left-click
+            return true;
+        } // end if
+
+        if ( e.metaKey || e.ctrlKey || e.shiftKey ) { // modification key pressed
+            return true;
+        } // end if
+
+        e.preventDefault();
+        var url = $el.attr('popup-href');
+
+        $.colorbox({
+            html: '<iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="' + url + '" allowfullscreen></iframe>',
+            width: '95%',
+            height: '95%',
+            //closeButton: false,
+            transition: "none",
+            fadeOut: 0,
+            fixed: true
         });
+
+        return false;
     }, // end method
 
     list_get_permalink: function($el) {
@@ -121,6 +123,7 @@ SearchResult.prototype = {
                 that.di.spinner.hide();
             }
         }); // end ajax
+        return false;
     }, // end method
 
     list_fav_switch: function($el) {
@@ -167,6 +170,7 @@ SearchResult.prototype = {
                 } // end if-else
             } // end if
         } // end if
+        return false;
     }, // end method
 
     _setCooldown: function($el) {
@@ -177,37 +181,34 @@ SearchResult.prototype = {
         }, 250);
     }, // end method
 
-    list_plan_a_route: function($el) {
+    list_plan_a_route: function($el, e) {
         var that = this;
-        that.di.spinner.show();
-        var detail = that.loadDetail($el, function(data){
-            var url = 'https://www.google.com/maps/embed/v1/directions?destination=';
-            if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
-                url += data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
-            } else {
-                url += data.address;
-            } // end if
-            var coords = that.di.locator.getLocation();
-            if ( coords ) {
-                url += '&origin=' + coords.lat.toString() + ',' + coords.lng.toString();
-            } else {
-                throw "NULL by that.di.locator.getLocation()";
-            } // end if
-            url += '&key=' + that.di.config.googleApiPublicKey;
-            $.colorbox({
-                html: '<iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="' + url + '" allowfullscreen></iframe>',
-                width: '95%',
-                height: '95%',
-                //closeButton: false,
-                transition: "none",
-                fadeOut: 0,
-                fixed: true
-            });
-            that.di.spinner.hide();
+
+        if ( e.which !== 1 ) { // not a left-click
+            return true;
+        } // end if
+
+        if ( e.metaKey || e.ctrlKey || e.shiftKey ) { // modification key pressed
+            return true;
+        } // end if
+
+        e.preventDefault();
+        var url = $el.attr('popup-href');
+
+        $.colorbox({
+            html: '<iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="' + url + '" allowfullscreen></iframe>',
+            width: '95%',
+            height: '95%',
+            //closeButton: false,
+            transition: "none",
+            fadeOut: 0,
+            fixed: true
         });
+
+        return false;
     }, // end method
 
-    list_visit_website: function(el) {
+    list_visit_website: function(el, e) {
         var that = this;
         var $el = $(el).closest('.result-box');
         //var tab = window.open('about:blank');
@@ -228,20 +229,10 @@ SearchResult.prototype = {
             //tab.location = url;
             window.location = url;
         });
+        return false;
     }, // end method
 
-    openSocialShareTab: function(el, tpl) {
-        var that = this;
-        var $el = $(el).closest('.result-box');
-        var data = that.getData($el);
-        var url = that.getDetailUrl(data);
-        if ( url ) {
-            url = tpl.replace('%%URL%%', url);
-            window.open(url);
-        } else {
-            that.di.messenger.message(':-(', 'Sorry, something went wrong during generating the share url address !');
-        } // end if
-    }, // end method
+
 
     getDetailUrl: function(data) {
         return window.location.origin + Detail.prototype.buildDetailUrl(data, this);
@@ -254,6 +245,7 @@ SearchResult.prototype = {
         that.di.messenger.message('Enter your e-mail address', html, {onComplete: function(){
             $('.send-via-email-form > input[type=text]').focus();
         }});
+        return false;
     }, // end method
 
     _observeSendViaEmail: function() {
@@ -289,19 +281,6 @@ SearchResult.prototype = {
             } // end if
             return false;
         });
-    }, // end method
-
-    list_share_on_facebook: function(el) {
-        this.openSocialShareTab(el, 'https://www.facebook.com/sharer/sharer.php?u=%%URL%%');
-    }, // end method
-
-    list_share_on_twitter: function(el) {
-        // TODO: Add full status support
-        this.openSocialShareTab(el, 'https://twitter.com/home?status=%%URL%%');
-    }, // end method
-
-    list_share_on_google_plus: function(el) {
-        this.openSocialShareTab(el, 'https://plus.google.com/share?url=%%URL%%');
     }, // end method
 
     generateContactPopup: function(data) {

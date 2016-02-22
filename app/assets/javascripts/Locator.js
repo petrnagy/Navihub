@@ -16,6 +16,7 @@ var Locator = function(di) {
     this._didAutomaticReverseGeocoding = false;
     this._initAutodetectBtn();
     this._initLockBtn();
+    this._initUnlockBtn();
 }; // end func
 
 Locator.prototype = {
@@ -323,6 +324,21 @@ _initLockBtn: function() {
     });
 }, // end method
 
+_initUnlockBtn: function() {
+    var that = this;
+    $('.loc-unlock-button').click(function(e){
+        e.preventDefault();
+        if ( that.isLocked() ) {
+            var loc = that.getLocation();
+            var loctxt = that.readLoc();
+            if ( confirm("Unlock current location '" + loctxt + "'?") ) {
+                that._relocate();
+            } // end if
+        }  // end if
+        return false;
+    });
+}, // end method
+
 _relocate: function() {
     var that = this;
     $("#top-location .top-location-top .actual").html('loading...');
@@ -336,6 +352,7 @@ lock: function() {
     var txt = $('#top-location .top-location-top .actual').text();
     $('#top-location .top-location-top .actual').html(that._key + txt);
     $('#top-location .top-location-lock').hide();
+    $('#top-location .top-location-unlock').show();
 }, // end method
 
 unlock: function() {
@@ -344,6 +361,7 @@ unlock: function() {
     var txt = $('#top-location .top-location-top .actual').text();
     $('#top-location .top-location-top .actual').text(txt.replace(that._key, ''));
     $('#top-location .top-location-lock').show();
+    $('#top-location .top-location-unlock').hide();
 }, // end method
 
 isLocked: function() {

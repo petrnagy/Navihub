@@ -1,31 +1,32 @@
 <div class="dots col-lg-2">
     <a href="#" class="btn-detail" data-toggle="dropdown"><%= fa_icon("ellipsis-h") %></a>
     <ul class="dropdown-menu">
-        <li><a class="list-open-detail" href="#"><%= fa_icon("external-link") %>open detail</a></li>
-        <li><a class="list-open-in-maps" href="#"><%= fa_icon("map-o") %>Open in maps</a></li>
-        <li><a class="list-plan-a-route" href="#"><%= fa_icon("map-signs") %>plan a route</a></li>
+        <li><a class="list-open-detail" href="#"><%= fa_icon("eye") %>open detail</a></li>
+        <li><a class="list-open-in-maps" href="#"><%= fa_icon("map-o") %>Show map</a></li>
+        <li><a class="list-plan-a-route" href="#"><%= fa_icon("suitcase") %>plan route</a></li>
 
         <li class="divider"></li>
-        <li><a class="list-visit-website" href="#"><%= fa_icon("link") %>visit website</a></li>
+        <li><a class="list-visit-website"><%= fa_icon("link") %>visit website</a></li>
 
-        <li><a class="list-get-permalink" href="#"><%= fa_icon("chain-broken") %>get permalink</a></li>
+        <li><a class="list-get-permalink"><%= fa_icon("chain-broken") %>get permalink</a></li>
         <li class="divider"></li>
         <li class="dropdown-submenu">
-            <a tabindex="-1" href="#"><%= fa_icon("share") %>Share this</a>
+            <a tabindex="-1" href="#id-<%= result[:json_hash] %>"><%= fa_icon("share") %>Share this</a>
             <ul class="dropdown-menu">
-                <li><a class="list-send-via-email" href="#"><%= fa_icon("envelope-o") %>send via e-mail</a></li>
-                <li><a class="list-share-on-facebook" href="#"><%= fa_icon("facebook-official") %>share on facebook</a></li>
-                <li><a class="list-share-on-twitter" href="#"><%= fa_icon("twitter") %>share on twitter</a></li>
-                <li><a class="list-share-on-google-plus" href="#"><%= fa_icon("google-plus") %>share on google+</a></li>
+                <li><a class="list-send-via-email"><%= fa_icon("envelope-o") %>send via e-mail</a></li>
+                <li><a class="list-share-on-facebook list-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=%%URL%%"><%= fa_icon("facebook-official") %>share on facebook</a></li>
+                <li><a class="list-share-on-twitter list-share-btn" href="https://twitter.com/home?status=%%URL%%"><%= fa_icon("twitter") %>share on twitter</a></li>
+                <li><a class="list-share-on-google-plus list-share-btn" href="https://plus.google.com/share?url=%%URL%%"><%= fa_icon("google-plus") %>share on google+</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu">
-            <a tabindex="-1" href="#"><%= fa_icon("search") %>search more</a>
+            <a tabindex="-1" href="#id-<%= result[:json_hash] %>"><%= fa_icon("search") %>search more</a>
             <ul class="dropdown-menu">
-                <li><a class="list-search-more-google" href="https://www.google.cz/?#q=<%= result[:name] %>"><%= fa_icon("google") %>google.com</a></li>
-                <li><a class="list-search-more-bing" href="http://www.bing.com/search?q=<%= result[:name] %>"><%= fa_icon("search-plus") %>bing.com</a></li>
-                <li><a class="list-search-more-yahoo" href="https://search.yahoo.com/search?p=<%= result[:name] %>"><%= fa_icon("yahoo") %>yahoo.com</a></li>
-                <li><a class="list-search-more-duck" href="https://duckduckgo.com/?q=<%= result[:name] %>"><%= fa_icon("user-secret") %>duckduckgo.com</a></li>
+                <% search_query = u(result[:name] + (result[:address] ? ' ' + result[:address] : '')) %>
+                <li><a class="list-search-more-google" href="https://www.google.cz/?#q=<%= search_query %>"><%= fa_icon("google") %>google.com</a></li>
+                <li><a class="list-search-more-bing" href="http://www.bing.com/search?q=<%= search_query %>"><%= fa_icon("search-plus") %>bing.com</a></li>
+                <li><a class="list-search-more-yahoo" href="https://search.yahoo.com/search?p=<%= search_query %>"><%= fa_icon("yahoo") %>yahoo.com</a></li>
+                <li><a class="list-search-more-duck" href="https://duckduckgo.com/?q=<%= search_query %>"><%= fa_icon("user-secret") %>duckduckgo.com</a></li>
             </ul>
         </li>
     </ul>

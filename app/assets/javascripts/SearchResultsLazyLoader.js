@@ -24,6 +24,9 @@ SearchResultsLazyLoader.prototype = {
         that._lazyLoadSearchResultsTagLinks();
         that._lazyInitEllipsis();
         that._lazyLoadSearchResultsOpenDetail();
+        that._lazyLoadMapPopups();
+        that._lazyLoadRoutePopups();
+        that._lazyLoadSocialSharingUrls();
     }, // end method
 
     _lazyLoadSearchResultsImages: function() {
@@ -84,15 +87,15 @@ SearchResultsLazyLoader.prototype = {
                     $(this).parent().attr('href', url);
                 });
             } // end if
-        }, 1000);
+        }, 500);
     }, // end method
 
     _lazyInitEllipsis: function() {
         var that = this;
-        var $set = $('#yield #search-results .result-address:in-viewport').filter(function(){
+        var $set = $('#yield #search-results .result-address:in-viewport').not('.dotted').filter(function(){
             return ( $(this).find('i.unknown-data').length === 0 );
         });
-        $set.dotdotdot();
+        $set.addClass('dotted').dotdotdot();
     }, // end method
 
     _lazyLoadSearchResultsOpenDetail: function() {
@@ -101,7 +104,8 @@ SearchResultsLazyLoader.prototype = {
             if ( that.di.locator.getLocation() !== null ) {
                 clearInterval(interval);
 
-                var $set = $('#yield #search-results .details-wrapper ul.dropdown-menu .list-open-detail').filter(function(){
+                var $set = $('#search-results .details-wrapper:in-viewport ul.dropdown-menu .list-open-detail, #search-results .result-box:in-viewport .list-open-detail-eye')
+                .filter(function(){
                     return ( $(this).attr('href') === '#' );
                 });
                 $set.each(function(){
@@ -112,7 +116,105 @@ SearchResultsLazyLoader.prototype = {
                     } // end if
                 });
             } // end if
-        }, 1000);
+        }, 500);
+    }, // end method
+
+    _lazyLoadMapPopups: function() {
+        var that = this;
+        var $set = $('#search-results .result-box:in-viewport a.list-open-in-maps').filter(function(){
+            if ( $(this).attr('href') === '#' ) {
+                var geometryMissing = ($(this).closest('result-box').find('.result-geometry .fa-spinner').length > 0);
+                var addressMissing = ($(this).closest('result-box').find('.result-address .fa-spinner').length > 0);
+                if ( ! geometryMissing || ! addressMissing ) {
+                    return true;
+                } // end if
+            } // end if
+            return false;
+        });
+        $set.each(function(){
+            var data = that.di.searchResult.getData($(this));
+            if ( data ) {
+                var url = 'http://maps.google.com/?';
+                var popupUrl = 'https://www.google.com/maps/embed/v1/place?q=';
+                if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
+                    popupUrl += data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    url += 'll=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                } else {
+                    popupUrl += data.address;
+                    url += 'q=' + data.address;
+                } // end if
+                popupUrl += '&key=' + that.di.config.googleApiPublicKey;
+                url += '&z=17';
+                $(this).attr('href', url);
+                $(this).attr('popup-href', popupUrl);
+            } // end if
+        });
+    }, // end method
+
+    _lazyLoadRoutePopups: function() {
+        var that = this;
+        var interval = setInterval(function(){
+            if ( that.di.locator.getLocation() !== null ) {
+                clearInterval(interval);
+                var loc = that.di.locator.getLocation();
+
+                var $set = $('#search-results .result-box:in-viewport a.list-plan-a-route').filter(function() {
+                    if ( $(this).attr('href') === '#' ) {
+                        var geometryMissing = ($(this).closest('result-box').find('.result-geometry .fa-spinner').length > 0);
+                        var addressMissing = ($(this).closest('result-box').find('.result-address .fa-spinner').length > 0);
+                        if ( ! geometryMissing || ! addressMissing ) {
+                            return true;
+                        } // end if
+                    } // end if
+                    return false;
+                });
+                $set.each(function() {
+                    var data = that.di.searchResult.getData($(this));
+                    if ( data ) {
+                        var url = 'https://maps.google.com?';
+                        var popupUrl = 'https://www.google.com/maps/embed/v1/directions?destination=';
+                        if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
+                            popupUrl += data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                            url += 'daddr=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                        } else {
+                            popupUrl += encodeURIComponent(data.address);
+                            url += 'daddr=' + data.address;
+                        } // end if
+                        popupUrl += '&origin=' + loc.lat.toString() + ',' + loc.lng.toString();
+                        url += '&saddr=' + loc.lat.toString() + ',' + loc.lng.toString();
+                        popupUrl += '&key=' + that.di.config.googleApiPublicKey;
+                        $(this).attr('href', url);
+                        $(this).attr('popup-href', popupUrl);
+
+                    } // end if
+                });
+            } // end if
+        }, 500);
+    }, // end method
+
+    _lazyLoadSocialSharingUrls: function() {
+        var that = this;
+        var key = '%%URL%%';
+        var interval = setInterval(function(){
+            if ( that.di.locator.getLocation() !== null ) {
+                clearInterval(interval);
+                var loc = that.di.locator.getLocation();
+
+                var $set = $('#search-results .result-box:in-viewport .list-share-btn').filter(function() {
+                    return ( $(this).attr('href').indexOf(key) >= 0 );
+                });
+
+                $set.each(function(i, el){
+                    var $el = $(el);
+                    var data = that.di.searchResult.getData($el);
+                    var url = that.di.searchResult.getDetailUrl(data);
+                    if ( url ) {
+                        $el.attr('href', $el.attr('href').replace(key, url));
+                    } // end if
+                });
+
+            } // end if
+        }, 500);
     }, // end method
 
 }; // end prototype

@@ -210,7 +210,7 @@ Detail.prototype = {
         * @param  {object} data
         * @return {String} relative url
         */
-        buildDetailUrl(data, that) {
+        buildDetailUrl: function(data, that) {
             that = that || this;
             var loc = that.di.locator.getLocation();
             var ll = loc.lat.toFixed(8).toString() + ',' + loc.lng.toFixed(8).toString();

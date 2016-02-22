@@ -201,6 +201,7 @@ class Search
             current[:tags] = result_normalize_tags current
             current[:ascii_name] = Mixin.normalize_unicode current[:name]
             current[:json] = current.to_json
+            current[:json_hash] = Digest::MD5.hexdigest current[:json]
             processed << current
         end
 
