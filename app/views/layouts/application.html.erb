@@ -77,15 +77,16 @@
             lat: <%= @location == nil ? 'null' : @location.latitude %>,
             lng: <%= @location == nil ? 'null' : @location.longitude %>,
             lock: <%= @location == nil ? 'null' : ( @location.lock == true ? 'true' : 'false' ) %>
-        }
+        },
+        env: '<%= Rails.env %>'
     }
     </script>
     <!-- noscript #2 -->
     <noscript>
         <div>
-            <p class="h1">Javascript</p>
+            <p class="h1">JavaScript</p>
             <p>We're sorry! This site requires JavaScript enabled to work properly.</p>
-            <div class="form-group"><a target="blank" href="https://www.google.com/search?q=how+to+enable+javascript" class="btn btn-primary btn-lg">How to enable Javascript</a></div>
+            <div class="form-group"><a target="blank" href="https://www.google.com/search?q=how+to+enable+javascript" class="btn btn-warning">How to enable Javascript</a></div>
         </div>
     </noscript>
     <!-- Navbar -->

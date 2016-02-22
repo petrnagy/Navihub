@@ -7,11 +7,17 @@ var Container = {
             documentReady: ! pageLoad,
             controller: serverData.controller,
             action: serverData.action,
+            env: serverData.env,
             mixin: Mixin,
             spinner: Spinner,
             browser: Browser,
-            turbolinksStorage: new TurbolinksStorage()
+            turbolinksStorage: new TurbolinksStorage(),
+            ENVIRONMENT: { DEV: 'development', PROD: 'production', TEST: 'testing' }
         };
+
+        if ( DI.env == DI.ENVIRONMENT.PROD ) {
+            window.onerror = configurator.errorHandler;
+        } // end if
 
         DI.burger = new BurgerMenu(DI);
         DI.marker = new MarkerMenu(DI);
@@ -22,10 +28,6 @@ var Container = {
         DI.config = $.extend(configurator.config, {
             // foo: 'bar',
         });
-        // DI.config.googleApiPublicKey = 'AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI';
-        // DI.config.googleMapsLibraryUrl = 'https://maps.googleapis.com/maps/api/js?v=3&libraries=places&callback=';
-        // DI.config.mockLocation = { lat: 50.0865876, lng: 14.4159757, origin: 'browser', city: null,
-        // city2: null, country: null, country_short: null, street1: null, street2: null };
 
         if ( serverData.loc.lat !== null && serverData.loc.lng !== null ) {
             var mock = DI.config.mockLocation;
@@ -56,5 +58,7 @@ var Container = {
         return DI;
 
     }, // end method
+
+
 
 };

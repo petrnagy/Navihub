@@ -44,7 +44,6 @@ ScriptLoader.prototype = {
                     } // end if
                     callback();
                 } // end if
-                // TODO: mozna zmensit interval?
             }, 1000);
         } // end if
     }, // end method

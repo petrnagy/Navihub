@@ -15,6 +15,10 @@ class SettingsController < ApplicationController
     end
 
     def location
+
+    end
+
+    def location_set
         if request.xhr?
             data = location_params
             if data['go']
@@ -25,8 +29,6 @@ class SettingsController < ApplicationController
                     format.json { render :json => msg }
                 end
             end
-        else
-
         end
     end
 

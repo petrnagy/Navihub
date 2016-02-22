@@ -40,7 +40,7 @@ DetailLazyLoader.prototype = {
             if ( that.di.locator.getLocation() !== null ) {
                 clearInterval(interval);
 
-                $set = $('#detail-results .result-tags .label');
+                var $set = $('#detail-results .result-tags .label');
                 var search = new Search(null, that.di);
                 $set.each(function(){
                     var label = $(this).text().replace('-', ' ');

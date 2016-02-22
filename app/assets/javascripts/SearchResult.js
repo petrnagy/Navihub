@@ -48,7 +48,7 @@ SearchResult.prototype = {
                     callback(data);
                 }, // end func
                 error: function(data) {
-                    that._processDetailError(data);
+                    throw "Error while loading detail, debug: " + data.toString();
                 }, // end func
             }); // end ajax
         } // end if
@@ -59,28 +59,18 @@ SearchResult.prototype = {
         var that = this;
         var jsonAttr = $el.closest('.result-box').attr('data-result-json');
         var result = null;
-        try {
-            result = JSON.parse(jsonAttr);
-        } catch (e) {
-            return that._processDetailError(e);
-        } // end try-catch
-        return result;
+        return JSON.parse(jsonAttr);
     }, // end method
 
     updateData: function($el, data) {
         var that = this;
         var $box = $el.closest('.result-box');
         var jsonAttr = $box.attr('data-result-json');
-        try {
-            result = JSON.parse(jsonAttr);
-            combined = $.extend(result, data);
-            serialized = JSON.stringify(combined);
-            $box.attr('data-result-json', serialized);
-            return true;
-        } catch (e) {
-            that._processDetailError(e);
-        } // end try-catch
-        return false;
+        result = JSON.parse(jsonAttr);
+        combined = $.extend(result, data);
+        serialized = JSON.stringify(combined);
+        $box.attr('data-result-json', serialized);
+        return true;
     }, // end method
 
     list_open_in_maps: function($el) {
@@ -201,7 +191,7 @@ SearchResult.prototype = {
             if ( coords ) {
                 url += '&origin=' + coords.lat.toString() + ',' + coords.lng.toString();
             } else {
-                return that._processDetailError("NULL by that.di.locator.getLocation()");
+                throw "NULL by that.di.locator.getLocation()";
             } // end if
             url += '&key=' + that.di.config.googleApiPublicKey;
             $.colorbox({
@@ -313,11 +303,6 @@ SearchResult.prototype = {
     list_share_on_google_plus: function(el) {
         this.openSocialShareTab(el, 'https://plus.google.com/share?url=%%URL%%');
     }, // end method
-
-    _processDetailError: function(e) {
-        that.di.messenger.error('Whoops !', 'The application has encountered an unexpected error. If the problem persists, please contact us with the following details:<br /> ' + '<pre>' + e.message + '</pre>');
-        console && console.log(e);
-    },
 
     generateContactPopup: function(data) {
         var that = this;

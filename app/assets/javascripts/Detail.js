@@ -68,30 +68,22 @@ Detail.prototype = {
     _loadDetail: function() {
         var that = this;
         var jsonAttr = that._$cube.attr('data-result-json');
-        try {
-            var result = JSON.parse(jsonAttr);
-        } catch (e) {
-            return that._processDetailError(e);
-        } // end try-catch
+        var result = JSON.parse(jsonAttr);
 
         if (result.geometry.lat === null || result.geometry.lng === null) {
-            try {
-                if (result.address) {
-                    var geocode = new GoogleGeocode(result.address);
-                    geocode.load(function(coords) {
-                        if (coords !== null) {
-                            result.geometry = coords;
-                            that._loadDetailDeferred(result);
-                        } else {
-                            throw new Error('Could not load detail map, geocode failed');
-                        } // end if
-                    });
-                } else {
-                    throw new Error('Could not load detail map, no coordinates or address available');
-                } // end if
-            } catch (e) {
-                return that._processDetailError(e);
-            } // end try-catch
+            if (result.address) {
+                var geocode = new GoogleGeocode(result.address);
+                geocode.load(function(coords) {
+                    if (coords !== null) {
+                        result.geometry = coords;
+                        that._loadDetailDeferred(result);
+                    } else {
+                        throw new Error('Could not load detail map, geocode failed');
+                    } // end if
+                });
+            } else {
+                throw new Error('Could not load detail map, no coordinates or address available');
+            } // end if
         } else {
             that._loadDetailDeferred(result);
         } // end if
@@ -213,15 +205,11 @@ Detail.prototype = {
             that._close();
             that.di.detailGoogleMap = null;
         },
-        _processDetailError: function(e) {
-            // TODO: nejaky normalni handler
-            alert(e);
-        },
         /**
-         * @static
-         * @param  {object} data
-         * @return {String} relative url
-         */
+        * @static
+        * @param  {object} data
+        * @return {String} relative url
+        */
         buildDetailUrl(data, that) {
             that = that || this;
             var loc = that.di.locator.getLocation();

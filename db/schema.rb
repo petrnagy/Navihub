@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203120834) do
+ActiveRecord::Schema.define(version: 20160222081553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 20160203120834) do
   add_index "google_sessions", ["valid_to"], name: "index_google_sessions_on_valid_to", using: :btree
 
   create_table "google_static_map_caches", force: true do |t|
-    t.string   "url"
+    t.string   "url",                     limit: 1000
     t.boolean  "found"
     t.string   "x_staticmap_api_warning"
     t.datetime "created_at"

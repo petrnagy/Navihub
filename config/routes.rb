@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'logger/js'
+
     # homepage
     root 'homepage#index' # [xss-safe] [csrf-part-safe]
     # account management
@@ -16,7 +18,8 @@ Rails.application.routes.draw do
     post 'feedback' => 'feedback#process_contact_form' # [xss-safe] [csrf-part-safe]
     # settings
     get 'settings/general' # [not-implemented]
-    post 'settings/location' => 'settings#location' # [xss-safe] [csrf-part-safe]
+    post 'settings/location' => 'settings#location_set' # [xss-safe] [csrf-part-safe]
+    get 'settings/location' => 'settings#location' # [xss-safe] [csrf-part-safe]
     get 'settings/profile' # [not-implemented]
     # detail
     get 'detail/:name/:id/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe] [csrf-part-safe]
@@ -51,5 +54,7 @@ Rails.application.routes.draw do
     get 'terms-of-use' => 'pages#terms_of_use' # [xss-safe] [csrf-part-safe]
     get 'data-sources' => 'pages#data_sources' # [xss-safe] [csrf-part-safe]
     get 'about' => 'pages#about' # [xss-safe] [csrf-part-safe]
+    # logger
+    post 'logger/js' => 'logger#js' # [xss-safe] [csrf-part-safe]
 
 end
