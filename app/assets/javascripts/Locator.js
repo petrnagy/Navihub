@@ -11,6 +11,7 @@ var Locator = function(di) {
         city: null, city2: null, street1: null, street2: null, origin: null
     };
     this._sent = {browser: false, web: false};
+    this._hooks = [];
     this._interval = null;
     this._saveCallback = null;
     this._didAutomaticReverseGeocoding = false;
@@ -32,9 +33,11 @@ Locator.prototype = {
                 if ( ! that._sent.browser && that._data.browser ) {
                     that._send(that._data.browser, manual);
                     that._sent.browser = true;
+                    that._processHooks();
                 } else if ( ! that._sent.web && that._data.web && ! that._sent.browser ) {
                     that._send(that._data.web, manual);
                     that._sent.web = true;
+                    //that._processHooks();
                 } // end if
             } // end if
         }, 1000);
@@ -119,302 +122,297 @@ Locator.prototype = {
                 throw new Error("ipinfo.io response: object expected, got: " + (typeof response) );
             } // end if
         }, "jsonp");
-        /*
-        $.ajax({
-        url: '/lazy/ipinfo',
-        data: { ip: that.di.ip },
-        success: function(response) {
-        var data = that.di.mixin.clone(that._envelope);
-        var coords = response.loc.split(',');
-        data.lat = coords[0];
-        data.lng = coords[1];
-        data.origin = 'web';
-        that._data.web = data;
-    }, // end func
-    error: function() {
-    throw new Error("ipinfo.io response: object expected, got: " + (typeof response) );
-}, // end func
-}); // end ajax
-*/
-}, // end method
 
-_send: function(data, manual, write, lock) {
-    var that = this;
-    var cache = that._getFromCache();
-    if ( ! cache || ! that._equals(data, cache) || lock ) {
-        lock = ( lock ? true : false );
-        data.set = 1;
-        data.lock = ( lock ? 1 : 0 );
-        $.ajax({
-            method: 'POST',
-            url: '/settings/location',
-            data: data,
-            success: function(response) {
-                that._afterSendSuccess(data, manual, write, lock, response);
-            } // end func
+    }, // end method
+
+    _send: function(data, manual, write, lock) {
+        var that = this;
+        var cache = that._getFromCache();
+        if ( ! cache || ! that._equals(data, cache) || lock ) {
+            lock = ( lock ? true : false );
+            data.set = 1;
+            data.lock = ( lock ? 1 : 0 );
+            $.ajax({
+                method: 'POST',
+                url: '/settings/location',
+                data: data,
+                success: function(response) {
+                    that._afterSendSuccess(data, manual, write, lock, response);
+                } // end func
+            });
+        } // end if
+    }, // end method
+
+    _afterSendSuccess: function(data, manual, write, lock, response) {
+        var that = this;
+
+        if ( write ) {
+            that.writeLoc(response.html);
+        } // end if
+        that._saveToCache(data);
+
+        if (lock) {
+            that.lock();
+        } else {
+            that.unlock();
+        } // end if-else
+
+        // load google maps api, do a reverse geocoding and save it as detailed location in local DB
+        if ( ! that._didAutomaticReverseGeocoding && ! that.isLocked() ) {
+            var apiUrl = that.di.config.googleMapsLibraryUrl;
+            var apiCallback = 'DI.locator._doReverseGeocoding';
+            that._didAutomaticReverseGeocoding = true;
+            that.di.scriptLoader.load(apiUrl, apiCallback);
+        } else if ( manual ) {
+            that.di.spinner.show();
+            that._doReverseGeocoding(that, lock);
+            that.flash();
+        } // end if // end if
+
+        if ( that._saveCallback ) {
+            that._saveCallback();
+        } // end if
+    }, // end method
+
+    _equals: function(loc1, loc2) {
+        var that = this;
+        loc1.set = null;
+        loc2.set = null;
+        loc1.lock = null;
+        loc2.lock = null;
+
+        return ( JSON.stringify(loc1) == JSON.stringify(loc2) );
+    }, // end method
+
+    _getFromCache: function(deep) {
+        if ( deep ) {
+            return $.cookie('_navihub_loc_cache');
+        } else {
+            return ( typeof _navihub_loc_cache == 'object' ? _navihub_loc_cache : null );
+        } // end if-else
+    }, // end method
+
+    _saveToCache: function(data, deep) {
+        if ( deep ) {
+            $.cookie('_navihub_loc_cache', data);
+        } else {
+            _navihub_loc_cache = data;
+        } // end if-else
+    }, // end method
+
+    _clearCache: function() {
+        $.cookie('_navihub_loc_cache', null);
+        _navihub_loc_cache = null;
+    }, // end method
+
+    setFromCache: function() {
+        var that = this;
+        var cache = that._getFromCache();
+        if ( cache === null ) {
+            return false;
+        } else {
+            that.set(cache, true);
+            return true;
+        } // end if-else
+    }, // end method
+
+    getLocation: function() {
+        var that = this;
+        var loc = that._data.browser ? that._data.browser : that._data.web;
+        if ( loc !== null ) {
+            loc.lat = parseFloat(loc.lat);
+            loc.lng = parseFloat(loc.lng);
+        } // end if
+        return loc;
+    }, // end method
+
+    /**
+    * @param {Object} di.locator instance that
+    * @access friendly
+    */
+    _doReverseGeocoding: function(that, lock) {
+        that = that || DI.locator;
+        var coords = that.getLocation();
+        var geocoder = new google.maps.Geocoder();
+        lock = lock || false;
+        // FIXME: muze se stat, ze google jeste nebude nacteny !
+        var latlng = new google.maps.LatLng(coords.lat, coords.lng);
+        geocoder.geocode({'latLng': latlng}, function(results, status){
+            if ( status == google.maps.GeocoderStatus.OK ) {
+                var formatter = new AddressFormatter();
+                var formattedAddress = formatter.formatGoogleMapsGeolocatorResults(results);
+                if ( formattedAddress ) {
+                    that.writeLoc(formattedAddress);
+                } // end if
+                that.di.spinner.hide();
+                var atomizer = new AddressAtomizer(that.di);
+                var atomized = atomizer.atomizeGoogleMapsGeolocatorResults(results);
+                if ( atomized ) {
+                    atomized.lat = coords.lat;
+                    atomized.lng = coords.lng;
+                    //that._data.browser = atomized;
+                    that._send(atomized, null, true, lock);
+                } // end if
+            } else {
+                throw new Error("failed to geocoder.geocode(), status: " + status.toString());
+            } // end if
         });
-    } // end if
-}, // end method
+    }, // end method
 
-_afterSendSuccess: function(data, manual, write, lock, response) {
-    var that = this;
+    writeLoc: function(text) {
+        var that = this;
+        $('#top-location .top-location-top .actual').text(text);
+    }, // end method
 
-    if ( write ) {
-        that.writeLoc(response.html);
-    } // end if
-    that._saveToCache(data);
+    readLoc: function(text) {
+        var that = this;
+        return $('#top-location .top-location-top .actual').text().replace(that._key, '');
+    }, // end method
 
-    if (lock) {
-        that.lock();
-    } else {
-        that.unlock();
-    } // end if-else
+    setSaveCallback: function(func) {
+        var that = this;
+        if ( 'function' == typeof func ) {
+            that._saveCallback = func;
+        } // end i
+    }, // end method
 
-    // load google maps api, do a reverse geocoding and save it as detailed location in local DB
-    if ( ! that._didAutomaticReverseGeocoding && ! that.isLocked() ) {
-        var apiUrl = that.di.config.googleMapsLibraryUrl;
-        var apiCallback = 'DI.locator._doReverseGeocoding';
-        that._didAutomaticReverseGeocoding = true;
-        that.di.scriptLoader.load(apiUrl, apiCallback);
-    } else if ( manual ) {
-        that.di.spinner.show();
-        that._doReverseGeocoding(that, lock);
-        that.flash();
-    } // end if // end if
+    flash: function() {
+        return;
+        var that = this;
+        var cls = 'flashing';
+        var delay = 500;
 
-    if ( that._saveCallback ) {
-        that._saveCallback();
-    } // end if
-}, // end method
+        $('#top-location .top-location-top .actual').fadeOut().fadeIn();
+    }, // end method
 
-_equals: function(loc1, loc2) {
-    var that = this;
-    loc1.set = null;
-    loc2.set = null;
-    loc1.lock = null;
-    loc2.lock = null;
-
-    return ( JSON.stringify(loc1) == JSON.stringify(loc2) );
-}, // end method
-
-_getFromCache: function(deep) {
-    if ( deep ) {
-        return $.cookie('_navihub_loc_cache');
-    } else {
-        return ( typeof _navihub_loc_cache == 'object' ? _navihub_loc_cache : null );
-    } // end if-else
-}, // end method
-
-_saveToCache: function(data, deep) {
-    if ( deep ) {
-        $.cookie('_navihub_loc_cache', data);
-    } else {
-        _navihub_loc_cache = data;
-    } // end if-else
-}, // end method
-
-_clearCache: function() {
-    $.cookie('_navihub_loc_cache', null);
-    _navihub_loc_cache = null;
-}, // end method
-
-setFromCache: function() {
-    var that = this;
-    var cache = that._getFromCache();
-    if ( cache === null ) {
-        return false;
-    } else {
-        that.set(cache, true);
-        return true;
-    } // end if-else
-}, // end method
-
-getLocation: function() {
-    var that = this;
-    var loc = that._data.browser ? that._data.browser : that._data.web;
-    if ( loc !== null ) {
-        loc.lat = parseFloat(loc.lat);
-        loc.lng = parseFloat(loc.lng);
-    } // end if
-    return loc;
-}, // end method
-
-/**
-* @param {Object} di.locator instance that
-* @access friendly
-*/
-_doReverseGeocoding: function(that, lock) {
-    that = that || DI.locator;
-    var coords = that.getLocation();
-    var geocoder = new google.maps.Geocoder();
-    lock = lock || false;
-    // FIXME: muze se stat, ze google jeste nebude nacteny !
-    var latlng = new google.maps.LatLng(coords.lat, coords.lng);
-    geocoder.geocode({'latLng': latlng}, function(results, status){
-        if ( status == google.maps.GeocoderStatus.OK ) {
-            var formatter = new AddressFormatter();
-            var formattedAddress = formatter.formatGoogleMapsGeolocatorResults(results);
-            if ( formattedAddress ) {
-                that.writeLoc(formattedAddress);
-            } // end if
-            that.di.spinner.hide();
-            var atomizer = new AddressAtomizer(that.di);
-            var atomized = atomizer.atomizeGoogleMapsGeolocatorResults(results);
-            if ( atomized ) {
-                atomized.lat = coords.lat;
-                atomized.lng = coords.lng;
-                //that._data.browser = atomized;
-                that._send(atomized, null, true, lock);
-            } // end if
-        } else {
-            throw new Error("failed to geocoder.geocode(), status: " + status.toString());
-        } // end if
-    });
-}, // end method
-
-writeLoc: function(text) {
-    var that = this;
-    $('#top-location .top-location-top .actual').text(text);
-}, // end method
-
-readLoc: function(text) {
-    var that = this;
-    return $('#top-location .top-location-top .actual').text().replace(that._key, '');
-}, // end method
-
-setSaveCallback: function(func) {
-    var that = this;
-    if ( 'function' == typeof func ) {
-        that._saveCallback = func;
-    } // end i
-}, // end method
-
-flash: function() {
-    return;
-    var that = this;
-    var cls = 'flashing';
-    var delay = 500;
-
-    $('#top-location .top-location-top .actual').fadeOut().fadeIn();
-}, // end method
-
-_initAutodetectBtn: function() {
-    var that = this;
-    $('.autodetect-button').click(function(e){
-        e.preventDefault();
-        if ( confirm('Autodetect location?') ) {
-            that._relocate();
-        } // end if
-        return false;
-    });
-}, // end method
-
-_initLockBtn: function() {
-    var that = this;
-    $('.loc-lock-button').click(function(e){
-        e.preventDefault();
-        if ( ! that.isLocked() ) {
-            var loc = that.getLocation();
-            var loctxt = that.readLoc();
-            if ( confirm("Lock current location '" + loctxt + "'?") ) {
-                that.set(loc);
-            } // end if
-        }  // end if
-        return false;
-    });
-}, // end method
-
-_initUnlockBtn: function() {
-    var that = this;
-    $('.loc-unlock-button').click(function(e){
-        e.preventDefault();
-        if ( that.isLocked() ) {
-            var loc = that.getLocation();
-            var loctxt = that.readLoc();
-            if ( confirm("Unlock current location '" + loctxt + "'?") ) {
+    _initAutodetectBtn: function() {
+        var that = this;
+        $('.autodetect-button').click(function(e){
+            e.preventDefault();
+            if ( confirm('Autodetect location?') ) {
                 that._relocate();
             } // end if
-        }  // end if
-        return false;
-    });
-}, // end method
+            return false;
+        });
+    }, // end method
 
-_relocate: function() {
-    var that = this;
-    $("#top-location .top-location-top .actual").html('loading...');
-    that.reset();
-    that.locate(true);
-}, // end method
-
-lock: function() {
-    var that = this;
-    this._locked = true;
-    var txt = $('#top-location .top-location-top .actual').text();
-    $('#top-location .top-location-top .actual').html(that._key + txt);
-    $('#top-location .top-location-lock').hide();
-    $('#top-location .top-location-unlock').show();
-}, // end method
-
-unlock: function() {
-    var that = this;
-    this._locked = false;
-    var txt = $('#top-location .top-location-top .actual').text();
-    $('#top-location .top-location-top .actual').text(txt.replace(that._key, ''));
-    $('#top-location .top-location-lock').show();
-    $('#top-location .top-location-unlock').hide();
-}, // end method
-
-isLocked: function() {
-    return this._locked;
-}, // end method
-
-doLazyGeocoding: function(addr, $context, callback) {
-    var that = this;
-    $.ajax({
-        url: '/lazy/geocode',
-        data: { addr: addr, source: that.di.controller },
-        cache: true,
-        success: function(data) {
-            if ( data && 'ok' == data.status ) {
-                var pretty = '';
-                if (typeof data.html == 'object') {
-                    pretty += data.html.lat[0] + '&#176; ';
-                    pretty += data.html.lat[1] + "' ";
-                    pretty += data.html.lat[2] + '" ';
-                    pretty += data.html.lat[3] + '<br>';
-                    pretty += data.html.lng[0] + '&#176; ';
-                    pretty += data.html.lng[1] + "' ";
-                    pretty += data.html.lng[2] + '" ';
-                    pretty += data.html.lng[3];
-                } else {
-                    pretty += data.html;
-                } // end if-else
-                $context.replaceWith(pretty);
-
-                if ( typeof callback == 'function' ) {
-                    callback(data);
+    _initLockBtn: function() {
+        var that = this;
+        $('.loc-lock-button').click(function(e){
+            e.preventDefault();
+            if ( ! that.isLocked() ) {
+                var loc = that.getLocation();
+                var loctxt = that.readLoc();
+                if ( confirm("Lock current location '" + loctxt + "'?") ) {
+                    that.set(loc);
                 } // end if
-            } // end if
-        }, // end func
-    }); // end ajax
-}, // end method
+            }  // end if
+            return false;
+        });
+    }, // end method
 
-doLazyReverseGeocoding: function(loc, $context, name, callback) {
-    var that = this;
-    name = name || null;
-    $.ajax({
-        url: '/lazy/reversegeocode',
-        data: { lat: loc.lat, lng: loc.lng, source: that.di.controller, name: name },
-        cache: true,
-        success: function(data) {
-            if ( data && 'ok' == data.status ) {
-                $context.replaceWith(data.html);
-                if ( typeof callback === 'function' ) {
-                    callback(data);
+    _initUnlockBtn: function() {
+        var that = this;
+        $('.loc-unlock-button').click(function(e){
+            e.preventDefault();
+            if ( that.isLocked() ) {
+                var loc = that.getLocation();
+                var loctxt = that.readLoc();
+                if ( confirm("Unlock current location '" + loctxt + "'?") ) {
+                    that._relocate();
                 } // end if
-            } // end if
-        }, // end func
-    }); // end ajax
-}, // end method
+            }  // end if
+            return false;
+        });
+    }, // end method
+
+    _relocate: function() {
+        var that = this;
+        $("#top-location .top-location-top .actual").html('loading...');
+        that.reset();
+        that.locate(true);
+    }, // end method
+
+    lock: function() {
+        var that = this;
+        this._locked = true;
+        var txt = $('#top-location .top-location-top .actual').text();
+        $('#top-location .top-location-top .actual').html(that._key + txt);
+        $('#top-location .top-location-lock').hide();
+        $('#top-location .top-location-unlock').show();
+    }, // end method
+
+    unlock: function() {
+        var that = this;
+        this._locked = false;
+        var txt = $('#top-location .top-location-top .actual').text();
+        $('#top-location .top-location-top .actual').text(txt.replace(that._key, ''));
+        $('#top-location .top-location-lock').show();
+        $('#top-location .top-location-unlock').hide();
+    }, // end method
+
+    isLocked: function() {
+        return this._locked;
+    }, // end method
+
+    addHook: function(callback) {
+        this._hooks.push(callback);
+    }, // end method
+
+    _processHooks: function() {
+      $.each(this._hooks, function(k, callback) {
+          callback();
+      }); // end foreach
+
+    }, // end method
+
+    doLazyGeocoding: function(addr, $context, callback) {
+        var that = this;
+        $.ajax({
+            url: '/lazy/geocode',
+            data: { addr: addr, source: that.di.controller },
+            cache: true,
+            success: function(data) {
+                if ( data && 'ok' == data.status ) {
+                    var pretty = '';
+                    if (typeof data.html == 'object') {
+                        pretty += data.html.lat[0] + '&#176; ';
+                        pretty += data.html.lat[1] + "' ";
+                        pretty += data.html.lat[2] + '" ';
+                        pretty += data.html.lat[3] + '<br>';
+                        pretty += data.html.lng[0] + '&#176; ';
+                        pretty += data.html.lng[1] + "' ";
+                        pretty += data.html.lng[2] + '" ';
+                        pretty += data.html.lng[3];
+                    } else {
+                        pretty += data.html;
+                    } // end if-else
+                    $context.replaceWith(pretty);
+
+                    if ( typeof callback == 'function' ) {
+                        callback(data);
+                    } // end if
+                } // end if
+            }, // end func
+        }); // end ajax
+    }, // end method
+
+    doLazyReverseGeocoding: function(loc, $context, name, callback) {
+        var that = this;
+        name = name || null;
+        $.ajax({
+            url: '/lazy/reversegeocode',
+            data: { lat: loc.lat, lng: loc.lng, source: that.di.controller, name: name },
+            cache: true,
+            success: function(data) {
+                if ( data && 'ok' == data.status ) {
+                    $context.replaceWith(data.html);
+                    if ( typeof callback === 'function' ) {
+                        callback(data);
+                    } // end if
+                } // end if
+            }, // end func
+        }); // end ajax
+    }, // end method
 
 }; // end prototype

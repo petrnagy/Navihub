@@ -6,7 +6,7 @@
                 <% unless @data[:detail][:phone] == nil %>
                 You can contact this place by dialing <a href="tel:<%=@data[:detail][:phone]%>"><%=@data[:detail][:phone]%></a>.
                 <% else %>
-                We could not find any phone contact. You could try <a href="https://www.google.com?#q=<%=@data[:name]%> phone">your luck elsewhere <i class="fa fa-external-link"></i></a>.
+                We could not find any phone contact. You could try <a href="https://www.google.com?#q=<%= u @data[:name] %> phone">your luck elsewhere <i class="fa fa-external-link"></i></a>.
                 <% end %>
             </p>
         </div>
@@ -16,7 +16,7 @@
                 <% unless @data[:email] == nil %>
                 You can contact this place via e-mail address <a href="mailto:<%=@data[:email]%>"><%=@data[:email]%></a>.
                 <% else %>
-                We could not find any e-mail contact. You could try <a href="https://www.google.com?#q=<%=@data[:name]%> e-mail">Googling it <i class="fa fa-external-link"></i></a>.
+                We could not find any e-mail contact. You could try <a href="https://www.google.com?#q=<%= u @data[:name] %> e-mail">Googling it <i class="fa fa-external-link"></i></a>.
                 <% end %>
             </p>
         </div>
@@ -28,7 +28,7 @@
                 <% elsif @data[:detail][:url] %>
                 More informations can be found on <%= link_to 'this <i class="fa fa-external-link"></i>'.html_safe, @data[:detail][:url] %> <i><%=@data[:origin]%></i> site.
                 <% else %>
-                Need little more informations? try <a href="https://www.google.cz/?#q=<%=@data[:name]%>">Google</a>, <a href="http://www.bing.com/search?q=<%=@data[:name]%>">Bing</a> or <a href="https://duckduckgo.com/?q=<%=@data[:name]%>">DuckDuckGo</a>.
+                Need little more informations? try <a href="#search-engines">Google</a>, <a href="#search-engines">Bing</a> or <a href="#search-engines">DuckDuckGo</a>.
                 <% end %>
             </p>
         </div>

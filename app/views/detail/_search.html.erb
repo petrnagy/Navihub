@@ -14,9 +14,10 @@
     <div class="col-lg-3">
         <h3>Find in maps</h3>
         <ul>
-            <li><a>Google Maps <%= fa_icon 'external-link' %></a></li>
-            <li><a>Bing Maps <%= fa_icon 'external-link' %></a></li>
-            <li><a>Open Street Map <%= fa_icon 'external-link' %></a></li>
+            <% search_loc = u(@data[:geometry] != nil ? @data[:geometry][:lat].to_s + ',' + @data[:geometry][:lng].to_s : (@data[:address].length > 1 ? @data[:address] : @data[:name])) %>
+            <li><a href="https://maps.google.com?q=<%= search_loc %>">Google Maps <%= fa_icon 'external-link' %></a></li>
+            <li><a href="http://www.bing.com/maps/?q=<%= search_loc %>">Bing Maps <%= fa_icon 'external-link' %></a></li>
+            <li><a href="https://www.openstreetmap.org/search?query=<%= search_loc %>">Open Street Map <%= fa_icon 'external-link' %></a></li>
         </ul>
     </div>
 </div>
