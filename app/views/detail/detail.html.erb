@@ -2,7 +2,11 @@
 
     <%= render 'detail/notice' %>
     <%= render 'detail/header' %>
-    <%= render 'detail/rating' %>
+    <% if @data[:origin] == 'yelp' %>
+        <%= render 'detail/rating_yelp' %>
+    <% else %>
+        <%= render 'detail/rating' %>
+    <% end %>
     <%= render 'detail/location' %>
     <%= render 'detail/distance' %>
     <%= render 'detail/contact' %>
