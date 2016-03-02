@@ -356,7 +356,14 @@ Locator.prototype = {
     }, // end method
 
     addHook: function(callback) {
-        this._hooks.push(callback);
+        var that = this;
+        if ( that.isLocked() ) {
+            callback();
+        } else if (that._sent.browser) {
+            callback();
+        } else {
+            that._hooks.push(callback);
+        } // end if
     }, // end method
 
     _processHooks: function() {

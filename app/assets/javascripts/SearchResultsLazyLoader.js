@@ -101,7 +101,7 @@ SearchResultsLazyLoader.prototype = {
 
     _lazyLoadSearchResultsOpenDetail: function() {
         var that = this;
-        that.di.locator.addHook(function(){
+        that.di.locator.addHook(function() {
             var $set = $('#search-results .details-wrapper:in-viewport ul.dropdown-menu .list-open-detail, #search-results .result-box:in-viewport .list-open-detail-eye')
             .filter(function(){
                 return ( $(this).attr('href') === '#' );

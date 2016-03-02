@@ -1,9 +1,9 @@
 <div class="col-lg-12 col-stars">
     <p class="text-center stars">
-        <% if @data[:detail][:rating] != nil %>
-            <% img_key = '%%num%%' %>
-            <% img_tpl = 'rating/' + @data[:origin] + '/20x20_' + img_key + '@2x.png' %>
+        <% img_key = '%%num%%' %>
+        <% img_tpl = 'rating/' + @data[:origin] + '/20x20_' + img_key + '@2x.png' %>
 
+        <% if @data[:detail][:rating] != nil %>
             <% (1..@data[:detail][:rating].floor.to_i).each do |num| %>
                 <% img_url = img_tpl.gsub img_key, @data[:detail][:rating].floor.to_i.to_s %>
                 <%= image_tag( img_url, class: "rating-icon", onload: "this.width/=2;this.onload=null;") %>
@@ -23,8 +23,9 @@
 
             <br/><span class="rated-txt">Want to rate this place? Follow <a href="<%= @data[:detail][:url] %>">this link <%= fa_icon("external-link") %></a>.</span>
         <% else %>
+            <% img_url = img_tpl.gsub img_key, '0' %>
             <% 5.times do %>
-                <%= fa_icon("star-o", :class => 'not-rated') %>
+                <%= image_tag( img_url, class: "rating-icon", onload: "this.width/=2;this.onload=null;") %>
             <% end %>
             <br/><span class="not-rated-txt">This place hasn't been rated yet. Be the first one to <a href="<%= @data[:detail][:url] %>">rate it <%= fa_icon("external-link") %></a>.</span>
         <% end %>

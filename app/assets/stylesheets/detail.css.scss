@@ -56,7 +56,7 @@ p.detail-window-p { margin-bottom: 0px;}
 .col-stars i.rated { color: #3C3C3C; cursor: not-allowed; }
 .col-stars span.not-rated-txt { color: #6D6D6D; }
 .col-stars span.rated-txt { color: #6D6D6D; }
-.col-permalink { padding-top: 10px; margin-bottom: -17px; color: #6D6D6D; }
+.col-permalink { margin-top: 100px; padding-top: 10px; margin-bottom: -17px; color: #6D6D6D; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
@@ -81,6 +81,7 @@ p.detail-window-p { margin-bottom: 0px;}
     #detail-results .col-detail-top .col-lg-7 { float: left; height: 102px; display: flex; align-items: center; }
     .hr-line-before-map { margin-top: 446px; }
     #detail-results .col-make-permalink { margin-left: 20%; width: 60%; }
+    .col-permalink { margin-top: 300px; }
 }
 @media only screen and (max-width: 991px) {
     #detail-results .col-share-via-email { margin-left: 15%; width: 35%; float: left; }
@@ -117,6 +118,7 @@ p.detail-window-p { margin-bottom: 0px;}
     #detail-results .col-search-more .col-lg-offset-3 { margin-left: none; }
     #detail-results .col-search-more .col-lg-3 { width: 100%; float: none; text-align: center; }
     #detail-results .col-search-more .col-lg-3 ul { list-style-type: none; padding-left: 0px; }
+    .col-permalink { margin-top: 175px; }
 }
 @media only screen and (max-width: 475px) {
     #detail-results .col-share-via-email { margin-left: 0%; width: 100%; float: none; border-right: none;

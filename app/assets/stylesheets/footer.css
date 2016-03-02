@@ -21,6 +21,7 @@ div.container.footer { padding-top: 30px; }
 .footer-col i.fa-deviantart { color: rgb(12,200,48); }
 
 .footer-col { float: left; display: inline-block; width: 33%; }
+.made-with-love:before { text-decoration: line-through; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
