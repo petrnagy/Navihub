@@ -35,7 +35,7 @@ Locator.prototype = {
                     that._sent.browser = true;
                     that._processHooks();
                 } else if ( ! that._sent.web && that._data.web && ! that._sent.browser ) {
-                    that._send(that._data.web, manual);
+                    that._send(that._data.web, manual, true);
                     that._sent.web = true;
                     //that._processHooks();
                 } // end if
@@ -158,16 +158,18 @@ Locator.prototype = {
         } // end if-else
 
         // load google maps api, do a reverse geocoding and save it as detailed location in local DB
-        if ( ! that._didAutomaticReverseGeocoding && ! that.isLocked() ) {
-            var apiUrl = that.di.config.googleMapsLibraryUrl;
-            var apiCallback = 'DI.locator._doReverseGeocoding';
-            that._didAutomaticReverseGeocoding = true;
-            that.di.scriptLoader.load(apiUrl, apiCallback);
-        } else if ( manual ) {
-            that.di.spinner.show();
-            that._doReverseGeocoding(that, lock);
-            that.flash();
-        } // end if // end if
+        if ( data.origin != 'web' ) {
+            if ( ! that.isLocked() ) {
+                var apiUrl = that.di.config.googleMapsLibraryUrl;
+                var apiCallback = 'DI.locator._doReverseGeocoding';
+                that._didAutomaticReverseGeocoding = true;
+                that.di.scriptLoader.load(apiUrl, apiCallback);
+            } else if ( manual ) {
+                that.di.spinner.show();
+                that._doReverseGeocoding(that, lock);
+                that.flash();
+            } // end if // end if
+        } // end if
 
         if ( that._saveCallback ) {
             that._saveCallback();

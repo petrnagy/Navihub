@@ -10,7 +10,7 @@ class ReverseGeocodeCache < ActiveRecord::Base
     end
 
     def self.save lat, lng, addr
-        old = self.find_by(addr: addr)
+        old = self.find_by(latitude: lat, longitude: lng)
         if old == nil
             cache = self.create(
             addr: addr,

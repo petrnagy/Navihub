@@ -10,7 +10,6 @@ AddressFormatter.prototype = {
     formatGoogleMapsGeolocatorResults: function(results) {
       var that = this;
       var o = '';
-      // TODO: obj[Object.keys(obj)[0]]; //returns 'someVal'
       $.each(results, function(key, result) {
         if ( typeof result == 'object' && result.formatted_address ) {
           o = result.formatted_address;
