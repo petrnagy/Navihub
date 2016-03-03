@@ -111,18 +111,18 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-my">My</span> <span id="myacc-acc">acc</span><span id="myacc-ount">ount</span> <b class="caret"></b></a>
                         <ul class="dropdown-menu" id="dd-myaccount">
                             <li>
-                                <%= link_to 'Create account', {controller: "settings", action: 'profile'}, class: 'create-account' %>
+                                <%= link_to 'create, login & manage', {controller: "account", action: 'index'}, class: 'create-account' %>
                             </li>
                             <li class="divider"></li>
                             <li>
                                 <div class="social-btn">
-                                    <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i><span class="social-signin-txt">Sign in with Facebook</span></a>
+                                    <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a>
                                 </div>
                                 <div class="social-btn">
-                                    <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i><span class="social-signin-txt">Sign in with Twitter</span></a>
+                                    <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a>
                                 </div>
                                 <div class="social-btn">
-                                    <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i><span class="social-signin-txt">Sign in with Google</span></a>
+                                    <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a>
                                 </div>
                             </li>
                         </ul>
@@ -201,7 +201,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p class="text-center disclaimer gray">
-                        Made with <%= fa_icon("heart-o", class: 'made-with-love') %> coffee and sleepless nights by <%= link_to 'http://www.petrnagy.cz', 'Petr Nagy' %>.
+                        Made with <%= fa_icon("heart-o", class: 'made-with-love') %> coffee and sleepless nights by <%= link_to 'Petr Nagy', 'http://www.petrnagy.cz' %>.
                     </p>
                     <p class="text-center small footer-images gray">
                         <%= link_to 'About', controller: "pages", action: "about" %> ~

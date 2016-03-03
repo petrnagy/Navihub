@@ -8,11 +8,13 @@ Rails.application.routes.draw do
     get 'account/index'
     get 'account/login'
     get 'account/logout'
-    get 'account/register'
-    get 'account/google_login'
-    get 'account/facebook_login'
-    get 'account/twitter_login'
-    get 'account/social_login'
+    get 'account/create'
+    get 'account/google'
+    get 'account/facebook'
+    get 'account/twitter'
+    get 'account/manage'
+    get 'account/close'
+    get 'account/verify'
     # feedback page
     get 'feedback' => 'feedback#index' # [xss-safe] [csrf-part-safe]
     post 'feedback' => 'feedback#process_contact_form' # [xss-safe] [csrf-part-safe]

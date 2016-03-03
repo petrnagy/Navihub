@@ -32,14 +32,6 @@ class SettingsController < ApplicationController
         end
     end
 
-    def profile
-        if false
-            render 'logged'
-        else
-            render 'not-logged'
-        end
-    end
-
     private
 
     # Smarter params filter

@@ -1,0 +1,40 @@
+<%= form_tag("/account/login", method: "post") do %>
+<div class="well">
+    <fieldset>
+        <legend>Log In</legend>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <%= text_field_tag 'username', nil, placeholder: 'Username', class: 'form-control' %>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <%= password_field_tag 'password', nil, placeholder: 'Password', class: 'form-control' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="form-group">
+                    <div class="checkbox" title="Remember me for one month">
+                        <label>
+                            <%= check_box 'remember', nil, class: '', checked: false %>
+                            Remember me for some time
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <%= submit_tag 'Log me in', class: 'btn btn-success pull-right btn-submit' %>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<p class="small">
+    Have trouble logging in? <%= link_to 'Let us know!', controller: 'feedback' %>
+</p>
+<% end %>

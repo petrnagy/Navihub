@@ -1,5 +1,12 @@
 class AccountController < ApplicationController
+
   def index
+  end
+
+  def create
+  end
+
+  def verify
   end
 
   def login
@@ -8,18 +15,20 @@ class AccountController < ApplicationController
   def logout
   end
 
-  def register
+  def manage
   end
 
-  def google_login
+  def close
   end
 
-  def facebook_login
+  def google
   end
 
-  def twitter_login
+  def facebook
   end
 
-  def social_login
+  def twitter
   end
+
+
 end
