@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222081553) do
+ActiveRecord::Schema.define(version: 20160304093341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,11 +45,15 @@ ActiveRecord::Schema.define(version: 20160222081553) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "credentials", ["active"], name: "index_credentials_on_active", using: :btree
   add_index "credentials", ["email"], name: "index_credentials_on_email", unique: true, using: :btree
+  add_index "credentials", ["password"], name: "index_credentials_on_password", using: :btree
+  add_index "credentials", ["salt"], name: "index_credentials_on_salt", using: :btree
   add_index "credentials", ["user_id"], name: "index_credentials_on_user_id", using: :btree
+  add_index "credentials", ["username"], name: "index_credentials_on_username", unique: true, using: :btree
 
   create_table "distance_matrix_caches", force: true do |t|
     t.string   "source"

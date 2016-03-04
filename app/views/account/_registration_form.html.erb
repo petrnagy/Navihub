@@ -1,0 +1,63 @@
+<%= form_for(@registration_form, url: url_for(controller: 'account', action: 'create')) do |f| %>
+<% if @registration_form.errors %>
+<% @registration_form.errors.messages.each do |field, messages| %>
+<div class="alert alert-danger">
+    Field <strong><%= field.to_s.capitalize.gsub('_', ' ') %></strong> <%= messages.join(', ') %>
+</div>
+<% end %>
+<% end %>
+<div class="well">
+    <fieldset>
+        <legend>Registration form</legend>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <%= f.text_field(:username, {placeholder: 'Username (required)', class: 'form-control', maxlength: 30}) %>
+                    <label>Letters, numbers, hyphens (-) and underscores (_) <br />At least 3 characters</label>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <%= f.text_field :email, {placeholder: 'E-mail (optional)', class: 'form-control'} %>
+                    <label>Optional, at least 5 characters</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <%= f.password_field :password, {placeholder: 'Password (required)', class: 'form-control', maxlength: 50} %>
+                    <label>At least 8 characters.</label>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <%= f.password_field :password_confirmation, {placeholder: 'Password confirmation (required)', class: 'form-control', maxlength: 50} %>
+                    <label>Same as password</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="form-group">
+                    <div class="checkbox" title="If you check this, we will merge your current session (favorites, search history) with the newly created user">
+                        <label>
+                            <%= f.check_box 'private_computer', {class: '', checked: false} %>
+                            This is a private computer
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <%= f.submit 'Create new account', class: 'btn btn-success pull-right btn-submit' %>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<p class="small">
+    Have trouble with registration? <%= link_to 'Let us help you!', controller: 'feedback' %>
+</p>
+<% end %>

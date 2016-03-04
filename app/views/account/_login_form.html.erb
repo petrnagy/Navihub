@@ -1,16 +1,23 @@
-<%= form_tag("/account/login", method: "post") do %>
+<%= form_for(@login_form, url: url_for(controller: 'account', action: 'login')) do |f| %>
+<% if @login_form.errors %>
+<% @login_form.errors.messages.each do |field, messages| %>
+<div class="alert alert-danger">
+    Field <strong><%= field.to_s %></strong> <%= messages.join(', ') %>
+</div>
+<% end %>
+<% end %>
 <div class="well">
     <fieldset>
-        <legend>Log In</legend>
+        <legend>Login form</legend>
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <%= text_field_tag 'username', nil, placeholder: 'Username', class: 'form-control' %>
+                    <%= f.text_field(:username, {placeholder: 'Username or e-mail', class: 'form-control', autofocus: true}) %>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <%= password_field_tag 'password', nil, placeholder: 'Password', class: 'form-control' %>
+                    <%= f.password_field :password, {placeholder: 'Password', class: 'form-control'} %>
                 </div>
             </div>
         </div>
@@ -20,7 +27,7 @@
                 <div class="form-group">
                     <div class="checkbox" title="Remember me for one month">
                         <label>
-                            <%= check_box 'remember', nil, class: '', checked: false %>
+                            <%= f.check_box 'remember', {class: '', checked: false} %>
                             Remember me for some time
                         </label>
                     </div>
@@ -28,13 +35,13 @@
             </div>
             <div class="col-lg-2">
                 <div class="form-group">
-                    <%= submit_tag 'Log me in', class: 'btn btn-success pull-right btn-submit' %>
+                    <%= f.submit 'Log me in', class: 'btn btn-success pull-right btn-submit' %>
                 </div>
             </div>
         </div>
     </fieldset>
 </div>
 <p class="small">
-    Have trouble logging in? <%= link_to 'Let us know!', controller: 'feedback' %>
+    Have trouble logging in? <%= link_to 'We will help you!', controller: 'feedback' %>
 </p>
 <% end %>

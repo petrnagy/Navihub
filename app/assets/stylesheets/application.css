@@ -20,7 +20,8 @@
 */
 
 section#yield { margin-top: 45px; }
-.field_with_errors { display: inherit; border-radius: 3px; }
+.field_with_errors { display: inherit; border-radius: 3px; background-color: #d9534f }
+label { color: #525252; font-weight: normal; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 

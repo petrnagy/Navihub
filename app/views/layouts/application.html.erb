@@ -111,10 +111,13 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-my">My</span> <span id="myacc-acc">acc</span><span id="myacc-ount">ount</span> <b class="caret"></b></a>
                         <ul class="dropdown-menu" id="dd-myaccount">
                             <li>
-                                <%= link_to 'create, login & manage', {controller: "account", action: 'index'}, class: 'create-account' %>
+                                <%= link_to '<i class="fa fa-sign-in"></i> I want to log in'.html_safe, {controller: "account", action: 'login'}, class: 'create-account' %>
                             </li>
-                            <li class="divider"></li>
                             <li>
+                                <%= link_to '<i class="fa fa-user-plus"></i> I want to register'.html_safe, {controller: "account", action: 'create'}, class: 'create-account' %>
+                            </li>
+                            <li class="divider social-divider"></li>
+                            <li class="social-li">
                                 <div class="social-btn">
                                     <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a>
                                 </div>

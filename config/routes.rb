@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'logger/js'
-
     # homepage
     root 'homepage#index' # [xss-safe] [csrf-part-safe]
     # account management
-    get 'account/index'
+    get 'account' => 'account#index'
+    get 'account/index' => 'account#index'
     get 'account/login'
+    post 'account/login' => 'account#process_login'
     get 'account/logout'
+    post 'account/logout' => 'account#process_logout'
     get 'account/create'
+    post 'account/create' => 'account#process_create'
     get 'account/google'
     get 'account/facebook'
     get 'account/twitter'

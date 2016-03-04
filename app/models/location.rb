@@ -15,7 +15,7 @@ class Location < ActiveRecord::Base
             street1:        data['street1'],
             street2:        data['street2']
             )
-            loc = old
+            old
         else
             loc = Location.create(
             user_id:        user_id,
@@ -30,9 +30,8 @@ class Location < ActiveRecord::Base
             street2:        data['street2'],
             active:         true
             )
+            loc
         end
-        loc.save
-        loc
         # loc = Location.create(
         # user_id:        user_id,
         # latitude:       data['lat'],
