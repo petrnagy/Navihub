@@ -1,11 +1,5 @@
 <%= form_for(@form, url: url_for(controller: 'feedback')) do |f| %>
-<% if @form.errors %>
-<% @form.errors.messages.each do |field, messages| %>
-<div class="alert alert-danger">
-    Field <strong><%= field.to_s %></strong> <%= messages.join(', ') %>
-</div>
-<% end %>
-<% end %>
+<%= errors_for @form %>
 <div class="well">
     <fieldset>
         <legend>Contact form</legend>

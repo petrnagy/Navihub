@@ -14,8 +14,11 @@
 #main-logo div span { padding-top: 10px; }
 #top-location { color: gray; text-transform: none; margin-top: 18px; margin-right: 0px; line-height: 14px; width: 350px; }
 /* #top-location .top-location-top .actual { text-overflow: ellipsis; white-space: nowrap; width: 300px; display: inline-block; overflow: hidden; } */
-
+body.logged-in .myacc-dropdown > .dropdown-toggle { max-width: 200px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; }
 .navbar-nav > li > .dropdown-menu { margin-top: 1px; }
+#myacc-username {  }
+#myacc-un { display: none; }
 #top-location .top-location-top .actual i { color: lightgray; font-weight: bold; }
 #top-location .top-location-top {
     display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;

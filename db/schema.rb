@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304093341) do
+ActiveRecord::Schema.define(version: 20160305190137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -189,6 +189,21 @@ ActiveRecord::Schema.define(version: 20160304093341) do
   add_index "locations", ["longitude"], name: "index_locations_on_longitude", using: :btree
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
 
+  create_table "login_sessions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "cookie_id"
+    t.integer  "session_id"
+    t.datetime "valid_from"
+    t.datetime "valid_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "extended"
+  end
+
+  add_index "login_sessions", ["cookie_id"], name: "index_login_sessions_on_cookie_id", using: :btree
+  add_index "login_sessions", ["session_id"], name: "index_login_sessions_on_session_id", using: :btree
+  add_index "login_sessions", ["user_id"], name: "index_login_sessions_on_user_id", using: :btree
+
   create_table "permalinks", force: true do |t|
     t.string   "venue_origin"
     t.string   "venue_id"
@@ -216,7 +231,7 @@ ActiveRecord::Schema.define(version: 20160304093341) do
 
   create_table "sessions", force: true do |t|
     t.integer  "user_id"
-    t.integer  "cookie_id_id"
+    t.integer  "cookie_id"
     t.string   "sessid"
     t.datetime "valid_to"
     t.boolean  "remember"
@@ -226,7 +241,7 @@ ActiveRecord::Schema.define(version: 20160304093341) do
   end
 
   add_index "sessions", ["active"], name: "index_sessions_on_active", using: :btree
-  add_index "sessions", ["cookie_id_id"], name: "index_sessions_on_cookie_id_id", using: :btree
+  add_index "sessions", ["cookie_id"], name: "index_sessions_on_cookie_id", using: :btree
   add_index "sessions", ["sessid"], name: "index_sessions_on_sessid", unique: true, using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 

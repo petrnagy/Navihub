@@ -1,11 +1,5 @@
 <%= form_for(@login_form, url: url_for(controller: 'account', action: 'login')) do |f| %>
-<% if @login_form.errors %>
-<% @login_form.errors.messages.each do |field, messages| %>
-<div class="alert alert-danger">
-    Field <strong><%= field.to_s %></strong> <%= messages.join(', ') %>
-</div>
-<% end %>
-<% end %>
+<%= errors_for @login_form %>
 <div class="well">
     <fieldset>
         <legend>Login form</legend>
@@ -27,7 +21,7 @@
                 <div class="form-group">
                     <div class="checkbox" title="Remember me for one month">
                         <label>
-                            <%= f.check_box 'remember', {class: '', checked: false} %>
+                            <%= f.check_box :remember, {class: '', checked: false} %>
                             Remember me for some time
                         </label>
                     </div>

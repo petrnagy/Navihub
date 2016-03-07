@@ -1,0 +1,72 @@
+<!-- Navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div id="burger-menu">
+            <a href="#"><i class="fa fa-bars"></i></a>
+        </div>
+        <div id="marker-menu">
+            <a href="#"><i class="fa fa-map-marker"></i></a>
+        </div>
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand" id="main-logo"><%= image_tag('logo/buildings_stroke_100x100.png', size: "50x50") %><div id="appname"><span><%= @page_name %> </span><small id="appname-beta">[beta]</small></div></a>
+        </div>
+        <div class="" id="navbar-main">
+            <ul class="nav navbar-nav" id="menu-top">
+                <li><%= link_to 'Search', controller: "search", action: "index" %></li>
+                <li><%= link_to 'Favorites', controller: "favorites", action: "index" %></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="menu-alt">
+                <li class="dropdown myacc-dropdown">
+                    <% if @logged_in %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-username"><%= @credentials.username %></span><span id="myacc-un"><%= short_username @credentials.username %></span> <b class="caret"></b></a>
+                    <% else %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-my">My</span> <span id="myacc-acc">acc</span><span id="myacc-ount">ount</span> <b class="caret"></b></a>
+                    <% end %>
+                    <ul class="dropdown-menu" id="dd-myaccount">
+                        <% if @logged_in %>
+                        <li>
+                            <%= link_to '<i class="fa fa-user"></i> Account management'.html_safe, {controller: "account", action: 'login'}, class: 'acc-manage' %>
+                        </li>
+                        <li>
+                            <%= link_to '<i class="fa fa-sign-out"></i> I want to log out'.html_safe, {controller: "account", action: 'logout'}, class: 'acc-logout' %>
+                        </li>
+                        <% else %>
+                        <li>
+                            <%= link_to '<i class="fa fa-sign-in"></i> I want to log in'.html_safe, {controller: "account", action: 'login'}, class: 'acc-login' %>
+                        </li>
+                        <li>
+                            <%= link_to '<i class="fa fa-user-plus"></i> I want to register'.html_safe, {controller: "account", action: 'create'}, class: 'acc-create' %>
+                        </li>
+                        <li class="divider social-divider"></li>
+                        <li class="social-li">
+                            <div class="social-btn">
+                                <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a>
+                            </div>
+                            <div class="social-btn">
+                                <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a>
+                            </div>
+                            <div class="social-btn">
+                                <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                        </li>
+                        <% end %>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="menu-loc">
+                <li>
+                    <div id="top-location">
+                        <span class="top-location-top"><span>Location:</span> <span class="actual"><%= sanitize pretty_loc(@location) %></span></span><br />
+                        <span class="top-location-bottom">
+                            Not here?
+                            <%= link_to 'change location', controller: "settings", action: 'location' %> |
+                            <a class="top-location-autodetect autodetect-button" href="#">autodetect</a> |
+                            <a class="top-location-lock loc-lock-button" href="#">lock</a>
+                            <a class="top-location-unlock loc-unlock-button" href="#">unlock</a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<footer>
+    <div class="container footer">
+
+        <div class="row">
+            <div class="col-lg-12 col-lg-minimized">
+
+                <ul class="list-unstyled">
+                    <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
+                    <li>&#169; 2013 - <%= Date.today.strftime("%Y") %></li>
+                    <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer">
+        <div class="row">
+            <div class="col-lg-4 footer-col">
+                <div class="h4">My links</div>
+                <ul class="list-unstyled list-vertical">
+                    <li class=""><a href="http://www.petrnagy.cz">Petr Nagy</a></li>
+                    <li class=""><a rel="nofollow" href="https://www.facebook.com/petr.nagy">Facebook</a> <i class="fa fa-facebook"></i></li>
+                    <li class=""><a rel="nofollow" href="https://twitter.com/petrnagy">Twitter</a> <i class="fa fa-twitter"></i></li>
+                    <li class=""><a rel="nofollow" href="https://plus.google.com/+PetrNagyCz">Google+</a> <i class="fa fa-google-plus"></i></li>
+                    <li class=""><a rel="nofollow" href="http://cz.linkedin.com/in/petrnagy">LinkedIn</a> <i class="fa fa-linkedin"></i></li>
+                    <li class=""><a rel="nofollow" href="http://petr-nagy.deviantart.com/">DeviantArt</a> <i class="fa fa-deviantart"></i></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 footer-col">
+                <div class="more-space h4">My projects</div>
+                <ul class="list-unstyled list-vertical">
+                    <li class=""><a href="http://www.navihub.net/">Navihub</a> <small class="gray">&#8592; you are here</small></li>
+                    <li class=""><a href="http://www.tomatoid.com/">Tomatoid</a></li>
+                    <li class=""><a href="http://www.petrnagy.cz/#projects">Daily menu</a></li>
+                    <li class=""><a href="http://www.petrnagy.cz/#projects">EventCal</a></li>
+                    <li class=""><a href="http://www.petrnagy.cz/#projects">Shitlib</a></li>
+                    <li class=""><a href="http://blog.petrnagy.cz/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 footer-col">
+                <div class="more-space h4">Hire me</div>
+                <p class='hire-me'>I am currently <span class='busy'>busy</span>.<br />
+                    For more details,<br />
+                    please <a href='http://www.petrnagy.cz/#contact'>contact me</a>. <br />
+                </p>
+                <p class='my-cv'>My CV: <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_en.pdf'>English</a> | <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_cz.pdf'>Czech</a></p>
+            </div>
+        </div>
+        <hr class="footer">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="text-center disclaimer gray">
+                    Made with <%= fa_icon("heart-o", class: 'made-with-love') %> coffee and sleepless nights by <%= link_to 'Petr Nagy', 'http://www.petrnagy.cz' %>.
+                </p>
+                <p class="text-center small footer-images gray">
+                    <%= link_to 'About', controller: "pages", action: "about" %> ~
+                    <%= link_to 'Feedback', controller: "feedback", action: "index" %> ~
+                    <%= link_to 'Terms', controller: "pages", action: "terms_of_use" %> ~
+                    <%= link_to 'Privacy', controller: "pages", action: "privacy_policy" %> ~
+                    <%= link_to 'Cookies', controller: "pages", action: "cookie_policy" %> ~
+                    <%= link_to 'Data Sources', controller: "pages", action: "data_sources" %>
+                </p>
+                <p>
+                    <small class="gray footer-version">Version <%= @version %> (build <%= @build %>)</small>
+                </p>
+            </div>
+        </div>
+    </div>
+    <%= render 'layouts/spinner' %>
+</footer>

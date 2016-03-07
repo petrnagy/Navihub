@@ -1,0 +1,13 @@
+<!-- Inline scripts -->
+<script>
+serverData = {
+    controller: '<%= params[:controller] %>',
+    action: '<%= params[:action] %>',
+    loc: {
+        lat: <%= @location == nil ? 'null' : @location.latitude %>,
+        lng: <%= @location == nil ? 'null' : @location.longitude %>,
+        lock: <%= @location == nil ? 'null' : ( @location.lock == true ? 'true' : 'false' ) %>
+    },
+    env: '<%= Rails.env %>'
+}
+</script>

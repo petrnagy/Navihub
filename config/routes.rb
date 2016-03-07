@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     post 'account/logout' => 'account#process_logout'
     get 'account/create'
     post 'account/create' => 'account#process_create'
+    get 'account/created/:username/:created_hash' => 'account#created'
     get 'account/google'
     get 'account/facebook'
     get 'account/twitter'

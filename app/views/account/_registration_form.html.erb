@@ -1,11 +1,5 @@
 <%= form_for(@registration_form, url: url_for(controller: 'account', action: 'create')) do |f| %>
-<% if @registration_form.errors %>
-<% @registration_form.errors.messages.each do |field, messages| %>
-<div class="alert alert-danger">
-    Field <strong><%= field.to_s.capitalize.gsub('_', ' ') %></strong> <%= messages.join(', ') %>
-</div>
-<% end %>
-<% end %>
+<%= errors_for @registration_form %>
 <div class="well">
     <fieldset>
         <legend>Registration form</legend>
@@ -43,7 +37,7 @@
                 <div class="form-group">
                     <div class="checkbox" title="If you check this, we will merge your current session (favorites, search history) with the newly created user">
                         <label>
-                            <%= f.check_box 'private_computer', {class: '', checked: false} %>
+                            <%= f.check_box :private_computer, {class: '', checked: false} %>
                             This is a private computer
                         </label>
                     </div>

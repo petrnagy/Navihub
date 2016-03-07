@@ -16,8 +16,7 @@ class NokiaVenueLoader < GenericVenueLoader
     url += '?show_refs=pvid'
     url += '&app_id=' + @nokia_app_id
     url += '&app_code=' + @nokia_app_code
-    l = Logger.new(STDOUT)
-    l.debug url
+    
     URI::escape(url)
   end
 
