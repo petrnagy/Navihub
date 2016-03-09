@@ -1,5 +1,5 @@
-<% errors.messages.each do |field, messages| %>
+<% errors.full_messages.each do |message| %>
 <div class="alert alert-danger">
-    Field <strong><%= field.to_s %></strong> <%= messages.join(', ') %>
+    <%= message %>
 </div>
 <% end %>

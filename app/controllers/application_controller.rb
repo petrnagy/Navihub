@@ -88,6 +88,7 @@ class ApplicationController < ActionController::Base
                     credentials = Credential.get_for_user user.id
                     @user = user
                     logged_in = true
+                    LoginSession.extend_for_user user.id
                 else
                     # login session expired, create new anonymous user
                     @user = User.user_create

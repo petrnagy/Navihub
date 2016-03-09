@@ -1,13 +1,26 @@
 class Lock
 
-    def self.login_with_credentials params
+    def login_with_credentials params
         username_row = Credential.where(username: params[:username]).where(active: true).first
         email_row = Credential.where(email: params[:username]).where(active: true).first
         [username_row, email_row].each do |row|
-            verified = self.verify_credentials params[:password], row[:password], row[:salt]
-            return true if verified
+            if row != nil
+                verified = verify_credentials params[:password], row[:password], row[:salt]
+                return row[:user_id] if verified
+                @errors = [
+                    { :for => :password, :msg => 'seems to be incorrect' }
+                ]
+                return false
+            end
         end
+        @errors = [
+            { :for => :username, :msg => sprintf('"%s" could not be found in our database'.html_safe, params[:username]) }
+        ]
         false
+    end
+
+    def get_login_errors
+        @errors
     end
 
     def login_with_facebook
@@ -22,7 +35,7 @@ class Lock
 
     end
 
-    def self.register_with_credentials params, user, session, cookie
+    def register_with_credentials params, user, session, cookie
         if params[:private_computer] != 1
             user = User.user_create
             session.update(user_id: user.id)
@@ -44,7 +57,7 @@ class Lock
 
     private
 
-    def self.verify_credentials password1, password2, salt
+    def verify_credentials password1, password2, salt
         if BCrypt::Engine.hash_secret(password1, salt) === password2
             return true
         else
