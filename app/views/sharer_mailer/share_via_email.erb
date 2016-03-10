@@ -1,35 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<!-- If you delete this meta tag, Half Life 3 will never be released. -->
-<meta name="viewport" content="width=device-width" />
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title><%= @subject %> | <%= @page_name %></title>
-<%= stylesheet_link_tag 'responsive-email' %>
-</head>
-
-<body bgcolor="#FFFFFF">
-
-<!-- HEADER -->
-<table class="head-wrap" bgcolor="#3e3f3a">
-	<tr>
-		<td></td>
-		<td class="header container" >
-				<div class="content" style="padding-top: 0px !important; padding-bottom: 0px !important;">
-				<table bgcolor="#3e3f3a">
-					<tr>
-						<td><img src="http://static.navihub.net/buildings_stroke_100x100.png" alt="Logo" width="50" height="50"></td>
-						<td align="right"><h6 class="collapse"><%= link_to(@page_title, {controller: 'homepage', host: @host}, class: 'top-link') %></h6></td>
-					</tr>
-				</table>
-				</div>
-
-		</td>
-		<td></td>
-	</tr>
-</table><!-- /HEADER -->
-
+<%= render 'mailer/header' %>
 
 <!-- BODY -->
 <table class="body-wrap">
@@ -75,54 +44,9 @@
 							<img src="<%=@data[:email_map]%>" />
 						</p>
 						<% end %>
-						<!-- Callout Panel -->
-						<p class="callout">
-							<!-- Like the app? Found a bug? Have any questions? <a href="http://www.tomatoid.com/feedback">Let me know! &raquo;</a> -->
-							Like the app? Found a bug? Have any questions? <%= link_to('Let me know! &raquo;'.html_safe, {controller: 'feedback', host: @host}) %>
-						</p><!-- /Callout Panel -->
-
-						<!-- social & contact -->
-						<table class="social" width="100%">
-							<tr>
-								<td>
-
-									<!-- column 1 -->
-									<table align="left" class="column">
-										<tr>
-											<td>
-
-												<h5 class="">Connect with author:</h5>
-												<p class=""><a href="https://www.facebook.com/petr.nagy" class="soc-btn fb">Facebook</a> <a href="https://twitter.com/petrnagy" class="soc-btn tw">Twitter</a> <a href="https://plus.google.com/+PetrNagyCz" class="soc-btn gp">Google+</a> <a href="http://cz.linkedin.com/in/petrnagy" class="soc-btn" style="background-color: rgb(0,96,168);">LinkedIn</a> <a href="http://petr-nagy.deviantart.com/" class="soc-btn" style="background-color: rgb(2,200,48);">DeviantArt</a> </p>
-
-											</td>
-										</tr>
-									</table><!-- /column 1 -->
-
-									<!-- column 2 -->
-									<table align="left" class="column">
-										<tr>
-											<td>
-
-												<h5 class="">Contact the author:</h5>
-
-												<p>Email: <strong><a href="mailto:hello@petrnagy.cz">hello@petrnagy.cz</a></strong><br/>
-												Form: <strong><a href="http://www.petrnagy.cz#contact">petrnagy.cz#contact</a></strong><br/>
-												Web: <strong><a href="http://www.petrnagy.cz">www.petrnagy.cz</a></strong><br/>
-                								Blog: <strong><a href="http://blog.petrnagy.cz">blog.petrnagy.cz</a></strong> [cs]<br/>
-												<br/>
-												<a href="https://www.google.cz/maps/place/Praha/@49.9185366,14.7292875,7z/data=!4m2!3m1!1s0x470b939c0970798b:0x400af0f66164090">Prague</a>,<br/>
-												Czech Republic
-											</p>
-
-											</td>
-										</tr>
-									</table><!-- /column 2 -->
-
-									<span class="clear"></span>
-
-								</td>
-							</tr>
-						</table><!-- /social & contact -->
+						
+						<%= render 'mailer/liketheapp' %>
+						<%= render 'mailer/author' %>
 
 					</td>
 				</tr>
@@ -134,32 +58,4 @@
 	</tr>
 </table><!-- /BODY -->
 
-<!-- FOOTER -->
-<table class="footer-wrap">
-	<tr>
-		<td></td>
-		<td class="container">
-
-				<!-- content -->
-				<div class="content">
-				<table>
-				<tr>
-					<td align="center">
-						<p>
-							<%= link_to(@page_name, {controller: 'homepage', host: @host}) %> |
-							<%= link_to('Search', {controller: 'search', action: 'index', host: @host}) %> |
-							<%= link_to('Feedback', {controller: 'feedback', host: @host}) %> |
-							<span style="color: gray;"><%= Time.now.httpdate %></span>
-						</p>
-					</td>
-				</tr>
-			</table>
-				</div><!-- /content -->
-
-		</td>
-		<td></td>
-	</tr>
-</table><!-- /FOOTER -->
-
-</body>
-</html>
+<%= render 'mailer/footer' %>

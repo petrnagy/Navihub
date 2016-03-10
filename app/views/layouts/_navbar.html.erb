@@ -25,17 +25,17 @@
                     <ul class="dropdown-menu" id="dd-myaccount">
                         <% if @logged_in %>
                         <li>
-                            <%= link_to '<i class="fa fa-user"></i> Account management'.html_safe, {controller: "account", action: 'manage'}, class: 'acc-manage' %>
+                            <%= link_to '<i class="fa fa-user fa--txt"></i> Manage account'.html_safe, {controller: "account", action: 'manage'}, class: 'acc-manage' %>
                         </li>
                         <li>
-                            <%= link_to '<i class="fa fa-sign-out"></i> I want to log out'.html_safe, {controller: "account", action: 'logout'}, class: 'acc-logout' %>
+                            <%= link_to '<i class="fa fa-sign-out fa--txt"></i> Log me out'.html_safe, {controller: "account", action: 'logout'}, class: 'acc-logout' %>
                         </li>
                         <% else %>
                         <li>
-                            <%= link_to '<i class="fa fa-sign-in"></i> I want to log in'.html_safe, {controller: "account", action: 'login'}, class: 'acc-login' %>
+                            <%= link_to '<i class="fa fa-sign-in fa--txt"></i> log me in'.html_safe, {controller: "account", action: 'login'}, class: 'acc-login' %>
                         </li>
                         <li>
-                            <%= link_to '<i class="fa fa-user-plus"></i> I want to register'.html_safe, {controller: "account", action: 'create'}, class: 'acc-create' %>
+                            <%= link_to '<i class="fa fa-user-plus fa--txt"></i> Create account'.html_safe, {controller: "account", action: 'create'}, class: 'acc-create' %>
                         </li>
                         <li class="divider social-divider"></li>
                         <li class="social-li">

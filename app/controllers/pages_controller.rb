@@ -22,4 +22,8 @@ class PagesController < ApplicationController
         @page_title = 'About'
     end
 
+    def share
+        @page_title = 'Share this cool page !'
+    end
+
 end

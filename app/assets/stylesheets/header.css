@@ -6,6 +6,7 @@
 /* only icons for social logins */
 #dd-myaccount .social-btn { display: inline-block; width: 16.7px; margin-right: 27.5px; }
 #dd-myaccount .social-btn i { border-right: none; position: absolute; left: 7.5px; }
+#dd-myaccount i.fa--txt { font-size: 20px; float: left; margin-left: -10px; margin-right: 15px; width: 20px; }
 
 #menu-loc { margin-right: 50px; }
 #main-logo { padding-top: 7px; }
@@ -42,6 +43,7 @@ body.logged-in .myacc-dropdown > .dropdown-toggle { max-width: 200px; white-spac
     /* only icons for social logins */
     #dd-myaccount .social-btn {  margin-right: 30px; }
     #dd-myaccount .social-btn i { left: 5px; }
+    #dd-myaccount i.fa--txt { margin-left: 5px; }
 }
 @media only screen and (min-width: 768px) {
     #menu-top, #menu-alt { display: block !important; }

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- If you delete this meta tag, Half Life 3 will never be released. -->
+<meta name="viewport" content="width=device-width" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><%= @subject %> | <%= @page_name %></title>
+<%= stylesheet_link_tag 'responsive-email' %>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<!-- HEADER -->
+<table class="head-wrap" bgcolor="#3e3f3a">
+	<tr>
+		<td></td>
+		<td class="header container" >
+				<div class="content" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+				<table bgcolor="#3e3f3a">
+					<tr>
+						<td><img src="http://static.navihub.net/buildings_stroke_100x100.png" alt="Logo" width="50" height="50"></td>
+						<td align="right"><h6 class="collapse"><%= link_to(@page_title, {controller: 'homepage', host: @host}, class: 'top-link') %></h6></td>
+					</tr>
+				</table>
+				</div>
+
+		</td>
+		<td></td>
+	</tr>
+</table><!-- /HEADER -->

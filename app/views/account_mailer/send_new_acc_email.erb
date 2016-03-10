@@ -1,0 +1,52 @@
+<%= render 'mailer/header' %>
+
+<!-- BODY -->
+<table class="body-wrap">
+	<tr>
+		<td></td>
+		<td class="container" bgcolor="#FFFFFF">
+
+			<div class="content">
+			<table>
+				<tr>
+					<td>
+						<h3>Hello, fellow <%= @page_name %> user</h3>
+						<p class="lead">New account ha been created: <%= link_to @username, {host: @host, controller: 'account', action: 'manage'} %></p>
+						<p>
+							Someone (probably you) completed a registration form on <%= link_to @page_name, {host: @host, controller: 'homepage'} %> website.
+						</p>
+						<p>
+							At this point, you don't have to do anything. Your account is already active. <br/>
+							However, you <b>can</b> verify it for future communication, like <i>lost password, newsletter subscribing</i>, etc.
+						</p>
+						<p>
+							To verify your e-mail address, please visit this link:<br />
+							<a href="<%= @link %>"><%= @link %></a>
+						</p>
+						<p>
+							That's it. We are looking forward for hearing from you!<br />
+						</p>
+						<br />
+						<p>
+							Feel free to look around our website.
+							You can <%= link_to 'search for stuff', host: @host, controller: 'search' %>
+							and add it to your <%= link_to 'favorite places list', host: @host, controller: 'favorites' %>.
+							You can also <%= link_to 'manage your account', host: @host, controller: 'account', action: 'manage' %>,
+							send some <%= link_to 'feedback', host: @host, controller: 'feedback' %>
+							or <%= link_to 'tell your friends', host: @host, controller: 'pages', action: 'share' %> about out cool page.
+						</p>
+
+						<%= render 'mailer/liketheapp' %>
+						<%= render 'mailer/author' %>
+
+					</td>
+				</tr>
+			</table>
+			</div><!-- /content -->
+
+		</td>
+		<td></td>
+	</tr>
+</table><!-- /BODY -->
+
+<%= render 'mailer/footer' %>

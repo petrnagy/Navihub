@@ -28,8 +28,10 @@ class AccountController < ApplicationController
         if @registration_form.valid?
             lock = Lock.new
             @user = lock.register_with_credentials parameters, @user, @session, @cookie
-            # FIXME: @user, @session a @cookie nejsou po registraci aktualni
             LoginSession.start @user.id, @session.id, @cookie.id, (parameters[:private_computer] == 1 ? true : false)
+            if parameters[:email].to_s != ''
+                AccountMailer.send_new_acc_email(parameters[:email], parameters[:username], @user.id).deliver
+            end
             flash[:new_registration_msg] = { :type => 'success', :text => 'You are now registered (and logged in) with username <b>'+parameters[:username]+'</b>. Enjoy !' }
             redirect_to controller: 'homepage'
         else

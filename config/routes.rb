@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'account/twitter'
     get 'account/manage'
     get 'account/close'
-    get 'account/verify'
+    get 'account/verify/:hash' => 'account#verify'
     # feedback page
     get 'feedback' => 'feedback#index' # [xss-safe] [csrf-part-safe]
     post 'feedback' => 'feedback#process_contact_form' # [xss-safe] [csrf-part-safe]
@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     get 'terms-of-use' => 'pages#terms_of_use' # [xss-safe] [csrf-part-safe]
     get 'data-sources' => 'pages#data_sources' # [xss-safe] [csrf-part-safe]
     get 'about' => 'pages#about' # [xss-safe] [csrf-part-safe]
+    get 'share' => 'pages#share'
     # logger
     post 'logger/js' => 'logger#js' # [xss-safe] [csrf-part-safe]
 
