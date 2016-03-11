@@ -69,16 +69,16 @@ class SearchEngine
 
   def init_keys
     # TODO: presunout do pole
-    @google_api_key = Rails.configuration.google_api_key
-    @bing_api_key = Rails.configuration.bing_api_key
-    @nokia_app_id = Rails.configuration.nokia_app_id
-    @nokia_app_code = Rails.configuration.nokia_app_code
-    @yelp_consumer_key = Rails.configuration.yelp_consumer_key
-    @yelp_consumer_secret = Rails.configuration.yelp_consumer_secret
-    @yelp_token = Rails.configuration.yelp_token
-    @yelp_token_secret = Rails.configuration.yelp_token_secret
-    @foursquare_client_id = Rails.configuration.foursquare_client_id
-    @foursquare_client_secret = Rails.configuration.foursquare_client_secret
+    @google_api_key = Rails.application.secrets.google_api_key
+    @bing_api_key = Rails.application.secrets.bing_api_key
+    @nokia_app_id = Rails.application.secrets.nokia_app_id
+    @nokia_app_code = Rails.application.secrets.nokia_app_code
+    @yelp_consumer_key = Rails.application.secrets.yelp_consumer_key
+    @yelp_consumer_secret = Rails.application.secrets.yelp_consumer_secret
+    @yelp_token = Rails.application.secrets.yelp_token
+    @yelp_token_secret = Rails.application.secrets.yelp_token_secret
+    @foursquare_client_id = Rails.application.secrets.foursquare_client_id
+    @foursquare_client_secret = Rails.application.secrets.foursquare_client_secret
   end
 
 end

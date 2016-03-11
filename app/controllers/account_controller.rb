@@ -2,11 +2,13 @@ class AccountController < ApplicationController
 
     require 'digest/md5'
 
+    include ApplicationHelper
+
     def index
         @page_title = 'Account management'
         @login_form = Credential.new
         @registration_form = Credential.new
-        if @logged_in
+        if logged_in
             render 'manage'
         else
             render 'not_logged'
@@ -14,14 +16,14 @@ class AccountController < ApplicationController
     end
 
     def create
-        redirect_to controller: 'homepage' if @logged_in
+        redirect_to controller: 'homepage' if logged_in
 
         @page_title = 'Account creation'
         @registration_form = Credential.new
     end
 
     def process_create
-        redirect_to controller: 'homepage' if @logged_in
+        redirect_to controller: 'homepage' if logged_in
 
         parameters = create_params
         @registration_form = Credential.new(parameters)
@@ -44,14 +46,14 @@ class AccountController < ApplicationController
     end
 
     def login
-        redirect_to controller: 'homepage' if @logged_in
+        redirect_to controller: 'homepage' if logged_in
 
         @page_title = 'Log in page'
         @login_form = Credential.new
     end
 
     def process_login
-        redirect_to controller: 'homepage' if @logged_in
+        redirect_to controller: 'homepage' if logged_in
 
         @page_title = 'Log in page'
         parameters = process_login_params
@@ -84,8 +86,9 @@ class AccountController < ApplicationController
     end
 
     def logout
-        if @logged_in
+        if logged_in
             LoginSession.destroy_for_user @user.id, @session.id, @cookie.id
+            ProviderCredentials.destroy_for_user @user.id, @session.id, @cookie.id
             flash[:logout_msg] = { :type => 'info', :text => 'You have been logged out. See you soon...?' }
         end
         redirect_to controller: 'homepage'
@@ -97,13 +100,21 @@ class AccountController < ApplicationController
     def close
     end
 
-    def google
-    end
+    def omniauth
+        if logged_in
+            flash[:provider_msg] = { :type => 'info', :text => 'Before using the ' + auth_hash.provider.capitalize + ' login, you need to log out first.' }
+            redirect_to controller: 'homepage'
+        end
 
-    def facebook
-    end
+        credentials = ProviderCredentials.find_or_create_from_auth_hash(
+            auth_hash,
+            @user.id,
+            @session.id,
+            @cookie.id
+        )
 
-    def twitter
+        flash[:provider_msg] = { :type => 'success', :text => 'You are now logged in via ' + auth_hash.provider.capitalize + ' as ' + credentials.name.to_s }
+        redirect_to controller: 'homepage'
     end
 
     private
@@ -122,6 +133,10 @@ class AccountController < ApplicationController
         params.require(:username)
         params.require(:created_hash)
         params.permit(:username, :created_hash)
+    end
+
+    def auth_hash
+        request.env['omniauth.auth']
     end
 
 end

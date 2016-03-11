@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TwitterSessionTest < ActiveSupport::TestCase
+class ProviderCredentialsTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -17,13 +17,13 @@
             </ul>
             <ul class="nav navbar-nav navbar-right" id="menu-alt">
                 <li class="dropdown myacc-dropdown">
-                    <% if @logged_in %>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-username"><%= @credentials.username %></span><span id="myacc-un"><%= short_username @credentials.username %></span> <b class="caret"></b></a>
+                    <% if logged_in %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-username"><%= username %></span> <b class="caret"></b></a>
                     <% else %>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="myacc-my">My</span> <span id="myacc-acc">acc</span><span id="myacc-ount">ount</span> <b class="caret"></b></a>
                     <% end %>
                     <ul class="dropdown-menu" id="dd-myaccount">
-                        <% if @logged_in %>
+                        <% if logged_in %>
                         <li>
                             <%= link_to '<i class="fa fa-user fa--txt"></i> Manage account'.html_safe, {controller: "account", action: 'manage'}, class: 'acc-manage' %>
                         </li>
@@ -40,13 +40,13 @@
                         <li class="divider social-divider"></li>
                         <li class="social-li">
                             <div class="social-btn">
-                                <a class="btn btn-block btn-sm btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a>
+                                <a class="btn btn-block btn-sm btn-social btn-facebook" href="<%= signin_with_facebook %>"><i class="fa fa-facebook"></i></a>
                             </div>
                             <div class="social-btn">
-                                <a class="btn btn-block btn-sm btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a>
+                                <a class="btn btn-block btn-sm btn-social btn-twitter" href="<%= signin_with_twitter %>"><i class="fa fa-twitter"></i></a>
                             </div>
                             <div class="social-btn">
-                                <a class="btn btn-block btn-sm btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a>
+                                <a class="btn btn-block btn-sm btn-social btn-google-plus" href="<%= signin_with_google_oauth2 %>"><i class="fa fa-google-plus"></i></a>
                             </div>
                         </li>
                         <% end %>

@@ -8,14 +8,11 @@ class ApplicationController < ActionController::Base
     end
 
     protect_from_forgery with: :exception
-
     before_filter :init
 
     protected
 
-    @user
-    @location
-    @session
+    @credentials = nil, @session = nil, @cookie = nil, @logged_in = nil
 
     def init
         init_user
@@ -54,11 +51,13 @@ class ApplicationController < ActionController::Base
     end
 
     def init_user
-        logged_in = false
-        user = nil
-        credentials = nil
-        sess = init_session
-        cookie = init_cookie
+        logged_in    = false
+        user         = nil
+        credentials  = nil
+        sess         = init_session
+        cookie       = init_cookie
+        username     = nil
+
         if sess.user_id == cookie.user_id
             if sess.user_id == nil
                 user = User.user_create
@@ -83,12 +82,13 @@ class ApplicationController < ActionController::Base
             # we have a returning user
             if Credential.exist_for_user user.id
                 # current user is a registered user
-                if LoginSession.exist_for_user user.id
+                if LoginSession.exist_for_user user.id, sess.id, cookie.id
                     # login session is active, the user is logged in
                     credentials = Credential.get_for_user user.id
                     @user = user
                     logged_in = true
-                    LoginSession.extend_for_user user.id
+                    username = credentials.username
+                    LoginSession.extend_for_user user.id, sess.id, cookie.id
                 else
                     # login session expired, create new anonymous user
                     @user = User.user_create
@@ -96,8 +96,11 @@ class ApplicationController < ActionController::Base
                     cookie.user_id = @user.id
                 end
             else
-                # current user is not registered, however can be using social login
-                # TODO: social sessions
+                if ProviderCredentials.exist_for_user user.id, sess.id, cookie.id
+                    credentials = ProviderCredentials.get_for_user user.id, sess.id, cookie.id
+                    logged_in = true
+                    username = credentials.name
+                end
                 @user = user
             end
         else
@@ -107,10 +110,10 @@ class ApplicationController < ActionController::Base
             cookie.user_id = @user.id
         end
         sess.save; cookie.save
-        @credentials = credentials
-        @session = sess
-        @cookie = cookie
-        @logged_in = logged_in
+        @credentials    = credentials
+        @session        = sess
+        @cookie         = cookie
+        @logged_in      = logged_in
     end
 
     def init_session
@@ -164,7 +167,5 @@ class ApplicationController < ActionController::Base
             end
         end
     end
-
-    private
 
 end

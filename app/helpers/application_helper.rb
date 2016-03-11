@@ -88,4 +88,36 @@ module ApplicationHelper
         end
     end
 
+    def method_missing(name, *args, &block)
+        if /^signin_with_(\S*)$/.match(name.to_s)
+            "/auth/#{$1}"
+        else
+            super
+        end
+    end
+
+    def logged_in
+        @logged_in
+    end
+
+    def login_method
+        if @credentials.is_a? Credential
+            'local'
+        elsif @credentials.is_a? ProviderCredentials
+            'provider'
+        else
+            nil
+        end
+    end
+
+    def username
+        if 'local' == login_method
+            @credentials.username
+        elsif 'provider' == login_method
+            @credentials.name
+        else
+            nil
+        end
+    end
+
 end

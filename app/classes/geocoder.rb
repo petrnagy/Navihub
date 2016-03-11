@@ -5,7 +5,7 @@ class Geocoder
   require 'uri'
 
   def initialize
-    @key = Rails.configuration.google_api_key
+    @key = Rails.application.secrets.google_api_key
   end
 
   def geocode addr

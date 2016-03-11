@@ -100,7 +100,7 @@ class SearchController < ApplicationController
     def distance_matrix
         if request.xhr?
             parameters = distance_matrix_params
-            matrix = DistanceMatrix.new parameters['origins'], parameters['destinations'], Rails.configuration.google_api_key
+            matrix = DistanceMatrix.new parameters['origins'], parameters['destinations'], Rails.application.secrets.google_api_key
             results = matrix.load
             respond_to do |format|
                 if results != nil

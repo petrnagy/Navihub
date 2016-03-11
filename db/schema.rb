@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305190137) do
+ActiveRecord::Schema.define(version: 20160311113056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,6 +216,22 @@ ActiveRecord::Schema.define(version: 20160305190137) do
 
   add_index "permalinks", ["permalink_id"], name: "index_permalinks_on_permalink_id", using: :btree
   add_index "permalinks", ["user_id"], name: "index_permalinks_on_user_id", using: :btree
+
+  create_table "provider_credentials", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "profile_image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "session_id"
+    t.integer  "cookie_id"
+    t.datetime "valid_to"
+    t.datetime "valid_from"
+  end
 
   create_table "reverse_geocode_caches", force: true do |t|
     t.float    "latitude"

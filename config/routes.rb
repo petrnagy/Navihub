@@ -12,12 +12,12 @@ Rails.application.routes.draw do
     get 'account/create'
     post 'account/create' => 'account#process_create'
     get 'account/created/:username/:created_hash' => 'account#created'
-    get 'account/google'
-    get 'account/facebook'
-    get 'account/twitter'
     get 'account/manage'
     get 'account/close'
     get 'account/verify/:hash' => 'account#verify'
+
+    get 'auth/:provider/callback' => 'account#omniauth'
+
     # feedback page
     get 'feedback' => 'feedback#index' # [xss-safe] [csrf-part-safe]
     post 'feedback' => 'feedback#process_contact_form' # [xss-safe] [csrf-part-safe]
