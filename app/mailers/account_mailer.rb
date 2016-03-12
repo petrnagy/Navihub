@@ -9,8 +9,8 @@ class AccountMailer < ActionMailer::Base
     @recipient = recipient
     @username = username
     @subject = 'New account created: ' + username + ' | ' + @page_name
-    @hash = AccountHelper::generate_verify_hash recipient, username, user_id
-    @link = url_for host: @host, controller: 'account', action: 'verify', hash: @hash
+    @hash = AccountHelper::generate_verify_hash recipient
+    @link = url_for host: @host, controller: 'account', action: 'verify', username: username, hash: @hash
 
     mail(to: recipient, subject: @subject)
   end

@@ -1,5 +1,5 @@
 module AccountHelper
-    def self.generate_verify_hash recipient, username, user_id
-        Digest::MD5.hexdigest([recipient, username, user_id].to_s)
+    def self.generate_verify_hash email
+        Digest::MD5.hexdigest(email + Rails.application.secrets.secret_key_base)
     end
 end

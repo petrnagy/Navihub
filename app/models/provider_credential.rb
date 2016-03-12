@@ -1,4 +1,4 @@
-class ProviderCredentials < ActiveRecord::Base
+class ProviderCredential < ActiveRecord::Base
 
     belongs_to :user
     belongs_to :session
@@ -10,39 +10,37 @@ class ProviderCredentials < ActiveRecord::Base
         row.user_id = user_id if row.user_id == nil
         row.session_id = session_id if row.session_id == nil
         row.cookie_id = cookie_id if row.cookie_id == nil
-        row.valid_from = DateTime.now if row.valid_from == nil
 
         row.name = auth_hash.info.name
         row.profile_image = auth_hash.info.image
         row.token = auth_hash.credentials.token
         row.secret = auth_hash.credentials.secret
-        row.valid_to = DateTime.now + 1.month
+        row.active = true
 
         row.save
         row
     end
 
-    def self.exist_for_user user_id, session_id, cookie_id
-        if nil == self.get_for_user(user_id, session_id, cookie_id)
-            false
+    def self.exist_for_user user_id
+        row = self.select('id').where(user_id: user_id, active: true).first
+        if row == nil
+            return false
         else
-            true
+            return true
         end
     end
-
-    def self.destroy_for_user user_id, session_id, cookie_id
-        self.where(user_id: user_id, session_id: session_id).destroy_all
-        self.where(user_id: user_id, cookie_id: cookie_id).destroy_all
-    end
-
-    private
-
+    #
+    # def self.destroy_for_user user_id, session_id, cookie_id
+    #     self.where(user_id: user_id, session_id: session_id).destroy_all
+    #     self.where(user_id: user_id, cookie_id: cookie_id).destroy_all
+    # end
+    #
+    # private
+    #
     def self.get_for_user user_id, session_id, cookie_id
         self
-        .where(user_id: user_id)
+        .where(user_id: user_id, active: true)
         .where('session_id = ? OR cookie_id = ?', session_id, cookie_id)
-        .where('valid_to >= ? OR valid_to IS NULL', DateTime.now)
-        .where('valid_from <= ? OR valid_from IS NULL', DateTime.now)
         .first
     end
 

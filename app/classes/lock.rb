@@ -6,7 +6,7 @@ class Lock
         [username_row, email_row].each do |row|
             if row != nil
                 verified = verify_credentials params[:password], row[:password], row[:salt]
-                return row[:user_id] if verified
+                return row if verified
                 @errors = [
                     { :for => :password, :msg => 'seems to be incorrect' }
                 ]
@@ -21,18 +21,6 @@ class Lock
 
     def get_login_errors
         @errors
-    end
-
-    def login_with_facebook
-
-    end
-
-    def login_with_twitter
-
-    end
-
-    def login_with_google
-
     end
 
     def register_with_credentials params, user, session, cookie

@@ -12,14 +12,16 @@ class LoginSession < ActiveRecord::Base
         end
     end
 
-    def self.start user_id, session_id, cookie_id, extended = false
+    def self.start user_id, session_id, cookie_id, extended = false, credentials_id, provider_credentials_id
         self.create!(
         user_id: user_id,
         session_id: session_id,
         cookie_id: ( extended ? cookie_id : nil ),
         valid_from: nil,
         valid_to: ( extended ? DateTime.now + 1.month : DateTime.now + 1.hour ),
-        extended: extended
+        extended: extended,
+        credentials_id: credentials_id,
+        provider_credentials_id: provider_credentials_id
         )
     end
 

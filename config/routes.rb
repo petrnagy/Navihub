@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     post 'account/create' => 'account#process_create'
     get 'account/created/:username/:created_hash' => 'account#created'
     get 'account/manage'
+    get 'account/update'
     get 'account/close'
-    get 'account/verify/:hash' => 'account#verify'
+    get 'account/verify/:username/:hash' => 'account#verify'
 
     get 'auth/:provider/callback' => 'account#omniauth'
 

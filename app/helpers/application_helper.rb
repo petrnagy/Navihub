@@ -103,11 +103,15 @@ module ApplicationHelper
     def login_method
         if @credentials.is_a? Credential
             'local'
-        elsif @credentials.is_a? ProviderCredentials
+        elsif @credentials.is_a? ProviderCredential
             'provider'
         else
             nil
         end
+    end
+
+    def login_provider
+        @credentials.provider
     end
 
     def username
@@ -115,6 +119,27 @@ module ApplicationHelper
             @credentials.username
         elsif 'provider' == login_method
             @credentials.name
+        else
+            nil
+        end
+    end
+
+    def user_email
+        if 'local' == login_method
+            @credentials.email
+        elsif 'provider' == login_method
+            nil
+        else
+            nil
+        end
+    end
+
+    def user_session_expiration
+        if 'local' == login_method
+            sess = LoginSession.get_for_user @user.id, @session.id, @cookie.id
+            sess.valid_to
+        elsif 'provider' == login_method
+            @credentials.valid_to
         else
             nil
         end

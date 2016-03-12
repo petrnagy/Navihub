@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311113056) do
+ActiveRecord::Schema.define(version: 20160312131421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160311113056) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.boolean  "email_verified"
   end
 
   add_index "credentials", ["active"], name: "index_credentials_on_active", using: :btree
@@ -198,6 +199,8 @@ ActiveRecord::Schema.define(version: 20160311113056) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "extended"
+    t.integer  "credentials_id"
+    t.integer  "provider_credentials_id"
   end
 
   add_index "login_sessions", ["cookie_id"], name: "index_login_sessions_on_cookie_id", using: :btree
@@ -229,8 +232,8 @@ ActiveRecord::Schema.define(version: 20160311113056) do
     t.integer  "user_id"
     t.integer  "session_id"
     t.integer  "cookie_id"
-    t.datetime "valid_to"
     t.datetime "valid_from"
+    t.boolean  "active"
   end
 
   create_table "reverse_geocode_caches", force: true do |t|

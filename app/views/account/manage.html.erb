@@ -1,2 +1,40 @@
-<h1>Account#manage</h1>
-<p>Find me in app/views/account/manage.html.erb</p>
+<h1>My account</h1>
+<p>Hello, fellow <%= @page_name %> user !</p>
+<p>
+    You are logged in as <b><%= username %></b>
+    <% if 'provider' == login_method %>
+        via <%= login_provider.capitalize %>
+    <% end %>.
+    <% if 'provider' == login_method and @credentials.profile_image.to_s != '' %>
+        <br />
+        <%= image_tag @credentials.profile_image, size: '50x50' %>
+    <% end %>
+</p>
+
+<% if 'local' == login_method %>
+    <p>
+        <% if user_email %>
+        Your e-mail address is <b><%= user_email %></b>.
+        <% else %>
+        You haven't filled any e-mail address yet. You can <%= link_to 'change', controller: 'account', action: 'update' %> that.
+        <% end %>
+    </p>
+    <p>
+        You are registered since <%= @credentials.created_at %>
+    </p>
+<% end %>
+
+<p>
+    Your session will expire at <%= user_session_expiration %>.
+</p>
+
+<br />
+<p>
+    <% if 'local' == login_method %>
+        ~ <%= link_to 'Change or add e-mail address', controller: 'account', action: 'update' %><br />
+        ~ <%= link_to 'Change password', controller: 'account', action: 'update' %><br />
+    <% end %>
+    ~ <%= link_to 'Logout', controller: 'account', action: 'logout' %><br/>
+    <br/>
+    ~ <small><%= link_to 'I want to close my account', controller: 'account', action: 'close' %></small>
+</p>

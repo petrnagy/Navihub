@@ -95,12 +95,21 @@ class ApplicationController < ActionController::Base
                     sess.user_id = @user.id
                     cookie.user_id = @user.id
                 end
-            else
-                if ProviderCredentials.exist_for_user user.id, sess.id, cookie.id
-                    credentials = ProviderCredentials.get_for_user user.id, sess.id, cookie.id
+            elsif ProviderCredential.exist_for_user user.id
+                # current user was/is logged using fb|tw|g+
+                if LoginSession.exist_for_user user.id, sess.id, cookie.id
+                    # provider login session is active, user is logged in
+                    credentials = ProviderCredential.get_for_user user.id, sess.id, cookie.id
                     logged_in = true
                     username = credentials.name
+                    @user = user
+                else
+                    # provider session expired
+                    @user = User.user_create
+                    sess.user_id = @user.id
+                    cookie.user_id = @user.id
                 end
+            else
                 @user = user
             end
         else

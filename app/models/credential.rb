@@ -20,7 +20,7 @@ class Credential < ActiveRecord::Base
     end
 
     def self.get_for_user user_id
-        self.select('username, email').where(user_id: user_id, active: true).first
+        self.select('username, email, created_at, updated_at').where(user_id: user_id, active: true).first
     end
 
 end
