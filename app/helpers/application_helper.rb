@@ -135,14 +135,8 @@ module ApplicationHelper
     end
 
     def user_session_expiration
-        if 'local' == login_method
-            sess = LoginSession.get_for_user @user.id, @session.id, @cookie.id
-            sess.valid_to
-        elsif 'provider' == login_method
-            @credentials.valid_to
-        else
-            nil
-        end
+        sess = LoginSession.get_for_user @user.id, @session.id, @cookie.id
+        sess.valid_to
     end
 
 end

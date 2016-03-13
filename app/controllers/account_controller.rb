@@ -135,6 +135,9 @@ class AccountController < ApplicationController
             @session.id,
             @cookie.id
         )
+        @user.id = credentials.user_id
+        @session.user_id = @user.id; @session.save
+        @cookie.user_id = @user.id; @cookie.save
         LoginSession.start @user.id, @session.id, @cookie.id, true, nil, credentials.id
 
         flash[:provider_msg] = { :type => 'success', :text => 'You are now logged in via ' + auth_hash.provider.capitalize + ' as <b>' + credentials.name.to_s + '</b>, enjoy !' }
