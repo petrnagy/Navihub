@@ -22,7 +22,6 @@ ScriptLoader.prototype = {
         var storageKey = 'javascripts';
         var loadedScripts = that.di.turbolinksStorage.get(storageKey);
         loadedScripts = ( null === loadedScripts ? [] : loadedScripts );
-
         if ( loadedScripts[script] === undefined ) { // adding script to queue
             loadedScripts[script] = false; // false = "loading"
             that.di.turbolinksStorage.set(storageKey, loadedScripts);
