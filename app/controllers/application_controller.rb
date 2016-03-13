@@ -100,6 +100,7 @@ class ApplicationController < ActionController::Base
                     credentials = ProviderCredential.get_for_user user.id, sess.id, cookie.id
                     logged_in = true
                     @user = user
+                    LoginSession.extend_for_user user.id, sess.id, cookie.id
                 else
                     # provider session expired
                     @user = User.user_create

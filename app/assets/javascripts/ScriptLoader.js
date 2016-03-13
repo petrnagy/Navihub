@@ -32,12 +32,10 @@ ScriptLoader.prototype = {
                 callback();
             });
         } else { // script already in queue
-            // FIXME: script muze byt v policku, ale nemusi byt nutne nacteny !
             var interval = setInterval(function(){
                 var loadedScripts = that.di.turbolinksStorage.get(storageKey);
                 if ( loadedScripts[script] === true ) {
                     clearInterval(interval);
-                    // FIXME: ma tady vubec byt spusteni lambdy?
                     if ( lambda.length ) {
                         eval(lambda + '()');
                     } // end if
