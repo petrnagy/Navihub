@@ -16,6 +16,7 @@ var Locator = function(di) {
     this._saveCallback = null;
     this._didAutomaticReverseGeocoding = false;
     this._initAutodetectBtn();
+    this._initLockUnlockBtns();
     this._initLockBtn();
     this._initUnlockBtn();
 }; // end func
@@ -340,8 +341,8 @@ Locator.prototype = {
         this._locked = true;
         var txt = $('#top-location .top-location-top .actual').text();
         $('#top-location .top-location-top .actual').html(that._key + txt);
-        $('#top-location .top-location-lock').hide();
-        $('#top-location .top-location-unlock').show();
+        that.hideLockBtn();
+        that.showUnlockBtn();
     }, // end method
 
     unlock: function() {
@@ -349,7 +350,34 @@ Locator.prototype = {
         this._locked = false;
         var txt = $('#top-location .top-location-top .actual').text();
         $('#top-location .top-location-top .actual').text(txt.replace(that._key, ''));
+        that.showLockBtn();
+        that.hideUnlockBtn();
+    }, // end method
+
+    _initLockUnlockBtns: function() {
+        var that = this;
+        if ( that.isLocked() ) {
+            that.hideLockBtn();
+            that.showUnlockBtn();
+        } else {
+            that.showLockBtn();
+            that.hideUnlockBtn();
+        } // end if
+    }, // end method
+
+    showLockBtn: function() {
         $('#top-location .top-location-lock').show();
+    }, // end method
+
+    hideLockBtn: function() {
+        $('#top-location .top-location-lock').hide();
+    }, // end method
+
+    showUnlockBtn: function() {
+        $('#top-location .top-location-unlock').show();
+    }, // end method
+
+    hideUnlockBtn: function() {
         $('#top-location .top-location-unlock').hide();
     }, // end method
 
@@ -361,7 +389,7 @@ Locator.prototype = {
         var that = this;
         if ( that.isLocked() ) {
             callback();
-        } else if (that._sent.browser) {
+        } else if (that._data.browser) {
             callback();
         } else {
             that._hooks.push(callback);
@@ -369,9 +397,9 @@ Locator.prototype = {
     }, // end method
 
     _processHooks: function() {
-      $.each(this._hooks, function(k, callback) {
-          callback();
-      }); // end foreach
+        $.each(this._hooks, function(k, callback) {
+            callback();
+        }); // end foreach
 
     }, // end method
 

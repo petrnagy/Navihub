@@ -56,7 +56,6 @@ class ApplicationController < ActionController::Base
         credentials  = nil
         sess         = init_session
         cookie       = init_cookie
-        username     = nil
 
         if sess.user_id == cookie.user_id
             if sess.user_id == nil
@@ -87,7 +86,6 @@ class ApplicationController < ActionController::Base
                     credentials = Credential.get_for_user user.id
                     @user = user
                     logged_in = true
-                    username = credentials.username
                     LoginSession.extend_for_user user.id, sess.id, cookie.id
                 else
                     # login session expired, create new anonymous user
@@ -101,7 +99,6 @@ class ApplicationController < ActionController::Base
                     # provider login session is active, user is logged in
                     credentials = ProviderCredential.get_for_user user.id, sess.id, cookie.id
                     logged_in = true
-                    username = credentials.name
                     @user = user
                 else
                     # provider session expired

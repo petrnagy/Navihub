@@ -22,11 +22,11 @@ var ready, DI;
 ready = function(pageLoad) {
 
     Configurator.configure();
-
+    
     DI = Container.build(pageLoad, serverData, Configurator);
 
     typeof window[DI.kickstart] === 'function' ? window[DI.kickstart](DI) : null;
-    
+
 };
 
 $(document).ready(function(){ ready(false); });
