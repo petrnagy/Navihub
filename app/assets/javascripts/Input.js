@@ -2,26 +2,31 @@
  * @author PN @since 2014-09-27
  */
 var Input = function(step, di) {
+    this.buildUrl = Search.prototype.buildUrl;
     this.di = di;
     this.step = step;
-    this.$form = $("#search-input");
+    this.$form = $("#search-input > form");
     this.defaults = {
         sort: 'distance-asc',
         offset: 0,
         radius: 0,
     };
     // order matters !
-    this.interests = ['term', 'radius', 'sort', 'offset'];
+    this.interests = ['term', 'sort', 'radius', 'offset'];
     if (this.$form.length) {
         this._init();
     } else {
         throw new Error();
     } // end if
-} // end func
+}; // end func
 
 Input.prototype = {
     _init: function() {
-        this._bindSubmit();
+        var that = this;
+        that.di.locator.addWeakHook(function(){
+            that.$form.find('button[type="submit"]').prop('disabled', false);
+            that._bindSubmit();
+        });
     },
     _bindSubmit: function() {
         var that = this;
@@ -56,42 +61,6 @@ Input.prototype = {
         };
     }, // end method
 
-    buildUrl: function(values) {
-        var that = this;
-        var url = '';
-        if (window.location.origin) {
-            url += window.location.origin;
-        } else {
-            url += 'http://' + window.location.host;
-        } // end if
-        var baseUrl = url;
-        var ascii = true;
-        url += '/search';
-        $.each(that.interests, function(k, v) {
-            var val = (typeof values[v] != 'undefined' && values[v] ? values[v] : that.defaults[v]);
-            url += '/' + encodeURIComponent(val);
-            if (!that.di.mixin.isAscii(val)) {
-                ascii = false;
-            }
-        });
-        var loc = that.di.locator.getLocation();
-        var ll = 'll=' + loc.lat.toString() + ',' + loc.lng.toString();
-        if (ascii) {
-            return url + '?' + ll;
-        } else {
-            url = baseUrl;
-            url += '/find';
-            var char = '?';
-            $.each(that.interests, function(k, v) {
-                if (typeof values[v] != 'undefined' && values[v] && values[v] != that.defaults[v]) {
-                    url += char + v + '=' + encodeURIComponent(values[v]);
-                    char = '&';
-                } // end if
-            });
-            return url + '&' + ll;
-        } // end if
-    }, // end method
-
     pushUrl: function(url) {
         var that = this;
         window.location.href = url;
@@ -107,4 +76,4 @@ Input.prototype = {
         that.$form.find('input, select, option, button').prop('disabled', false);
     }, // end method
 
-} // end prototype
+}; // end prototype

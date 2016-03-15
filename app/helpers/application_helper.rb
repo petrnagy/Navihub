@@ -3,6 +3,7 @@
 module ApplicationHelper
 
     require 'uri'
+    require 'cgi'
 
     def javascript(*files)
         content_for(:footer_js) { javascript_include_tag(*files) }
@@ -60,7 +61,7 @@ module ApplicationHelper
 
     def tag_search_link tag
         # FIXME: sestavit pomoci link_to a parametru
-        '/search/' + URI.escape(tag) + '/0/distance-asc/0'
+        '/search/' + CGI::escape(tag) + '/0/distance-asc/0'
     end
 
     def errors_for(object = nil)

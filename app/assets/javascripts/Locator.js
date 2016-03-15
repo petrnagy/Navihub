@@ -12,6 +12,7 @@ var Locator = function(di) {
     };
     this._sent = {browser: false, web: false};
     this._hooks = [];
+    this._weakHooks = [];
     this._interval = null;
     this._saveCallback = null;
     this._didAutomaticReverseGeocoding = false;
@@ -35,10 +36,11 @@ Locator.prototype = {
                     that._send(that._data.browser, manual);
                     that._sent.browser = true;
                     that._processHooks();
+                    that._processWeakHooks();
                 } else if ( ! that._sent.web && that._data.web && ! that._sent.browser ) {
                     that._send(that._data.web, manual, true);
                     that._sent.web = true;
-                    //that._processHooks();
+                    that._processWeakHooks();
                 } // end if
             } // end if
         }, 1000);
@@ -396,8 +398,30 @@ Locator.prototype = {
         } // end if
     }, // end method
 
+    addWeakHook: function(callback) {
+        var that = this;
+        if ( that.isLocked() ) {
+            callback();
+        } else if (that.getLocation()) {
+            callback();
+        } else {
+            that._weakHooks.push(callback);
+        } // end if
+    }, // end method
+
     _processHooks: function() {
-        $.each(this._hooks, function(k, callback) {
+        var hooks = this._hooks;
+        this._hooks = [];
+        $.each(hooks, function(k, callback) {
+            callback();
+        }); // end foreach
+
+    }, // end method
+
+    _processWeakHooks: function() {
+        var hooks = this._weakHooks;
+        this._weakHooks = [];
+        $.each(hooks, function(k, callback) {
             callback();
         }); // end foreach
 

@@ -4,7 +4,7 @@
 var Search = function(step, di) {
     this.di = di;
     this.step = step;
-    this.$form = $("#search-form");
+    this.$form = $("#search-form > form");
     this.defaults = {
         sort: 'distance-asc',
         offset: 0,
@@ -19,11 +19,15 @@ var Search = function(step, di) {
 
 Search.prototype = {
     _init: function() {
-        this._bindSubmit();
-        this._bindChange();
+        var that = this;
+        that.di.locator.addWeakHook(function(){
+            that._bindSubmit();
+        });
+        that._bindChange();
     },
     _bindSubmit: function() {
         var that = this;
+        that.$form.find('button[type="submit"]').prop('disabled', false);
         that.$form.submit(function(e) {
             e.preventDefault();
             that.ajaxSubmit();

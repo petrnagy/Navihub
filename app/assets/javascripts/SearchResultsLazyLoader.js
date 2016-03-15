@@ -111,6 +111,14 @@ SearchResultsLazyLoader.prototype = {
                 if ( data ) {
                     var url = window.location.origin + Detail.prototype.buildDetailUrl(data, that);
                     $(this).attr('href', url);
+                    var $h3 = $(this).closest('.result-box').find('h3').first();
+                    $h3.find('a').attr('href', url);
+                    // wrap name with
+                    // var $a = $('<a></a>');
+                    // var name = $h3.html();
+                    // $a.attr('href', url);
+                    // $a.html(name);
+                    // $h3.replaceWith($a);
                 } // end if
             });
         });
