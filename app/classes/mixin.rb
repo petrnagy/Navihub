@@ -21,7 +21,7 @@ class Mixin
   end
 
   def self.generate_random_hash len
-    (Digest::MD5.hexdigest(Random.new_seed)).str(0, len)
+    (Digest::MD5.hexdigest(Random.new_seed.to_s))[0..len]
   end
 
   def self.round5 num
