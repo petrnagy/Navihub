@@ -24,7 +24,7 @@ class DuplicityDetector
         @old = old
         @current = current
         atomize term, @old[:name], @current[:name]
-        locate @old[:geometry], @current[:geometry]
+        locate @old[:geometry], @current[:geometry] unless [@old[:geometry], @current[:geometry]].include? nil
         address @old[:address], @current[:address]
     end
 
@@ -44,15 +44,13 @@ class DuplicityDetector
     end
 
     def locate old_geometry, current_geometry
-        unless old_geometry[:lat] == nil || old_geometry[:lng] == nil
-            unless current_geometry[:lat] == nil || current_geometry[:lng] == nil
-                @distance = Location.calculate_distance(
-                old_geometry[:lat],
-                old_geometry[:lng],
-                current_geometry[:lat],
-                current_geometry[:lng]
-                )
-            end
+        unless [old_geometry[:lat], old_geometry[:lng], current_geometry[:lat], current_geometry[:lng]].include? nil
+            return @distance = Location.calculate_distance(
+            old_geometry[:lat],
+            old_geometry[:lng],
+            current_geometry[:lat],
+            current_geometry[:lng]
+            )
         end
     end
 
@@ -67,24 +65,24 @@ class DuplicityDetector
         prepared.downcase!
         #prepared.gsub!(@term, '')
         prepared.gsub!(/\ +/, ' ')
-        prepared.gsub!(/([^\d\w\ \-]|_)/u, ' ')
+        #prepared.gsub!(/([^\d\w\ \-]|_)/u, ' ')
         prepared.split(' ')
     end
 
     def process
-        return 1.00 if are_same # sentences are exactly the same
-        return 1.00 if are_both_empty # both sentences are empty, thus the same
-        return 0.00 if is_just_one_empty # one array is empty and the other one is not -> not similiar at all
+        return true  if are_same # sentences are exactly the same
+        return true  if are_both_empty # both sentences are empty, thus the same
+        return false if is_just_one_empty # one array is empty and the other one is not -> not similiar at all
 
         comparator = Text::WhiteSimilarity.new
         similarity_raw = comparator.similarity @old_raw, @current_raw
         similarity_prepared = comparator.similarity @old_sentence.join(' '), @current_sentence.join(' ')
-        similarity = ( similarity_raw + similarity_prepared ) / 2
+        similarity = ( similarity_raw + similarity_prepared ) / 4
 
         score = similarity
 
         similarity_addr = comparator.similarity @old_address, @current_address
-        score += similarity_addr
+        score += similarity_addr / 2
 
         shorter = get_shorter_sentence
         longer = get_longer_sentence
@@ -94,14 +92,14 @@ class DuplicityDetector
 
         unless @distance == nil
             if @distance <= @@distance_threshold
-                score += 0.33
+                score += 0.25
             end
         end
 
         l = Logger.new(STDOUT)
         l.debug '- - - DUPLICITY DETECTOR REPORT - - -'
         if score > @@duplicity_score_threshold
-            l.debug 'Duplicate detected !'
+            l.debug '____________________ Duplicate detected ! ____________________'
         else
             l.debug 'Clean !'
         end
@@ -158,28 +156,6 @@ class DuplicityDetector
             hits += 1 if longer.include? word
         end
         shorter.length == hits
-    end
-
-    def get_distance
-        distance = 0.00
-
-        unless nil == candidate then
-            if nil != resolved[candidate][:geometry][:lat] &&
-                nil != resolved[candidate][:geometry][:lng] &&
-                nil != current[:geometry][:lat] &&
-                nil != current[:geometry][:lng]
-                distance = Location.calculate_distance(
-                resolved[candidate][:geometry][:lat], resolved[candidate][:geometry][:lng],
-                current[:geometry][:lat], current[:geometry][:lng])
-            else # be aware that this can generate false-positive output
-                distance = (resolved[candidate][:distance] - current[:distance]).abs
-            end
-            current[:is_unique] = distance > @@distance_threshold
-
-            logger = Logger.new(STDOUT)
-            logger.debug 'NOW Comparing: ' + resolved[candidate][:name] + ' vs ' + current[:name] + ', distance: ' + distance.to_s
-        end
-
     end
 
 end

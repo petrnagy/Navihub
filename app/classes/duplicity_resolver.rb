@@ -15,10 +15,11 @@ class DuplicityResolver
 
     def resolve
         resolved = []
-        index = 0
-        @data.each_with_index do |current, key|
+        @data.each do |current|
+            next if current == nil
+            index = resolved.length
             current[:is_unique] = true
-            current[:uid] = index.to_i
+            current[:uid] = index
             original = find_original resolved, current
 
             if original != nil
@@ -26,7 +27,6 @@ class DuplicityResolver
             else
                 resolved[current[:uid]] = current
             end
-            index = index + 1
         end
         @resolved = resolved.select { |v| nil != v }
     end
@@ -34,7 +34,7 @@ class DuplicityResolver
     private
 
     def find_original processed, current
-        processed.each_with_index do |old, key|
+        processed.each do |old|
             detector = DuplicityDetector.new @term, old, current
             is_duplicate = detector.is_duplicate
 
@@ -45,20 +45,9 @@ class DuplicityResolver
 
     def resolve_by_merge first, second
         result = second.merge first
-        if first[:geometry][:lat] == nil || first[:geometry][:lng] == nil
-            if second[:geometry][:lat] != nil && second[:geometry][:lng] != nil
-                result = first.merge second
-            end
-        end
-
         result[:tags] = first[:tags] | second[:tags]
         result[:is_unique] = false
-        # TODO: presunout adresu, pokud je prvni prazdna
-        # TODO: presunout geolokaci, pokud je prvni prazdna
-        result[:origins].push first[:origin]
-        result[:origins].push second[:origin]
-        result[:origins].uniq!
-
+        result[:origins] = result[:origins].push(first[:origin]).push(second[:origin]).uniq
         result
     end
 
