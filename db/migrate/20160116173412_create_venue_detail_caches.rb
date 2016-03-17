@@ -7,6 +7,6 @@ class CreateVenueDetailCaches < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :venue_detail_caches, [:origin, :id], unique: true
+    add_index :venue_detail_caches, [:venue_origin, :venue_id], unique: true
   end
 end
