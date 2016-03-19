@@ -14,5 +14,8 @@
         </section>
     </div>
     <%= render 'layouts/footer' %>
+    <% unless Rails.env.development? %>
+        <%= render 'layouts/analytics' %>
+    <% end %>
 </body>
 </html>
