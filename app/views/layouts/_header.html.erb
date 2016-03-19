@@ -9,7 +9,11 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0' />
     <%= csrf_meta_tags %>
     <!-- Title -->
+    <% if 'homepage' == params[:controller] %>
+    <title><%= @page_name %> | <%= @page_title %></title>
+    <% else %>
     <title><%= @page_title %> | <%= @page_name %></title>
+    <% end %>
     <!-- Favicon -->
     <%= favicon_link_tag 'logo/buildings_stroke_100x100.png' %>
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/logo/icons/stroke/apple-touch-icon-57x57.png" />
