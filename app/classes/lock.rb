@@ -32,7 +32,7 @@ class Lock
 
         salt = BCrypt::Engine.generate_salt
         encrypted_password = BCrypt::Engine.hash_secret(params[:password], salt)
-        Credential.create!(
+        credentials = Credential.create!(
         user_id:    user.id,
         salt:       salt,
         password:   encrypted_password,
@@ -40,7 +40,7 @@ class Lock
         email:      ( params[:email].length > 0 ? params[:email] : nil ),
         active:     true
         )
-        user
+        { :user => user, :credentials => credentials }
     end
 
     private

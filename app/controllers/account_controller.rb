@@ -29,8 +29,17 @@ class AccountController < ApplicationController
         @registration_form = Credential.new(parameters)
         if @registration_form.valid?
             lock = Lock.new
-            @user = lock.register_with_credentials parameters, @user, @session, @cookie
-            LoginSession.start @user.id, @session.id, @cookie.id, (parameters[:private_computer] == 1 ? true : false)
+            result = lock.register_with_credentials parameters, @user, @session, @cookie
+            @user = result[:user]
+            # FIXME: wrong number of arguments !
+            LoginSession.start(
+            @user.id,
+            @session.id,
+            @cookie.id,
+            (parameters[:private_computer] == 1 ? true : false),
+            result[:credentials].id,
+            nil
+            )
             if parameters[:email].to_s != ''
                 AccountMailer.send_new_acc_email(parameters[:email], parameters[:username], @user.id).deliver
             end

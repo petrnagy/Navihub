@@ -89,6 +89,7 @@ Locator.prototype = {
     _loadFromBrowser: function() {
         var that = this;
         if (navigator.geolocation) {
+            /* be aware: we are not sessing any timeout for this callbacks... */
             navigator.geolocation.getCurrentPosition(function(response) {
                 try {
                     var data = that.di.mixin.clone(that._envelope);
