@@ -23,7 +23,7 @@
     <ul>
         <li>via email,</li>
         <li>by filling <%= link_to 'feedback', controller: 'feedback' %> (or any other) contact form on this web page,</li>
-        <li>by using <%= link_to 'registration form', controller: 'account', action: 'register' %> or by using any of the available <%= link_to 'social logins', controller: 'account', action: 'social_login' %>,</li>
+        <li>by using <%= link_to 'registration form', controller: 'account', action: 'create' %> or by using any of the available <%= link_to 'social logins', controller: 'account', action: 'login' %>,</li>
         <li>
             <b>TODO: Geolokace, manuální nastavení lokace</b>
         </li>
@@ -51,7 +51,7 @@
     <li>Express any concern you have about our use of your data.</li>
 </ul>
 <p>
-    If you are a <%= link_to 'registered user', controller: 'account', action: 'register' %>, you can also change/remove some of the informations yourself, in the <%= link_to 'account management', controller: 'account', action: 'index' %> section.
+    If you are a <%= link_to 'registered user', controller: 'account', action: 'create' %>, you can also change/remove some of the informations yourself, in the <%= link_to 'account management', controller: 'account', action: 'index' %> section.
 </p>
 
 <h2>Security</h2>
@@ -64,7 +64,7 @@
 
 <h2>Registration</h2>
 <p>
-    In order to use some advanced features of this website, a user must first complete the <%= link_to 'registration form', controller: 'account', action: 'register' %> or <%= link_to 'login via one of the social networks', controller: 'account', action: 'social_login' %>. During registration/login a user is required to give certain information (such as name and email address).
+    In order to use some advanced features of this website, a user must first complete the <%= link_to 'registration form', controller: 'account', action: 'create' %> or <%= link_to 'login via one of the social networks', controller: 'account', action: 'login' %>. During registration/login a user is required to give certain information (such as name and email address).
     This information is used to contact you about the products/services on our site in which you may have been interested, or to identify you in case of any troubles (forgotten password, etc.).
 </p>
 
