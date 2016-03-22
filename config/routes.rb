@@ -54,13 +54,6 @@ Rails.application.routes.draw do
     get 'favorites' => 'favorites#index' # [xss-safe] [csrf-part-safe]
     # sharing
     post 'sharer/email' => 'sharer#email' # [xss-safe] [csrf-part-safe]
-    # static pages
-    get 'privacy-policy' => 'pages#privacy_policy' # [xss-safe] [csrf-part-safe]
-    get 'cookie-policy' => 'pages#cookie_policy' # [xss-safe] [csrf-part-safe]
-    get 'terms-of-use' => 'pages#terms_of_use' # [xss-safe] [csrf-part-safe]
-    get 'data-sources' => 'pages#data_sources' # [xss-safe] [csrf-part-safe]
-    get 'about' => 'pages#about' # [xss-safe] [csrf-part-safe]
-    get 'share' => 'pages#share'
     # logger
     post 'logger/js' => 'logger#js' # [xss-safe] [csrf-part-safe]
 

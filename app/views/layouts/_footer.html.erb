@@ -51,13 +51,13 @@
                     Made with <del>love</del> coffee and sleepless nights by <%= link_to 'Petr Nagy', 'http://www.petrnagy.cz' %>.
                 </p>
                 <p class="text-center small footer-images gray">
-                    <%= link_to 'About', controller: "pages", action: "about" %> ~
+                    <%= link_to 'About', '/pages/about/' %> ~
                     <%= link_to 'Feedback', controller: "feedback", action: "index" %> ~
-                    <%= link_to 'Share', controller: "pages", action: "share" %> ~
-                    <%= link_to 'Terms', controller: "pages", action: "terms_of_use" %> ~
-                    <%= link_to 'Privacy', controller: "pages", action: "privacy_policy" %> ~
-                    <%= link_to 'Cookies', controller: "pages", action: "cookie_policy" %> ~
-                    <%= link_to 'Data Sources', controller: "pages", action: "data_sources" %>
+                    <%= link_to 'Share', '/pages/share/' %> ~
+                    <%= link_to 'Terms', '/pages/terms-of-use/' %> ~
+                    <%= link_to 'Privacy', '/pages/privacy-policy/' %> ~
+                    <%= link_to 'Cookies', '/pages/cookie-policy/' %> ~
+                    <%= link_to 'Data Sources', '/pages/data-sources/' %>
                 </p>
                 <p>
                     <small class="gray footer-version">Version <%= @version %> (build <%= @build %>)</small>
