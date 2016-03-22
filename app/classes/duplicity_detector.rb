@@ -96,29 +96,31 @@ class DuplicityDetector
             end
         end
 
-        l = Logger.new(STDOUT)
-        l.debug '- - - DUPLICITY DETECTOR REPORT - - -'
-        if score > @@duplicity_score_threshold
-            l.debug '____________________ Duplicate detected ! ____________________'
-        else
-            l.debug 'Clean !'
+        if Rails.env.development?
+            l = Logger.new(STDOUT)
+            l.debug '- - - DUPLICITY DETECTOR REPORT - - -'
+            if score > @@duplicity_score_threshold
+                l.debug '____________________ Duplicate detected ! ____________________'
+            else
+                l.debug 'Clean !'
+            end
+            l.debug 'OLD: ' + @old_raw + ', NEW: ' + @current_raw
+            l.debug 'similarity_raw: ' + similarity_raw.to_s
+            l.debug 'similarity_prepared: ' + similarity_prepared.to_s
+            l.debug 'similarity: ' + similarity.to_s
+            l.debug 'similarity_addr: ' + similarity_addr.to_s
+            l.debug 'is_subarray shorter, longer: ' + (is_subarray(shorter, longer).to_s)
+            l.debug 'distance: ' + @distance.to_s
+            l.debug '@term: ' + @term.to_s
+            l.debug '@old_sentence: ' + @old_sentence.to_s
+            l.debug '@current_sentence: ' + @current_sentence.to_s
+            l.debug '@old_raw: ' + @old_raw.to_s
+            l.debug '@current_raw: ' + @current_raw.to_s
+            l.debug '@old_address: ' + @old_address.to_s
+            l.debug '@current_address: ' + @current_address.to_s
+            l.debug '@distance: ' + @distance.to_s
+            l.debug 'FINAL score: ' + score.to_s
         end
-        l.debug 'OLD: ' + @old_raw + ', NEW: ' + @current_raw
-        l.debug 'similarity_raw: ' + similarity_raw.to_s
-        l.debug 'similarity_prepared: ' + similarity_prepared.to_s
-        l.debug 'similarity: ' + similarity.to_s
-        l.debug 'similarity_addr: ' + similarity_addr.to_s
-        l.debug 'is_subarray shorter, longer: ' + (is_subarray(shorter, longer).to_s)
-        l.debug 'distance: ' + @distance.to_s
-        l.debug '@term: ' + @term.to_s
-        l.debug '@old_sentence: ' + @old_sentence.to_s
-        l.debug '@current_sentence: ' + @current_sentence.to_s
-        l.debug '@old_raw: ' + @old_raw.to_s
-        l.debug '@current_raw: ' + @current_raw.to_s
-        l.debug '@old_address: ' + @old_address.to_s
-        l.debug '@current_address: ' + @current_address.to_s
-        l.debug '@distance: ' + @distance.to_s
-        l.debug 'FINAL score: ' + score.to_s
 
 
         score > @@duplicity_score_threshold
