@@ -22,6 +22,11 @@ div.container.footer { padding-top: 30px; }
 
 .footer-col { float: left; display: inline-block; width: 33%; }
 .made-with-love:before { text-decoration: line-through; }
+.build-version, .footer-images { margin-top: 10px; }
+/*.f-love { color: #CA0202; }
+.f-coffee { color: #985305; }
+.f-sleepless { color: blue; }*/
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 

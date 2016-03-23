@@ -14,6 +14,7 @@
             <ul class="nav navbar-nav" id="menu-top">
                 <li><%= link_to 'Search', controller: "search", action: "index" %></li>
                 <li><%= link_to 'Favorites', controller: "favorites", action: "index" %></li>
+                <li class="no-mobile-landscape"><%= link_to 'Blog', '/blog', data: { no_turbolink: true } %></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" id="menu-alt">
                 <li class="dropdown myacc-dropdown">

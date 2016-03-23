@@ -28,3 +28,4 @@ label { color: #525252; font-weight: normal; }
 
 @media only screen and (max-width: 991px) { body > .container { width: 755px; } }
 @media only screen and (max-width: 769px) { body > .container { width: auto; } }
+@media only screen and (max-height: 320px) { .no-mobile-landscape { display: none !important; } }
