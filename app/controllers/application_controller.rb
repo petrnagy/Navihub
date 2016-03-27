@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     def init_html_variables
         # BEWARE! The config is loaded only once, during webserver startup
         @page_lang_cls              = determine_lang
-        @page_robots                = Rails.env.production? ? 'index, follow' : 'noindex, nofollow'
+        @page_robots                = Rails.env.development? ? 'noindex, nofollow' : 'index, follow'
         @device_cls                 = determine_device
         @is_logged_in_cls           = determine_login_status
         @page_name                  = Rails.configuration.app_name
