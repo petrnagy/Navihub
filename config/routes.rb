@@ -57,4 +57,6 @@ Rails.application.routes.draw do
     # logger
     post 'logger/js' => 'logger#js' # [xss-safe] [csrf-part-safe]
 
+    match '*unmatched_route', :to => 'application#raise_not_found!', :via => :all
+
 end
