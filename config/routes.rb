@@ -56,6 +56,9 @@ Rails.application.routes.draw do
     post 'sharer/email' => 'sharer#email' # [xss-safe] [csrf-part-safe]
     # logger
     post 'logger/js' => 'logger#js' # [xss-safe] [csrf-part-safe]
+    # sitemap
+    get '/sitemap.xml' => 'sitemap#main', :format => "xml", :as => :sitemap # [xss-safe] [csrf-safe]
+    get '/app-sitemap.xml' => 'sitemap#app', :format => "xml" # [xss-safe] [csrf-safe]
 
     match '*unmatched_route', :to => 'application#raise_not_found!', :via => :all
 
