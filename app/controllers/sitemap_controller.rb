@@ -26,7 +26,7 @@ class SitemapController < ApplicationController
 
     def init
         @root_url = request.protocol + request.host_with_port
-        @lastmod = Time.now.strftime '%Y-%m-%dT%H:%M:%S%z'
+        @lastmod = Time.now.strftime '%Y-%m-%d'
     end
 
 end
