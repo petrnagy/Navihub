@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     # sitemap
     get '/sitemap.xml' => 'sitemap#main', :format => "xml", :as => :sitemap # [xss-safe] [csrf-safe]
     get '/app-sitemap.xml' => 'sitemap#app', :format => "xml" # [xss-safe] [csrf-safe]
+    get '/robots.txt' => 'sitemap#robots', :format => "txt" # [xss-safe] [csrf-safe]
 
     match '*unmatched_route', :to => 'application#raise_not_found!', :via => :all
 

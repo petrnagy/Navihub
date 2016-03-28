@@ -22,6 +22,10 @@ class SitemapController < ApplicationController
         return render 'sitemap/app-sitemap.xml.erb'
     end
 
+    def robots
+        return render 'sitemap/robots.txt.erb'
+    end
+
     protected
 
     def init
