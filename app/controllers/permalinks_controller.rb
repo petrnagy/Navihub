@@ -35,7 +35,7 @@ class PermalinksController < ApplicationController
             permalink.user_id = @user.id
             permalink.save
         end
-
+        Sitemap.add('/permalink/' + key, params[:controller])
         return render json: { status: 'OK', id: key }
     end
 

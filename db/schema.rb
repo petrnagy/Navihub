@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312174150) do
+ActiveRecord::Schema.define(version: 20160404120937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -262,6 +262,16 @@ ActiveRecord::Schema.define(version: 20160312174150) do
   add_index "sessions", ["cookie_id"], name: "index_sessions_on_cookie_id", using: :btree
   add_index "sessions", ["sessid"], name: "index_sessions_on_sessid", unique: true, using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
+
+  create_table "sitemaps", force: true do |t|
+    t.string   "url"
+    t.string   "controller"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sitemaps", ["controller"], name: "index_sitemaps_on_controller", using: :btree
+  add_index "sitemaps", ["url"], name: "index_sitemaps_on_url", unique: true, using: :btree
 
   create_table "twitter_sessions", force: true do |t|
     t.integer  "user_id"

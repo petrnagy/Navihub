@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <% @routes.each do |route| %>
+    <url>
+        <loc><%= @root_url + route[:path] %></loc>
+        <lastmod><%= route[:lastmod].to_s %></lastmod>
+        <changefreq><%= route[:changefreq].to_s %></changefreq>
+        <priority><%= route[:priority].to_s %></priority>
+    </url>
+    <% end %>
+</urlset>

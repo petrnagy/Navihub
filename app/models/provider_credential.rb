@@ -5,7 +5,7 @@ class ProviderCredential < ActiveRecord::Base
     belongs_to :cookie
 
     def self.find_or_create_from_auth_hash auth_hash, user_id, session_id, cookie_id
-        row = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
+        row = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create!
 
         row.user_id = user_id if row.user_id == nil
         row.session_id = session_id if row.session_id == nil
