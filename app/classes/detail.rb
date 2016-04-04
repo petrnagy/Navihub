@@ -24,7 +24,10 @@ class Detail
                 VenueDetailCache.save @origin, @id, data
             end
             mapper = "#{@origin.capitalize}Mapper".constantize.new data
-            return postprocess mapper.map_detail(@location)
+            mapped = postprocess mapper.map_detail(@location)
+            # FIX: Nokia detail JSON does not contains full ID
+            mapped[:id] = @id if 'nokia' == @origin
+            mapped
         else
             raise UnknownEngine, 'debug: ' + origin.to_s
         end
