@@ -16,6 +16,8 @@
     <%= render 'detail/search' %>
 
     <%= render 'detail/origin' %>
-    <%= render 'detail/permalink' %>
 
+    <% unless 'permalinks' == controller_name %>
+        <%= render 'detail/permalink' %>
+    <% end %>
 </div>
