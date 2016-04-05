@@ -126,7 +126,7 @@ class SearchController < ApplicationController
     def process_search parameters
         ts_start = Time.now
         parameters['is_xhr'] = request.xhr?
-        search = Search.new parameters, @location, @user
+        search = Search.new parameters, create_search_location, @user
         results = search.search
         @tpl_vars[:total_cnt] = search.total_cnt
         @tpl_vars[:total_time] = (Time.now - ts_start).round(2)
@@ -211,6 +211,23 @@ class SearchController < ApplicationController
             raise 'There was not the same count of origins as destinations'
         end
         params.permit(:origins => [], :destinations => [])
+    end
+
+    def create_search_location
+        if params.has_key?('lat') and params.has_key?('lng')
+            lat = params[:lat].to_f
+            lng = params[:lng].to_f
+            if Location.possible lat, lng
+                return Location.new(
+                user_id:        @user.id,
+                latitude:       lat,
+                longitude:      lng,
+                lock:           false,
+                active:         true
+                )
+            end
+        end
+        @location
     end
 
 end
