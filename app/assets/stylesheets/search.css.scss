@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.result-box h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0px; }
-.result-box h3 img { max-height: 20px; max-width: 50px; margin-top: -1px; }
+.result-box  h2.h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0px; }
+.result-box  h2.h3 img { max-height: 20px; max-width: 50px; margin-top: -1px; }
 .result-box { min-height: 315px; }
-.result-box h3 a.namelink, .result-box h3 a.namelink:visited,
-.result-box h3 a.namelink:active, .result-box h3 a.namelink:hover { color: rgb(62, 63, 58); text-decoration: none; }
-// .result-box h3 a.namelink[href]:hover { color: gray; }
+.result-box  h2.h3 a.namelink, .result-box  h2.h3 a.namelink:visited,
+.result-box  h2.h3 a.namelink:active, .result-box  h2.h3 a.namelink:hover { color: rgb(62, 63, 58); text-decoration: none; }
+// .result-box  h2.h3 a.namelink[href]:hover { color: gray; }
 
 /*.result-box:hover { background-color: #F7F7F7; }*/
 /*.result-box.active, .result-detail, .result-box.active:hover { background-color: #FFF2C8; }*/
@@ -233,7 +233,7 @@ background-color: rgb(246,246,246);
     .list-open-detail-eye:focus { color: black; }
 }
 @media only screen and (max-width: 567px) {
-    #search-results h2 { font-size: 25px; }
+    #search-results h1 { font-size: 25px; }
     .radius-wrapper, .sort-wrapper { width: 50%; }
     .col-hr { margin-top: 180px; }
 }
@@ -243,12 +243,12 @@ background-color: rgb(246,246,246);
 
 @media only screen and (max-width: 405px) {
     .radius-wrapper, .sort-wrapper { width: 100%; }
-    #search-results h2 { font-size: 20px; }
+    #search-results h1 { font-size: 20px; }
     .search-info { font-size: 13px; }
     .geometry-wrapper, .distance-wrapper, .labels-wrapper { font-size: 12px; }
     #search-results .geometry-wrapper i, #search-results .distance-wrapper i, #search-results .labels-wrapper i { font-size: 20px; position: relative; top: -2px; }
     .geometry-wrapper .label, .distance-wrapper .label, .labels-wrapper .label { font-size: 10px; }
-    #search-results h3 { font-size: 20px; }
+    #search-results  h2.h3 { font-size: 20px; }
     .result-box { width: 250px; }
     .result-box .map-wrapper img { width: 250px; height: 73.5294118px }
     .result-box div[class^=col-lg] { padding: 0px; }
