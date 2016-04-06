@@ -1,6 +1,6 @@
 <% if 1 != @data[:data][:params][:append].to_i %>
 <div class="col-lg-12 search-info">
-    <h1 class="h2">Results for '<%= @data[:data][:input_params][:term] %>' <span class="results-near">near '<%= pretty_loc @location %>'</span></h1>
+    <h1 class="h2">Results for '<%= @data[:data][:input_params][:term] %>' <span class="results-near">near '<%= pretty_loc @request_location %>'</span></h1>
     <% if @data[:data][:total_cnt] > @data[:data][:params][:step] %>
       <p>Showing first <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> from <%= (@data[:data][:total_cnt] > @data[:data][:params][:step] ? 'approximately' : '') %> <b><%= @data[:data][:total_cnt] %></b> results. Search completed in <%= @data[:data][:total_time] %> s.</p>
     <% else %>

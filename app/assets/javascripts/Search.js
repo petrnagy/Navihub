@@ -117,7 +117,7 @@ Search.prototype = {
         } else {
             loc = that.di.locator.getLocation();
         }
-        var ll = loc.lat.toFixed(8).toString() + ',' + loc.lng.toFixed(8).toString();
+        var ll = loc.lat. toFixed(7).toString() + ',' + loc.lng. toFixed(7).toString();
         url += '/@/' + ll;
         if ( ascii ) {
             url = url.replace('/%%term%%', '/' + values.term);

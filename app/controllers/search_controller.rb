@@ -15,7 +15,7 @@ class SearchController < ApplicationController
     def find
         parameters = find_params
         @tpl_vars = {} # is filled from several methods
-        @request_params = generate_request_params_json parameters, @location
+        @request_params = generate_request_params_json parameters, @request_location
         @results = process_search parameters
         init_template_vars parameters
         find_rewrite_html_variables parameters
@@ -134,7 +134,7 @@ class SearchController < ApplicationController
         @tpl_vars[:total_time] = (Time.now - ts_start).round(2)
         @tpl_vars[:params] = search.params
         @tpl_vars[:results_from_cache] = search.results_from_cache
-        unless results.length == 0 then
+        unless 0 == results.length then
             names = ''
             results.each do |result|
                 names = names + ', ' unless names.length == 0

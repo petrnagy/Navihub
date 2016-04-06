@@ -21,10 +21,17 @@ module ApplicationHelper
                 break
             end
         end
-
         if no_txt
             #o += location['latitude'].round(2).to_s + ', ' + location['longitude'].round(2).to_s
-            o += coords_to_dms location['latitude'], location['longitude']
+            similiar = Location.where(
+                latitude: location.latitude,
+                longitude: location.longitude,
+            ).where.not(city: nil).order(id: :desc).first
+            if similiar != nil
+                o = pretty_loc similiar
+            else
+                o += coords_to_dms location['latitude'], location['longitude']
+            end
         else
             %w{street2 street1 city2 city country}.each do |interest|
                 if location[interest] != nil && location[interest].length > 0

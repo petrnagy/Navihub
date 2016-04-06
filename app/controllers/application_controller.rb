@@ -205,9 +205,16 @@ class ApplicationController < ActionController::Base
                 )
             end
         end
-        if nil == @location
+        
+        if @location == nil && @request_location != nil
             @location = @request_location
             @location.save
+        elsif @request_location == nil && @location != nil
+            @request_location = @location
+        elsif @request_location != nil && @location != nil
+            if @request_location.latitude == @location.latitude && @request_location.longitude == @location.longitude
+                @request_location = @location
+            end
         end
     end
 
@@ -219,18 +226,18 @@ class ApplicationController < ActionController::Base
         return if url == '/' + controller.to_s
 
         case controller
-            when 'search'
-                if url =~ /^\/#{controller}.+/
-                    save = true
-                    if request.fullpath =~ /\?term=.+/
-                        url = url + '?term=' + params[:term]
-                    end
-                end
-            when 'detail'
+        when 'search'
+            if url =~ /^\/#{controller}.+/
                 save = true
-                if request.fullpath =~ /\?id=.+/
-                    url = request.fullpath
+                if request.fullpath =~ /\?term=.+/
+                    url = url + '?term=' + params[:term]
                 end
+            end
+        when 'detail'
+            save = true
+            if request.fullpath =~ /\?id=.+/
+                url = request.fullpath
+            end
         end
 
         Sitemap.add(url, controller) if save
