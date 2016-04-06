@@ -132,6 +132,16 @@ class SearchController < ApplicationController
         @tpl_vars[:total_time] = (Time.now - ts_start).round(2)
         @tpl_vars[:params] = search.params
         @tpl_vars[:results_from_cache] = search.results_from_cache
+        unless results.length == 0 then
+            names = ''
+            results.each do |result|
+                names = names + ', ' unless names.length == 0
+                names = names + result[:name]
+            end
+            @page_desc = "Search results for '" + parameters['term'] + "': " + names
+            @page_keywords = names
+        end
+
         results
     end
 
@@ -140,7 +150,7 @@ class SearchController < ApplicationController
     end
 
     def find_rewrite_html_variables parameters
-        @page_title = "Searching '" + parameters['term']
+        @page_title = "Search results for '" + parameters['term'] + "'"
     end
 
     def index_rewrite_html_variables
