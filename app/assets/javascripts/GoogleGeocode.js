@@ -3,17 +3,17 @@
  * @param {String} address
  */
 GoogleGeocode = function(address) {
-    this._apiUrl = 'http://maps.google.com/maps/api/geocode/json?address=';
+    this._apiUrl = 'http://maps.google.com/maps/api/geocode/json?language=en&address=';
     this._address = address;
     this._init();
 } // end func
-    
+
 GoogleGeocode.prototype = {
-    
+
     _init: function() {
-        
+
     },
-    
+
     /**
      * @param {Function} callback
      * @returns {void}
