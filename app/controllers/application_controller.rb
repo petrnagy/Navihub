@@ -79,6 +79,7 @@ class ApplicationController < ActionController::Base
         @logged_in ? 'logged-in' : 'not-logged-in'
     end
 
+    # sets @credentials, @session, @cookie and @logged_in
     def init_user
         logged_in    = false
         user         = nil
@@ -152,6 +153,7 @@ class ApplicationController < ActionController::Base
         @logged_in      = logged_in
     end
 
+    # creates and returns session instance
     def init_session
         if ! session.id
             # force session init, @see http://stackoverflow.com/questions/14665275/how-force-that-session-is-loaded
@@ -168,6 +170,7 @@ class ApplicationController < ActionController::Base
         sess
     end
 
+    # creates and returns cookie instance
     def init_cookie
         create = false
         if cookies[:navihub_id] == nil
@@ -183,24 +186,28 @@ class ApplicationController < ActionController::Base
         cookie
     end
 
+    # sets @location and @request_location
     def init_location
         @location = Location.get_user_loc @user.id
+        @request_location = nil
         # if I open a link from anyone else, i might not have any location assigned yet...
         # ...so we will try to set it from url params
-        if @location == nil && ( params.has_key?('lat') && params.has_key?('lng') )
+        if params.has_key?('lat') && params.has_key?('lng')
             lat = params['lat'].to_f
             lng = params['lng'].to_f
             if Location.possible lat, lng
-                loc = Location.create(
+                @request_location = Location.new(
                 user_id:        @user.id,
                 latitude:       lat,
                 longitude:      lng,
                 lock:           false,
                 active:         true
                 )
-                loc.save
-                @location = loc
             end
+        end
+        if nil == @location
+            @location = @request_location
+            @location.save
         end
     end
 

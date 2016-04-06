@@ -42,9 +42,9 @@ Search.prototype = {
         });
     }, // end method
 
-    ajaxSubmit: function(append) {
+    ajaxSubmit: function(append, values) {
         var that = this;
-        var values = that.getValues();
+        values = ('object' == typeof values ? values : that.getValues());
         if (values.term.length) {
             var url = that.buildUrl(values);
             if (url) {
@@ -111,7 +111,12 @@ Search.prototype = {
                 ascii = false;
             } // end if
         });
-        var loc = that.di.locator.getLocation();
+        var loc = null;
+        if ( values.loc ) {
+            loc = values.loc;
+        } else {
+            loc = that.di.locator.getLocation();
+        }
         var ll = loc.lat.toFixed(8).toString() + ',' + loc.lng.toFixed(8).toString();
         url += '/@/' + ll;
         if ( ascii ) {

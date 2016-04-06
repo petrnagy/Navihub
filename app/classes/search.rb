@@ -47,9 +47,15 @@ class Search
     end
 
     def search
-        key = Digest::MD5.hexdigest([@params, @engines, @location, @user.id].to_json)
-        cached = ApiCache.get_from_cache key
 
+        key = Digest::MD5.hexdigest([
+            @params['term'], @params['radius'], @engines,
+            @location.latitude.to_s, @location.longitude.to_s,
+            (@user.favorites ? @user.id : nil)
+        ].to_json)
+        cached = ApiCache.get_from_cache key
+        l = Logger.new(STDOUT)
+        l.debug key
         if 0 === @params[:term].length
             return []
         elsif cached != nil
@@ -69,7 +75,7 @@ class Search
         unless results.length == 0 then
             results = filter preprocess map flatten results
             @total_cnt = results.length
-            results = postprocess limit(order(results), @params[:limit], @params[:offset])
+            results = postprocess limit(order(results), @params[:limit], @params[:offset]) unless 0 == @total_cnt
         end
         @results = results
     end
@@ -83,7 +89,13 @@ class Search
             engines[name] = "#{name.capitalize}Engine".constantize.new @params, @location
             engines[name].preflight
             threads << Thread.new do
-                responses[name] = engines[name].download
+                begin
+                    responses[name] = engines[name].download
+                rescue => ex
+                    l = Logger.new(STDERR)
+                    l.error 'Rescued: engine ' + name + ' probably timeouted, debug: ' + ex.to_s
+                    responses[name] = nil
+                end
             end
         end
         threads.each { |t| t.abort_on_exception = false; t.join }

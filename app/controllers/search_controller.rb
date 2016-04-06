@@ -2,6 +2,7 @@ class SearchController < ApplicationController
 
     include DetailHelper
     require 'location'
+    require 'json'
 
     public
 
@@ -14,6 +15,7 @@ class SearchController < ApplicationController
     def find
         parameters = find_params
         @tpl_vars = {} # is filled from several methods
+        @request_params = generate_request_params_json parameters, @location
         @results = process_search parameters
         init_template_vars parameters
         find_rewrite_html_variables parameters
@@ -238,6 +240,19 @@ class SearchController < ApplicationController
             end
         end
         @location
+    end
+
+    def generate_request_params_json parameters, location
+        JSON.dump({
+            :term   => parameters['term'],
+            :sort   => parameters['order'],
+            :radius => parameters['radius'].to_i,
+            :offset => parameters['offset'].to_i + parameters['step'].to_i,
+            :loc    => {
+                :lat => location.latitude.to_f,
+                :lng => location.longitude.to_f
+            }
+        })
     end
 
 end

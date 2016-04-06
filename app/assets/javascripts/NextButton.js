@@ -20,7 +20,8 @@ NextButton.prototype = {
       var offset = parseInt($("#yield .result-box").length, 10);
       if ( ! isNaN(offset) ) {
         that.search.$form.find("[name='search[offset]']").val(offset);
-        that.search.ajaxSubmit(true);
+        var values = $.extend(JSON.parse($(this).attr('data-params')), { offset: offset });
+        that.search.ajaxSubmit(true, values);
         $(this).prop('disabled', true);
       } else {
 
