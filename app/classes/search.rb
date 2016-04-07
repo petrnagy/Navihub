@@ -54,8 +54,7 @@ class Search
             (@user.favorites ? @user.id : nil)
         ].to_json)
         cached = ApiCache.get_from_cache key
-        l = Logger.new(STDOUT)
-        l.debug key
+        
         if 0 === @params[:term].length
             return []
         elsif cached != nil

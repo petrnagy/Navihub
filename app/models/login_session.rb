@@ -2,6 +2,8 @@ class LoginSession < ActiveRecord::Base
     belongs_to :user
     belongs_to :cookie
     belongs_to :session
+    belongs_to :credential
+    belongs_to :provider_credential
 
     def self.exist_for_user user_id, session_id, cookie_id
         row = self.get_for_user user_id, session_id, cookie_id
@@ -43,8 +45,7 @@ class LoginSession < ActiveRecord::Base
     private
 
     def self.get_for_user user_id, session_id, cookie_id
-        self.select('id, extended, valid_to, updated_at')
-        .where(user_id: user_id)
+        self.where(user_id: user_id)
         .where('session_id = ? OR cookie_id = ?', session_id, cookie_id)
         .where('valid_to >= ? OR valid_to IS NULL', DateTime.now)
         .where('valid_from <= ? OR valid_from IS NULL', DateTime.now)

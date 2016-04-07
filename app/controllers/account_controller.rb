@@ -111,6 +111,8 @@ class AccountController < ApplicationController
         if logged_in
             LoginSession.destroy_for_user @user.id, @session.id, @cookie.id
             #ProviderCredential.destroy_for_user @user.id, @session.id, @cookie.id
+            @session.user_id = nil; @session.save
+            @cookie.user_id = nil; @cookie.save
             flash[:logout_msg] = { :type => 'info', :text => 'You have been logged out. See you soon...?' }
         end
         redirect_to controller: 'homepage'
@@ -138,17 +140,11 @@ class AccountController < ApplicationController
             return redirect_to controller: 'homepage'
         end
 
-        credentials = ProviderCredential.find_or_create_from_auth_hash(
-            auth_hash,
-            @user.id,
-            @session.id,
-            @cookie.id
-        )
+        credentials = ProviderCredential.find_or_create_from_auth_hash(auth_hash, @user.id)
         @user.id = credentials.user_id
         @session.user_id = @user.id; @session.save
         @cookie.user_id = @user.id; @cookie.save
         LoginSession.start @user.id, @session.id, @cookie.id, true, nil, credentials.id
-
         flash[:provider_msg] = { :type => 'success', :text => 'You are now logged in via ' + auth_hash.provider.capitalize + ' as <b>' + credentials.name.to_s + '</b>, enjoy !' }
         redirect_to controller: 'homepage'
     end

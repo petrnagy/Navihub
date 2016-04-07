@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404120937) do
+ActiveRecord::Schema.define(version: 20160407110054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,22 +79,6 @@ ActiveRecord::Schema.define(version: 20160404120937) do
     t.datetime "updated_at"
   end
 
-  create_table "facebook_sessions", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "valid_to"
-    t.datetime "expires"
-    t.datetime "issued"
-    t.binary   "session_ser"
-    t.binary   "info_ser"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "facebook_sessions", ["active"], name: "index_facebook_sessions_on_active", using: :btree
-  add_index "facebook_sessions", ["user_id"], name: "index_facebook_sessions_on_user_id", using: :btree
-  add_index "facebook_sessions", ["valid_to"], name: "index_facebook_sessions_on_valid_to", using: :btree
-
   create_table "favorites", force: true do |t|
     t.string   "venue_origin"
     t.string   "venue_id"
@@ -130,22 +114,6 @@ ActiveRecord::Schema.define(version: 20160404120937) do
 
   add_index "geocode_caches", ["addr"], name: "index_geocode_caches_on_addr", unique: true, using: :btree
   add_index "geocode_caches", ["latitude", "longitude"], name: "index_geocode_caches_on_latitude_and_longitude", using: :btree
-
-  create_table "google_sessions", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "valid_to"
-    t.datetime "expires"
-    t.datetime "issued"
-    t.text     "token_json"
-    t.binary   "info_ser"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "google_sessions", ["active"], name: "index_google_sessions_on_active", using: :btree
-  add_index "google_sessions", ["user_id"], name: "index_google_sessions_on_user_id", using: :btree
-  add_index "google_sessions", ["valid_to"], name: "index_google_sessions_on_valid_to", using: :btree
 
   create_table "google_static_map_caches", force: true do |t|
     t.string   "url",                     limit: 1000
@@ -230,8 +198,6 @@ ActiveRecord::Schema.define(version: 20160404120937) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "session_id"
-    t.integer  "cookie_id"
     t.boolean  "active"
   end
 
@@ -272,21 +238,6 @@ ActiveRecord::Schema.define(version: 20160404120937) do
 
   add_index "sitemaps", ["controller"], name: "index_sitemaps_on_controller", using: :btree
   add_index "sitemaps", ["url"], name: "index_sitemaps_on_url", unique: true, using: :btree
-
-  create_table "twitter_sessions", force: true do |t|
-    t.integer  "user_id"
-    t.string   "token"
-    t.string   "token_secret"
-    t.datetime "valid_to"
-    t.binary   "conn_ser"
-    t.binary   "credentials_ser"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "twitter_sessions", ["active"], name: "index_twitter_sessions_on_active", using: :btree
-  add_index "twitter_sessions", ["user_id"], name: "index_twitter_sessions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "id_fb"

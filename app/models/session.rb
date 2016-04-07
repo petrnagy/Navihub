@@ -1,6 +1,7 @@
 class Session < ActiveRecord::Base
   belongs_to :user
   belongs_to :cookie
+  has_many :login_sessions
 
   def self.find_user_sess session_id
     return Session.find_by(sessid: session_id, active: true)

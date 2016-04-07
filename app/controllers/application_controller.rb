@@ -123,11 +123,12 @@ class ApplicationController < ActionController::Base
                     sess.user_id = @user.id
                     cookie.user_id = @user.id
                 end
-            elsif ProviderCredential.exist_for_user user.id
+            elsif LoginSession.exist_for_user user.id, sess.id, cookie.id
                 # current user was/is logged using fb|tw|g+
-                if LoginSession.exist_for_user user.id, sess.id, cookie.id
+                session = LoginSession.get_for_user user.id, sess.id, cookie.id
+                if session.provider_credentials_id != nil
                     # provider login session is active, user is logged in
-                    credentials = ProviderCredential.get_for_user user.id, sess.id, cookie.id
+                    credentials = ProviderCredential.get session.provider_credentials_id
                     logged_in = true
                     @user = user
                     LoginSession.extend_for_user user.id, sess.id, cookie.id
@@ -205,7 +206,7 @@ class ApplicationController < ActionController::Base
                 )
             end
         end
-        
+
         if @location == nil && @request_location != nil
             @location = @request_location
             @location.save
