@@ -29,7 +29,7 @@
                             <%= link_to '<i class="fa fa-user fa--txt"></i> Manage account'.html_safe, {controller: "account", action: 'manage'}, class: 'acc-manage' %>
                         </li>
                         <li>
-                            <%= link_to '<i class="fa fa-sign-out fa--txt"></i> Log me out'.html_safe, {controller: "account", action: 'logout'}, class: 'acc-logout' %>
+                            <%= link_to '<i class="fa fa-sign-out fa--txt"></i> Log me out'.html_safe, {controller: "account", action: 'logout'}, class: 'acc-logout', data: { no_turbolink: true } %>
                         </li>
                         <% else %>
                         <li>

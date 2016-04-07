@@ -34,7 +34,7 @@
         ~ <%= link_to 'Change or add e-mail address', controller: 'account', action: 'update' %><br />
         ~ <%= link_to 'Change password', controller: 'account', action: 'update' %><br />
     <% end %>
-    ~ <%= link_to 'Logout', controller: 'account', action: 'logout' %><br/>
+    ~ <%= link_to 'Logout', controller: 'account', action: 'logout', data: { no_turbolink: true } %><br/>
     <br/>
     ~ <small><%= link_to 'I want to close my account', controller: 'account', action: 'close' %></small>
 </p>
