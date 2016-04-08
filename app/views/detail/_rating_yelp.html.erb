@@ -14,7 +14,6 @@
             <% else %>
                 <% img_url = img_tpl.gsub img_key, @data[:detail][:rating].floor.to_i.to_s + '-5' %>
             <% end %>
-            <%= image_tag( img_url, class: "rating-icon", onload: "this.width/=2;this.onload=null;") %>
 
             <% for i in (5).downto(@data[:detail][:rating].ceil.to_i+1) %>
                 <% img_url = img_tpl.gsub img_key, '0' %>
