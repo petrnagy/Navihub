@@ -272,3 +272,7 @@ background-color: rgb(246,246,246);
 @media only screen and (max-height: 500px) {
     #search-input-wrapper { background: none; }
 }
+
+@media only screen and (min-width: 992px) {
+    body.c-search.a-recent #yield { width: 870px; margin-left: auto; margin-right: auto; }
+}

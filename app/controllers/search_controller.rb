@@ -34,12 +34,16 @@ class SearchController < ApplicationController
     end
 
     def recent
-        step = 20
-        page = recent_params[:page]
-        cnt = Sitemap.where(controller: 'search').count
+        @step = 20
+        @page = recent_params[:page]
+        offset = (@page - 1) * @step
+        @cnt = Sitemap.where(controller: 'search').count
         @links = []
-        Sitemap.where(controller: 'search').each do |row|
-            @links << { path: URI::encode(row.url), priority: 0.5, changefreq: 'daily', lastmod: row.updated_at.strftime(FORMAT) }
+        Sitemap.where(controller: 'search').offset(offset).limit(@step).order('id DESC').each do |row|
+            @links << { path: URI::encode(row.url), title: unless row.page_title == nil then row.page_title else row.url end }
+        end unless @cnt == 0
+        if @page != 1 and @links.count == 0
+            redirect_to action: 'recent'
         end
     end
 
@@ -238,7 +242,7 @@ class SearchController < ApplicationController
     end
 
     def recent_params
-        if nil == params[:page]
+        if nil == params[:page] || params[:page].to_i <= 0
             params[:page] = 1
         end
         params[:page] = params[:page].to_i

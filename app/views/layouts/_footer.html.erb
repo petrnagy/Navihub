@@ -57,7 +57,8 @@
                     <%= link_to 'Terms', '/pages/terms-of-use', data: { no_turbolink: true } %> ~
                     <%= link_to 'Privacy', '/pages/privacy-policy', data: { no_turbolink: true } %> ~
                     <%= link_to 'Cookies', '/pages/cookie-policy', data: { no_turbolink: true } %> ~
-                    <%= link_to 'Data Sources', '/pages/data-sources', data: { no_turbolink: true } %>
+                    <%= link_to 'Data Sources', '/pages/data-sources', data: { no_turbolink: true } %> ~
+                    <%= link_to 'Recent Searches', controller: 'search', action: 'recent' %>
                 </p>
                 <p class="build-version">
                     <small class="gray footer-version">Version <%= @version %> (build <%= @build %>)</small>
