@@ -58,7 +58,11 @@
                     <%= link_to 'Privacy', '/pages/privacy-policy', data: { no_turbolink: true } %> ~
                     <%= link_to 'Cookies', '/pages/cookie-policy', data: { no_turbolink: true } %> ~
                     <%= link_to 'Data Sources', '/pages/data-sources', data: { no_turbolink: true } %> ~
-                    <%= link_to 'Recent Searches', controller: 'search', action: 'recent' %>
+                </p>
+                <p class="text-center small footer-images gray">
+                    <%= link_to 'Recently searched', controller: 'search', action: 'recent' %> ~
+                    <%= link_to 'Latest details', controller: 'detail', action: 'recent' %> ~
+                    <%= link_to 'Recent permalinks', controller: 'permalink', action: 'recent' %>
                 </p>
                 <p class="build-version">
                     <small class="gray footer-version">Version <%= @version %> (build <%= @build %>)</small>

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
     get 'detail/recent(/:page)' => 'detail#recent'
     # permalinks
+    get 'permalink/recent(/:page)' => 'permalink#recent'
     get 'permalink/:permalink_id' => 'permalink#show' # [xss-safe] [csrf-part-safe]
     put 'setpermalink' => 'permalink#create' # [xss-safe] [csrf-part-safe]
     # search

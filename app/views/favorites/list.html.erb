@@ -12,6 +12,7 @@
       <% @data[:results].each do |result| %>
       <% i = i + 1; %>
       <div class="col-lg-4 result-box origin-<%= result[:origin] %>" data-result-json="<%= result[:json] %>" id="<%= Digest::MD5.hexdigest result[:json] %>">
+          <%= render 'search/result_hovers', :result => result %>
           <%= render 'search/result_header', :result => result %>
           <%= render 'search/result_map', :result => result %>
           <%= render 'search/result_location', :result => result %>

@@ -8,6 +8,7 @@ class PermalinkController < ApplicationController
     end
 
     require 'digest/md5'
+    include RecentMixin
 
     def create
         raise NotXhrRequest unless request.xhr?
