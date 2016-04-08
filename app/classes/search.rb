@@ -49,12 +49,12 @@ class Search
     def search
 
         key = Digest::MD5.hexdigest([
-            @params['term'], @params['radius'], @engines,
+            @params[:term].to_s, @params[:radius].to_s, @engines,
             @location.latitude.to_s, @location.longitude.to_s,
             (@user.favorites ? @user.id : nil)
         ].to_json)
         cached = ApiCache.get_from_cache key
-        
+
         if 0 === @params[:term].length
             return []
         elsif cached != nil
