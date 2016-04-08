@@ -2,6 +2,7 @@ module RecentMixin
 
     def recent
         controller = params[:controller]
+        @controller = controller
         @step = 20
         @page = recent_params[:page]
         offset = (@page - 1) * @step
