@@ -1,4 +1,4 @@
-ul.recent-list { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+ul.recent-list li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 @media only screen and (min-width: 992px) {
     body.c-search.a-recent #yield, body.c-detail.a-recent #yield, body.c-permalink.a-recent #yield {
