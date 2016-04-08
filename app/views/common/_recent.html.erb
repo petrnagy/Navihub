@@ -1,6 +1,6 @@
 <p>Showing page <strong><%= @page %></strong> from <strong><%= (@cnt.to_f / @step.to_f).ceil %></strong>.</p>
 <hr>
-<ul>
+<ul class="recent-list">
     <% @links.each do |link| %>
     <li>
         <a href="<%= link[:path] %>"><%= link[:title] %></a>

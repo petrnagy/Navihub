@@ -30,9 +30,3 @@ label { color: #525252; font-weight: normal; }
 @media only screen and (max-width: 991px) { body > .container { width: 755px; } }
 @media only screen and (max-width: 769px) { body > .container { width: auto; } }
 @media only screen and (max-height: 320px) { .no-mobile-landscape { display: none !important; } }
-
-@media only screen and (min-width: 992px) {
-    body.c-search.a-recent #yield, body.c-detail.a-recent #yield, body.c-permalink.a-recent #yield {
-        width: 870px; margin-left: auto; margin-right: auto;
-    }
-}
