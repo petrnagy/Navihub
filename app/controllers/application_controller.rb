@@ -46,7 +46,6 @@ class ApplicationController < ActionController::Base
         init_user
         init_location
         init_html_variables
-        extend_sitemap
     end
 
     def init_html_variables
@@ -217,31 +216,6 @@ class ApplicationController < ActionController::Base
                 @request_location = @location
             end
         end
-    end
-
-    def extend_sitemap
-        url = request.path
-        controller = params[:controller]
-        save = false
-        return unless %w{search detail}.include? controller
-        return if url == '/' + controller.to_s
-
-        case controller
-        when 'search'
-            if url =~ /^\/#{controller}.+/
-                save = true
-                if request.fullpath =~ /\?term=.+/
-                    url = url + '?term=' + params[:term]
-                end
-            end
-        when 'detail'
-            save = true
-            if request.fullpath =~ /\?id=.+/
-                url = request.fullpath
-            end
-        end
-
-        Sitemap.add(url, controller) if save
     end
 
 end

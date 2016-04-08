@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407110054) do
+ActiveRecord::Schema.define(version: 20160408082727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,10 +234,11 @@ ActiveRecord::Schema.define(version: 20160407110054) do
     t.string   "controller"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "page_title"
   end
 
   add_index "sitemaps", ["controller"], name: "index_sitemaps_on_controller", using: :btree
-  add_index "sitemaps", ["url"], name: "index_sitemaps_on_url", unique: true, using: :btree
+  add_index "sitemaps", ["url", "page_title"], name: "index_sitemaps_on_url_and_page_title", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "id_fb"

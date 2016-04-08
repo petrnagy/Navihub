@@ -35,7 +35,7 @@ class PermalinksController < ApplicationController
             permalink.user_id = @user.id
             permalink.save
         end
-        Sitemap.add('/permalink/' + key, params[:controller])
+        Sitemap.add('/permalink/' + key, params[:controller], data[:name])
         return render json: { status: 'OK', id: key }
     end
 
@@ -48,6 +48,10 @@ class PermalinksController < ApplicationController
             return render 'detail/detail'
         else render 'empty', :status => 404
         end
+    end
+
+    def list
+
     end
 
     private

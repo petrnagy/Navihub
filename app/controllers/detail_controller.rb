@@ -4,6 +4,7 @@ class DetailController < ApplicationController
         parameters = index_params
         @data = load_detail parameters[:origin], parameters[:id]
         rewrite_html_variables
+        extend_sitemap
         if @data
             if request.xhr?
                 return render json: @data
@@ -32,6 +33,14 @@ class DetailController < ApplicationController
             params[required] = Mixin.sanitize(params[required])
         end
         params.permit(:origin, :id)
+    end
+
+    def extend_sitemap
+        url = request.path
+        if request.fullpath =~ /\?id=.+/
+            url = request.fullpath
+        end
+        Sitemap.add(url, params[:controller], @data[:name])
     end
 
 end

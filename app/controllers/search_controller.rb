@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
 
     include DetailHelper
+    include ApplicationHelper
     require 'location'
     require 'json'
 
@@ -23,12 +24,23 @@ class SearchController < ApplicationController
             tpl = ( request.xhr? ? '_' : '' ) + 'empty'
             render tpl, :layout => ! request.xhr?
         else
+            extend_sitemap
             @data = {:results => @results, :search => @search, :data => @tpl_vars}
             render '_list_find', :layout => false if request.xhr?
         end
     end
 
     def empty
+    end
+
+    def recent
+        step = 20
+        page = recent_params[:page]
+        cnt = Sitemap.where(controller: 'search').count
+        @links = []
+        Sitemap.where(controller: 'search').each do |row|
+            @links << { path: URI::encode(row.url), priority: 0.5, changefreq: 'daily', lastmod: row.updated_at.strftime(FORMAT) }
+        end
     end
 
     def geocode
@@ -152,7 +164,7 @@ class SearchController < ApplicationController
     end
 
     def find_rewrite_html_variables parameters
-        @page_title = "Search results for '" + parameters['term'] + "'"
+        @page_title = "Results for '" + parameters['term'] + "' near " + pretty_loc(@request_location)
     end
 
     def index_rewrite_html_variables
@@ -225,6 +237,14 @@ class SearchController < ApplicationController
         params.permit(:origins => [], :destinations => [])
     end
 
+    def recent_params
+        if nil == params[:page]
+            params[:page] = 1
+        end
+        params[:page] = params[:page].to_i
+        params.permit :page
+    end
+
     def create_search_location
         if params.has_key?('lat') and params.has_key?('lng')
             lat = params[:lat].to_f
@@ -253,6 +273,14 @@ class SearchController < ApplicationController
                 :lng => location.longitude.to_f
             }
         })
+    end
+
+    def extend_sitemap
+        url = request.path
+        if request.fullpath =~ /\?term=.+/
+            url = url + '?term=' + params[:term]
+        end
+        Sitemap.add(url, params[:controller], @page_title)
     end
 
 end
