@@ -13,7 +13,7 @@ function kickstart_detail(di) {
     } // end if
 } // end func
 
-function kickstart_permalinks(di) {
+function kickstart_permalink(di) {
     if ( 'show' === di.action ) {
         kickstart_detail(di);
     } // end if

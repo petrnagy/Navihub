@@ -1,4 +1,4 @@
-class PermalinksController < ApplicationController
+class PermalinkController < ApplicationController
 
     class DataNotLoaded < StandardError
     end

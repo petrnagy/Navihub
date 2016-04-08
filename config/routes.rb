@@ -32,9 +32,10 @@ Rails.application.routes.draw do
         :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
     get 'detail/:name/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe] [csrf-part-safe]
         :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
+    get 'detail/recent(/:page)' => 'detail#recent'
     # permalinks
-    get 'permalink/:permalink_id' => 'permalinks#show' # [xss-safe] [csrf-part-safe]
-    put 'setpermalink' => 'permalinks#create' # [xss-safe] [csrf-part-safe]
+    get 'permalink/:permalink_id' => 'permalink#show' # [xss-safe] [csrf-part-safe]
+    put 'setpermalink' => 'permalink#create' # [xss-safe] [csrf-part-safe]
     # search
     get 'search' => 'search#index' # [xss-safe] [csrf-part-safe]
     get 'search/:order/:radius/:offset/@/:lat,:lng' => 'search#find', # [xss-safe] [csrf-part-safe]

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PermalinksControllerTest < ActionController::TestCase
+class PermalinkControllerTest < ActionController::TestCase
   setup do
     @permalink = permalinks(:one)
   end

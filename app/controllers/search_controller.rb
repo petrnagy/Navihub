@@ -2,6 +2,7 @@ class SearchController < ApplicationController
 
     include DetailHelper
     include ApplicationHelper
+    include RecentMixin
     require 'location'
     require 'json'
 
@@ -31,20 +32,6 @@ class SearchController < ApplicationController
     end
 
     def empty
-    end
-
-    def recent
-        @step = 20
-        @page = recent_params[:page]
-        offset = (@page - 1) * @step
-        @cnt = Sitemap.where(controller: 'search').count
-        @links = []
-        Sitemap.where(controller: 'search').offset(offset).limit(@step).order('id DESC').each do |row|
-            @links << { path: URI::encode(row.url), title: unless row.page_title == nil then row.page_title else row.url end }
-        end unless @cnt == 0
-        if @page != 1 and @links.count == 0
-            redirect_to action: 'recent'
-        end
     end
 
     def geocode
@@ -239,14 +226,6 @@ class SearchController < ApplicationController
             raise 'There was not the same count of origins as destinations'
         end
         params.permit(:origins => [], :destinations => [])
-    end
-
-    def recent_params
-        if nil == params[:page] || params[:page].to_i <= 0
-            params[:page] = 1
-        end
-        params[:page] = params[:page].to_i
-        params.permit :page
     end
 
     def create_search_location

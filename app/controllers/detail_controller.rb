@@ -1,5 +1,7 @@
 class DetailController < ApplicationController
 
+    include RecentMixin
+
     def index
         parameters = index_params
         @data = load_detail parameters[:origin], parameters[:id]
