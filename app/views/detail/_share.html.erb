@@ -14,11 +14,16 @@
         </form>
     </div>
     <div class="col-lg-3 col-social-share">
-        <div class="social-likes social-likes_vertical" data-counters="no" data-url="<% request.original_url %>">
-            <div class="facebook" title="Share link on Facebook">Facebook</div>
-            <div class="twitter" title="Share link on Twitter">Twitter</div>
-            <div class="plusone" title="Share link on Google+">Google+</div>
-            <div class="pinterest" title="Share image on Pinterest" data-media="">Pinterest</div>
+        <div class="social-likes social-likes_vertical social-likes_visible">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>&t=<%= URI::escape(@page_title + ' | ' + @page_name) %>" target="_blank">
+                <div class="social-likes__widget social-likes__widget_facebook" title="Share link on Facebook"><span class="social-likes__button social-likes__button_facebook"><span class="social-likes__icon social-likes__icon_facebook"></span>Facebook</span></div>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=<%= request.original_url %>&text=<%= URI::escape(@page_title + ' | ' + @page_name) %>" target="_blank" title="Tweet">
+                <div class="social-likes__widget social-likes__widget_twitter" title="Share link on Twitter"><span class="social-likes__button social-likes__button_twitter"><span class="social-likes__icon social-likes__icon_twitter"></span>Twitter</span></div>
+            </a>
+            <a href="https://plus.google.com/share?url=<%= request.original_url %>" target="_blank" title="Share on Google+">
+                <div class="social-likes__widget social-likes__widget_plusone" title="Share link on Google+"><span class="social-likes__button social-likes__button_plusone"><span class="social-likes__icon social-likes__icon_plusone"></span>Google+</span></div>
+            </a>
         </div>
     </div>
 </div>
