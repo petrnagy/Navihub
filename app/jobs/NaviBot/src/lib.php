@@ -28,7 +28,7 @@ function start() {
             #usleep(250000); # 0.25s
         } // end foreach
     } // end foreach
-    printf("Done. Total request time %g sec, average request time %g sec. \n", $totalTime, $totalTime/$i);
+    printf("Done. Total request time %g sec, average request %g sec. \n", $totalTime, $totalTime/$i);
 } // end func
 
 function load_keywords() {
