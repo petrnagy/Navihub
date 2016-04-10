@@ -60,6 +60,7 @@ class ApplicationController < ActionController::Base
         @page_keywords              = Rails.configuration.app_keywords
         @google_site_verification   = Rails.configuration.google_site_verification
         @ms_site_verification       = Rails.configuration.ms_site_verification
+        @yandex_site_verification   = Rails.configuration.yandex_site_verification
         @page_author                = Rails.configuration.app_author
         @version                    = Rails.configuration.app_version
         @build                      = Rails.configuration.app_build
