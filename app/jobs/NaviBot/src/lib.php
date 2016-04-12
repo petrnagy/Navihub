@@ -5,6 +5,9 @@ function start() {
     $totalTime = 0.00;
     foreach (load_locations() as $locationRow) {
         foreach (load_keywords() as $keywordRow) { ++$i;
+            $keywordRow['keyword'] = trim($keywordRow['keyword']);
+            if ( ! strlen($keywordRow['keyword']) ) continue;
+
             $url = SERVICE_URL . str_replace([
                 '%%term%%', '%%order%%', '%%dir%%', '%%radius%%', '%offset%%', '%%ll%%'
             ], [
