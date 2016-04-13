@@ -1,31 +1,37 @@
 <?php
 
 function start() {
-    $i = 0;
-    $totalTime = 0.00;
-    foreach (load_locations() as $locationRow) {
-        foreach (load_keywords() as $keywordRow) { ++$i;
-            $keywordRow['keyword'] = trim($keywordRow['keyword']);
-            if ( ! strlen($keywordRow['keyword']) ) continue;
+    print "\nStarting NaviBot...\nLoading data...\n";
+    $i                = 0;
+    $totalTime        = 0.00;
+    $locations        = load_locations();
+    $keywords         = load_keywords(); //shuffle($keywords);
+    $businesses       = load_businesses(); $businesses = [];
+    $keywords         = array_merge($businesses, $keywords);
+    $totalIterations  = count($locations) * count($keywords);
+    printf("Loaded %s locations and %s keywords (including %s businesses) \nStarting total %s iterations... \n", count($locations), count($keywords), count($businesses), $totalIterations);
 
-            $url = SERVICE_URL . str_replace([
-                '%%term%%', '%%order%%', '%%dir%%', '%%radius%%', '%offset%%', '%%ll%%'
-            ], [
-                $keywordRow['keyword'], 'distance', 'asc', 1000, 0, $locationRow['ll']
-            ], SEARCH_TPL);
+    foreach ($locations as $locationRow) {
+        foreach ($keywords as $keywordRow) { ++$i;
 
+            $url = build_url($keywordRow['keyword'], $locationRow['ll']);
             $start = microtime(true);
-            #$headers = get_headers(urlencode($url), 1);
+            #$headers = get_headers($url, 1);
             $headers['Status'] = '200 OK';
             #$time = round(microtime(true) - $start);
             $time = 0.123456;
             $totalTime += $time;
 
             if ( '200 OK' == $headers['Status'] ) {
-                printf("\033[32m%s\033[0m: %s [%g sec] (iteration %d) \n", $headers['Status'], $url, $time, $i);
+                printf("\033[32m%s\033[0m: %s [%g sec] (iteration %d of %d) \n", $headers['Status'], $url, $time, $i, $totalIterations);
             } else {
                 printf("\033[31m%s\033[0m: %s \n", $headers['Status'], $url);
                 exit;
+            } // end if
+
+            if ( $i == REQUEST_LIMIT ) {
+                printf("Reached request count limit (%d), breaking iterations \n", REQUEST_LIMIT);
+                break 2;
             } // end if
 
             #usleep(250000); # 0.25s
@@ -35,21 +41,35 @@ function start() {
 } // end func
 
 function load_keywords() {
+    $used = array();
     $h = fopen(__DIR_ROOT . '/data/keywords.csv', 'r');
     $data = [];
     $i = 0;
-    while ( $row = fgetcsv($h, 32, ';', '"') ) {
+    $skip = [ 'duplicate' => 0, 'length' => 0 ];
+    while ( $row = fgetcsv($h, 1024, ';', '"') ) {
         if ( $i > 0 ) {
             if ( ! empty($row[0]) && ! empty($row[1]) && ! empty($row[2]) ) {
-                $data[] = [
-                    'keyword'   => $row[0],
-                    'lang'      => $row[1],
-                    'category'  => $row[2],
-                ];
+
+                if ( in_array(strtolower($row[0]), $used) ) {
+                    ++$skip['duplicate'];
+                } elseif ( ! strlen(trim($row[0])) ) {
+                    ++$skip['length'];
+                } else {
+                    $data[] = [
+                        'keyword'   => trim($row[0]),
+                        'lang'      => $row[1],
+                        'category'  => $row[2],
+                    ];
+                    $used[] = strtolower($row[0]);
+                } // end if
+
+            } else {
+                printf("Skipping row %s (seems to be empty, please check keywords.csv for details) \n", $i+1);
             } // end if
         } // end if
         ++$i;
     } // end while
+    printf("Skipped %s keywords because of duplicity and %s because of length\n", $skip['duplicate'], $skip['length']);
     return $data;
 } // end func
 
@@ -57,7 +77,7 @@ function load_locations() {
     $h = fopen(__DIR_ROOT . '/data/locations.csv', 'r');
     $data = [];
     $i = 0;
-    while ( $row = fgetcsv($h, 32, ';', '"') ) {
+    while ( $row = fgetcsv($h, 1024, ';', '"') ) {
         if ( $i > 0 ) {
             $data[] = [
                 'll'    => $row[0],
@@ -68,4 +88,29 @@ function load_locations() {
         ++$i;
     } // end while
     return $data;
+} // end func
+
+function load_businesses() {
+    $h = fopen(__DIR_ROOT . '/data/businesses.csv', 'r');
+    $data = [];
+    $i = 0;
+    while ( $row = fgetcsv($h, 1024, ';', '"') ) {
+        if ( $i > 0 ) {
+            $data[] = [
+                'keyword' => $row[0],
+                'lang'    => $row[1],
+                'name'    => $row[2],
+            ];
+        } // end if
+        ++$i;
+    } // end while
+    return $data;
+} // end func
+
+function build_url($keyword, $location) {
+    return SERVICE_URL . str_replace([
+        '%%term%%', '%%order%%', '%%dir%%', '%%radius%%', '%offset%%', '%%ll%%'
+    ], [
+        urlencode($keyword), 'distance', 'asc', 1000, 0, $location
+    ], SEARCH_TPL);
 } // end func
