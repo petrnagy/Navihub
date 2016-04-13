@@ -143,7 +143,7 @@ class SearchController < ApplicationController
                 names = names + ', ' unless names.length == 0
                 names = names + result[:name]
             end
-            @page_desc = "Search results for '" + parameters['term'] + "': " + names
+            @page_desc = "Results for '" + parameters['term'] + "': " + names
             @page_keywords = names
         end
 
@@ -155,7 +155,7 @@ class SearchController < ApplicationController
     end
 
     def find_rewrite_html_variables parameters
-        @page_title = "Results for '" + parameters['term'] + "' near " + pretty_loc(@request_location)
+        @page_title = "'" + parameters['term'] + "' near " + pretty_loc(@request_location)
     end
 
     def index_rewrite_html_variables
