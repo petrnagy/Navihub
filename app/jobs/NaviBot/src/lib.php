@@ -4,10 +4,10 @@ function start() {
     print "\nStarting NaviBot...\nLoading data...\n";
     $i                = 0;
     $totalTime        = 0.00;
-    $locations        = load_locations();
-    $keywords         = load_keywords(); shuffle($keywords);
-    $businesses       = load_businesses(); //$businesses = [];
-    $keywords         = array_merge($businesses, $keywords);
+    $locations        = load_locations(); shuffle($locations);
+    $keywords         = load_keywords();
+    $businesses       = load_businesses();
+    $keywords         = array_merge($businesses, $keywords); shuffle($keywords);
     $totalIterations  = count($locations) * count($keywords);
     printf("Loaded %s locations and %s keywords (including %s businesses) \nStarting total %s iterations... \n", count($locations), count($keywords), count($businesses), $totalIterations);
 
@@ -16,16 +16,16 @@ function start() {
 
             $url = build_url($keywordRow['keyword'], $locationRow['ll']);
             $start = microtime(true);
-            $headers = get_headers($url, 1);
-            //$headers['Status'] = ( rand(1, 100) > 10 ? '200 OK' : '500 Internal Server Error' );
-            $time = microtime(true) - $start;
-            //$time = 0.123456;
+            //$headers = get_headers($url, 1);
+            $headers['Status'] = ( rand(1, 100) > 50 ? '200 OK' : '500 Internal Server Error' );
+            //$time = microtime(true) - $start;
+            $time = 0.123456;
             $totalTime += $time;
 
             if ( '200 OK' == $headers['Status'] ) {
-                printf("\033[32m%s\033[0m: %s | kw: '%s' [%g sec] (iteration %d of %d)\n", $headers['Status'], $url, $keywordRow['keyword'], $time, $i, $totalIterations);
+                printf("\033[32m%s\033[0m: %s | kw: '%s'@'%s' [%g sec] (iteration %d of %d)\n", $headers['Status'], $url, $keywordRow['keyword'], $locationRow['name'], $time, $i, $totalIterations);
             } else {
-                printf("\033[31m%s\033[0m: %s | kw: '%s' [%g sec] (iteration %d of %d)\n", $headers['Status'], $url, $keywordRow['keyword'], $time, $i, $totalIterations);
+                printf("\033[31m%s\033[0m: %s | kw: '%s'@'%s' [%g sec] (iteration %d of %d)\n", $headers['Status'], $url, $keywordRow['keyword'], $locationRow['name'], $time, $i, $totalIterations);
             } // end if
 
             if ( $i == REQUEST_LIMIT ) {
