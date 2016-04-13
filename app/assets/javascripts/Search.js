@@ -59,6 +59,7 @@ Search.prototype = {
                             $("#search-results").append(data);
                         } else {
                             $("#search-results").html(data).removeClass('search-start');
+                            that.updateTitle();
                         } // end if
                         that.di.spinner.hide();
                         that.unlock();
@@ -149,6 +150,14 @@ Search.prototype = {
     unlock: function() {
         var that = this;
         that.$form.find('input, select, option, button').prop('disabled', false);
+    }, // end method
+
+    updateTitle: function() {
+        var that = this;
+        var title = $("#search-results").find('h1').first().text();
+        if ( title ) {
+            $('title').text(title);
+        } // end if
     }, // end method
 
 }; // end prototype
