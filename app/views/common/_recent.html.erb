@@ -3,7 +3,7 @@
 <ul class="recent-list">
     <% @links.each do |link| %>
     <li>
-        <a href="<%= link[:path] %>"><%= link[:title] %></a>
+        <%= link_to(link[:title], link[:path], data: {no_turbolink: true}) %>
     </li>
     <% end %>
 </ul>
