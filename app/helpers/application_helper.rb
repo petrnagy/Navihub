@@ -24,8 +24,8 @@ module ApplicationHelper
         if no_txt
             #o += location['latitude'].round(2).to_s + ', ' + location['longitude'].round(2).to_s
             similiar = Location.where(
-                latitude: location.latitude,
-                longitude: location.longitude,
+                latitude: location.latitude.to_f.round(7),
+                longitude: location.longitude.to_f.round(7),
             ).where.not(city: nil).order(id: :desc).first
             if similiar != nil
                 o = pretty_loc similiar
