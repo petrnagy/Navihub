@@ -16,10 +16,13 @@ function start() {
 
             $url = build_url($keywordRow['keyword'], $locationRow['ll']);
             $start = microtime(true);
-            //$headers = get_headers($url, 1);
-            $headers['Status'] = ( rand(1, 100) > 50 ? '200 OK' : '500 Internal Server Error' );
-            //$time = microtime(true) - $start;
-            $time = 0.123456;
+            if ( PRODUCTION ) {
+                $headers = get_headers($url, 1);
+                $time = microtime(true) - $start;
+            } else {
+                $headers['Status'] = ( rand(1, 100) > 50 ? '200 OK' : '500 Internal Server Error' );
+                $time = 0.123456;
+            } // end if
             $totalTime += $time;
 
             if ( '200 OK' == $headers['Status'] ) {
