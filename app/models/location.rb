@@ -2,22 +2,46 @@ class Location < ActiveRecord::Base
     belongs_to :user
 
     def self.update_user_loc data, user_id
-        old = self.get_user_loc user_id
-        if old != nil
-            old.update(
-            latitude:       data['lat'],
-            longitude:      data['lng'],
-            lock:           data['lock'],
-            country:        data['country'],
-            country_short:  data['country_short'],
-            city:           data['city'],
-            city2:          data['city2'],
-            street1:        data['street1'],
-            street2:        data['street2']
-            )
-            old
-        else
-            loc = Location.create(
+        # old = self.find_by(
+        #     latitude:       data['lat'],
+        #     longitude:      data['lng'],
+        #     lock:           data['lock'],
+        #     country:        data['country'],
+        #     country_short:  data['country_short'],
+        #     city:           data['city'],
+        #     city2:          data['city2'],
+        #     street1:        data['street1'],
+        #     street2:        data['street2']
+        # )
+        # if old != nil
+        #     old.update(
+        #     latitude:       data['lat'],
+        #     longitude:      data['lng'],
+        #     lock:           data['lock'],
+        #     country:        data['country'],
+        #     country_short:  data['country_short'],
+        #     city:           data['city'],
+        #     city2:          data['city2'],
+        #     street1:        data['street1'],
+        #     street2:        data['street2']
+        #     )
+        #     loc = old
+        # else
+        #     loc = Location.create(
+        #     user_id:        user_id,
+        #     latitude:       data['lat'],
+        #     longitude:      data['lng'],
+        #     lock:           data['lock'],
+        #     country:        data['country'],
+        #     country_short:  data['country_short'],
+        #     city:           data['city'],
+        #     city2:          data['city2'],
+        #     street1:        data['street1'],
+        #     street2:        data['street2'],
+        #     active:         true
+        #     )
+        # end
+        loc = Location.create(
             user_id:        user_id,
             latitude:       data['lat'],
             longitude:      data['lng'],
@@ -29,25 +53,9 @@ class Location < ActiveRecord::Base
             street1:        data['street1'],
             street2:        data['street2'],
             active:         true
-            )
-            loc
-        end
-        # loc = Location.create(
-        # user_id:        user_id,
-        # latitude:       data['lat'],
-        # longitude:      data['lng'],
-        # lock:           data['lock'],
-        # country:        data['country'],
-        # country_short:  data['country_short'],
-        # city:           data['city'],
-        # city2:          data['city2'],
-        # street1:        data['street1'],
-        # street2:        data['street2'],
-        # active:         true
-        # )
-        # loc.save
-        # Location.where(user_id: user_id).where.not(id: loc.id).update_all(active: false)
-        # loc
+        )
+        Location.where(user_id: user_id).where.not(id: loc.id).update_all(active: false)
+        loc
     end
 
     def self.get_user_loc user_id
