@@ -33,7 +33,9 @@ Messenger.prototype = {
             html: '<p class="message-title text-center ' + type + ' ' + cls + '">' + title.toString() + '</p><p class="message-txt text-center ' + type + ' ' + cls + '">' + msg.toString() + '</p>',
             width: '400px',
             height: '200px',
-            opacity: 0.5
+            opacity: 0.5,
+            maxWidth:'95%',
+            maxHeight:'95%'
         });
         $.colorbox(options);
     }, // end method
