@@ -29,6 +29,10 @@ Browser = {
       return ( isSafari && ! Browser.isChrome() );
   }, // end method
 
+  isIos: function() {
+    return navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
+  }, // end method
+
   /**
    * @static
    * @return Boolean

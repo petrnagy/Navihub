@@ -6,14 +6,14 @@
         <li><a class="list-plan-a-route" href="#"><%= fa_icon("suitcase") %>plan route</a></li>
 
         <li class="divider"></li>
-        <li><a class="list-visit-website"><%= fa_icon("link") %>visit website</a></li>
+        <li><a class="list-visit-website" href='#'><%= fa_icon("link") %>visit website</a></li>
 
-        <li><a class="list-get-permalink"><%= fa_icon("chain-broken") %>get permalink</a></li>
+        <li><a class="list-get-permalink" href='#'><%= fa_icon("chain-broken") %>get permalink</a></li>
         <li class="divider"></li>
         <li class="dropdown-submenu">
             <a tabindex="-1" href="#id-<%= result[:json_hash] %>"><%= fa_icon("share") %>Share this</a>
             <ul class="dropdown-menu">
-                <li><a class="list-send-via-email"><%= fa_icon("envelope-o") %>send via e-mail</a></li>
+                <li><a class="list-send-via-email" href='#'><%= fa_icon("envelope-o") %>send via e-mail</a></li>
                 <li><a class="list-share-on-facebook list-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=%%URL%%"><%= fa_icon("facebook-official") %>share on facebook</a></li>
                 <li><a class="list-share-on-twitter list-share-btn" href="https://twitter.com/home?status=%%URL%%"><%= fa_icon("twitter") %>share on twitter</a></li>
                 <li><a class="list-share-on-google-plus list-share-btn" href="https://plus.google.com/share?url=%%URL%%"><%= fa_icon("google-plus") %>share on google+</a></li>
