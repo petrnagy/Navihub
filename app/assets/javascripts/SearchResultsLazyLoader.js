@@ -158,41 +158,39 @@ SearchResultsLazyLoader.prototype = {
 
     _lazyLoadRoutePopups: function() {
         var that = this;
-        that.di.locator.addHook(function(){
-            var loc = that.di.locator.getLocation();
 
-            var $set = $('#search-results .result-box:in-viewport a.list-plan-a-route').filter(function() {
-                if ( $(this).attr('href') === '#' ) {
-                    var geometryMissing = ($(this).closest('result-box').find('.result-geometry .fa-spinner').length > 0);
-                    var addressMissing = ($(this).closest('result-box').find('.result-address .fa-spinner').length > 0);
-                    if ( geometryMissing && addressMissing ) {
-                        return false;
-                    } else {
-                        return true;
-                    } // end if-else
+        var $set = $('#search-results .result-box:in-viewport a.list-plan-a-route').filter(function() {
+            if ( $(this).attr('href') === '#' ) {
+                var geometryMissing = ($(this).closest('result-box').find('.result-geometry .fa-spinner').length > 0);
+                var addressMissing = ($(this).closest('result-box').find('.result-address .fa-spinner').length > 0);
+                if ( geometryMissing && addressMissing ) {
+                    return false;
+                } else {
+                    return true;
+                } // end if-else
+            } // end if
+            return false;
+        });
+        $set.each(function() {
+            var data = that.di.searchResult.getData($(this));
+            var origin = $(this).attr('data-ll-origin');
+            if ( data ) {
+                var url = 'https://maps.google.com?';
+                var popupUrl = 'https://www.google.com/maps/embed/v1/directions?destination=';
+                if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
+                    popupUrl += data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    url += 'daddr=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                } else {
+                    popupUrl += encodeURIComponent(data.address);
+                    url += 'daddr=' + data.address;
                 } // end if
-                return false;
-            });
-            $set.each(function() {
-                var data = that.di.searchResult.getData($(this));
-                if ( data ) {
-                    var url = 'https://maps.google.com?';
-                    var popupUrl = 'https://www.google.com/maps/embed/v1/directions?destination=';
-                    if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
-                        popupUrl += data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
-                        url += 'daddr=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
-                    } else {
-                        popupUrl += encodeURIComponent(data.address);
-                        url += 'daddr=' + data.address;
-                    } // end if
-                    popupUrl += '&origin=' + loc.lat.toString() + ',' + loc.lng.toString();
-                    url += '&saddr=' + loc.lat.toString() + ',' + loc.lng.toString();
-                    popupUrl += '&key=' + that.di.config.googleApiPublicKey;
-                    $(this).attr('href', url);
-                    $(this).attr('popup-href', popupUrl);
+                popupUrl += '&origin=' + origin;
+                url += '&saddr=' + origin;
+                popupUrl += '&key=' + that.di.config.googleApiPublicKey;
+                $(this).attr('href', url);
+                $(this).attr('popup-href', popupUrl);
 
-                } // end if
-            });
+            } // end if
         });
     }, // end method
 

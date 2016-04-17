@@ -3,7 +3,7 @@
     <ul class="dropdown-menu">
         <li><a class="list-open-detail" href="#"><%= fa_icon("eye") %>open detail</a></li>
         <li><a class="list-open-in-maps" href="#"><%= fa_icon("map-o") %>Show map</a></li>
-        <li><a class="list-plan-a-route" href="#"><%= fa_icon("suitcase") %>plan route</a></li>
+        <li><a class="list-plan-a-route" href="#" data-ll-origin="<%= @request_ll %>"><%= fa_icon("suitcase") %>plan route</a></li>
 
         <li class="divider"></li>
         <li><a class="list-visit-website" href='#'><%= fa_icon("link") %>visit website</a></li>
