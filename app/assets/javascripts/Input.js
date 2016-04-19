@@ -33,6 +33,7 @@ Input.prototype = {
             that.$form.find('button[type="submit"]').prop('disabled', false);
             that._bindSubmit();
         });
+        this._initDynamicPlaceholder();
     },
     _bindSubmit: function() {
         var that = this;
@@ -80,6 +81,47 @@ Input.prototype = {
     unlock: function() {
         var that = this;
         that.$form.find('input, select, option, button').prop('disabled', false);
+    }, // end method
+
+    _initDynamicPlaceholder: function() {
+        var that = this;
+        var $input = that.$form.find('input[name="search[term]"]');
+        var delay = 100;
+        var placeholders = [
+            "Pizza", "Water park", "Car rental", "Café", "Chicken wings", "Irish pub",
+            "McDonalds", "Hotel", "Post office", "Veterinarian", "Asian fusion restaurant",
+            "Sport bar", "ATM", "Bakery", "Beauty salon", "Casino", "Dentist", "Pharmacy",
+            "Plumber", "Train station", "Zoo", "Golf", "Beach", "Laser tag", "Music school",
+            "Hot dogs", "KFC", "Dunkin' Donuts", "Wendy's", "Burger King", "Internet cafe",
+            "Shoe repair", "Petrol station", "Gas station", "Grocery", "Pretzels", "Ice cream"
+        ];
+        shuffle(placeholders);
+        placeholders = ["What are you looking for…?"].concat(placeholders);
+        var i = 0, j = 0;
+        var text = '';
+        var skip = 0;
+        var interval = setInterval(function(){
+            if ( skip > 0 ) {
+                --skip;
+            } else {
+                if ( i < placeholders.length ) {
+                    if ( j < placeholders[i].length ) {
+                        text += placeholders[i][j];
+                        ++j;
+                    } else {
+                        ++i; j = 0;
+                        text = '';
+                        skip = 30;
+                    } // end if
+                } else {
+                    i = 0; j = 0;
+                    skip = 30;
+                } // end if
+            } // end if
+            if ( text.length && $input.attr('placeholder') !== text ) {
+                $input.attr('placeholder', text);
+            } // end if
+        }, delay);
     }, // end method
 
 }; // end prototype
