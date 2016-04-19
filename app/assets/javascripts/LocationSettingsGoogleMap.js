@@ -1,3 +1,9 @@
+/*
+* This file is part of the Navihub project (http://www.navihub.net/)
+* Copyright (c) 2013 Petr Nagy (http://www.petrnagy.cz/)
+* See readme.txt for more informations
+*/
+
 /**
 * @author PN @since 2014-10-07
 */
@@ -46,7 +52,7 @@ LocationSettingsGoogleMap.prototype = {
             that.initGoogleMap();
         } // end if
     },
-    
+
     /**
     * @returns {void}
     * @access public
