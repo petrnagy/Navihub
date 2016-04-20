@@ -99,7 +99,7 @@ Input.prototype = {
         placeholders = ["What are you looking for…?"].concat(placeholders);
         var i = 0, j = 0;
         var text = '';
-        var skip = 0;
+        var skip = 10;
         var interval = setInterval(function(){
             if ( skip > 0 ) {
                 --skip;
