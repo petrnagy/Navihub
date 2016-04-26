@@ -116,7 +116,7 @@ Locator.prototype = {
 
     _loadFromWeb: function() {
         var that = this;
-        $.get("http://ipinfo.io", function(response) {
+        $.get("https://ipinfo.navihub.net/", function(response) {
             if (typeof response === 'object') {
                 try {
                     var data = that.di.mixin.clone(that._envelope);
@@ -129,9 +129,9 @@ Locator.prototype = {
                     that._data.web = false;
                 } // end try-catch
             } else {
-                throw new Error("ipinfo.io response: object expected, got: " + (typeof response) );
+                throw new Error("ipinfo response: object expected, got: " + (typeof response) );
             } // end if
-        }, "jsonp");
+        });
 
     }, // end method
 
