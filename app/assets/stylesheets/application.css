@@ -24,6 +24,7 @@ section#yield { margin-top: 45px; }
 .field_with_errors { display: inherit; border-radius: 3px; background-color: #d9534f }
 label { color: #525252; font-weight: normal; }
 #yield > .alert { max-width: 640px; margin-left: auto; margin-right: auto; }
+input[type="text"], input[type="password"], textarea { -webkit-appearance: none; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
