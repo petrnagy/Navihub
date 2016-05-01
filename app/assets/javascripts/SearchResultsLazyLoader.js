@@ -144,18 +144,42 @@ SearchResultsLazyLoader.prototype = {
         });
         $set.each(function(){
             var data = that.di.searchResult.getData($(this));
+            var hasGeo = data.geometry.lat !== null && data.geometry.lng !== null;
             if ( data ) {
-                var url = 'http://maps.google.com/?';
-                var popupUrl = 'https://www.google.com/maps/embed/v1/place?q=';
-                if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
+                var url, popupUrl = 'https://www.google.com/maps/embed/v1/place?q=';
+                if ( that.di.browser.isIos() ) {
+                    if ( hasGeo ) {
+                        url = 'http://maps.apple.com?ll=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    } else {
+                        url = 'http://maps.apple.com?q=' + data.address;
+                    } // end if
+                } else if ( that.di.browser.isAndroid() ) {
+                    if ( hasGeo ) {
+                        url = 'http://maps.google.com?z=19&ll=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    } else {
+                        url = 'http://maps.google.com?z=19&q=' + data.address;
+                    } // end if
+                } else if ( that.di.browser.isWindowsPhone() ) {
+                    // TODO: was not tested
+                    if ( hasGeo ) {
+                        url = 'maps:' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    } else {
+                        url = 'maps:' + data.address;
+                    } // end if
+                } else {
+                    if ( hasGeo ) {
+                        url = 'http://maps.google.com/?z=17&ll=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    } else {
+                        url = 'http://maps.google.com/?z=17&q=' + data.address;
+                    } // end if
+                } // end if
+
+                if ( hasGeo ) {
                     popupUrl += data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
-                    url += 'll=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
                 } else {
                     popupUrl += data.address;
-                    url += 'q=' + data.address;
                 } // end if
                 popupUrl += '&key=' + that.di.config.googleApiPublicKey;
-                url += '&z=17';
                 $(this).attr('href', url);
                 $(this).attr('popup-href', popupUrl);
             } // end if
