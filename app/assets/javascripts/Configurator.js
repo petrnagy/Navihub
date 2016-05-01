@@ -21,8 +21,9 @@ var Configurator = {
     }, // end method
 
     config: {
+        /* BEWARE! The key is included two times ! */
         googleApiPublicKey: 'AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI',
-        googleMapsLibraryUrl: 'https://maps.googleapis.com/maps/api/js?language=en&v=3&libraries=places&callback=',
+        googleMapsLibraryUrl: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA5cs8HLvnlV99e9t_Q_2HWL8xmWF6quaI&language=en&v=3&libraries=places&callback=',
         mockLocation: { lat: 50.0865876, lng: 14.4159757, origin: 'browser', city: null,
         city2: null, country: null, country_short: null, street1: null, street2: null }
     },

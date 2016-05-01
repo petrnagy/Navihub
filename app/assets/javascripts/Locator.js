@@ -16,6 +16,7 @@ var Locator = function(di) {
         lat: null, lng: null, country: null, country_short: null,
         city: null, city2: null, street1: null, street2: null, origin: null
     };
+    this._strongHookTimeout = 10000;
     this._sent = {browser: false, web: false};
     this._hooks = [];
     this._weakHooks = [];
@@ -47,6 +48,11 @@ Locator.prototype = {
                     that._send(that._data.web, manual, true);
                     that._sent.web = true;
                     that._processWeakHooks();
+                    setTimeout(function(){
+                        if ( that._sent.browser !== true ) {
+                            that._processHooks();
+                        } // end if
+                    }, that._strongHookTimeout);
                 } // end if
             } // end if
         }, 1000);
@@ -95,7 +101,6 @@ Locator.prototype = {
     _loadFromBrowser: function() {
         var that = this;
         if (navigator.geolocation) {
-            /* be aware: we are not sessing any timeout for this callbacks... */
             navigator.geolocation.getCurrentPosition(function(response) {
                 try {
                     var data = that.di.mixin.clone(that._envelope);
@@ -106,9 +111,18 @@ Locator.prototype = {
                 } catch (e) {
                     that._data.browser = false;
                 } // end try-catch
-            }, function() {
+            }, function(response) {
+                var msg = '';
+                if ( typeof response == 'object' && response.code == 1 ) {
+                    msg = 'Please allow our site to access your <b>geolocation</b> for the best possible user experience. <a href="https://www.google.cz/#q=how+to+enable+browser+geolocation">How?</a>';
+                } else {
+                    msg = 'We could not access your geolocation and therefore the site functionality may be limited.';
+                } // end if
+                var flashmsg = '<div class="alert alert-dismissible alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>%%flashmsg%%</div>';
+                flashmsg = flashmsg.replace('%%flashmsg%%', msg);
+                $('#yield').prepend(flashmsg);
                 that._data.browser = false;
-            });
+            }, { enableHighAccuracy: true, timeout: 5000, maximumAge: 60000 });
         } else {
             that._data.browser = false;
         } // end if

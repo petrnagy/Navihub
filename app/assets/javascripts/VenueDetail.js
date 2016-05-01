@@ -35,20 +35,19 @@ VenueDetail.prototype = {
 
     _initDetailMap: function() {
         var that = this;
-        var interval = setInterval(function() {
+        that.di.locator.addHook(function() {
             var location = that.di.locator.getLocation();
-            if ( location && that._data.geometry ) {
-                clearInterval(interval);
+            if ( that._data.geometry ) {
                 new VenueDetailGoogleMap(that.di, {latitude: location.lat, longitude: location.lng}, 'map_canvas', 14, function() {
                     if (that.di.detailGoogleMap && that._data) {
                         that.di.detailGoogleMap.addRoute(
-                                {latitude: location.lat, longitude: location.lng},
+                        {latitude: location.lat, longitude: location.lng},
                         {latitude: that._data.geometry.lat, longitude: that._data.geometry.lng},
                         'WALKING');
                     } // end if
                 });
             } // end if
-        }, 100);
+        });
     },
 
     _loadDetailData: function() {

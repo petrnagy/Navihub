@@ -56,8 +56,6 @@ VenueDetailGoogleMap.prototype = {
      * @uses global DI
      */
     initGoogleMap: function() {
-        // TODO: event listener nefunguje !
-        //google.maps.event.addDomListener(window, 'load', function() {
         var mapCanvas = document.getElementById(DI.detailGoogleMap.canvas);
         if ( mapCanvas ) {
           var mapOptions = {
@@ -71,9 +69,7 @@ VenueDetailGoogleMap.prototype = {
           DI.detailGoogleMap.callback();
         } else {
             console.log("VenueDetailGoogleMap.js loaded from external script");
-          // VenueDetailGoogleMap.js loaded from external script
         } // end if
-        //});
     }, // end method
     addMarker: function() {
 

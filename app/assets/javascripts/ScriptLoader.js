@@ -23,7 +23,7 @@ ScriptLoader.prototype = {
 
         callback = ( typeof callback == 'function' ? callback : function(){} );
         var lambdaData = that._prepareLambdaFunction(script, param);
-        var lambda = ( typeof lambdaData == 'object' ? lambdaData.name : '' );
+        var lambda = ( lambdaData !== null ? lambdaData.name : '' );
 
         var storageKey = 'javascripts';
         var loadedScripts = that.di.turbolinksStorage.get(storageKey);
@@ -66,7 +66,7 @@ ScriptLoader.prototype = {
         var lambdaName = 'lambda_' + fname;
         var lambdaQueue = 'lambda_queue_' + fname;
 
-        if ( typeof lambdaName === 'function' ) {
+        if ( typeof window[lambdaName] === 'function' ) {
             window[lambdaQueue].push(func + '()');
             return null;
         } else {
