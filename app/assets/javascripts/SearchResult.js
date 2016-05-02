@@ -90,7 +90,7 @@ SearchResult.prototype = {
             return true;
         } // end if
 
-        if ( that.di.browser.isMobileDevice() ) {
+        if ( that.di.browser.isMobileDevice() && $el.hasClass('map-dropdown') ) {
             return true;
         } // end if
 

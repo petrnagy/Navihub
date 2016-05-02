@@ -1,6 +1,6 @@
 <div class="map-wrapper">
     <% if result[:map] %>
-    <a class="list-open-in-maps" href="#">
+    <a class="list-open-in-maps map-img" href="#">
     <%= image_tag 'system/lazyload.png', size: '340x100', alt: result[:name], lazysrc: result[:map] %>
     </a>
     <% else %>
