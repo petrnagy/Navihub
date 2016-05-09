@@ -53,7 +53,7 @@ Browser = {
     * @return Boolean
     */
     isAndroid: function() {
-        return ( navigator.userAgent.toLowerCase().indexOf("android") > -1 );
+        return ( navigator.userAgent.toLowerCase().indexOf("android") > -1 && ! Browser.isWindowsPhone() );
     }, // end method
 
     /**
