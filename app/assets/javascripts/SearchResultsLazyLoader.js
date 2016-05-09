@@ -204,19 +204,45 @@ SearchResultsLazyLoader.prototype = {
         $set.each(function() {
             var data = that.di.searchResult.getData($(this));
             var origin = $(this).attr('data-ll-origin');
+            var hasGeo = data.geometry.lat !== null && data.geometry.lng !== null;
             if ( data ) {
-                var url = 'https://maps.google.com?';
-                var popupUrl = 'https://www.google.com/maps/embed/v1/directions?destination=';
-                if ( data.geometry.lat !== null && data.geometry.lng !== null ) {
+                var url, popupUrl = 'https://www.google.com/maps/embed/v1/directions?destination=';
+
+                if ( that.di.browser.isIos() ) {
+                    if ( hasGeo ) {
+                        url = 'http://maps.apple.com?dirflg=d&saddr=' + origin + '&daddr=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    } else {
+                        url = 'http://maps.apple.com?dirflg=d&saddr=' + origin + '&daddr=' + data.address;
+                    } // end if
+                } else if ( that.di.browser.isAndroid() ) {
+                    if ( hasGeo ) {
+                        url = 'http://maps.google.com?saddr=' + origin + '&daddr=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    } else {
+                        url = 'http://maps.google.com?saddr=' + origin + '&daddr=' + data.address;
+                    } // end if
+                } else if ( that.di.browser.isWindowsPhone() ) {
+                    // TODO: was not tested
+                    if ( hasGeo ) {
+                        url = 'maps:' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    } else {
+                        url = 'maps:' + data.address;
+                    } // end if
+                } else {
+                    if ( hasGeo ) {
+                        url = 'https://maps.google.com?saddr=' + origin + '&daddr=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
+                    } else {
+                        url = 'https://maps.google.com?saddr=' + origin + '&daddr=' + data.address;
+                    } // end if
+                } // end if
+
+                if ( hasGeo ) {
                     popupUrl += data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
-                    url += 'daddr=' + data.geometry.lat.toString() + ',' + data.geometry.lng.toString();
                 } else {
                     popupUrl += encodeURIComponent(data.address);
-                    url += 'daddr=' + data.address;
                 } // end if
                 popupUrl += '&origin=' + origin;
-                url += '&saddr=' + origin;
                 popupUrl += '&key=' + that.di.config.googleApiPublicKey;
+
                 $(this).attr('href', url);
                 $(this).attr('popup-href', popupUrl);
 

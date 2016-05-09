@@ -202,6 +202,10 @@ SearchResult.prototype = {
             return true;
         } // end if
 
+        if ( that.di.browser.isMobileDevice() ) {
+            return true;
+        } // end if
+
         e.preventDefault();
         var url = $el.attr('popup-href');
 
