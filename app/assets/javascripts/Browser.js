@@ -40,7 +40,12 @@ Browser = {
     * @return Boolean
     */
     isIos: function() {
-        return navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
+        if ( navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) ) {
+            if ( ! Browser.isWindowsPhone() ) {
+                return true;
+            } // end if
+        } // end if
+        return false;
     }, // end method
 
     /**
