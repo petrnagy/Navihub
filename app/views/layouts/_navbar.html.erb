@@ -41,13 +41,13 @@
                         <li class="divider social-divider"></li>
                         <li class="social-li">
                             <div class="social-btn">
-                                <a class="btn btn-block btn-sm btn-social btn-facebook" href="<%= signin_with_facebook %>"><i class="fa fa-facebook"></i></a>
+                                <a class="btn btn-block btn-sm btn-social btn-facebook" data-no-turbolink="true" href="<%= signin_with_facebook %>"><i class="fa fa-facebook"></i></a>
                             </div>
                             <div class="social-btn">
-                                <a class="btn btn-block btn-sm btn-social btn-twitter" href="<%= signin_with_twitter %>"><i class="fa fa-twitter"></i></a>
+                                <a class="btn btn-block btn-sm btn-social btn-twitter" data-no-turbolink="true" href="<%= signin_with_twitter %>"><i class="fa fa-twitter"></i></a>
                             </div>
                             <div class="social-btn">
-                                <a class="btn btn-block btn-sm btn-social btn-google-plus" href="<%= signin_with_google_oauth2 %>"><i class="fa fa-google-plus"></i></a>
+                                <a class="btn btn-block btn-sm btn-social btn-google-plus" data-no-turbolink="true" href="<%= signin_with_google_oauth2 %>"><i class="fa fa-google-plus"></i></a>
                             </div>
                         </li>
                         <% end %>
@@ -60,7 +60,7 @@
                         <span class="top-location-top"><span>Location:</span> <span class="actual"><%= sanitize pretty_loc(@location) %></span></span><br />
                         <span class="top-location-bottom">
                             Not here?
-                            <%= link_to 'change location', controller: "settings", action: 'location', data: { no_turbolink: true } %> |
+                            <%= link_to 'change location', {controller: "settings", action: 'location'}, data: { no_turbolink: true } %> |
                             <a class="top-location-autodetect autodetect-button" href="#">autodetect</a> |
                             <a class="top-location-lock loc-lock-button" href="#">lock</a>
                             <a class="top-location-unlock loc-unlock-button" href="#">unlock</a>
