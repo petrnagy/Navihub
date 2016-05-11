@@ -60,7 +60,7 @@
                         <span class="top-location-top"><span>Location:</span> <span class="actual"><%= sanitize pretty_loc(@location) %></span></span><br />
                         <span class="top-location-bottom">
                             Not here?
-                            <%= link_to 'change location', controller: "settings", action: 'location' %> |
+                            <%= link_to 'change location', controller: "settings", action: 'location', data: { no_turbolink: true } %> |
                             <a class="top-location-autodetect autodetect-button" href="#">autodetect</a> |
                             <a class="top-location-lock loc-lock-button" href="#">lock</a>
                             <a class="top-location-unlock loc-unlock-button" href="#">unlock</a>
