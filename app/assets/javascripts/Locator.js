@@ -122,7 +122,7 @@ Locator.prototype = {
                 flashmsg = flashmsg.replace('%%flashmsg%%', msg);
                 $('#yield').prepend(flashmsg);
                 that._data.browser = false;
-            }, { enableHighAccuracy: true, timeout: 5000, maximumAge: 60000 });
+            }, { enableHighAccuracy: true, timeout: 120000, maximumAge: 60000 });
         } else {
             that._data.browser = false;
         } // end if
