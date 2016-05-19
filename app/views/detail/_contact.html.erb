@@ -26,9 +26,9 @@
                 <% if @data[:detail][:website_url] %>
                 The place homepage can be found <%= link_to 'here', @data[:detail][:website_url] %>.
                 <% elsif @data[:detail][:url] %>
-                More informations can be found on <%= link_to 'this <i class="fa fa-external-link"></i>'.html_safe, @data[:detail][:url] %> <i><%=@data[:origin]%></i> site.
+                More information can be found on <%= link_to 'this <i class="fa fa-external-link"></i>'.html_safe, @data[:detail][:url] %> <i><%=@data[:origin]%></i> site.
                 <% else %>
-                Need little more informations? try <a href="#search-engines">Google</a>, <a href="#search-engines">Bing</a> or <a href="#search-engines">DuckDuckGo</a>.
+                Need little more information? try <a href="#search-engines">Google</a>, <a href="#search-engines">Bing</a> or <a href="#search-engines">DuckDuckGo</a>.
                 <% end %>
             </p>
         </div>

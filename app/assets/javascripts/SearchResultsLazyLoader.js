@@ -33,6 +33,7 @@ SearchResultsLazyLoader.prototype = {
         that._lazyLoadMapPopups();
         that._lazyLoadRoutePopups();
         that._lazyLoadSocialSharingUrls();
+        that._lazyLoadWebsiteRedirects();
     }, // end method
 
     _lazyLoadSearchResultsImages: function() {
@@ -268,6 +269,19 @@ SearchResultsLazyLoader.prototype = {
                     $el.attr('href', $el.attr('href').replace(key, url));
                 } // end if
             });
+        });
+    }, // end method
+
+    _lazyLoadWebsiteRedirects: function() {
+        var that = this;
+        var $set = $('#search-results .result-box:in-viewport .list-visit-website[href="#"]');
+        $set.each(function(i, el){
+            var $el = $(el);
+            var data = that.di.searchResult.getData($el);
+            var url = that.di.searchResult.getWebsiteRedirectUrl(data);
+            if ( url ) {
+                $el.attr('href', url);
+            } // end if
         });
     }, // end method
 

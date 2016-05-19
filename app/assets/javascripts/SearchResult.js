@@ -24,7 +24,7 @@ SearchResult.prototype = {
       var that = this;
       var interests = [
           'list-open-in-maps', 'list-plan-a-route', 'list-send-via-email', 'list-get-permalink',
-          'list-fav-switch', 'list-visit-website'
+          'list-fav-switch'
       ];
 
       $.each(interests, function(key, interest) {
@@ -224,8 +224,13 @@ SearchResult.prototype = {
 
     list_visit_website: function(el, e) {
         var that = this;
-        var $el = $(el).closest('.result-box');
-        //var tab = window.open('about:blank');
+        var $el = $(el).closest('.result-box')
+        var tab = window;
+
+        if ( e.metaKey || e.ctrlKey || e.shiftKey || e.which !== 1 ) {
+            tab = window.open('about:blank');
+        } // end if
+
         that.di.spinner.show();
         var detail = that.loadDetail($el, function(data){
             var url = data.detail.website_url;
@@ -240,16 +245,18 @@ SearchResult.prototype = {
                 } // end if
             } // end if
             that.di.spinner.hide();
-            //tab.location = url;
-            window.location = url;
+
+            tab.location = url;
         });
         return false;
     }, // end method
 
-
-
     getDetailUrl: function(data) {
         return window.location.origin + Detail.prototype.buildDetailUrl(data, this);
+    }, // end method
+
+    getWebsiteRedirectUrl: function(data) {
+        return window.location.origin + Detail.prototype.buildWebsiteRedirectUrl(data, this);
     }, // end method
 
     list_send_via_email: function($el) {

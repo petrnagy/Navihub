@@ -33,6 +33,10 @@ Rails.application.routes.draw do
     get 'detail/:name/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe] [csrf-part-safe]
         :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
     get 'detail/recent(/:page)' => 'detail#recent'
+    get 'detail/redirect/:origin/:id' => 'detail#redirect', # [xss-safe] [csrf-part-safe]
+        :constraints => { :id => /.+/, :origin => /.+/ }
+    get 'detail/redirect/:origin' => 'detail#redirect', # [xss-safe] [csrf-part-safe]
+        :constraints => { :id => /.+/, :origin => /.+/ }
     # permalinks
     get 'permalink/recent(/:page)' => 'permalink#recent'
     get 'permalink/:permalink_id' => 'permalink#show' # [xss-safe] [csrf-part-safe]

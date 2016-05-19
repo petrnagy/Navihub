@@ -230,5 +230,22 @@ Detail.prototype = {
                 url = '/detail/' + name + '/' + id + '/' + origin + '/@/' + ll;
             } // end if
             return url;
+        }, // end method
+        /**
+        * @static
+        * @param  {object} data
+        * @return {String} relative url
+        */
+        buildWebsiteRedirectUrl: function(data, that) {
+            that = that || this;
+            var origin = encodeURIComponent(data.origin.toString());
+            var id = encodeURIComponent(data.id.toString());
+
+            if ( ! that.di.mixin.isAscii(data.id.toString())) {
+                url = '/detail/redirect/' + origin + '?id=' + id;
+            } else {
+                url = '/detail/redirect/' + origin + '/' + id;
+            } // end if
+            return url;
         } // end method
     }; // end prototype
