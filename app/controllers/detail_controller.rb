@@ -1,19 +1,25 @@
 class DetailController < ApplicationController
 
     include RecentMixin
+    include ApplicationHelper
 
     def index
+        return lazy if is_bot
+        return render 'lazy' if not request.xhr?
+
         parameters = index_params
         @data = load_detail parameters[:origin], parameters[:id]
-        rewrite_html_variables
+
+        return render json: @data
+    end
+
+    def lazy
+        parameters = index_params
+        @data = load_detail parameters[:origin], parameters[:id]
         extend_sitemap
-        if @data
-            if request.xhr?
-                return render json: @data
-            else
-                return render 'detail'
-            end
-        end
+
+        return render('detail', :layout => is_bot) if @data
+
         @data = { :origin => parameters['origin'] || 'unknown', :id => parameters['id'] || 'unknown' }
         render 'empty', :status => 404
     end
@@ -63,6 +69,7 @@ class DetailController < ApplicationController
         if request.fullpath =~ /\?id=.+/
             url = request.fullpath
         end
+        url.gsub! '/lazy-detail/', '/detail/'
         Sitemap.add(url, params[:controller], @data[:name])
     end
 

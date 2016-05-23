@@ -147,4 +147,8 @@ module ApplicationHelper
         sess.valid_to
     end
 
+    def is_bot
+        return !! (request.env['HTTP_USER_AGENT'] =~ /bot|crawl|slurp|spider/i)
+    end
+
 end

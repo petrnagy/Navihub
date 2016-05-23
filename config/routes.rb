@@ -32,6 +32,10 @@ Rails.application.routes.draw do
         :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
     get 'detail/:name/:origin/@/:lat,:lng' => 'detail#index', # [xss-safe] [csrf-part-safe]
         :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
+    get 'lazy-detail/:name/:id/:origin/@/:lat,:lng' => 'detail#lazy', # [xss-safe] [csrf-part-safe]
+        :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
+    get 'lazy-detail/:name/:origin/@/:lat,:lng' => 'detail#lazy', # [xss-safe] [csrf-part-safe]
+        :constraints => { :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/, :id => /.+/, :name => /.+/ }
     get 'detail/recent(/:page)' => 'detail#recent'
     get 'detail/redirect/:origin/:id' => 'detail#redirect', # [xss-safe] [csrf-part-safe]
         :constraints => { :id => /.+/, :origin => /.+/ }

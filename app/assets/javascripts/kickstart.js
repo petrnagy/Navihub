@@ -12,9 +12,12 @@ function kickstart_homepage(di) {
 } // end func
 
 function kickstart_detail(di) {
-    if ($("#detail-results").length) {
-        di.venueDetail = new VenueDetail(di);
-        di.venueDetailLazyLoader = new DetailLazyLoader(di);
+    if ($("#detail-results-lazy").length) {
+        di.venueDetailAjaxLoader = new VenueDetailAjaxLoader(di);
+        di.venueDetailAjaxLoader.load();
+    } else if ($("#detail-results").length) {
+        di.venueDetailAjaxLoader = new VenueDetailAjaxLoader(di);
+        di.venueDetailAjaxLoader.init();
     } // end if
 } // end func
 

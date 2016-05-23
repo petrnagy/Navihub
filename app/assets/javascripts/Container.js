@@ -16,6 +16,7 @@ var Container = {
             env: serverData.env,
             mixin: Mixin,
             spinner: Spinner,
+            loader: Loader,
             browser: Browser,
             turbolinksStorage: new TurbolinksStorage(),
             ENVIRONMENT: { DEV: 'development', PROD: 'production', TEST: 'testing' }

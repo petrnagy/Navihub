@@ -1,0 +1,90 @@
+#loader-bg {
+    position: fixed;
+    width: 100%;
+    top: 62px;
+    left: 0px;
+    height: 100%;
+    background-color: black;
+    opacity: 0.75;
+}
+
+#loader-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+}
+
+#loader-wrapper p {
+    position: relative;
+    left: -55px;
+    top: -310px;
+}
+
+div.loader-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    position: relative;
+    left: -30px;
+    border: 2px solid #93c54b;
+    animation: up 1s;
+    animation-iteration-count: infinite;
+    transition: 2s;
+    border-bottom: none;
+    border-right: none;
+    animation-timing-function: linear;
+    margin-left: -70px;
+    margin-top: -70px;
+    /*left: 42%;
+    top: 46%;*/
+}
+
+@keyframes up {
+    from {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#img2 {
+    width: 180px;
+    height: 180px;
+    /*left: 42.35%;
+    top: 46.7%;*/
+    top: -125px;
+    animation-delay: .2s;
+}
+
+#img3 {
+    width: 160px;
+    height: 160px;
+    /*left: 42.70%;
+    top: 47.4%;*/
+    top: -227px;
+    animation-delay: .4s;
+}
+
+#img4 {
+    width: 140px;
+    height: 140px;
+    /*left: 43.05%;
+    top: 48.1%;*/
+    top: -310px;
+    animation-delay: .6s;
+}
+
+#img5 {
+    width: 120px;
+    height: 120px;
+    /*left: 43.40%;
+    top: 48.8%;*/
+    top: -367px;
+    animation-delay: .8s;
+}
+
+@media only screen and (max-width: 991px) { #loader-bg { top: 50px; } }

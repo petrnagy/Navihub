@@ -13,10 +13,20 @@ var DetailLazyLoader = function(di) {
 DetailLazyLoader.prototype = {
 
     _init: function() {
+        this._lazyLoadMeta();
         this._lazyLoadGeometry();
         this._lazyLoadAddress();
         this._lazyLoadTagLinks();
         this._lazyLoadDistance();
+    }, // end method
+
+    _lazyLoadMeta: function() {
+      var that = this;
+      var title = that._data.name + ' | Navihub';
+      var desc = that._data.name + ' | ' + that._data.address;
+      $('title').text(title);
+      $('meta[name="description"]').attr('content', desc);
+      $('meta[name="keywords"]').attr('content', desc);
     }, // end method
 
     _lazyLoadGeometry: function() {
