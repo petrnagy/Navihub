@@ -1,5 +1,5 @@
 <%= render 'form' %>
 <%= render 'hr' %>
-<div id="search-results">
+<div id="search-results" data-title="<%= @page_title %>" data-desc="<%= @page_desc %>" data-keywords="<%= @page_keywords %>">
   <%= render 'list_find' %>
 </div>

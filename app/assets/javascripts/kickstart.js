@@ -28,12 +28,12 @@ function kickstart_permalink(di) {
 } // end func
 
 function kickstart_search(di) {
-    if ($("#search-form").length) {
-        di.search = new Search(21, di); // 21 results per page
-        di.btn = new NextButton(di);
-        di.searchResult = new SearchResult(di);
-        di.lazyLoader = new SearchResultsLazyLoader(di);
-        di.lazyLoader.lazyLoad();
+    if ( $('#search-results-lazy').length ) {
+        di.searchAjaxLoader = new SearchAjaxLoader(di);
+        di.searchAjaxLoader.load();
+    } else if ( $("#search-form").length ) {
+        di.searchAjaxLoader = new SearchAjaxLoader(di);
+        di.searchAjaxLoader.init();
     } // end if
 } // end func
 

@@ -16,8 +16,8 @@ class DetailController < ApplicationController
     def lazy
         parameters = index_params
         @data = load_detail parameters[:origin], parameters[:id]
-        extend_sitemap
-
+        extend_sitemap if not is_bot
+        rewrite_html_variables if is_bot
         return render('detail', :layout => is_bot) if @data
 
         @data = { :origin => parameters['origin'] || 'unknown', :id => parameters['id'] || 'unknown' }
@@ -46,6 +46,8 @@ class DetailController < ApplicationController
 
     def rewrite_html_variables
         @page_title = @data[:name]
+        @page_desc = @data[:name] + ' ' + @data[:address]
+        @page_keywords = @page_desc
     end
 
     def index_params

@@ -53,6 +53,12 @@ Rails.application.routes.draw do
     get 'search/:term/:order/:radius/:offset/@/:lat,:lng' => 'search#find', # [xss-safe] [csrf-part-safe]
         :constraints => { :order => /\w+\-\w+/, :radius => /\d+/, :offset => /\d+/,
             :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/ }
+    get 'lazy-search/:order/:radius/:offset/@/:lat,:lng' => 'search#lazy', # [xss-safe] [csrf-part-safe]
+        :constraints => { :order => /\w+\-\w+/, :radius => /\d+/, :offset => /\d+/,
+            :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/ }
+    get 'lazy-search/:term/:order/:radius/:offset/@/:lat,:lng' => 'search#lazy', # [xss-safe] [csrf-part-safe]
+        :constraints => { :order => /\w+\-\w+/, :radius => /\d+/, :offset => /\d+/,
+            :lat => /\-?\d+(\.\d+)?/, :lng => /\-?\d+(\.\d+)?/ }
     get 'search/recent(/:page)' => 'search#recent'
     # lazy search-related endpoints
     get 'lazy/geocode' => 'search#geocode' # [xss-safe] [csrf-part-safe]

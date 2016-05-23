@@ -56,7 +56,7 @@ Search.prototype = {
             if (url) {
                 that.pushUrl(url);
                 that.lock();
-                that.di.spinner.show();
+                that.di.loader.show();
                 $.ajax({
                     url: url,
                     data: {append: Number(typeof append != 'undefined' && append)},
@@ -67,12 +67,12 @@ Search.prototype = {
                             $("#search-results").html(data).removeClass('search-start');
                             that.updateTitle();
                         } // end if
-                        that.di.spinner.hide();
+                        that.di.loader.hide();
                         that.unlock();
                         that.di.lazyLoader.lazyLoad();
                     }, // end func
                     error: function() {
-                        that.di.spinner.hide();
+                        that.di.loader.hide();
                         that.unlock();
                         that.di.messenger.error('Whoops !', 'We are sorry, the server has encountered an unexpected error and could not complete your request. Please try again later.');
                     } // end func

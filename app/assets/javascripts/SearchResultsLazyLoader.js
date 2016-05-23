@@ -13,6 +13,7 @@ SearchResultsLazyLoader.prototype = {
 
     _init: function() {
         this._initSearchResultsLazyLoading();
+        this._initPageMeta();
     }, // end method
 
     _initSearchResultsLazyLoading: function() {
@@ -283,6 +284,13 @@ SearchResultsLazyLoader.prototype = {
                 $el.attr('href', url);
             } // end if
         });
+    }, // end method
+
+    _initPageMeta: function() {
+        var that = this;
+        $('title').text($('#search-results').attr('data-title'));
+        $('meta[name="description"]').attr('content', $('#search-results').attr('data-desc'));
+        $('meta[name="keywords"]').attr('content', $('#search-results').attr('data-keywords'));
     }, // end method
 
 }; // end prototype

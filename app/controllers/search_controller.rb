@@ -14,22 +14,31 @@ class SearchController < ApplicationController
         render 'index'
     end
 
-    def find
+    def lazy
         parameters = find_params
         @tpl_vars = {} # is filled from several methods
         @request_params = generate_request_params_json parameters, @request_location
         @request_ll = @request_location.latitude.to_s + ',' + @request_location.longitude.to_s
         @results = process_search parameters
         init_template_vars parameters
-        find_rewrite_html_variables parameters
+        find_rewrite_html_variables parameters # rewrite always because of extend_sitemap
         if @results.length == 0
             tpl = ( request.xhr? ? '_' : '' ) + 'empty'
             render tpl, :layout => ! request.xhr?
         else
-            extend_sitemap
+            extend_sitemap if not is_bot
             @data = {:results => @results, :search => @search, :data => @tpl_vars}
-            render '_list_find', :layout => false if request.xhr?
+            if 'find' == params[:action] and not is_bot
+                render '_list_find', :layout => false
+            else
+                render 'find', :layout => is_bot
+            end
         end
+    end
+
+    def find
+        return lazy if is_bot or request.xhr?
+        render 'lazy'
     end
 
     def empty
@@ -131,7 +140,8 @@ class SearchController < ApplicationController
 
     def process_search parameters
         ts_start = Time.now
-        parameters['is_xhr'] = request.xhr?
+        #parameters['is_xhr'] = request.xhr?
+        parameters['is_xhr'] = ('find' == params[:action] and not is_bot ? true : false)
         search = Search.new parameters, create_search_location, @user
         results = search.search
         @tpl_vars[:total_cnt] = search.total_cnt
@@ -264,6 +274,7 @@ class SearchController < ApplicationController
         if request.fullpath =~ /\?term=.+/
             url = url + '?term=' + params[:term]
         end
+        url.gsub! '/lazy-search/', '/search/'
         Sitemap.add(url, params[:controller], @page_title)
     end
 
