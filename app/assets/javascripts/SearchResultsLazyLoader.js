@@ -104,7 +104,12 @@ SearchResultsLazyLoader.prototype = {
         var $set = $('#yield #search-results .result-address:in-viewport').not('.dotted').filter(function(){
             return ( $(this).find('i.unknown-data').length === 0 );
         });
-        $set.addClass('dotted').dotdotdot();
+
+        if ( ! that.di.browser.isFirefox() ) {
+            $set.addClass('dotted').dotdotdot();
+        } else {
+            // FIXME: dotdotdot is not working properly undex Firefox :-(
+        } // end if
     }, // end method
 
     _lazyLoadSearchResultsOpenDetail: function() {
