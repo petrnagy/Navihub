@@ -26,7 +26,7 @@ class SearchController < ApplicationController
             tpl = ( request.xhr? ? '_' : '' ) + 'empty'
             render tpl, :layout => ! request.xhr?
         else
-            extend_sitemap if not is_bot
+            extend_sitemap if not is_bot and parameters['offset'].to_i == 0
             @data = {:results => @results, :search => @search, :data => @tpl_vars}
             if 'find' == params[:action] and not is_bot
                 render '_list_find', :layout => false
