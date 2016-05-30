@@ -19,8 +19,9 @@ class NokiaEngine < SearchEngine
     term = @params[:term]
     url = 'https://places.cit.api.here.com/places/v1/discover/search'
     url += '?q=' + term
-    url += '&at=' + @location.latitude.to_s + ',' + @location.longitude.to_s
-    url += '&size=500'
+    #url += '&at=' + @location.latitude.to_s + ',' + @location.longitude.to_s
+    url += '&size=100'
+    url += '&in=' + @location.latitude.to_s + ',' + @location.longitude.to_s + ';r=' + @params[:radius].to_s + ';cgen=gps'
     url += '&tf=plain'
     url += '&pretty=false'
     url += '&app_id=' + @nokia_app_id

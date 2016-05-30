@@ -2,18 +2,18 @@
   <form>
     <div class="col-lg-4">
       <div class="form-group">
-        <input class="form-control" type="text" placeholder="Find anything around you..." value="<%= @tpl_vars[:input_params]['term'] %>" name="search[term]" autofocus>
+        <input class="form-control" type="text" placeholder="I am looking for..." value="<%= @tpl_vars[:input_params]['term'] %>" name="search[term]" autofocus>
       </div>
     </div>
     <div class="col-lg-2 radius-wrapper">
       <div class="form-group">
-        <select class="form-control" name="search[radius]">
+        <select class="form-control" name="search[radius]" title="Maximum place distance">
           <% [
-            {:val => 0, :name => 'Any distance'},
-            {:val => 500, :name => '< 500m | ~0.3 mi'},
-            {:val => 1000, :name => '< 1km | ~0.6 mi'},
-            {:val => 3000, :name => '< 3km | ~1.8 mi'},
-            {:val => 10000, :name => '< 10km | ~6 mi'}
+            #{:val => 500, :name => '< 500m | ~0.3 mi'},
+            {:val => 1000, :name => 'max 1km (0.6 mi)'},
+            {:val => 3000, :name => 'max 3km (1.8 mi)'},
+            {:val => 10000, :name => 'max 10km (6 mi)'},
+            {:val => 0, :name => 'Any distance'}
             ].each do |option| %>
             <option <%= (option[:val].to_i > 0 && @tpl_vars[:input_params]['radius'].to_i == option[:val].to_i ? 'selected="selected"' : '')  %> value="<%= option[:val] %>"><%= option[:name] %></option>
           <% end %>
@@ -22,7 +22,7 @@
     </div>
     <div class="col-lg-2 sort-wrapper">
       <div class="form-group">
-        <select class="form-control" name="search[sort]">
+        <select class="form-control" name="search[sort]" title="How should we order the results?">
           <%[
             {:val => 'distance-asc', :name => 'Nearest first'},
             {:val => 'name-asc', :name => 'Alphabetically'},
