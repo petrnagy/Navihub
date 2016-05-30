@@ -15,7 +15,7 @@ var Input = function(step, di) {
     this.defaults = {
         sort: 'distance-asc',
         offset: 0,
-        radius: 0,
+        radius: 1000,
     };
     // order matters !
     this.interests = ['term', 'sort', 'radius', 'offset'];
