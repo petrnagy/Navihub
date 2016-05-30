@@ -15,7 +15,7 @@
             {:val => 10000, :name => 'max 10km (6 mi)'},
             {:val => 0, :name => 'Any distance'}
             ].each do |option| %>
-            <option <%= (option[:val].to_i > 0 && @tpl_vars[:input_params]['radius'].to_i == option[:val].to_i ? 'selected="selected"' : '')  %> value="<%= option[:val] %>"><%= option[:name] %></option>
+            <option <%= (option[:val].to_i >= 0 && @tpl_vars[:input_params]['radius'].to_i == option[:val].to_i ? 'selected="selected"' : '')  %> value="<%= option[:val] %>"><%= option[:name] %></option>
           <% end %>
         </select>
       </div>

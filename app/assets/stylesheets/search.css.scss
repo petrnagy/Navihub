@@ -184,7 +184,7 @@ background-color: rgb(246,246,246);
     #search-form form > [class^=col-lg] { float: left; }
 
     #search-results > div { text-align: center; }
-    #search-results > div:nth-child(1) { text-align: left; }
+    #search-results > div:nth-child(1):not(.zero-results) { text-align: left; }
     #search-results .result-box { text-align: left; }
     .result-box { width: 340px; padding: 0px !important; display: inline-block; }
     .result-box:nth-child(1) { margin-right: 15px; }

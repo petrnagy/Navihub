@@ -59,7 +59,7 @@ Search.prototype = {
                 that.di.loader.show();
                 $.ajax({
                     url: url,
-                    data: {append: Number(typeof append != 'undefined' && append)},
+                    data: {append: Number(typeof append != 'undefined' && append), ui: Number($('#search-form').length > 0)},
                     success: function(data) {
                         if (append) {
                             $("#search-results").append(data);
@@ -161,7 +161,7 @@ Search.prototype = {
     updateTitle: function() {
         var that = this;
         var title = $("#search-results").find('h1').first().text();
-        if ( title ) {
+        if ( title && title.length > 3 ) { // Length 3 is for smile. We do not want smile in the <title>.
             $('title').text(title);
         } // end if
     }, // end method

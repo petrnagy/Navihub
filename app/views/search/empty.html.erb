@@ -1,8 +1,5 @@
 <%= render 'form' %>
 <%= render 'hr' %>
 <div id="search-results">
-  <div class="text-center">
-    <h1>:-(</h1>
-    <p>No results for the term '<%= @tpl_vars[:input_params]['term'] %>'</p>
-  </div>
+  <%= render 'empty' %>
 </div>

@@ -1,8 +1,10 @@
-<div class="text-center">
+<div class="text-center zero-results">
   <% if @tpl_vars[:input_params]['offset'].to_i > 0 %>
     <p>No more results</p>
   <% else %>
     <h1>:-(</h1>
     <p>No results for the term '<%= @tpl_vars[:input_params]['term'] %>'.</p>
+    <p>Try <a href="<%= @search_without_distance %>">increasing the maximum distance</a> or checking your <%= link_to 'location settings', {controller: 'settings', action: 'location'} %>.</p>
+    <p><a href="<%= @search_without_distance %>" class="btn btn-success">Try again without maximum distance</a></p>
   <% end %>
 </div>

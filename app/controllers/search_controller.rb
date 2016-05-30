@@ -2,6 +2,7 @@ class SearchController < ApplicationController
 
     include DetailHelper
     include ApplicationHelper
+    include SearchHelper
     include RecentMixin
     require 'location'
     require 'json'
@@ -23,7 +24,8 @@ class SearchController < ApplicationController
         init_template_vars parameters
         find_rewrite_html_variables parameters # rewrite always because of extend_sitemap
         if @results.length == 0
-            tpl = ( request.xhr? ? '_' : '' ) + 'empty'
+            @search_without_distance = url_for_search_without_distance parameters, @request_ll
+            tpl = ( parameters['ui'] == 1 ? '_' : '' ) + 'empty'
             render tpl, :layout => ! request.xhr?
         else
             extend_sitemap if not is_bot and parameters['offset'].to_i == 0
@@ -186,6 +188,7 @@ class SearchController < ApplicationController
         params['step'] = 21
         params['engines'] = Search.allowed_engines
         params['append'] = params.has_key?('append') ? params['append'].to_i : 0
+        params['ui'] = params.has_key?('ui') ? params['ui'].to_i : 0
         params['order'] = params.has_key?('order') ? params['order'] : 'distance-asc'
         params['offset'] = params.has_key?('offset') ? params['offset'] : '0'
         params['radius'] = params.has_key?('radius') ? params['radius'] : '0'
@@ -196,7 +199,7 @@ class SearchController < ApplicationController
         end
         params['term'] = Mixin.sanitize(params['term']).strip
 
-        params.permit(:term, :order, :offset, :radius, :limit, :step, :engines, :is_xhr, :append)
+        params.permit(:term, :order, :offset, :radius, :limit, :step, :engines, :is_xhr, :append, :ui)
     end
 
     def geocode_params
