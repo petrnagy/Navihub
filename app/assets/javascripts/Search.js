@@ -126,6 +126,7 @@ Search.prototype = {
         }
         var ll = loc.lat. toFixed(7).toString() + ',' + loc.lng. toFixed(7).toString();
         url += '/@/' + ll;
+        values.term = values.term.replace('/', ',');
         if ( ascii ) {
             url = url.replace('/%%term%%', '/' + values.term);
         } else {
