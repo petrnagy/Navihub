@@ -7,6 +7,8 @@ class SearchController < ApplicationController
     require 'location'
     require 'json'
 
+    @@default_radius = 1000
+
     public
 
     def index
@@ -165,6 +167,9 @@ class SearchController < ApplicationController
 
     def init_template_vars parameters
         @tpl_vars[:input_params] = parameters
+        unless params.has_key?('radius')
+            @tpl_vars[:input_params]['radius'] = @@default_radius
+        end
     end
 
     def find_rewrite_html_variables parameters
@@ -179,7 +184,7 @@ class SearchController < ApplicationController
         @tpl_vars = {}
         @tpl_vars[:input_params] = Hash.new
         @tpl_vars[:input_params]['term'] = ''
-        @tpl_vars[:input_params]['radius'] = 0
+        @tpl_vars[:input_params]['radius'] = @@default_radius
     end
 
     def find_params
