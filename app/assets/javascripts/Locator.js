@@ -162,8 +162,11 @@ Locator.prototype = {
                 data: data,
                 success: function(response) {
                     that._afterSendSuccess(data, manual, write, lock, response);
+                    that.di.spinner.hide();
                 } // end func
             });
+        } else if ( manual ) {
+            that.di.spinner.hide();
         } // end if
     }, // end method
 
@@ -354,7 +357,8 @@ Locator.prototype = {
 
     _relocate: function() {
         var that = this;
-        $("#top-location .top-location-top .actual").html('loading...');
+        //$("#top-location .top-location-top .actual").html('loading...');
+        that.di.spinner.show();
         that.reset();
         that.locate(true);
     }, // end method
