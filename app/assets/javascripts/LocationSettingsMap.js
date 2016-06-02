@@ -20,6 +20,13 @@ LocationSettingsMap.prototype = {
         var that = this;
         that._initMap();
         that._initForm();
+        // HACK: for focusing the map input
+        var selector = '#settings-location-autocomplete', interval = setInterval(function(){
+            $(selector).focus();
+            if ( $(selector).is(':focus') ) {
+                clearInterval(interval);
+            } // end if
+        }, 1000);
     }, // end method
 
     _initMap: function() {
@@ -42,11 +49,6 @@ LocationSettingsMap.prototype = {
                 anchorPoint: new google.maps.Point(0, -29)
             });
             that._initAutocomplete(autocomplete, infoWindow, marker);
-            // TODO: inicializovat kliknutí na MAPU
-            // TODO: Doplnit vyplnění inputů s adresou a koordinacema
-            // DONE: tlačítko AUTOdetect
-            // TODO: tlačítko SAVE
-
         });
     }, // end method
 
