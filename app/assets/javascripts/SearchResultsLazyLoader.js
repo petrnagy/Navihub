@@ -39,7 +39,9 @@ SearchResultsLazyLoader.prototype = {
 
     _lazyLoadSearchResultsImages: function() {
         var that = this;
-        var $set = $('#yield #search-results .map-wrapper img[lazysrc]:in-viewport');
+        var $set = $('#yield #search-results .map-wrapper img[lazysrc]:in-viewport').filter(function(){
+            return ($(this).closest('.result-box').find('.result-geometry .fa-spinner').length === 0);
+        });
         $set.each(function(){
             var lazySrc = '/lazy/static-map-img?src=' + encodeURIComponent($(this).attr('lazysrc'));
             var $img = $(this);
