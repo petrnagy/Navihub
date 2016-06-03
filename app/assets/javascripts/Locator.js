@@ -31,7 +31,7 @@ var Locator = function(di) {
 
 Locator.prototype = {
 
-    locate: function(manual) {
+    locate: function(manual, write) {
         var that = this;
         that._loadFromBrowser();
         that._loadFromWeb();
@@ -40,7 +40,7 @@ Locator.prototype = {
                 clearInterval(that._interval);
             } else {
                 if ( ! that._sent.browser && that._data.browser ) {
-                    that._send(that._data.browser, manual);
+                    that._send(that._data.browser, manual, write);
                     that._sent.browser = true;
                     that._processHooks();
                     that._processWeakHooks();
@@ -191,6 +191,7 @@ Locator.prototype = {
                 var apiCallback = 'DI.locator._doReverseGeocoding';
                 that._didAutomaticReverseGeocoding = true;
                 that.di.scriptLoader.load(apiUrl, apiCallback);
+                // FIXME: Pri autodetekci se _doReverseGeocoding nezavola podruhe...
             } else if ( manual ) {
                 that.di.spinner.show();
                 that._doReverseGeocoding(that, lock);
@@ -360,7 +361,7 @@ Locator.prototype = {
         //$("#top-location .top-location-top .actual").html('loading...');
         that.di.spinner.show();
         that.reset();
-        that.locate(true);
+        that.locate(true, true);
     }, // end method
 
     lock: function() {

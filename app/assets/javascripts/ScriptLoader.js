@@ -68,7 +68,7 @@ ScriptLoader.prototype = {
 
         if ( typeof window[lambdaName] === 'function' ) {
             window[lambdaQueue].push(func + '()');
-            return null;
+            return { name: func };
         } else {
             window[lambdaQueue] = [];
             window[lambdaQueue].push(func + '()');
