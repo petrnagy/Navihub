@@ -59,7 +59,7 @@ DetailLazyLoader.prototype = {
                 var $set = $('#detail-results .result-tags .label');
                 var search = new Search(null, that.di);
                 $set.each(function(){
-                    var label = $(this).text().replace('-', ' ');
+                    var label = $(this).text().replaceAll('-', ' ');
                     var searchData = search.defaults;
                     searchData.term = label;
                     var url = search.buildUrl(searchData);

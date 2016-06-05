@@ -9,7 +9,7 @@ class Mixin
   end
 
   def self.normalize_tag tag
-    tag.gsub('_', '-').gsub(' ', '-').downcase
+    tag.gsub(/( |_)+/, '-').gsub(/-+/, '-').gsub('/', ',').downcase
   end
 
   def self.sanitize txt
