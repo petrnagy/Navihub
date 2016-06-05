@@ -100,31 +100,37 @@ Locator.prototype = {
 
     _loadFromBrowser: function() {
         var that = this;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(response) {
-                try {
-                    var data = that.di.mixin.clone(that._envelope);
-                    data.lat = response.coords.latitude;
-                    data.lng = response.coords.longitude;
-                    data.origin = 'browser';
-                    that._data.browser = data;
-                } catch (e) {
-                    that._data.browser = false;
-                } // end try-catch
-            }, function(response) {
-                var msg = '';
-                if ( typeof response == 'object' && response.code == 1 ) {
-                    msg = 'Please allow our site to access your <b>geolocation</b> for the best possible user experience. <a href="https://www.google.cz/#q=how+to+enable+browser+geolocation">How?</a>';
-                } else {
-                    msg = 'We could not access your geolocation and therefore the site functionality may be limited.';
-                } // end if
-                var flashmsg = '<div class="alert alert-dismissible alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>%%flashmsg%%</div>';
-                flashmsg = flashmsg.replace('%%flashmsg%%', msg);
-                $('#yield').prepend(flashmsg);
-                that._data.browser = false;
-            }, { enableHighAccuracy: true, timeout: 120000, maximumAge: 60000 });
+        var cached = that._getFromCache(true);
+        if ( cached !== null ) {
+            that._data.browser = cached;
         } else {
-            that._data.browser = false;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(response) {
+                    try {
+                        var data = that.di.mixin.clone(that._envelope);
+                        data.lat = response.coords.latitude;
+                        data.lng = response.coords.longitude;
+                        data.origin = 'browser';
+                        that._data.browser = data;
+                        that._saveToCache(data, true);
+                    } catch (e) {
+                        that._data.browser = false;
+                    } // end try-catch
+                }, function(response) {
+                    var msg = '';
+                    if ( typeof response == 'object' && response.code == 1 ) {
+                        msg = 'Please allow our site to access your <b>geolocation</b> for the best possible user experience. <a href="https://www.google.cz/#q=how+to+enable+browser+geolocation">How?</a>';
+                    } else {
+                        msg = 'We could not access your geolocation and therefore the site functionality may be limited.';
+                    } // end if
+                    var flashmsg = '<div class="alert alert-dismissible alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>%%flashmsg%%</div>';
+                    flashmsg = flashmsg.replace('%%flashmsg%%', msg);
+                    $('#yield').prepend(flashmsg);
+                    that._data.browser = false;
+                }, { enableHighAccuracy: true, timeout: 300000, maximumAge: 60000 });
+            } else {
+                that._data.browser = false;
+            } // end if
         } // end if
     }, // end method
 
@@ -216,7 +222,16 @@ Locator.prototype = {
 
     _getFromCache: function(deep) {
         if ( deep ) {
-            return $.cookie('_navihub_loc_cache');
+            var timeout = 60; // 60s
+            var cached = $.cookie('_navihub_loc_cache');
+            if ( cached !== undefined ) {
+                if ( cached._ts !== undefined ) {
+                    if ( ( (new Date().getTime() / 1000) - cached._ts) < timeout )  {
+                        return cached;
+                    } // end if
+                } // end if
+            } // end if
+            return null;
         } else {
             return ( typeof _navihub_loc_cache == 'object' ? _navihub_loc_cache : null );
         } // end if-else
@@ -224,6 +239,7 @@ Locator.prototype = {
 
     _saveToCache: function(data, deep) {
         if ( deep ) {
+            data._ts = new Date().getTime() / 1000;
             $.cookie('_navihub_loc_cache', data);
         } else {
             _navihub_loc_cache = data;
