@@ -73,6 +73,9 @@ LocationSettingsMap.prototype = {
         $form.submit(function(e){
             e.preventDefault();
             that.di.locator.set(that.location);
+            var flashmsg = '<div class="alert alert-dismissible alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>%%flashmsg%%</div>';
+            flashmsg = flashmsg.replace('%%flashmsg%%', 'Location has been successfully changed. <a href="/">Continue?</a>');
+            $('#yield').prepend(flashmsg);
             return false;
         });
     }, // end method
