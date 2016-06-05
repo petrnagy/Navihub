@@ -48,7 +48,6 @@ function kickstart_favorites(di){
 
 function kickstart_settings(di) {
     if ($("form#settings-location").length) {
-        // FIXME: pokud existuje lokace, tak nastavit !!!
         di.locationSettingsMap = new LocationSettingsMap(di, di.config.mockLocation);
         di.locationSettingsMap.init();
     } // end if

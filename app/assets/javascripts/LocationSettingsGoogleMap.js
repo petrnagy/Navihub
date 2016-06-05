@@ -69,6 +69,8 @@ LocationSettingsGoogleMap.prototype = {
                 streetViewControl: false,
                 disableDefaultUI: true,
                 scrollwheel: false,
+                draggable: false,
+                disableDoubleClickZoom: true
             };
             DI.locationSettingsGoogleMap.map = new google.maps.Map(mapCanvas, mapOptions);
             google.maps.event.addListenerOnce(DI.locationSettingsGoogleMap.map, 'idle', function(){

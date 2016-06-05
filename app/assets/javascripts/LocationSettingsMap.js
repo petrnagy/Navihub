@@ -9,6 +9,12 @@
 */
 var LocationSettingsMap = function(di, location) {
     this.di = di;
+    this.initialZoom = 5;
+    var currentLocation = this.di.locator.getLocation();
+    if (currentLocation) {
+        location = currentLocation;
+        this.initialZoom = 12;
+    } // end if
     this.location = location;
     this.location.latitude = this.location.lat;
     this.location.longitude = this.location.lng;
@@ -32,7 +38,7 @@ LocationSettingsMap.prototype = {
     _initMap: function() {
         var that = this;
 
-        that.googleMap = new LocationSettingsGoogleMap(that.di, that.location, 'settings-location-canvas', 5, function() {
+        that.googleMap = new LocationSettingsGoogleMap(that.di, that.location, 'settings-location-canvas', that.initialZoom, function() {
             var input = document.getElementById('settings-location-autocomplete');
 
             //var types = document.getElementById('type-selector');
