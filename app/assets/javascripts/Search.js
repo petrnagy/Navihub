@@ -5,8 +5,8 @@
 */
 
 /**
- * @author PN @since 2014-08-30
- */
+* @author PN @since 2014-08-30
+*/
 var Search = function(step, di) {
     this.di = di;
     this.step = step;
@@ -30,6 +30,7 @@ Search.prototype = {
             that._bindSubmit();
         });
         that._bindChange();
+        that._bindFocus();
     },
     _bindSubmit: function() {
         var that = this;
@@ -164,6 +165,16 @@ Search.prototype = {
         var title = $("#search-results").find('h1').first().text();
         if ( title && title.length > 3 ) { // Length 3 is for smile. We do not want smile in the <title>.
             $('title').text(title);
+        } // end if
+    }, // end method
+
+    _bindFocus: function() {
+        var that = this;
+        if ( that.di.browser.isMobileDevice() ) {
+            $that.form.find('input[type="text"]').focus(function(){
+                var elem = this;
+                setTimeout(function(){ elem.selectionStart = elem.selectionEnd = 10000; }, 0);
+            });
         } // end if
     }, // end method
 
