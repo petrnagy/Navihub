@@ -107,11 +107,8 @@ SearchResultsLazyLoader.prototype = {
             return ( $(this).find('i.unknown-data').length === 0 );
         });
 
-        if ( ! that.di.browser.isFirefox() ) {
-            $set.addClass('dotted').dotdotdot();
-        } else {
-            // FIXME: dotdotdot is not working properly undex Firefox :-(
-        } // end if
+        $set.addClass('dotted');
+        that.di.ellipsis.do($set);
     }, // end method
 
     _lazyLoadSearchResultsOpenDetail: function() {

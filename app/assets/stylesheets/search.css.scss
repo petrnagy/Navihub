@@ -14,10 +14,10 @@
 /*.result-box.active, .result-detail, .result-box.active:hover { background-color: #FFF2C8; }*/
 //.result-box:hover > * { cursor: pointer; }
 .result-box .result-geometry {  }
-.result-address { border-right: 2px solid white; border-bottom: 2px solid white; max-height: 43px;
-  overflow: hidden;
-  /*white-space: nowrap;
-  text-overflow: ellipsis;*/
+.result-address { border-right: 2px solid white; border-bottom: 2px solid white; max-height: 43.35px;
+    overflow: hidden;
+    /*white-space: nowrap;
+    text-overflow: ellipsis;*/
 }
 .result-box a.list-fav-switch:active, .result-box a.list-fav-switch:hover,
 .result-box a.list-fav-switch:focus { color: #D2D21E; }
@@ -33,11 +33,11 @@
 .result-tags .label { /*margin-top: 12px;*/ display: inline-block; margin-left: 5px; margin-right: 5px; }
 .result-tags .results-icon { position: relative; top: 4px; }
 .result-car-distance span, .result-distance span, .result-walking-distance span {
-  /*margin-top: 9px;*/
-  display: inline-block;
-  /*overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;*/
+    /*margin-top: 9px;*/
+    display: inline-block;
+    /*overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;*/
 }
 .details-wrapper .col-lg-2, .details-wrapper .col-lg-10 { border-top: 2px solid white; }
 .btn-detail { font-size: 25px; padding: 0px; }
@@ -58,9 +58,9 @@
     padding: 3px;
     padding-right: 7px;
     color: #777777;
-  }
+}
 .geometry-wrapper div[class^="col-lg"], .distance-wrapper div[class^="col-lg"], .labels-wrapper, .details-wrapper .dots {
-background-color: rgb(246,246,246);
+    background-color: rgb(246,246,246);
 }
 .dots { height: 40px; }
 .dots.col-lg-2 { padding: 0px; }
@@ -84,7 +84,7 @@ background-color: rgb(246,246,246);
 .link-white:hover { color: white; }
 .search-start { min-height: 250px; }
 .result-address, .result-geometry, .result-distance, .result-walking-distance, .result-car-distance, .result-tags {
-  display: flex; align-items: center;
+    display: flex; align-items: center;
 }
 .details-wrapper ul.dropdown-menu { left: 61px; top: -238px; border-top-right-radius: 0; }
 .details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu { left: 159px; top: 0px; }
@@ -272,3 +272,8 @@ background-color: rgb(246,246,246);
 @media only screen and (max-height: 500px) {
     #search-input-wrapper { background: none; }
 }
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ SAFARI 9.0+ ONLY ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+body.isSafari .geometry-wrapper .result-address .results-icon { padding-right: 16px; }
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ OPERA ONLY ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+body.isOpera .geometry-wrapper .result-address .results-icon { padding-right: 16px; }

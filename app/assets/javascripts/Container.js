@@ -19,6 +19,7 @@ var Container = {
             loader: Loader,
             browser: Browser,
             turbolinksStorage: new TurbolinksStorage(),
+            ellipsis: new Ellipsis(),
             ENVIRONMENT: { DEV: 'development', PROD: 'production', TEST: 'testing' }
         };
 
@@ -55,9 +56,7 @@ var Container = {
             } // end if
         }  // end if
 
-        //if ( ! DI.pageLoad && null === DI.locator.getLocation() ) {
-
-        //} // end if
+        DI.browser.detect();
 
         // Run the app
         DI.kickstart = 'kickstart_' + DI.controller;

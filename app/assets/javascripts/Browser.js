@@ -13,6 +13,14 @@ Browser = {
     * @static
     * @return Boolean
     */
+    isEdge: function (){
+        return navigator.userAgent.match(/Edge\/\d./i);
+    }, // end method
+
+    /**
+    * @static
+    * @return Boolean
+    */
     isExplorer: function (){
         return ( navigator.userAgent.indexOf('MSIE') > -1 );
     }, // end method
@@ -32,8 +40,24 @@ Browser = {
     */
     isSafari: function (){
         var isSafari = ( navigator.userAgent.indexOf("Safari") > -1 );
-        return ( isSafari && ! Browser.isChrome() );
+        return ( isSafari && ! Browser.isChrome() && ! Browser.isOpera() );
     }, // end method
+
+    /**
+    * @static
+    * @return Boolean
+    */
+    isFirefox: function (){
+        return ( navigator.userAgent.indexOf('Firefox') > -1 );
+    }, // end method
+
+    /**
+    * @static
+    * @return Boolean
+    */
+    isOpera: function (){
+        return ( navigator.userAgent.toLowerCase().indexOf("opr") > -1 );
+    }, // end func
 
     /**
     * @static
@@ -81,19 +105,17 @@ Browser = {
     }, // end method
 
     /**
-    * @static
-    * @return Boolean
-    */
-    isFirefox: function (){
-        return ( navigator.userAgent.indexOf('Firefox') > -1 );
-    }, // end method
+     * @static
+     * @return void
+     */
+    detect: function() {
+      var that = this;
+      $.each(['isOpera', 'isFirefox', 'isSafari', 'isChrome', 'isExplorer', 'isEdge'], function(key, val) {
+          if ( Browser[val]() ) {
+              $('body').addClass(val);
+          } // end if
+      }); // end foreach
 
-    /**
-    * @static
-    * @return Boolean
-    */
-    isOpera: function (){
-        return ( navigator.userAgent.toLowerCase().indexOf("op") > -1 );
-    }, // end func
+    }, // end method
 
 };
