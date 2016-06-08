@@ -12,7 +12,7 @@ Ellipsis.prototype = {
 
 	do: function($set) {
 		var that = this;
-		$set.each(function(){
+		$set.each(function() {
 			var $this = $(this);
 			var $i = $this.find('.results-icon');
 			var iHtml = $i[0].outerHTML;
