@@ -30,8 +30,8 @@ Ellipsis.prototype = {
 					newTxt = iHtml + txt.substring(0, x) + ellipsis;
 					$this.html(newTxt);
 					if ( $this.height() <= maxHeight ) {
-						$(window).resize(function(){ that.refresh($this); });
-						$(window).on("orientationchange", function() { that.refresh($this); });
+						// $(window).resize(function(){ that.refresh($this); });
+						// $(window).on("orientationchange", function() { that.refresh($this); });
 						break;
 					} // end if
 				} // end while
@@ -42,9 +42,9 @@ Ellipsis.prototype = {
 		});
 	}, // end method
 
-	refresh: function($elem) {
-		var that = this;
-		$elem.removeClass('dotted');
-	}, // end method
+	// refresh: function($elem) {
+	// 	var that = this;
+	// 	$elem.removeClass('dotted');
+	// }, // end method
 
 }; // end prototype

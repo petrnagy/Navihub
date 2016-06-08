@@ -107,7 +107,7 @@ SearchResultsLazyLoader.prototype = {
             return ( $(this).find('i.unknown-data').length === 0 );
         });
 
-        $set.addClass('dotted');
+        //$set.addClass('dotted');
         that.di.ellipsis.do($set);
     }, // end method
 
