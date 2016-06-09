@@ -171,7 +171,7 @@ Search.prototype = {
     _bindFocus: function() {
         var that = this;
         if ( that.di.browser.isMobileDevice() ) {
-            that.form.find('input[type="text"]').focus(function(){
+            that.$form.find('input[type="text"]').focus(function(){
                 var elem = this;
                 setTimeout(function(){ elem.selectionStart = elem.selectionEnd = 10000; }, 0);
             });
