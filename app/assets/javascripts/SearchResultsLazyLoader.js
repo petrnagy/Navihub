@@ -217,7 +217,7 @@ SearchResultsLazyLoader.prototype = {
             // if ( requestLoc === null ) {
             //     requestLoc = that.di.locator.getLocation();
             // } // end if
-            var origin = requestLoc.lat.toString + ',' + requestLoc.lng.toString();
+            var origin = requestLoc.lat.toString() + ',' + requestLoc.lng.toString();
             var hasGeo = data.geometry.lat !== null && data.geometry.lng !== null;
             if ( data ) {
                 var url, popupUrl = 'https://www.google.com/maps/embed/v1/directions?destination=';
@@ -311,7 +311,6 @@ SearchResultsLazyLoader.prototype = {
         for (var i = 1; i <= 30; i++) {
             setTimeout(function(){
                 that._lazyInitEllipsis();
-                console.log("ellipsis ...");
             }, i * 1000);
         } // end for
     }, // end method
