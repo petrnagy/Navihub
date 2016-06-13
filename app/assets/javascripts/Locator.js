@@ -10,6 +10,7 @@
 var Locator = function(di) {
     this.di = di;
     this._locked = false;
+    this._requestLocation = null;
     this._key = '<i class="fa fa-key" title="Address is locked. Click \'autodetect\' to unlock it."></i>&nbsp;';
     this._data = {browser: null, web: null};
     this._envelope = {
@@ -27,6 +28,7 @@ var Locator = function(di) {
     this._initLockUnlockBtns();
     this._initLockBtn();
     this._initUnlockBtn();
+    this._initRequestLocation();
 }; // end func
 
 Locator.prototype = {
@@ -270,6 +272,20 @@ Locator.prototype = {
             loc.lng = parseFloat(loc.lng);
         } // end if
         return loc;
+    }, // end method
+
+    getRequestLocation: function() {
+        var that = this;
+        return that._requestLocation;
+    }, // end method
+
+    getRequestLocationTxt: function() {
+        var that = this;
+        if ( that._requestLocation !== null ) {
+            return that._requestLocation.lat.toString() + ',' + that._requestLocation.lng.toString();
+        } else {
+            return null;
+        } // end if
     }, // end method
 
     /**
@@ -516,6 +532,15 @@ Locator.prototype = {
                 } // end if
             }, // end func
         }); // end ajax
+    }, // end method
+
+    _initRequestLocation: function() {
+        var that = this;
+        var locString = $('body').attr('data-request-ll');
+        if ( locString.length ) {
+            var loc = locString.split(',');
+            that._requestLocation = { lat: parseFloat(loc[0]), lng: parseFloat(loc[1]) };
+        } // end if
     }, // end method
 
 }; // end prototype

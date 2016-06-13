@@ -190,7 +190,7 @@ class ApplicationController < ActionController::Base
     # sets @location and @request_location
     def init_location
         @location = Location.get_user_loc @user.id
-        @request_location = nil
+        @request_location = nil; @request_ll = nil;
         # if I open a link from anyone else, i might not have any location assigned yet...
         # ...so we will try to set it from url params
         if params.has_key?('lat') && params.has_key?('lng')
@@ -216,6 +216,9 @@ class ApplicationController < ActionController::Base
             if @request_location.latitude == @location.latitude && @request_location.longitude == @location.longitude
                 @request_location = @location
             end
+        end
+        unless @request_location == nil
+            @request_ll = @request_location.latitude.to_s + ',' + @request_location.longitude.to_s
         end
     end
 

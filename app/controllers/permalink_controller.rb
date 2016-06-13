@@ -34,6 +34,7 @@ class PermalinkController < ApplicationController
             permalink.venue_origin = parameters['origin']
             permalink.venue_id = parameters['id']
             permalink.user_id = @user.id
+            permalink.ll = parameters['ll']
             permalink.save
         end
         Sitemap.add('/permalink/' + key, params[:controller], data[:name])
@@ -46,6 +47,12 @@ class PermalinkController < ApplicationController
         if row
             @data = YAML.load row.yield
             @notice = 'Friendly notice - this is a <b>permalink</b> page! The content is statically saved in our database and may not reflect your current location or any other infromation change. '
+            unless row.ll == nil
+                loc = row.ll.split ','
+                if Location.possible loc[0], loc[1]
+                    @request_ll = row.ll
+                end
+            end
             return render 'detail/detail'
         else render 'empty', :status => 404
         end
@@ -62,7 +69,7 @@ class PermalinkController < ApplicationController
             params.require(required)
             params[required] = Mixin.sanitize(params[required])
         end
-        params.permit(:origin, :id)
+        params.permit(:origin, :id, :ll)
     end
 
     def show_params

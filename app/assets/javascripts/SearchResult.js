@@ -146,7 +146,7 @@ SearchResult.prototype = {
             if ( ! $el.hasClass('exists') ) {
                 $.ajax({
                     url: '/favorites',
-                    data: { origin: data.origin, id: data.id, yield: JSON.stringify(data) },
+                    data: { origin: data.origin, id: data.id, ll: that.di.locator.getRequestLocationTxt(), yield: JSON.stringify(data) },
                     method: 'PUT',
                     success: function(data) {
                         $el.addClass('exists');

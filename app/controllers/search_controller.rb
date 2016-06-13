@@ -21,7 +21,6 @@ class SearchController < ApplicationController
         parameters = find_params
         @tpl_vars = {} # is filled from several methods
         @request_params = generate_request_params_json parameters, @request_location
-        @request_ll = @request_location.latitude.to_s + ',' + @request_location.longitude.to_s
         @results = process_search parameters
         init_template_vars parameters
         find_rewrite_html_variables parameters # rewrite always because of extend_sitemap

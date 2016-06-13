@@ -43,6 +43,7 @@ function kickstart_favorites(di){
         di.searchResult = new SearchResult(di);
         di.lazyLoader = new SearchResultsLazyLoader(di);
         di.lazyLoader.lazyLoad();
+        di.lazyLoader.initEllipsis();
     } // end if
 } // end func
 

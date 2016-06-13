@@ -75,7 +75,13 @@ DetailLazyLoader.prototype = {
             if ( that.di.locator.getLocation() !== null ) {
                 clearInterval(interval);
 
-                var loc = that.di.locator.getLocation();
+                var loc;
+                if ( that.di.locator.getRequestLocation() !== null ) {
+                    loc = that.di.locator.getRequestLocation();
+                } else {
+                    loc = that.di.locator.getLocation();
+                } // end if
+
                 var origin = loc.lat.toString() + ',' + loc.lng.toString();
                 var destination = null;
                 if ( typeof that._data.geometry === 'object' ) {
@@ -88,7 +94,7 @@ DetailLazyLoader.prototype = {
                     $.ajax({
                         url: '/lazy/distance-matrix',
                         data: { origins: [origin], destinations: [destination] },
-                        cache: true,
+                        cache: false,
                         success: function(response) {
                             var $distance = $('#detail-results .distance-wrapper .result-distance');
                             var $walkingDistance = $('#detail-results .distance-wrapper .result-walking-distance');

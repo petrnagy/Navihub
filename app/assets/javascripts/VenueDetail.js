@@ -25,7 +25,8 @@ VenueDetail.prototype = {
     },
 
     getData: function() {
-      return this._data;
+        var that = this;
+        return that._data;
     }, // end method
 
     setVenueLocation: function(loc) {
@@ -36,7 +37,12 @@ VenueDetail.prototype = {
     _initDetailMap: function() {
         var that = this;
         that.di.locator.addHook(function() {
-            var location = that.di.locator.getLocation();
+            var location;
+            if ( that.di.locator.getRequestLocation() !== null ) {
+                location = that.di.locator.getRequestLocation();
+            } else {
+                location = that.di.locator.getLocation();
+            } // end if
             if ( that._data.geometry ) {
                 new VenueDetailGoogleMap(that.di, {latitude: location.lat, longitude: location.lng}, 'map_canvas', 14, function() {
                     if (that.di.detailGoogleMap && that._data) {
@@ -164,7 +170,7 @@ VenueDetail.prototype = {
               $btn.prop('disabled', true);
               $.ajax({
                   url: '/setpermalink',
-                  data: { id: that._data.id, origin: that._data.origin },
+                  data: { id: that._data.id, origin: that._data.origin, ll: that.di.locator.getRequestLocationTxt() },
                   method: 'PUT',
                   success: function(data) {
                       var id = 'ta' + uniqueid();

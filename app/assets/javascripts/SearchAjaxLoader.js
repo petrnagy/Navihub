@@ -31,12 +31,7 @@ SearchAjaxLoader.prototype = {
         that.di.searchResult = new SearchResult(that.di);
         that.di.lazyLoader = new SearchResultsLazyLoader(that.di);
         that.di.lazyLoader.lazyLoad();
-        /* run ellipsis lazyload manually, because we cannot detect css rendering finish point */
-        for (var i = 0; i < 3; i++) {
-            setTimeout(function(){
-                that.di.lazyLoader._lazyInitEllipsis();
-            }, i * 1000);
-        } // end for
+        that.di.lazyLoader.initEllipsis();
     }, // end method
 
 }; // end prototype

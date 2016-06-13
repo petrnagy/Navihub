@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= @page_lang_cls %>">
 <%= render 'layouts/header' %>
-<body id="body" data-no-turbolink="true" class="<%= @device_cls %> <%= @is_logged_in_cls %> c-<%= params[:controller] %> a-<%= params[:action] %>">
+<body id="body" data-no-turbolink="true" data-request-ll="<%= @request_ll %>" class="<%= @device_cls %> <%= @is_logged_in_cls %> c-<%= params[:controller] %> a-<%= params[:action] %>">
     <%= render 'layouts/inlines' %>
     <%= render 'layouts/noscript2' %>
     <%= render 'layouts/navbar' %>

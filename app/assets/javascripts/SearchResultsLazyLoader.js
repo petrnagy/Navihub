@@ -209,7 +209,11 @@ SearchResultsLazyLoader.prototype = {
         });
         $set.each(function() {
             var data = that.di.searchResult.getData($(this));
-            var origin = $(this).attr('data-ll-origin');
+            var requestLoc = that.di.locator.getRequestLocation();
+            // if ( requestLoc === null ) {
+            //     requestLoc = that.di.locator.getLocation();
+            // } // end if
+            var origin = requestLoc.lat.toString + ',' + requestLoc.lng.toString();
             var hasGeo = data.geometry.lat !== null && data.geometry.lng !== null;
             if ( data ) {
                 var url, popupUrl = 'https://www.google.com/maps/embed/v1/directions?destination=';
@@ -295,6 +299,17 @@ SearchResultsLazyLoader.prototype = {
         $('title').text($('#search-results').attr('data-title'));
         $('meta[name="description"]').attr('content', $('#search-results').attr('data-desc'));
         $('meta[name="keywords"]').attr('content', $('#search-results').attr('data-keywords'));
+    }, // end method
+
+    initEllipsis: function() {
+        var that = this;
+        /* run ellipsis lazyload manually, because we cannot detect css rendering finish point */
+        for (var i = 1; i <= 30; i++) {
+            setTimeout(function(){
+                that._lazyInitEllipsis();
+                console.log("ellipsis ...");
+            }, i * 1000);
+        } // end for
     }, // end method
 
 }; // end prototype
