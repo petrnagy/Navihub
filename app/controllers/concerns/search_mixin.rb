@@ -66,7 +66,10 @@ module SearchMixin
     def result_normalize_tags result
         tags = []
         result[:tags].each do |tag|
-            tags << Mixin.normalize_tag(tag) if tag.is_a? String
+            normalized = Mixin.normalize_tag(tag) if tag.is_a? String
+            normalized.split(',').each do |ntag|
+                tags << ntag
+            end
         end
         return tags
     end

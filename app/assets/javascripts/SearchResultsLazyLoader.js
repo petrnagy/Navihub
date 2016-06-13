@@ -87,7 +87,7 @@ SearchResultsLazyLoader.prototype = {
             var $set = $('#yield #search-results .result-tags .label:in-viewport').not('.done');
             $set.each(function(){
                 $(this).addClass('done');
-                var label = $(this).text().replaceAll('-', ' ');
+                var label = $(this).text();
                 var searchData = {};
                 if (that.di.controller === 'search') {
                     searchData = that.di.search.getValues();
