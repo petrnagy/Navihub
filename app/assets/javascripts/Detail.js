@@ -218,8 +218,8 @@ Detail.prototype = {
         */
         buildDetailUrl: function(data, that) {
             that = that || this;
-            var loc = that.di.locator.getLocation();
-            var ll = loc.lat. toFixed(7).toString() + ',' + loc.lng. toFixed(7).toString();
+            var loc = that.di.locator.getRequestLocation() || that.di.locator.getLocation();
+            var ll = loc.lat.toFixed(7).toString() + ',' + loc.lng.toFixed(7).toString();
             var name = encodeURIComponent(data.ascii_name ? data.ascii_name.toString() : 'show');
             var origin = encodeURIComponent(data.origin.toString());
             var id = encodeURIComponent(data.id.toString());
