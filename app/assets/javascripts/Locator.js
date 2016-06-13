@@ -494,16 +494,16 @@ Locator.prototype = {
             success: function(data) {
                 if ( data && 'ok' == data.status ) {
                     var pretty = '';
-                    if (typeof data.html == 'object') {
+                    if (typeof data.html == 'object') { // search / favorites
                         pretty += data.html.lat[0] + '&#176; ';
                         pretty += data.html.lat[1] + "' ";
                         pretty += data.html.lat[2] + '" ';
-                        pretty += data.html.lat[3] + '<br>';
+                        pretty += data.html.lat[3] + ', ';
                         pretty += data.html.lng[0] + '&#176; ';
                         pretty += data.html.lng[1] + "' ";
                         pretty += data.html.lng[2] + '" ';
                         pretty += data.html.lng[3];
-                    } else {
+                    } else { // detail / permalink
                         pretty += data.html;
                     } // end if-else
                     $context.replaceWith(pretty);

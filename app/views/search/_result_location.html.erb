@@ -1,25 +1,10 @@
 <div class="geometry-wrapper">
-    <div class="col-lg-7 result-address">
-        <div class="results-icon"><%= fa_icon("map-signs") %></div>
+    <div class="col-lg-12 result-address">
+        <div class="results-icon"><%= fa_icon("map-marker") %></div>
         <% if result[:address] %>
             <%= result[:address] %>
         <% else %>
             <i class="fa fa-frown-o"></i>
-        <% end %>
-    </div>
-    <div class="col-lg-5 result-geometry">
-        <div class="results-icon"><%= fa_icon("map-marker") %></div>
-        <% if result[:pretty_loc] %>
-        <div>
-        <% if result[:pretty_loc].is_a?(String) %>
-        <%= result[:pretty_loc] %><br>
-        <% else %>
-        <%= result[:pretty_loc][:lat][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][3].to_s %><br>
-        <%= result[:pretty_loc][:lng][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][3].to_s %>
-        <% end %>
-        </div>
-        <% else %>
-        <i class="unknown-data fa fa-spinner fa-spin"></i>
         <% end %>
     </div>
 </div>

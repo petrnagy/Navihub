@@ -57,9 +57,12 @@ SearchResultsLazyLoader.prototype = {
             $(this).addClass('pending');
             var data = that.di.searchResult.getData($(this));
             if ( data && data.address.length ) {
+                var $parent = $(this).parent();
                 that.di.locator.doLazyGeocoding(data.address, $(this), function(){
+                    $parent.addClass( $parent.attr('data-class') );
                     that._lazyLoadMapPopups();
                     that._lazyLoadRoutePopups();
+                    that._lazyLoadSearchResultsImages();
                 });
             } // end if
         });
@@ -76,6 +79,7 @@ SearchResultsLazyLoader.prototype = {
                     that._lazyInitEllipsis();
                     that._lazyLoadMapPopups();
                     that._lazyLoadRoutePopups();
+                    that._lazyLoadSearchResultsImages();
                 });
             } // end if
         });

@@ -6,6 +6,7 @@
             <% result[:tags].each do |label| %>
             <a href="#"><span class="label label-default"><%= label %></span></a>
             <% end %>
+            <%= render 'search/result_geometry', :result => result %>
         </div>
     </div>
 </div>

@@ -1,0 +1,18 @@
+<span class="result-geometry">
+
+    <% if result[:pretty_loc] %>
+        <span class="label label-default done">
+        <% if result[:pretty_loc].is_a?(String) %>
+            <%= result[:pretty_loc] %>
+        <% else %>
+            <%= result[:pretty_loc][:lat][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lat][3].to_s %>,
+            <%= result[:pretty_loc][:lng][0].to_s + '°' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][1].to_s + "'" %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][2].to_s + '"' %><span class='geospace'>&nbsp;</span><%= result[:pretty_loc][:lng][3].to_s %>
+        <% end %>
+        </span>
+    <% else %>
+        <span class="done" data-class="label label-default">
+            <i class="unknown-data fa fa-spinner fa-spin"></i>
+        </span>
+    <% end %>
+
+</span>
