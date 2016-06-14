@@ -1,67 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Explore your neighborhood for new restaurants. Plan a route to the nearest water park. Look for a nearby café. Find the nearest post office. All this using our geolocation services hub. We collect data from different sources and serve it to you. Privately and anonymously. We do not collect or require any personal information. And we do not share anything with anyone else" />
+    <meta name="keywords" content="geolocation, maps, venues, search, places, database" />
+    <meta name="author" content="Petr Nagy" />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0' />
+    <!-- Title -->
+    <title>Navihub | The geolocation service that doesn&#39;t track you</title>
+    <!-- Styles -->
+    <link href="/bootstrap.min.css" media="all" rel="stylesheet" />
+    <!-- Font awesome cdn -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 
-<body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+<body id="body">
+    <!-- Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand" id="main-logo"><img alt="Buildings stroke 100x100" height="50" src="/buildings_stroke_100x100.png" width="50" /><div id="appname"><span>Navihub </span><small id="appname-beta">[maintenance]</small></div></a>
+            </div>
+            <div class="" id="navbar-main">
+                <ul class="nav navbar-nav" id="menu-top">
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+
+
+            </div>
+            <p id="slogan">
+                The geolocation service that doesn&#39;t track you
+            </p>
+        </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+
+
+    <!-- Content -->
+    <div class="container">
+        <section id="yield">
+            <div id="error-page">
+                <h1>
+                    Oh crap !
+                </h1>
+                <p>
+                    We are sorry, but <b>the page you requested was not found</b>. (Yes, it's 404).
+                </p>
+                <p>
+
+                    URL requested: <a href=""><script>document.write(window.location.toString());</script></a>
+                </p>
+                <p>
+                    You can try find the page <a href="/blog">on our blog</a> or <a href="/pages">our pages</a>. Or write us an <a href="mailto:hello@navihub.net?subject=Angry e-mail">angry e-mail</a>.
+                </p>
+                <p class="btns">
+                    <a href="mailto:hello@navihub.net?subject=Broken link at:" class="btn btn-success">Report broken link</a>
+                    <a class="btn btn-default" href="/">Back to Homepage</a>
+                </p>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="container footer">
+
+            <div class="row">
+                <div class="col-lg-12 col-lg-minimized">
+
+                    <ul class="list-unstyled">
+                        <li class="pull-right"><a href="#body" class="scroll-top">Back to top</a></li>
+                        <li>&#169; 2013</li>
+                        <li><a target="blank" href="http://www.petrnagy.cz/">Petr Nagy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer">
+            <div class="row">
+                <div class="col-lg-4 footer-col">
+                    <div class="h4">My links</div>
+                    <ul class="list-unstyled list-vertical">
+                        <li class=""><a href="http://www.petrnagy.cz">Petr Nagy</a></li>
+                        <li class=""><a rel="nofollow" href="https://www.facebook.com/petr.nagy">Facebook</a> <i class="fa fa-facebook"></i></li>
+                        <li class=""><a rel="nofollow" href="https://twitter.com/petrnagy">Twitter</a> <i class="fa fa-twitter"></i></li>
+                        <li class=""><a rel="nofollow" href="https://plus.google.com/+PetrNagyCz">Google+</a> <i class="fa fa-google-plus"></i></li>
+                        <li class=""><a rel="nofollow" href="http://cz.linkedin.com/in/petrnagy">LinkedIn</a> <i class="fa fa-linkedin"></i></li>
+                        <li class=""><a rel="nofollow" href="http://petr-nagy.deviantart.com/">DeviantArt</a> <i class="fa fa-deviantart"></i></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 footer-col">
+                    <div class="more-space h4">My projects</div>
+                    <ul class="list-unstyled list-vertical">
+                        <li class=""><a href="http://www.navihub.net/">Navihub</a> <small class="gray">&#8592; you are here</small></li>
+                        <li class=""><a href="http://www.tomatoid.com/">Tomatoid</a></li>
+                        <li class=""><a href="http://www.petrnagy.cz/#projects">Daily menu</a></li>
+                        <li class=""><a href="http://www.petrnagy.cz/#projects">EventCal</a></li>
+                        <li class=""><a href="http://www.petrnagy.cz/#projects">Shitlib</a></li>
+                        <li class=""><a href="http://blog.petrnagy.cz/">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 footer-col">
+                    <div class="more-space h4">Hire me</div>
+                    <p class='hire-me'>I am currently <span class='busy'>busy</span>.<br />
+                        For more details,<br />
+                        please <a href='http://www.petrnagy.cz/#contact'>contact me</a>. <br />
+                    </p>
+                    <p class='my-cv'>My CV: <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_en.pdf'>English</a> | <a href='http://www.petrnagy.cz/wp-content/uploads/2015/09/NagyPetr_CV_cz.pdf'>Czech</a></p>
+                </div>
+            </div>
+            <hr class="footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-center disclaimer gray">
+                        Made with <del class="f-love">love</del> <span class="f-coffee">coffee</span> and <span class="f-sleepless">sleepless</span> <span class="f-nights">nights</span> by <a href="http://www.petrnagy.cz">Petr Nagy</a>.
+                    </p>
+                    <p class="text-center small footer-images gray">
+                        <a data-no-turbolink="true" href="/pages/about">About</a> ~
+                        <a href="/feedback">Feedback</a> ~
+                        <a data-no-turbolink="true" href="/blog">Blog</a> ~
+                        <a data-no-turbolink="true" href="/pages/terms-of-use">Terms</a> ~
+                        <a data-no-turbolink="true" href="/pages/privacy-policy">Privacy</a> ~
+                        <a data-no-turbolink="true" href="/pages/cookie-policy">Cookies</a> ~
+                        <a data-no-turbolink="true" href="/pages/data-sources">Data Sources</a> ~
+                    </p>
+                    <p class="text-center small footer-images gray">
+                        <a href="/search/recent">Recently searched</a> ~
+                        <a href="/detail/recent">Latest details</a> ~
+                        <a href="/permalink/recent">Recent permalinks</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

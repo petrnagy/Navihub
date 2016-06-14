@@ -1,9 +1,13 @@
-<div class="jumbotron error text-center">
+<div id="error-page">
     <h1>Oh crap !</h1>
-    <p>We are sorry, but <b>the page you requested was not found</b>. (Yes, it's 404)</p>
+    <p>We are sorry, but <b>the page you requested was not found</b>. (Yes, it's 404).</p>
     <p>URL requested: <a href="<%= request.original_url %>"><%= request.original_url %></a></p>
-    <p class="btns">
-        <a href="/" class="btn btn-primary">Return to homepage</a>
-        <a href="mailto:hello@navihub.net?subject=Broken link: <%= request.original_url %>" class="btn btn-default">Report broken link</a>
+    <p>
+        You can try find the page <a href="/blog">on our blog</a> or <a href="/pages">our pages</a>. Or write us an <a href="mailto:hello@navihub.net?subject=Angry e-mail">angry e-mail</a>.
     </p>
+    <p class="btns">
+        <a href="mailto:hello@navihub.net?subject=Broken link: <%= request.original_url %>" class="btn btn-success">Report broken link</a>
+        <a href="/" class="btn btn-default">Back to Homepage</a>
+    </p>
+
 </div>

@@ -1,3 +1,19 @@
-<div class="jumbotron error text-center">
-    <h1>400: Bad request</h1>
+<div id="error-page">
+    <h1>
+        400: (Very) Bad request
+    </h1>
+    <p>
+        <b>We're sorry, but something went wrong.</b>
+    </p>
+    <p>Maybe we did something wrong. Maybe you did something wrong. Nobody knows.</p>
+    <p>
+        URL with error: <a href="<%= request.original_url %>"><%= request.original_url %></a>
+    </p>
+    <p>
+        Please try your request later. If the problem persists, write us an <a href="mailto:hello@navihub.net?subject=Angry e-mail">angry e-mail</a>.
+    </p>
+    <p class="btns">
+        <a href="mailto:hello@navihub.net?subject=Bad request at <%= request.original_url %>" class="btn btn-success">Report error</a>
+        <a class="btn btn-default" href="/">Back to Homepage</a>
+    </p>
 </div>

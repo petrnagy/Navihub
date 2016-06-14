@@ -1,2 +1,13 @@
-.jumbotron.error { max-width: 800px; margin-left: auto; margin-right: auto; word-wrap: break-word; }
-.jumbotron.error p.btns { line-height: 50px; }
+#error-page { max-width: 800px; margin-left: auto; margin-right: auto; }
+#error-page h1 { margin-bottom: 50px; padding-top: 100px; }
+#error-page p.btns { margin-top: 50px; margin-bottom: 100px; }
+
+@media only screen and (max-width: 991px) {
+    p#slogan { margin-top: 14px !important; }
+}
+@media only screen and (max-width: 767px) {
+    p#slogan { position: absolute; top: 0px; right: 20px; }
+}
+@media only screen and (max-width: 600px) {
+    p#slogan { display: none; }
+}

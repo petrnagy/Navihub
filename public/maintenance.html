@@ -30,7 +30,7 @@
 <body id="body">
     <!-- Navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container" style="max-width: 800px;">
             <div class="navbar-header">
                 <a href="/" class="navbar-brand" id="main-logo"><img alt="Buildings stroke 100x100" height="50" src="/buildings_stroke_100x100.png" width="50" /><div id="appname"><span>Navihub </span><small id="appname-beta">[maintenance]</small></div></a>
             </div>
@@ -49,28 +49,24 @@
 
 
     <!-- Content -->
-    <div class="container">
+    <div class="container" style="max-width: 800px;">
         <section id="yield">
-            <div id="error-page">
-                <h1>
-                    Ouch  :-(
-                </h1>
-                <p>
-                    <b>We're sorry, but something went wrong.</b>
-                </p>
-                <p>There has been an internal server error and the magic number is <b>500</b>.</p>
-                <p>
-
-                    URL with error: <a href=""><script>document.write(window.location.toString());</script></a>
-                </p>
-                <p>
-                    Please try your request later. If the problem persists, write us an <a href="mailto:hello@navihub.net?subject=Angry e-mail">angry e-mail</a>.
-                </p>
-                <p class="btns">
-                    <a href="mailto:hello@navihub.net?subject=Server error at:" class="btn btn-success">Report server error</a>
-                    <a class="btn btn-default" href="/">Back to Homepage</a>
-                </p>
-            </div>
+            <h1 style="margin-bottom: 50px; padding-top: 100px;">
+                Whoops !
+            </h1>
+            <p>
+                We're sorry, but the page is <b>temporary unavailable</b> because of a short <b>maintenance</b> window.
+            </p>
+            <p>
+                Stay tuned! This should not take more than a <b>few seconds</b>.
+            </p>
+            <p>
+                In the meantime, you can <a href="/blog">read our latest blog posts</a> or write us an <a href="mailto:hello@navihub.net?subject=Angry e-mail">angry e-mail</a>.
+            </p>
+            <p style="margin-top: 50px; margin-bottom: 100px;">
+                <a class="btn btn-success" href="" onclick="window.location.reload(); return false;">Reload window</a>
+                <a class="btn btn-default" href="/">Back to Homepage</a>
+            </p>
         </section>
     </div>
     <footer>

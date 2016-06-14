@@ -1,7 +1,7 @@
 development:
   server_name: localhost:3000
 test:
-  server_name: beta.navihub.net
+  server_name: navihub.net
 production:
   server_name: navihub.net
 default:

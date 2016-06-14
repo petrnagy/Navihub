@@ -1,9 +1,19 @@
-<div class="jumbotron error text-center">
-    <h1>Whoops !</h1>
-    <p>There was<b> a relatively serious error</b>. The magic number is 500.</p>
-    <p>The thing is, error 500 is kind of...<i>fatal</i>. If the problem persists, please report it.</p>
+<div id="error-page">
+    <h1>
+        Ouch  :-(
+    </h1>
+    <p>
+        <b>We're sorry, but something went wrong.</b>
+    </p>
+    <p>There has been an internal server error and the magic number is <b>500</b>.</p>
+    <p>
+        URL with error: <a href="<%= request.original_url %>"><%= request.original_url %></a>
+    </p>
+    <p>
+        Please try your request later. If the problem persists, write us an <a href="mailto:hello@navihub.net?subject=Angry e-mail">angry e-mail</a>.
+    </p>
     <p class="btns">
-        <a href="/" class="btn btn-primary btn-lg">Return to homepage</a>
-        <a href="mailto:hello@navihub.net?subject=Error 500 on: <%= request.original_url %>" class="btn btn-default btn-lg">Report this insolence</a>
+        <a href="mailto:hello@navihub.net?subject=Server error at <%= request.original_url %>" class="btn btn-success">Report server error</a>
+        <a class="btn btn-default" href="/">Back to Homepage</a>
     </p>
 </div>
