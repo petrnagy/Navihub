@@ -20,6 +20,8 @@
 }
 #detail-results .result-address { border-right: 2px solid white; }
 #detail-results .result-geometry { border-left: 2px solid white; border-bottom: 2px solid white; }
+// FIXME: tohle neufnguje a to v max-width taky nebude...
+#search-results .result-box h2 { max-width: 325px; }
 
 .result-box a.list-fav-switch:active, .result-box a.list-fav-switch:hover,
 .result-box a.list-fav-switch:focus { color: #D2D21E; }
@@ -264,6 +266,7 @@
     .details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu { left: 70px; }
     // #search-results .result-box .dropdown-menu li, #search-results .result-box .dropdown-menu li > a,
     // #search-results .result-box .dropdown-menu { max-width: 120px; }
+    #search-results .result-box h2 { max-width: 234px; }
 }
 
 @media only screen and (max-height: 600px) {
