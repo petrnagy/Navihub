@@ -127,12 +127,12 @@ Search.prototype = {
         }
         var ll = loc.lat. toFixed(7).toString() + ',' + loc.lng. toFixed(7).toString();
         url += '/@/' + ll;
-        values.term = values.term.replace('/', ',');
+        values.term = values.term.replace('/', ','); // hotfix
         if ( ascii ) {
-            url = url.replace('/%%term%%', '/' + values.term);
+            url = url.replace('/%%term%%', '/' + encodeURIComponent(values.term));
         } else {
             url = url.replace('/%%term%%', '');
-            url += '?term=' + values.term;
+            url += '?term=' + encodeURIComponent(values.term);
         } // end if-else
         return url;
     }, // end method

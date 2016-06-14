@@ -99,6 +99,9 @@ SearchResultsLazyLoader.prototype = {
                     searchData = that.di.search.defaults;
                 }  // end if-else-if
                 searchData.term = label;
+                if ( that.di.locator.getRequestLocation() !== null ) {
+                    searchData.loc = that.di.locator.getRequestLocation();
+                } // end if
                 var url = that.di.search.buildUrl(searchData);
                 $(this).parent().attr('href', url);
             });

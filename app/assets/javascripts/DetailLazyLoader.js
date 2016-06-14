@@ -62,6 +62,9 @@ DetailLazyLoader.prototype = {
                     var label = $(this).text();
                     var searchData = search.defaults;
                     searchData.term = label;
+                    if ( that.di.locator.getRequestLocation() !== null ) {
+                        searchData.loc = that.di.locator.getRequestLocation();
+                    } // end if
                     var url = search.buildUrl(searchData);
                     $(this).parent().attr('href', url);
                 });
