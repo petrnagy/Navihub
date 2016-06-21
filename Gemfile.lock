@@ -114,6 +114,8 @@ GEM
     rack (1.5.5)
     rack-accept (0.4.5)
       rack (>= 0.4)
+    rack-cache (1.6.1)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.4)
@@ -192,6 +194,7 @@ DEPENDENCIES
   omniauth-twitter
   pg
   premailer-rails
+  rack-cache
   rails (= 4.1.4)
   rake (= 10.4.2)
   sass-rails (~> 4.0.3)
