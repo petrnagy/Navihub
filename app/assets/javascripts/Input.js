@@ -90,11 +90,11 @@ Input.prototype = {
         var delay = 100;
         var placeholders = [
             "Pizza", "Water park", "Car rental", "Café", "Chicken wings", "Irish pub",
-            "McDonalds", "Hotel", "Post office", "Veterinarian", "Asian fusion restaurant",
-            "Sport bar", "ATM", "Bakery", "Beauty salon", "Casino", "Dentist", "Pharmacy",
-            "Plumber", "Train station", "Zoo", "Golf", "Beach", "Laser tag", "Music school",
-            "Hot dogs", "KFC", "Dunkin' Donuts", "Wendy's", "Burger King", "Internet cafe",
-            "Shoe repair", "Petrol station", "Gas station", "Grocery", "Pretzels", "Ice cream"
+            "McDonalds", "Hotel", "Post office", "Cinema", "Winery",
+            "Sport bar", "ATM", "Bakery", "Beauty salon", "Casino", "Minigolf", "Yoga class",
+            "Market", "Blackjack", "Zoo", "Golf", "Beach", "Laser tag", "Music school",
+            "Hot dogs", "KFC", "Donuts", "Wendy's", "Burger King", "Burgers",
+            "Bowling", "Disco", "Beer bar", "Grocery", "Pretzels", "Ice cream"
         ];
         shuffle(placeholders);
         placeholders = ["What are you looking for…?"].concat(placeholders);

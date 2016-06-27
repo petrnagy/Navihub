@@ -41,17 +41,20 @@ HomepageSearchBox.prototype = {
 
     _recalculate: function() {
         var that = this;
-        var footerMargin = parseInt($('footer').css('margin-top'), 10);
+        //var footerMargin = parseInt($('footer').css('margin-top'), 10);
+        var footerMargin = 0;
         var yieldMargin = parseInt($('#yield').css('margin-top'), 10);
         var menuHeight = $('.navbar-fixed-top').height();
+        var menuBottomMargin = parseInt($('.navbar-fixed-top').css('margin-bottom'), 10);
         var windowHeight = $(window).height();
-        var magic = 0;
-        var breakPoint = 316;
+        var magic = -12;
+        var breakPoint = 316; // breakpoint from which we set padding instead of height
+        var navidogTopMargin = parseInt($('section#navidog').css('margin-top'), 10);
 
-        if ($(window).width() < 992) magic = 20;
-        if ($(window).width() < 640) magic = 40;
+        if ($(window).width() < 992) magic = 1;
+        //if ($(window).width() < 640) magic = 40;
 
-        var pixelsToFill = windowHeight - menuHeight - footerMargin - yieldMargin - magic;
+        var pixelsToFill = windowHeight - menuHeight - footerMargin - yieldMargin - magic - navidogTopMargin;
 
         if ( pixelsToFill > breakPoint ) {
             $(that.id).css({

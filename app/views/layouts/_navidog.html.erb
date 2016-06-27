@@ -1,0 +1,50 @@
+<section id="navidog">
+    <div class="container">
+        <div class="col-lg-3" id="navy-col">
+            <%= image_tag('resources/navy.jpg', width: 101, id: 'navy-image') %>
+        </div>
+        <div class="col-lg-9" id="navidog-col">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#navidog-tab-home" data-toggle="tab" aria-expanded="true">This project</a></li>
+              <li class=""><a href="#navidog-tab-whysignin" data-toggle="tab" aria-expanded="false">Is it safe?</a></li>
+            </ul>
+            <div id="navi-tab-content" class="tab-content">
+              <div class="tab-pane active" id="navidog-tab-home">
+                  <h1>Sssh, hey Pal!</h1>
+                  <p>
+                      <b>Hi, I'm Navy.</b> <i class="woof">Woof!</i> And I am working for this awesome project.<br>
+                  </p>
+                  <p>
+                      I am going to help you <b>discover</b> the world <b>around you</b>.<br>
+                      New in town? Check. Traveling a lot? Check. Exchange student? I've got everything covered!
+                  </p>
+                  <p>
+                      I am always sniffing around the city corners. Few <b>things I can help you with</b>:
+                      <ul>
+                            <li>Explore your neighborhood for new restaurants.</li>
+                            <li>Plan a route to the nearest water park.</li>
+                            <li>Look for a nearby cafe.</li>
+                            <li>Find the nearest post office.</li>
+                            <li><%= link_to 'And much more', '/pages/about', data: { no_turbolink: true } %>.</li>
+                      </ul>
+                  </p>
+              </div>
+              <div class="tab-pane" id="navidog-tab-whysignin">
+                  <h1>Should I give you my location?</h1>
+                  <p>
+                      No worries! Our site is anonymous. You don't even need to sign up or anything before using it.
+                  </p>
+                  <p>
+                      Also, we do not collect or store any personal or sensitive information. Not even your location history.<br/>
+                      Even for the registered users, only nickname and password are required.
+                  </p>
+                  <p>
+                      You can read more about our privacy policy <%= link_to 'here', '/pages/privacy-policy', data: { no_turbolink: true } %>. There is also <%= link_to 'cookie policy', '/pages/cookie-policy', data: { no_turbolink: true } %> and a whole
+                      <%= link_to 'blog section', '/blog/category/security', data: { no_turbolink: true } %> where we address this issue.
+                  </p>
+              </div>
+            </div>
+        </div>
+
+    </div>
+</section>
