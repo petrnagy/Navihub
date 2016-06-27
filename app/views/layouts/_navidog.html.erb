@@ -9,7 +9,7 @@
               <li class=""><a href="#navidog-tab-whysignin" data-toggle="tab" aria-expanded="false">Is it safe?</a></li>
             </ul>
             <div id="navi-tab-content" class="tab-content">
-              <div class="tab-pane active" id="navidog-tab-home">
+              <div class="tab-pane active fade in" id="navidog-tab-home">
                   <h1>Sssh, hey Pal!</h1>
                   <p>
                       <b>Hi, I'm Navy.</b> <i class="woof">Woof!</i> And I am working for this awesome project.<br>
@@ -29,18 +29,18 @@
                       </ul>
                   </p>
               </div>
-              <div class="tab-pane" id="navidog-tab-whysignin">
+              <div class="tab-pane fade in" id="navidog-tab-whysignin">
                   <h1>Should I give you my location?</h1>
                   <p>
                       No worries! Our site is anonymous. You don't even need to sign up or anything before using it.
                   </p>
                   <p>
                       Also, we do not collect or store any personal or sensitive information. Not even your location history.<br/>
-                      Even for the registered users, only nickname and password are required.
+                      Even for the <%= link_to 'registered users', {controller: "account", action: 'create'} %>, only nickname and password are required.
                   </p>
                   <p>
                       You can read more about our privacy policy <%= link_to 'here', '/pages/privacy-policy', data: { no_turbolink: true } %>. There is also <%= link_to 'cookie policy', '/pages/cookie-policy', data: { no_turbolink: true } %> and a whole
-                      <%= link_to 'blog section', '/blog/category/security', data: { no_turbolink: true } %> where we address this issue.
+                      <%= link_to 'blog section', '/blog', data: { no_turbolink: true } %> where we address this issue.
                   </p>
               </div>
             </div>

@@ -4,7 +4,7 @@ class SharerMailer < ActionMailer::Base
 
   add_template_helper(ApplicationHelper)
 
-  default from: "noreply@navihub.net"
+  default from: "Navihub <noreply@navihub.net>"
 
   def share_via_email recipient, data
     @page_name = Rails.configuration.page_name

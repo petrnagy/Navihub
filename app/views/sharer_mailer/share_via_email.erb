@@ -13,7 +13,7 @@
 						<h3>Hello, fellow <%= @page_name %> user</h3>
 						<p class="lead"><%= 'Place detail: <a href="'.html_safe + @data[:url] + '">'.html_safe + @data[:name].to_s + '</a>'.html_safe %></p>
 						<p>
-							Someone (probably you) requested detailed informations about place <a href="<%= @data[:url] %>"><%= @data[:name] %></a> from the <%= link_to @page_name, {host: @host, controller: 'homepage'} %> website.
+							Someone (probably you) requested detailed information about the place <a href="<%= @data[:url] %>"><%= @data[:name] %></a> from the <%= link_to @page_name, {host: @host, controller: 'homepage'} %> website.
 						</p>
 						<% unless @data[:address] == nil %>
 						<p>
@@ -44,7 +44,7 @@
 							<img src="<%=@data[:email_map]%>" />
 						</p>
 						<% end %>
-						
+
 						<%= render 'mailer/liketheapp' %>
 						<%= render 'mailer/author' %>
 

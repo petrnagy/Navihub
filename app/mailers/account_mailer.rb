@@ -1,6 +1,6 @@
 class AccountMailer < ActionMailer::Base
 
-  default from: "noreply@navihub.net"
+  default from: "Navihub <noreply@navihub.net>"
 
   def send_new_acc_email recipient, username, user_id
     @page_name = Rails.configuration.page_name
