@@ -1,0 +1,24 @@
+
+Hello, fellow <%= @page_name %> user
+
+New account has been created: <%= @username %>
+
+Someone (probably you) completed a registration form on <%= @page_name %> website.
+
+At this point, you don't have to do anything. Your account is already active.
+However, you can verify it for future communication, like lost password, newsletter subscribing, etc.
+
+To verify your e-mail address, please visit this link:
+<%= @link %>
+
+That's it. We are looking forward for hearing from you!
+
+Feel free to look around our website.
+You can:
+- Search for places,
+- manage your favorite places list,
+- manage your account,
+- send some feedback,
+- or tell your friends about our cool page.
+
+<%= render 'mailer/footer.text' %>

@@ -11,7 +11,7 @@
 				<tr>
 					<td>
 						<h3>Hello, fellow <%= @page_name %> user</h3>
-						<p class="lead">New account ha been created: <%= link_to @username, {host: @host, controller: 'account', action: 'manage'} %></p>
+						<p class="lead">New account has been created: <%= link_to @username, {host: @host, controller: 'account', action: 'manage'} %></p>
 						<p>
 							Someone (probably you) completed a registration form on <%= link_to @page_name, {host: @host, controller: 'homepage'} %> website.
 						</p>
@@ -33,7 +33,7 @@
 							and add it to your <%= link_to 'favorite places list', host: @host, controller: 'favorites' %>.
 							You can also <%= link_to 'manage your account', host: @host, controller: 'account', action: 'manage' %>,
 							send some <%= link_to 'feedback', host: @host, controller: 'feedback' %>
-							or <%= link_to 'tell your friends', host: @host, controller: 'pages', action: 'share' %> about out cool page.
+							or <a href="/pages/share">tell your friends</a> about our cool page.
 						</p>
 
 						<%= render 'mailer/liketheapp' %>
