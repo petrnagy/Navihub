@@ -151,4 +151,161 @@ module ApplicationHelper
         return !! (request.env['HTTP_USER_AGENT'] =~ /bot|crawl|slurp|spider/i)
     end
 
+    protected
+
+    def determine_lang
+        'en'
+    end
+
+    def determine_device # https://github.com/benlangfeld/mobile-fu
+        'desktop'
+    end
+
+    def determine_login_status # not implemented yet
+        @logged_in ? 'logged-in' : 'not-logged-in'
+    end
+
+    # sets @credentials, @session, @cookie and @logged_in
+    def init_user
+        logged_in    = false
+        user         = nil
+        credentials  = nil
+        sess         = init_session
+        cookie       = init_cookie
+
+        if sess.user_id == cookie.user_id
+            if sess.user_id == nil
+                user = User.user_create
+                sess.user_id = user.id
+                cookie.user_id = user.id
+            else
+                user = User.user_find_by_session_user_id sess.user_id
+            end
+        else
+            if sess.user_id && cookie.user_id
+                cookie.user_id = sess.user_id
+            else
+                if sess.user_id == nil
+                    sess.user_id = cookie.user_id
+                else
+                    cookie.user_id = sess.user_id
+                end
+            end
+        end
+        user = User.user_find_by_session_user_id sess.user_id unless user
+        if user
+            # we have a returning user
+            if Credential.exist_for_user user.id
+                # current user is a registered user
+                if LoginSession.exist_for_user user.id, sess.id, cookie.id
+                    # login session is active, the user is logged in
+                    credentials = Credential.get_for_user user.id
+                    @user = user
+                    logged_in = true
+                    LoginSession.extend_for_user user.id, sess.id, cookie.id
+                else
+                    # login session expired, create new anonymous user
+                    @user = User.user_create
+                    sess.user_id = @user.id
+                    cookie.user_id = @user.id
+                end
+            elsif LoginSession.exist_for_user user.id, sess.id, cookie.id
+                # current user was/is logged using fb|tw|g+
+                session = LoginSession.get_for_user user.id, sess.id, cookie.id
+                if session.provider_credentials_id != nil
+                    # provider login session is active, user is logged in
+                    credentials = ProviderCredential.get session.provider_credentials_id
+                    logged_in = true
+                    @user = user
+                    LoginSession.extend_for_user user.id, sess.id, cookie.id
+                else
+                    # provider session expired
+                    @user = User.user_create
+                    sess.user_id = @user.id
+                    cookie.user_id = @user.id
+                end
+            else
+                @user = user
+            end
+        else
+            # we have a first-time visitor
+            @user = User.user_create
+            sess.user_id = @user.id
+            cookie.user_id = @user.id
+        end
+        sess.save; cookie.save
+        @credentials    = credentials
+        @session        = sess
+        @cookie         = cookie
+        @logged_in      = logged_in
+    end
+
+    # creates and returns session instance
+    def init_session
+        if ! session.id
+            # force session init, @see http://stackoverflow.com/questions/14665275/how-force-that-session-is-loaded
+            session[:init] = true
+        end
+
+        sess = Session.find_user_sess session.id
+
+        if ! sess
+            sess = Session.create_user_sess session.id
+        elsif ! session.id
+            raise EmptySessionId
+        end
+        sess
+    end
+
+    # creates and returns cookie instance
+    def init_cookie
+        create = false
+        if cookies[:navihub_id] == nil
+            create = true
+        else
+            cookie = Cookie.find_by(cookie: cookies[:navihub_id], active: true)
+            create = true unless cookie
+        end
+        if create
+            cookies[:navihub_id] = { :value => SecureRandom.base64(32), :httponly => true }
+            cookie = Cookie.create(cookie: cookies[:navihub_id], active: true, user_id: nil)
+        end
+        cookie
+    end
+
+    # sets @location and @request_location
+    def init_location
+        @location = Location.get_user_loc @user.id
+        @request_location = nil; @request_ll = nil;
+        # if I open a link from anyone else, i might not have any location assigned yet...
+        # ...so we will try to set it from url params
+        if params.has_key?('lat') && params.has_key?('lng')
+            lat = params['lat'].to_f
+            lng = params['lng'].to_f
+            if Location.possible lat, lng
+                @request_location = Location.new(
+                user_id:        @user.id,
+                latitude:       lat,
+                longitude:      lng,
+                lock:           false,
+                active:         true
+                )
+            end
+        end
+
+        if @location == nil && @request_location != nil
+            @location = @request_location
+            @location.save
+        elsif @request_location == nil && @location != nil
+            @request_location = @location
+        elsif @request_location != nil && @location != nil
+            if @request_location.latitude == @location.latitude && @request_location.longitude == @location.longitude
+                @request_location = @location
+            end
+        end
+        unless @request_location == nil
+            @request_ll = @request_location.latitude.to_s + ',' + @request_location.longitude.to_s
+        end
+    end
+
 end

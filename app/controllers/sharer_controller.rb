@@ -16,7 +16,7 @@ class SharerController < ApplicationController
 
         res = Email.push_venue_share(parameters['email'], 'noreply@navihub.net', data)
         if res
-            SharerMailer.share_via_email(parameters['email'], data).deliver
+            SharerMailer.share_via_email(parameters['email'], data, @request_ll).deliver
             render json: { status: 'ok' }, status: 201
         else # multiple same requests
             render json: { status: 'ok' }, status: 200
