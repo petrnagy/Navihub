@@ -25,10 +25,11 @@
         <select class="form-control" name="search[sort]" title="How should we order the results?">
           <%[
             {:val => 'distance-asc', :name => 'Nearest first'},
+            {:val => 'match-asc', :name => 'Best match'},
             {:val => 'name-asc', :name => 'Alphabetically'},
-            {:val => 'rand-rand', :name => 'Random'},
+            {:val => 'rand-rand', :name => 'Randomize'},
             ].each do |option| %>
-            <option <%= @tpl_vars[:input_params]['sort'] == option[:val] ? 'selected="selected"' : ''  %> value="<%= option[:val] %>"><%= option[:name] %></option>
+            <option <%= @tpl_vars[:input_params]['order'] == option[:val] ? 'selected="selected"' : ''  %> value="<%= option[:val] %>"><%= option[:name] %></option>
           <% end %>
         </select>
       </div>

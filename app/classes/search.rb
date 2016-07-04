@@ -7,7 +7,7 @@ class Search
 
     protected
 
-    @@allowed_orders = %w{distance name rand}
+    @@allowed_orders = %w{distance name rand match}
     @@allowed_engines = %w{google nokia yelp foursquare}
     @@max_distance = 20000; # 20km
 
@@ -177,6 +177,7 @@ class Search
     def preprocess results
         processed = []
         results.each do |current|
+            current[:term] = @params[:term]
             current[:mtime] = Time.now.usec
             current[:geometry] = load_result_geometry current
             current[:distance] = load_result_distance current

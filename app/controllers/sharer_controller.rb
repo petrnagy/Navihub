@@ -18,7 +18,7 @@ class SharerController < ApplicationController
         if res
             SharerMailer.share_via_email(parameters['email'], data).deliver
             render json: { status: 'ok' }, status: 201
-        else
+        else # multiple same requests
             render json: { status: 'ok' }, status: 200
         end
 
