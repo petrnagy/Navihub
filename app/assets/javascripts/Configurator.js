@@ -17,6 +17,7 @@ var Configurator = {
         });
 
         $('a[href^="#"]').smoothScroll();
+        //$('link.main-stylesheet').attr('media', 'all');
 
     }, // end method
 
