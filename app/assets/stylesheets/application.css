@@ -10,7 +10,7 @@
 * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
 * file per style scope.
 *
-*= require fonts.css
+*= stub fonts.css
 *= require bootswatch.min.css
 *= require font-awesome
 *= require colorbox-rails
