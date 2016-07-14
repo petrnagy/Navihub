@@ -3,47 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .result-box  h2.h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0px; }
-.result-box  h2.h3 img { max-height: 20px; max-width: 50px; margin-top: -1px; }
-.result-box { min-height: 315px; }
 .result-box  h2.h3 a.namelink, .result-box  h2.h3 a.namelink:visited,
 .result-box  h2.h3 a.namelink:active, .result-box  h2.h3 a.namelink:hover { color: rgb(62, 63, 58); text-decoration: none; }
 // .result-box  h2.h3 a.namelink[href]:hover { color: gray; }
 .results-near { color: #C7C7C7 }
-
-/*.result-box:hover { background-color: #F7F7F7; }*/
-/*.result-box.active, .result-detail, .result-box.active:hover { background-color: #FFF2C8; }*/
-//.result-box:hover > * { cursor: pointer; }
-.result-address { border-bottom: 2px solid white; max-height: 43.35px;
-    overflow: hidden;
-    /*white-space: nowrap;
-    text-overflow: ellipsis;*/
-}
-#detail-results .result-address { border-right: 2px solid white; }
-#detail-results .result-geometry { border-left: 2px solid white; border-bottom: 2px solid white; }
-// FIXME: tohle neufnguje a to v max-width taky nebude...
-#search-results .result-box h2 { max-width: 325px; }
-
+.result-col { float: left; padding-right: 10px; }
+.result-col h2 { margin-top: 0px; }
+.result-col-first { width: 315px; margin-right: 10px; border-right: 1px solid #f8f5f0; }
+.result-col-second { width: 775px; margin-left: 10px; }
+.result-subcol { display: inline-block; }
+.result-divider { padding-top: 0px; padding-bottom: 5px; }
+.result-divider > hr { max-width: 100%; }
+div.inline { display: inline; }
 .result-box a.list-fav-switch:active, .result-box a.list-fav-switch:hover,
 .result-box a.list-fav-switch:focus { color: #D2D21E; }
-.result-box a.list-fav-switch:visited { color: gray; }
 
 // #search-results .result-box .result-geometry i.fa-frown-o,
 #search-results .result-box .result-address i.fa-frown-o { color: gray; font-size: 20px; margin-left: 5px; }
-.result-distance { border-top: 2px solid white; border-bottom: 2px solid white; border-right: 2px solid white; }
-.result-walking-distance { border-top: 2px solid white; border-bottom: 2px solid white; border-right: 2px solid white; border-left: 2px solid white; }
-.result-car-distance { border-top: 2px solid white; border-bottom: 2px solid white; border-left: 2px solid white; }
-.result-tags { border-top: 2px solid white; background-color: #f6f6f6; border-bottom: 2px solid white; padding-bottom: 5px;}
 .result-tags .label { /*margin-top: 12px;*/ display: inline-block; margin-left: 5px; margin-right: 5px; }
 .result-tags .results-icon { position: relative; top: 4px; }
-.result-car-distance span, .result-distance span, .result-walking-distance span {
-    /*margin-top: 9px;*/
-    display: inline-block;
-    /*overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;*/
-}
-.details-wrapper .col-lg-2, .details-wrapper .col-lg-10 { border-top: 2px solid white; }
-.btn-detail { font-size: 25px; padding: 0px; }
+.result-car-distance span, .result-distance span, .result-walking-distance span { display: inline-block; }
+#search-results .result-walking-distance, #search-results .result-car-distance { margin-left: 20px; }
+.result-row-icons .col-lg-2, .result-row-icons .col-lg-10 { border-top: 2px solid white; }
 .result-box .label { font-weight: normal; }
 .result-box .unknown-data { padding: 10px; }
 .result-box .unknown-data::before { font-size: 20px; color: gray; }
@@ -54,24 +35,21 @@
 .result-box.is-duplicate { color: lightgray; }
 .origin-icon, .result-icon { max-width: 25px; max-height: 25px; }
 
-.results-icon {
+#search-results .results-icon {
     float: left;
-    /* width: 30px; */
-    font-size: 25px;
+    font-size: 20px;
     padding: 3px;
     padding-right: 7px;
     color: #777777;
+    position: relative;
+    top: -7px;
 }
-.geometry-wrapper div[class^="col-lg"], .distance-wrapper div[class^="col-lg"], .labels-wrapper, .details-wrapper .dots {
-    background-color: rgb(246,246,246);
-}
+
 .dots { height: 40px; }
 .dots.col-lg-2 { padding: 0px; }
-.dots a.btn-detail { padding-top: 3px; width: 56px; padding-bottom: 9px; display: inline-block; text-align: center; }
-.dots a.btn-detail { color: gray; }
-.dots a.btn-detail:hover { color: #93c54b; }
-.map-wrapper { border-bottom: 1px solid black; }
-.distance-wrapper > .col-lg-4, .geometry-wrapper div[class^="col-lg"], .labels-wrapper .col-lg-12 { padding-left: 7px; }
+.location-wrapper, .gps-wrapper { display: inline-block; }
+.gps-wrapper { margin-left: 30px; }
+
 .detail-wrapper { padding-top: 30px; }
 .detail-wrapper.active, .result-box.active { background-color: rgb(250, 250, 250); }
 .detail-wrapper .map-canvas { height: 380px; }
@@ -86,22 +64,27 @@
 .link-white { color: white; }
 .link-white:hover { color: white; }
 .search-start { min-height: 250px; }
-.result-address, /*.result-geometry,*/ .result-distance, .result-walking-distance, .result-car-distance, .result-tags {
-    display: flex; align-items: center;
-}
-.details-wrapper ul.dropdown-menu { left: 61px; top: -238px; border-top-right-radius: 0; }
-.details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu { left: 159px; top: 0px; }
-.details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu i { width: 18px; }
-.details-wrapper ul.dropdown-menu i { width: 18px; }
-.details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-envelope-o { color: gray; }
-.details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-sticky-note { color: rgb(43,181,78); }
-.details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-facebook-official { color: rgb(53,76,140); }
-.details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-twitter { color: rgb(70,154,233); }
-.details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-google-plus { color: rgb(203,40,38); }
+.result-row-icons ul.dropdown-menu { left: 705px; top: 138px; border-top-right-radius: 0; }
+.result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu { left: 159px; top: 0px; }
+.result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu i { width: 18px; }
+.result-row-icons ul.dropdown-menu i { width: 18px; }
+.result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-envelope-o { color: gray; }
+.result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-sticky-note { color: rgb(43,181,78); }
+.result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-facebook-official { color: rgb(53,76,140); }
+.result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-twitter { color: rgb(70,154,233); }
+.result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu i.fa-google-plus { color: rgb(203,40,38); }
 
-.detail-fav-switch { float: left; color: gray; font-size: 23px; margin-top: 4px; }
-.detail-fav-switch i.fa.fa-star-o:hover { color: #D2D21E; }
-.detail-fav-switch.exists { color: #D2D21E; }
+a.rihref { color: lightgray; font-size: 12px; margin-top: 4px; margin-right: 10px; display: inline-block; }
+.result-icons > a:nth-child(1) { margin-left: -26px; }
+a.rihref > i { font-size: 14px; }
+.result-box:hover .result-icons a.rihref { color: gray; }
+.result-box:hover .result-icons a.rihref:hover { color: black !important; text-decoration: none; }
+.btn-detail { position: relative; right: -25px; }
+.dots a.btn-detail:hover { color: #93c54b; }
+#search-results .detail-fav-switch {  }
+#search-results .detail-fav-switch i.fa.fa-star-o:hover { color: #D2D21E !important; }
+#search-results .detail-fav-switch.exists { color: #D2D21E !important; }
+.result-row { height: 30px; }
 
 .powered-by-icon { position: absolute; bottom: 0; right: 0; }
 /* ~~~~~~~ */
@@ -242,7 +225,7 @@
     .col-hr { margin-top: 180px; }
 }
 @media only screen and (max-width: 450px) {
-    .details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu { left: 130px; }
+    .result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu { left: 130px; }
 }
 
 @media only screen and (max-width: 405px) {
@@ -250,8 +233,7 @@
     #search-results h1 { font-size: 20px; }
     .search-info { font-size: 13px; }
     .geometry-wrapper, .distance-wrapper, .labels-wrapper { font-size: 12px; }
-    #search-results .geometry-wrapper i, #search-results .distance-wrapper i, #search-results .labels-wrapper i { font-size: 20px; position: relative; top: -2px; }
-    .geometry-wrapper .label, .distance-wrapper .label, .labels-wrapper .label { font-size: 10px; }
+    .geometry-wrapper .label, .distance-wrapper .label, .labels-wrapper .label { font-size: 12px; }
     #search-results  h2.h3 { font-size: 20px; }
     .result-box { width: 250px; }
     .result-box .map-wrapper img { width: 250px; height: 73.5294118px }
@@ -259,14 +241,14 @@
     // .result-box .result-geometry .results-icon { padding-right: 4px; }
     .result-box .geospace { display: none; }
     .result-box .dots > a { margin-left: -7px; }
-    .details-wrapper > div.vendor-logo.col-lg-10 > img { max-width: 170px; }
+    .result-row-icons > div.vendor-logo.col-lg-10 > img { max-width: 170px; }
     .col-hr { margin-top: 240px; }
     #search-results .result-box .dropdown-menu li a { font-size: 9px; }
-    .details-wrapper ul.dropdown-menu { left: 44px; }
-    .details-wrapper ul.dropdown-menu .dropdown-submenu .dropdown-menu { left: 70px; }
+    .result-row-icons ul.dropdown-menu { left: 44px; }
+    .result-row-icons ul.dropdown-menu .dropdown-submenu .dropdown-menu { left: 70px; }
     // #search-results .result-box .dropdown-menu li, #search-results .result-box .dropdown-menu li > a,
     // #search-results .result-box .dropdown-menu { max-width: 120px; }
-    #search-results .result-box h2 { max-width: 234px; }
+    // #search-results .result-box h2 { max-width: 234px; }
 }
 
 @media only screen and (max-height: 600px) {

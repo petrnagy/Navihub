@@ -1,0 +1,9 @@
+.tooltipsy
+{
+    padding: 10px;
+    max-width: 200px;
+    color: lightgray;
+    background-color: #3e3f3a;
+    border: 1px solid #2b2b28;
+    font-size: 12px;
+}

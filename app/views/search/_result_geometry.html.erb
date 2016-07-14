@@ -1,7 +1,7 @@
-<span class="result-geometry">
-
+<div class="result-geometry gps-wrapper">
+    <div title="Place GPS coordinates" class="autotooltip results-icon"><%= fa_icon("globe") %></div>
     <% if result[:pretty_loc] %>
-        <span class="label label-default done">
+        <span class="done">
         <% if result[:pretty_loc].is_a?(String) %>
             <%= result[:pretty_loc] %>
         <% else %>
@@ -15,4 +15,4 @@
         </span>
     <% end %>
 
-</span>
+</div>

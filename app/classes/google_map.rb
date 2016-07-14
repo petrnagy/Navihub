@@ -6,11 +6,11 @@ class GoogleMap
     require 'cgi'
 
     def self.get_result_tn lat, lng, key
-        self.get_map lat.to_s + ',' + lng.to_s, '340x100', key, false
+        self.get_map lat.to_s + ',' + lng.to_s, '290x145', key, false
     end
 
     def self.get_result_tn_by_address addr, key
-        self.get_map addr, '340x100', key, true
+        self.get_map addr, '290x145', key, true
     end
 
     def self.get_email_map lat, lng, key

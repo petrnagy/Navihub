@@ -1,0 +1,31 @@
+<div class="result-icons">
+    <a title="Open detail" class="rihref autotooltip list-open-detail" href="#" data-no-turbolink="true"><%= fa_icon("eye") %> Detail</a>
+    <a title="Show map" class="rihref autotooltip list-open-in-maps map-dropdown" href="#"><%= fa_icon("map-o") %> Map</a>
+    <a title="Plan a route" class="rihref autotooltip list-plan-a-route" href="#"><%= fa_icon("road") %> Route</a>
+
+    <a title="Visit place website" class="rihref autotooltip list-visit-website" href='#'><%= fa_icon("link") %> Website</a>
+    <a title="Create permalink" class="rihref autotooltip list-get-permalink" href='#'><%= fa_icon("chain-broken") %> Permalink</a>
+
+    <a title="Add to favorites" href="#" class="rihref autotooltip detail-fav-switch list-fav-switch <%= result[:favorite] ? 'exists' : '' %>"><%= fa_icon( result[:favorite] ? 'star' : 'star-o' ) %> Add to favorites</a>
+
+    <div class="inline">
+        <a class="rihref" data-toggle="dropdown" href="#"><%= fa_icon("share") %> Share this</a>
+        <ul class="dropdown-menu">
+            <li><a class="list-send-via-email" href='#'><%= fa_icon("envelope-o") %>send via e-mail</a></li>
+            <li><a class="list-share-on-facebook list-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=%%URL%%"><%= fa_icon("facebook-official") %>share on facebook</a></li>
+            <li><a class="list-share-on-twitter list-share-btn" href="https://twitter.com/home?status=%%URL%%"><%= fa_icon("twitter") %>share on twitter</a></li>
+            <li><a class="list-share-on-google-plus list-share-btn" href="https://plus.google.com/share?url=%%URL%%"><%= fa_icon("google-plus") %>share on google+</a></li>
+        </ul>
+    </div>
+
+    <div class="inline">
+        <a class="rihref" data-toggle="dropdown" href="#"><%= fa_icon("search") %> Search more</a>
+        <ul class="dropdown-menu">
+            <% search_query = u(result[:name] + (result[:address] ? ' ' + result[:address] : '')) %>
+            <li><a class="list-search-more-google" href="https://www.google.cz/?#q=<%= search_query %>"><%= fa_icon("google") %>google.com</a></li>
+            <li><a class="list-search-more-bing" href="http://www.bing.com/search?q=<%= search_query %>"><%= fa_icon("search-plus") %>bing.com</a></li>
+            <li><a class="list-search-more-yahoo" href="https://search.yahoo.com/search?p=<%= search_query %>"><%= fa_icon("yahoo") %>yahoo.com</a></li>
+            <li><a class="list-search-more-duck" href="https://duckduckgo.com/?q=<%= search_query %>"><%= fa_icon("user-secret") %>duckduckgo.com</a></li>
+        </ul>
+    </div>
+</div>

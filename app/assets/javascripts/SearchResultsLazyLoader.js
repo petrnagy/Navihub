@@ -29,7 +29,8 @@ SearchResultsLazyLoader.prototype = {
         that._lazyLoadSearchResultsGeometries();
         that._lazyLoadSearchResultsAddresses();
         that._lazyLoadSearchResultsTagLinks();
-        that._lazyInitEllipsis();
+        //that._lazyInitEllipsis();
+        that._lazyInitTooltips();
         that._lazyLoadSearchResultsOpenDetail();
         that._lazyLoadMapPopups();
         that._lazyLoadRoutePopups();
@@ -108,6 +109,9 @@ SearchResultsLazyLoader.prototype = {
         });
     }, // end method
 
+    /**
+     * @deprecated
+     */
     _lazyInitEllipsis: function() {
         var that = this;
         var $set = $('#yield #search-results .result-address:in-viewport').not('.dotted').filter(function(){
@@ -118,10 +122,17 @@ SearchResultsLazyLoader.prototype = {
         that.di.ellipsis.do($set);
     }, // end method
 
+    _lazyInitTooltips: function() {
+        var that = this;
+        var $set = $('#yield #search-results .result-box .autotooltip:in-viewport').not('.has-tooltip');
+
+        $set.addClass('has-tooltip').tooltipsy({offset: [0, 10]});
+    }, // end method
+
     _lazyLoadSearchResultsOpenDetail: function() {
         var that = this;
         that.di.locator.addHook(function() {
-            var $set = $('#search-results .details-wrapper:in-viewport ul.dropdown-menu .list-open-detail, #search-results .result-box:in-viewport .list-open-detail-eye')
+            var $set = $('#search-results .result-box:in-viewport .list-open-detail')
             .filter(function(){
                 return ( $(this).attr('href') === '#' );
             });
@@ -308,6 +319,9 @@ SearchResultsLazyLoader.prototype = {
         $('meta[name="keywords"]').attr('content', $('#search-results').attr('data-keywords'));
     }, // end method
 
+    /**
+     * @deprecated
+     */
     initEllipsis: function() {
         var that = this;
         /* run ellipsis lazyload manually, because we cannot detect css rendering finish point */

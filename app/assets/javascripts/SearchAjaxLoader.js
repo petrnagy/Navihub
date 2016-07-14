@@ -31,7 +31,7 @@ SearchAjaxLoader.prototype = {
         that.di.searchResult = new SearchResult(that.di);
         that.di.lazyLoader = new SearchResultsLazyLoader(that.di);
         that.di.lazyLoader.lazyLoad();
-        that.di.lazyLoader.initEllipsis();
+        //that.di.lazyLoader.initEllipsis();
     }, // end method
 
 }; // end prototype
