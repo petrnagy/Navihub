@@ -124,9 +124,11 @@ SearchResultsLazyLoader.prototype = {
 
     _lazyInitTooltips: function() {
         var that = this;
-        var $set = $('#yield #search-results .result-box .autotooltip:in-viewport').not('.has-tooltip');
+        if ( ! that.di.browser.isMobileDevice() ) {
+            var $set = $('#yield #search-results .result-box .autotooltip:in-viewport').not('.has-tooltip');
 
-        $set.addClass('has-tooltip').tooltipsy({offset: [0, 10]});
+            $set.addClass('has-tooltip').tooltipsy({offset: [0, 10]});
+        } // end if
     }, // end method
 
     _lazyLoadSearchResultsOpenDetail: function() {

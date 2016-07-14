@@ -1,15 +1,15 @@
 <div class="result-icons">
-    <a title="Open detail" class="rihref autotooltip list-open-detail" href="#" data-no-turbolink="true"><%= fa_icon("eye") %> Detail</a>
-    <a title="Show map" class="rihref autotooltip list-open-in-maps map-dropdown" href="#"><%= fa_icon("map-o") %> Map</a>
-    <a title="Plan a route" class="rihref autotooltip list-plan-a-route" href="#"><%= fa_icon("road") %> Route</a>
+    <a title="Open detail" class="rihref autotooltip list-open-detail" href="#" data-no-turbolink="true"><%= fa_icon("eye") %><span class="result-icon-inner-txt"> Detail</span></a>
+    <a title="Show map" class="rihref autotooltip list-open-in-maps map-dropdown" href="#"><%= fa_icon("map-o") %><span class="result-icon-inner-txt"> Map</span></a>
+    <a title="Plan a route" class="rihref autotooltip list-plan-a-route" href="#"><%= fa_icon("road") %><span class="result-icon-inner-txt"> Route</span></a>
 
-    <a title="Visit place website" class="rihref autotooltip list-visit-website" href='#'><%= fa_icon("link") %> Website</a>
-    <a title="Create permalink" class="rihref autotooltip list-get-permalink" href='#'><%= fa_icon("chain-broken") %> Permalink</a>
+    <a title="Visit place website" class="rihref autotooltip list-visit-website" href='#'><%= fa_icon("link") %><span class="result-icon-inner-txt"> Website</span></a>
+    <a title="Create permalink" class="rihref autotooltip list-get-permalink" href='#'><%= fa_icon("chain-broken") %><span class="result-icon-inner-txt"> Permalink</span></a>
 
-    <a title="Add to favorites" href="#" class="rihref autotooltip detail-fav-switch list-fav-switch <%= result[:favorite] ? 'exists' : '' %>"><%= fa_icon( result[:favorite] ? 'star' : 'star-o' ) %> Add to favorites</a>
+    <a title="Add to favorites" href="#" class="rihref autotooltip detail-fav-switch list-fav-switch <%= result[:favorite] ? 'exists' : '' %>"><%= fa_icon( result[:favorite] ? 'star' : 'star-o' ) %><span class="result-icon-inner-txt"> Add to favorites</span></a>
 
     <div class="inline">
-        <a class="rihref" data-toggle="dropdown" href="#"><%= fa_icon("share") %> Share this</a>
+        <a class="rihref" data-toggle="dropdown" href="#"><%= fa_icon("share") %><span class="result-icon-inner-txt"> Share this</span></a>
         <ul class="dropdown-menu">
             <li><a class="list-send-via-email" href='#'><%= fa_icon("envelope-o") %>send via e-mail</a></li>
             <li><a class="list-share-on-facebook list-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=%%URL%%"><%= fa_icon("facebook-official") %>share on facebook</a></li>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="inline">
-        <a class="rihref" data-toggle="dropdown" href="#"><%= fa_icon("search") %> Search more</a>
+        <a class="rihref" data-toggle="dropdown" href="#"><%= fa_icon("search") %><span class="result-icon-inner-txt"> Search more</span></a>
         <ul class="dropdown-menu">
             <% search_query = u(result[:name] + (result[:address] ? ' ' + result[:address] : '')) %>
             <li><a class="list-search-more-google" href="https://www.google.cz/?#q=<%= search_query %>"><%= fa_icon("google") %>google.com</a></li>

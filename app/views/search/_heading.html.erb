@@ -2,9 +2,9 @@
 <div class="col-lg-12 search-info">
     <h1 class="h2">'<%= @data[:data][:input_params][:term] %>' <span class="results-near">near '<%= pretty_loc @request_location %>'</span></h1>
     <% if @data[:data][:total_cnt] > @data[:data][:params][:step] %>
-      <p>Showing first <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> from <%= (@data[:data][:total_cnt] > @data[:data][:params][:step] ? 'approximately' : '') %> <b><%= @data[:data][:total_cnt] %></b> results. Search completed in <%= @data[:data][:total_time] %> s.</p>
+      <p>Showing first <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> from <%= (@data[:data][:total_cnt] > @data[:data][:params][:step] ? 'approximately' : '') %> <b><%= @data[:data][:total_cnt] %></b> results. Search&nbsp;completed&nbsp;in&nbsp;<%= @data[:data][:total_time] %> s.</p>
     <% else %>
-      <p>Showing <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> results. Search completed in <%= @data[:data][:total_time] %> s.</p>
+      <p>Showing <b><%= ( @data[:data][:params][:limit] <= @data[:data][:total_cnt] ? @data[:data][:params][:limit] : @data[:data][:total_cnt] ) %></b> results. Search&nbsp;completed&nbsp;in&nbsp;<%= @data[:data][:total_time] %> s.</p>
     <% end %>
 </div>
 <% end %>
