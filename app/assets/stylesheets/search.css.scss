@@ -158,6 +158,7 @@ a.rihref > i { font-size: 14px; }
 }
 
 .list-open-detail-eye:hover, .list-show-route:hover { color: black !important; }
+.labels-wrapper a:hover, .labels-wrapper a:focus { color: white; }
 
 .result-box .list-visit-website:hover,
 .result-box .list-send-via-email:hover,
@@ -213,10 +214,12 @@ a.rihref > i { font-size: 14px; }
     .result-row-icons { text-align: center; }
 }
 @media only screen and (max-width: 768px) and (min-width: 701px) {
-    .result-row-tags { height: 40px; }
     #search-form .term-wrapper { padding-right: 5px; }
     #search-form .radius-wrapper { padding-left: 5px; padding-right: 5px; }
     #search-form .sort-wrapper { padding-left: 5px; }
+}
+@media only screen and (max-width: 768px) and (min-width: 501px) {
+    .result-row-tags { height: 40px; }
 }
 
 @media only screen and (max-width: 700px) {
@@ -250,10 +253,10 @@ a.rihref > i { font-size: 14px; }
     .result-row { height: 30px; }
     .result-row-tags { height: auto; }
     .result-row-icons { margin-top: 8px; }
-    .result-car-distance, .result-walking-distance { margin-left: 5px !important; }
+    #search-results .result-car-distance, #search-results .result-walking-distance { margin-left: 5px !important; }
     .result-icon-inner-txt { display: none; }
-    .labels-wrapper .label { font-size: 11px; background-color: transparent; color: gray; padding: 0px 5px 0px 0px; }
-    .labels-wrapper .label::after { content: ","; }
+    #search-results .labels-wrapper .label { font-size: 11px; background-color: transparent; color: gray; padding: 0px 5px 0px 0px; }
+    #search-results .labels-wrapper .label::after { content: ","; }
     .labels-wrapper div a:last-of-type .label::after { content: ""; }
     .result-box { padding: 0px; }
     .result-row-icons { margin-bottom: 20px; }

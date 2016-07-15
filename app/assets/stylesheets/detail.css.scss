@@ -52,9 +52,10 @@
 }
 #detail-results .results-icon { padding-right: 30px; }
 
-p.detail-window-p { margin-bottom: 0px; height: 40px;
-    vertical-align: middle;
-    display: table-cell; }
+p.detail-window-p { margin-bottom: 0px; vertical-align: middle; display: table-cell; }
+@media (min-width: 991px) {
+    p.detail-window-p { height: 40px; }
+}
 #detail-share-via-email input[type="text"] { height: 35px; }
 #detail-share-via-email legend { margin-bottom: 15px; }
 #detail-share-via-email button { height: 35px; padding: 0px 12px 0px 12px; margin-top: 20px; }
