@@ -80,7 +80,8 @@ a.rihref { color: lightgray; font-size: 12px; margin-top: 4px; margin-right: 10p
 .result-icons > a:nth-child(1) { margin-left: -26px; }
 a.rihref > i { font-size: 14px; }
 .result-box:hover .result-icons a.rihref { color: gray; }
-.result-box:hover .result-icons a.rihref:hover { color: black !important; text-decoration: none; }
+.result-icons a.rihref:hover { color: black !important; text-decoration: none; }
+.result-icons a.rihref:focus { text-decoration: none; }
 .btn-detail { position: relative; right: -25px; }
 .dots a.btn-detail:hover { color: #93c54b; }
 #search-results .detail-fav-switch {  }
@@ -207,13 +208,13 @@ a.rihref > i { font-size: 14px; }
     .result-col-first { display: none; }
     .result-row-icons { position: initial; margin-left: 30px; }
     .result-col-second { width: 100%; }
-    .result-row-icons ul.dropdown-menu { left: 474px; top: 0px; }
+    .result-row-icons ul.dropdown-menu { top: 170px; }
 }
 @media only screen and (max-width: 991px) and (min-width: 701px) {
     #search-form input[name='search[term]'] { width: 200px !important; }
 }
 @media only screen and (max-width: 768px) {
-    .result-row-icons { text-align: center; }
+    .result-row-icons { text-align: center; margin-left: 10px; width: 100%; }
 }
 @media only screen and (max-width: 768px) and (min-width: 701px) {
     #search-form .term-wrapper { padding-right: 5px; }
@@ -231,11 +232,11 @@ a.rihref > i { font-size: 14px; }
     .search-btn-wrapper { float: right; margin-right: 15px; }
     .radius-wrapper, .sort-wrapper { width: 33%; }
     .col-hr { margin-top: 130px; }
-    .result-row-icons ul.dropdown-menu { left: 33%; top: 0px; }
+    .result-row-icons ul.dropdown-menu { top: 180px; }
 }
-// @media only screen and (max-width: 769px) and (min-width: 701px) {
-//     .result-box { margin-left: 100px !important; margin-right: 100px !important; }
-// }
+@media only screen and (max-width: 700px) and (min-width: 501px) {
+    .result-row-icons ul.dropdown-menu { left: 300px; top: 190px; }
+}
 @media only screen and (max-width: 639px) {
     #search-input-wrapper #search-input .col-lg-12 { width: 100% !important; }
     #search-input-wrapper #search-input .col-lg-12 input[type=text] { width: 100% !important; }
