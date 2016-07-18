@@ -31,7 +31,6 @@ class AccountController < ApplicationController
             lock = Lock.new
             result = lock.register_with_credentials parameters, @user, @session, @cookie
             @user = result[:user]
-            # FIXME: wrong number of arguments !
             LoginSession.start(
             @user.id,
             @session.id,
