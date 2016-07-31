@@ -81,6 +81,6 @@ Rails.application.routes.draw do
     get '/permalink-sitemap.xml' => 'sitemap#permalink', :format => "xml" # [xss-safe] [csrf-safe]
     get '/robots.txt' => 'sitemap#robots', :format => "txt" # [xss-safe] [csrf-safe]
 
-    #match '*unmatched_route', :to => 'application#raise_not_found!', :via => :all
+    match '*unmatched_route', :to => 'application#raise_not_found!', :via => :all
 
 end
