@@ -24,9 +24,9 @@
             <div class="results-icon"><%= fa_icon 'link' %></div>
             <p class="detail-window-p">
                 <% if @data[:detail][:website_url] %>
-                The place homepage can be found <%= link_to 'here', @data[:detail][:website_url] %>.
+                The place homepage can be found <%= link_to 'here', @data[:detail][:website_url], rel: 'nofollow' %>.
                 <% elsif @data[:detail][:url] %>
-                More information can be found on <%= link_to 'this <i class="fa fa-external-link"></i>'.html_safe, @data[:detail][:url] %> <i><%=@data[:origin]%></i> site.
+                More information can be found on <%= link_to 'this <i class="fa fa-external-link"></i>'.html_safe, @data[:detail][:url], rel: 'nofollow' %> <i><%=@data[:origin]%></i> site.
                 <% else %>
                 Need little more information? try <a href="#search-engines">Google</a>, <a href="#search-engines">Bing</a> or <a href="#search-engines">DuckDuckGo</a>.
                 <% end %>

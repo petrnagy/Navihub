@@ -24,7 +24,7 @@
 
 @media screen and (max-width: 567px) {
     #navidog { display: none !important; }
-    #navy-col { text-align: center; float: none; width: 100%; }
+    /*#navy-col { text-align: center; float: none; width: 100%; }
     #navidog-col { float: none; width: 100%; }
-    #navy-image { float: none; margin-top: initial; width: auto; max-height: 190px; }
+    #navy-image { float: none; margin-top: initial; width: auto; max-height: 190px; }*/
 }

@@ -3,7 +3,7 @@
     <a title="Show map" class="rihref autotooltip list-open-in-maps map-dropdown" href="#"><%= fa_icon("map-o") %><span class="result-icon-inner-txt"> Map</span></a>
     <a title="Plan a route" class="rihref autotooltip list-plan-a-route" href="#"><%= fa_icon("road") %><span class="result-icon-inner-txt"> Route</span></a>
 
-    <a title="Visit place website" class="rihref autotooltip list-visit-website" href='#'><%= fa_icon("link") %><span class="result-icon-inner-txt"> Website</span></a>
+    <a title="Visit place website" class="rihref autotooltip list-visit-website" href='#' rel="nofollow"><%= fa_icon("link") %><span class="result-icon-inner-txt"> Website</span></a>
     <a title="Create permalink" class="rihref autotooltip list-get-permalink" href='#'><%= fa_icon("chain-broken") %><span class="result-icon-inner-txt"> Permalink</span></a>
 
     <a title="Add to favorites" href="#" class="rihref autotooltip detail-fav-switch list-fav-switch <%= result[:favorite] ? 'exists' : '' %>"><%= fa_icon( result[:favorite] ? 'star' : 'star-o' ) %><span class="result-icon-inner-txt"> Add to favorites</span></a>
