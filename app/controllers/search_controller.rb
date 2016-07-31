@@ -110,7 +110,7 @@ class SearchController < ApplicationController
         unless image == nil
             send_data image, type: 'image/png', disposition: 'inline'
         else
-            img_path = Rails.root.join('app', 'assets', 'images', 'system', 'noimage.png')
+            img_path = Rails.root.join('app', 'assets', 'images', 'system', 'noimage.jpg')
             send_file img_path, type: 'image/png', disposition: 'inline'
         end
     end
