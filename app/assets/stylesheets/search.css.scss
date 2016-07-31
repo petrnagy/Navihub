@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .result-box  h2.h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0px; }
-.result-box  h2.h3 a.namelink, .result-box  h2.h3 a.namelink:visited,
-.result-box  h2.h3 a.namelink:active, .result-box  h2.h3 a.namelink:hover { color: rgb(62, 63, 58); text-decoration: none; }
+.result-box  h2.h3 a.namelink, .result-box  h2.h3 a.namelink:visited { color: rgb(62, 63, 58); text-decoration: none; }
+.result-box  h2.h3 a.namelink:active, .result-box  h2.h3 a.namelink:hover { color: #bbbbbb; text-decoration: none; }
 // .result-box  h2.h3 a.namelink[href]:hover { color: gray; }
 .results-near { color: #C7C7C7 }
 .result-col { float: left; padding-right: 10px; }
@@ -79,7 +79,7 @@ div.inline { display: inline; }
 a.rihref { color: lightgray; font-size: 12px; margin-top: 4px; margin-right: 10px; display: inline-block; }
 .result-icons > a:nth-child(1) { margin-left: -26px; }
 a.rihref > i { font-size: 14px; }
-.result-box:hover .result-icons a.rihref { color: gray; }
+// .result-box:hover .result-icons a.rihref { color: gray; }
 .result-icons a.rihref:hover { color: black !important; text-decoration: none; }
 .result-icons a.rihref:focus { text-decoration: none; }
 .btn-detail { position: relative; right: -25px; }
@@ -88,6 +88,9 @@ a.rihref > i { font-size: 14px; }
 #search-results .detail-fav-switch i.fa.fa-star-o:hover { color: #D2D21E !important; }
 #search-results .detail-fav-switch.exists { color: #D2D21E !important; }
 .result-row { height: 30px; }
+.list-open-in-maps:hover img { -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75); }
 
 .powered-by-icon { position: absolute; bottom: 0; right: 0; }
 /* ~~~~~~~ */
@@ -168,6 +171,7 @@ a.rihref > i { font-size: 14px; }
 }
 .distance-wrapper { display: inline-block; }
 .location-wrapper { width: 100% !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.result-spinner-inlineblock { margin-top: -12px; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 

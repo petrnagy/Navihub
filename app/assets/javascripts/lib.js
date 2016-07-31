@@ -19,9 +19,13 @@ String.prototype.hashCode = function() {
     return hash;
 };
 
+function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
+    return target.replace(new RegExp(escapeRegExp(search), 'g'), replacement);
 };
 
 function arrayUnique (a) {

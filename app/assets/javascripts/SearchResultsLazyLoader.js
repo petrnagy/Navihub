@@ -59,7 +59,23 @@ SearchResultsLazyLoader.prototype = {
             var data = that.di.searchResult.getData($(this));
             if ( data && data.address.length ) {
                 var $parent = $(this).parent();
-                that.di.locator.doLazyGeocoding(data.address, $(this), function(){
+                that.di.locator.doLazyGeocoding(data.address, $(this), function(data){
+                    if ( data.data.lat && data.data.lng ) {
+                        var $img = $parent.closest('.result-box').find('.map-wrapper img');
+                        if ( $img.length ) {
+                            var lazysrc = $img.attr('lazysrc');
+                            if ( lazysrc.length ) {
+                                var ll = data.data.lat.toString() + ',' + data.data.lng.toString();
+                                var matches = lazysrc.match(/center=(.*?)&/);
+                                console.log(matches);
+                                if ( matches.length && matches[1] && matches[1] !== ll ) {
+                                    var newsrc = lazysrc.replaceAll(matches[1], ll);
+                                    console.log(newsrc);
+                                    $img.attr('lazysrc', newsrc);
+                                } // end if
+                            } // end if
+                        } // end if
+                    } // end if
                     $parent.addClass( $parent.attr('data-class') );
                     that._lazyLoadMapPopups();
                     that._lazyLoadRoutePopups();
