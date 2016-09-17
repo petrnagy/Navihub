@@ -1,0 +1,8 @@
+Hello, fellow <%= @page_name %> admin !
+
+New feedback from: <%= @data[:name].to_s %> <<%= @data[:email].to_s %>>
+
+Feedback text:
+<%= @data[:text] %>
+
+<%= render 'mailer/footer.txt.erb' %>

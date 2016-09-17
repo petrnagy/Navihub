@@ -1,0 +1,35 @@
+<%= render 'mailer/header' %>
+
+<!-- BODY -->
+<table class="body-wrap">
+	<tr>
+		<td></td>
+		<td class="container" bgcolor="#FFFFFF">
+
+			<div class="content">
+			<table>
+				<tr>
+					<td>
+						<h3>Hello, fellow <%= @page_name %> admin !</h3>
+						<p class="lead"><%= 'New feedback from: ' + @data[:name] + ' <' + @data[:email] + '>' %></p>
+						<p>
+							Feedback text:
+						</p>
+						<p>
+							<%= @data[:text] %>
+						</p>
+
+						<%= render 'mailer/liketheapp' %>
+						<%= render 'mailer/author' %>
+
+					</td>
+				</tr>
+			</table>
+			</div><!-- /content -->
+
+		</td>
+		<td></td>
+	</tr>
+</table><!-- /BODY -->
+
+<%= render 'mailer/footer.erb' %>

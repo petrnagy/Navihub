@@ -13,6 +13,7 @@ class Form < ActiveRecord::Base
         form = Form.find_by(key: key)
         if nil == form
             Form.create(name: data[:name], email: data[:email], text: data[:text], data: nil, spam: false, key: key)
+            FormsMailer.new_feedback(data)
             true
         else
             false
