@@ -6,7 +6,7 @@ class FormsMailer < ActionMailer::Base
         @page_name = Rails.configuration.page_name
         @page_title = Rails.configuration.page_title
         @host = Rails.configuration.action_mailer.default_url_options[:host]
-        @recipient = Rails.configuration.action_mailer.default_url_options[:admin_email]
+        @recipient = Rails.configuration.action_mailer.default_options[:admin_email]
         @subject = 'New feedback from ' + data[:name]
         @data = data
 
