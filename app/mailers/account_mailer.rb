@@ -12,7 +12,7 @@ class AccountMailer < ActionMailer::Base
     @hash = AccountHelper::generate_verify_hash recipient
     @link = url_for host: @host, controller: 'account', action: 'verify', username: username, hash: @hash
 
-    mail(to: recipient, subject: @subject)
+    mail(to: recipient, subject: @subject).deliver()
   end
 
 end

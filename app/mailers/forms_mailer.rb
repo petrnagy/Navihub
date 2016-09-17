@@ -10,6 +10,6 @@ class FormsMailer < ActionMailer::Base
         @subject = 'New feedback from ' + data[:name]
         @data = data
 
-        mail(to: @recipient, subject: @subject, reply_to: data[:email])
+        mail(to: @recipient, subject: @subject, reply_to: data[:email]).deliver()
     end
 end

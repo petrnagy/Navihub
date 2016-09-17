@@ -17,7 +17,7 @@ class SharerMailer < ActionMailer::Base
         @data[:has_geometry] = has_geometry @data
         @data[:url] = @host + @data[:url] + '/@/' + ll
 
-        mail(to: recipient, subject: @subject)
+        mail(to: recipient, subject: @subject).deliver()
     end
 
 end
