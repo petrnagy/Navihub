@@ -16,7 +16,8 @@ class FeedbackController < ApplicationController
         @form = Form.new(parameters)
 
         if @form.valid?
-            Form.save_contact_feedback_form(parameters)
+            saved = Form.save_contact_feedback_form(parameters)
+            FormsMailer.new_feedback(parameters) if saved
             @page_title += ' - Success'
             render 'form_success'
         else
