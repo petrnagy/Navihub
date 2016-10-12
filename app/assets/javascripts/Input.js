@@ -87,7 +87,7 @@ Input.prototype = {
     _initDynamicPlaceholder: function() {
         var that = this;
         var $input = that.$form.find('input[name="search[term]"]');
-        var delay = 100;
+        var delay = 50;
         var placeholders = [
             "Pizza", "Water park", "Car rental", "Café", "Chicken wings", "Irish pub",
             "McDonalds", "Hotel", "Post office", "Cinema", "Winery",
