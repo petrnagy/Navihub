@@ -21,6 +21,11 @@ body.c-homepage.a-index { background-attachment: scroll; }
 p.hp-lead { max-width: 520px; margin-left: auto; margin-right: auto; color: gray; font-size: 13px; }
 h1.hp-lead-h1 { font-size: 26px; }
 
+@media screen and (min-width: 992px) and (max-aspect-ratio: 16/10) {
+    body.c-homepage.a-index { background-size: auto auto; }
+    // #hp-heading { color: red !important; }
+}
+
 @media screen and (max-width: 1000px) {
     h1.hp-lead-h1 { font-size: 20px; }
     p.hp-lead { max-width: 404px; }

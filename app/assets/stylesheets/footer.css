@@ -27,6 +27,23 @@ div.container.footer { padding-top: 30px; }
 .f-coffee { color: #985305; }
 .f-sleepless { color: blue; }*/
 footer { margin-top: 0px; }
+#twitter-float {
+    position: fixed;
+    left: 50px;
+    bottom: 0;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    padding: 10px;
+    background-color: white;
+    opacity: .8;
+}
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
