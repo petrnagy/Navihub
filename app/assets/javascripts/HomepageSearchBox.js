@@ -38,6 +38,7 @@ HomepageSearchBox.prototype = {
             that._recalculate();
         });
 
+        document.getElementById("hp-outer").style.height = '';
     }, // end method
 
     _recalculate: function() {
@@ -88,12 +89,14 @@ HomepageSearchBox.prototype = {
         var $body = $('body.c-homepage.a-index');
         if ( $body.length ) {
             var bg = $body.css('background');
-            bg = bg.match(/https?:\/\/[^"]*?"/);
+            bg = bg.match(/https?:\/\/[^"]*/);
             if ( bg[0] ) {
                 var src = bg[0].replace('lowres', 'hires');
                 var $img = $( '<img src="' + src + '">' );
                 $img.bind('load', function() {
-                    $body.css('background', $body.css('background').replace('lowres', 'hires'));
+                    //$body.css('background', 'url("'+src+'")');
+                    var final = 'rgba(0, 0, 0, 0) url("'+src+'") no-repeat scroll 50% 0% / 100% padding-box border-box';
+                    $body.css('background', final);
                 } );
             } // end if
         } // end if
