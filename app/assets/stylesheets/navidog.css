@@ -14,16 +14,16 @@
 .woof { color: gray; }
 
 @media screen and (max-width: 1199px) {
-    #navy-col { float:left; width: 25%; }
-    #navidog-col { float:left; width: 75%; }
+    /*#navy-col { float:left; width: 25%; }
+    #navidog-col { float:left; width: 75%; }*/
 }
 
 @media screen and (max-width: 991px) {
-    #navy-image { margin-top: 80px; }
+    /*#navy-image { margin-top: 80px; }*/
 }
 
 @media screen and (max-width: 567px) {
-    #navidog { display: none !important; }
+    /*#navidog { display: none !important; }*/
     /*#navy-col { text-align: center; float: none; width: 100%; }
     #navidog-col { float: none; width: 100%; }
     #navy-image { float: none; margin-top: initial; width: auto; max-height: 190px; }*/

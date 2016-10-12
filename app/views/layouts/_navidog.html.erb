@@ -1,49 +1,40 @@
 <section id="navidog">
     <div class="container">
-        <div class="col-lg-3" id="navy-col">
-            <%= image_tag('resources/navy.jpg', width: 101, id: 'navy-image') %>
+        <div class="col-lg-6">
+            <h1>What is this?</h1>
+            <p>
+                This is <b>Navihub</b>, one of <a href="https://www.petrnagy.cz">mine</a> personal <a href="https://www.petrnagy.cz#projects">projects</a>.<br>
+            </p>
+            <p>
+                This page will help you <b>discover</b> the world <b>around you</b>.<br>
+                New in town? <i>Check.</i> Traveling a lot? <i>Check.</i> Exchange student? <br/>
+                It's got everything covered!
+            </p>
+            <p>
+                Navihub is always one step ahead of you. Few things it can <b>help you</b> with:
+                <ul>
+                      <li><b>Explore</b> your neighborhood for new restaurants,</li>
+                      <li><b>plan a route</b> to the nearest water park,</li>
+                      <li>look for a <b>nearby</b> cafe,</li>
+                      <li>find the <b>nearest</b> post office,</li>
+                      <li>and <%= link_to 'much more', '/pages/about', data: { no_turbolink: true } %>.</li>
+                </ul>
+            </p>
         </div>
-        <div class="col-lg-9" id="navidog-col">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#navidog-tab-home" data-toggle="tab" aria-expanded="true">This project</a></li>
-              <li class=""><a href="#navidog-tab-whysignin" data-toggle="tab" aria-expanded="false">Is it safe?</a></li>
-            </ul>
-            <div id="navi-tab-content" class="tab-content">
-              <div class="tab-pane active fade in" id="navidog-tab-home">
-                  <h1>Sssh, hey Pal!</h1>
-                  <p>
-                      <b>Hi, I'm Navy.</b> <i class="woof">Woof!</i> And I am working for this awesome project.<br>
-                  </p>
-                  <p>
-                      I am going to help you <b>discover</b> the world <b>around you</b>.<br>
-                      New in town? Check. Traveling a lot? Check. Exchange student? I've got everything covered!
-                  </p>
-                  <p>
-                      I am always sniffing around the city corners. Few <b>things I can help you with</b>:
-                      <ul>
-                            <li>Explore your neighborhood for new restaurants,</li>
-                            <li>plan a route to the nearest water park,</li>
-                            <li>look for a nearby cafe,</li>
-                            <li>find the nearest post office,</li>
-                            <li><%= link_to 'and much more', '/pages/about', data: { no_turbolink: true } %>.</li>
-                      </ul>
-                  </p>
-              </div>
-              <div class="tab-pane fade in" id="navidog-tab-whysignin">
-                  <h1>Should I give you my location?</h1>
-                  <p>
-                      No worries! Our site is anonymous. You don't even need to sign up or anything before using it.
-                  </p>
-                  <p>
-                      Also, we do not collect or store any personal or sensitive information. Not even your location history.<br/>
-                      Even for the <%= link_to 'registered users', {controller: "account", action: 'create'} %>, only nickname and password are required.
-                  </p>
-                  <p>
-                      You can read more about our privacy policy <%= link_to 'here', '/pages/privacy-policy', data: { no_turbolink: true } %>. There is also <%= link_to 'cookie policy', '/pages/cookie-policy', data: { no_turbolink: true } %> and a whole
-                      <%= link_to 'blog section', '/blog', data: { no_turbolink: true } %> where we address this issue.
-                  </p>
-              </div>
-            </div>
+        <div class="col-lg-6">
+            <h1>Is this safe?</h1>
+            <p>Should I give you my <b>location</b>?</p>
+            <p>
+                No worries! This site is anonymous. You don't even need to sign up or anything before using it.
+            </p>
+            <p>
+                Also, it does not collect or store any personal or sensitive information. Not even your location history.<br/>
+                Even for the <%= link_to 'registered users', {controller: "account", action: 'create'} %>, only nickname and password are required.
+            </p>
+            <p>
+                You can read more about our privacy policy <%= link_to 'here', '/pages/privacy-policy', data: { no_turbolink: true } %>. There is also <%= link_to 'cookie policy', '/pages/cookie-policy', data: { no_turbolink: true } %> and a whole
+                <%= link_to 'blog section', '/blog', data: { no_turbolink: true } %> where we address this issue.
+            </p>
         </div>
 
     </div>
