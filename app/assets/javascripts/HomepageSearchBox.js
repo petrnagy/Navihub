@@ -21,6 +21,7 @@ HomepageSearchBox.prototype = {
         if ( $elem.length ) {
             that._initResizer();
             that._recalculate();
+            that._loadHiresBackground();
         } // end if
     }, // end method
 
@@ -80,6 +81,22 @@ HomepageSearchBox.prototype = {
             });
         }
 
+    }, // end method
+
+    _loadHiresBackground: function() {
+        var that = this;
+        var $body = $('body.c-homepage.a-index');
+        if ( $body.length ) {
+            var bg = $body.css('background');
+            bg = bg.match(/https?:\/\/[^"]*?"/);
+            if ( bg[0] ) {
+                var src = bg[0].replace('lowres', 'hires');
+                var $img = $( '<img src="' + src + '">' );
+                $img.bind('load', function() {
+                    $body.css('background', $body.css('background').replace('lowres', 'hires'));
+                } );
+            } // end if
+        } // end if
     }, // end method
 
 }; // end prototype
