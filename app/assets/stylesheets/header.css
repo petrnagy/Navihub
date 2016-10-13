@@ -25,6 +25,7 @@ body.logged-in .myacc-dropdown > .dropdown-toggle { max-width: 200px; white-spac
     display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;
     margin-bottom: -4px;
 }
+#appname { text-transform: uppercase; }
 
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
