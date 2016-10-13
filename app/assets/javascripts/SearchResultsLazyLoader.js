@@ -105,7 +105,7 @@ SearchResultsLazyLoader.prototype = {
     _lazyLoadSearchResultsTagLinks: function() {
         var that = this;
         that.di.locator.addHook(function(){
-            var $set = $('#yield #search-results .result-tags .label:in-viewport').not('.done');
+            var $set = $('#yield #search-results .labels-wrapper .label:in-viewport').not('.done');
             $set.each(function(){
                 $(this).addClass('done');
                 var label = $(this).text();
