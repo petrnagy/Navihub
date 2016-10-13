@@ -1,7 +1,8 @@
 <div class="geometry-wrapper location-wrapper">
-    <div title="Place address" class="autotooltip results-icon"><%= fa_icon("map-marker") %></div>
     <% if result[:address] %>
-        <%= result[:address] %>
+        <span class="tablet-autohide">Located at </span>
+        <div class="inline strong">
+            <%= result[:address] %></div><span class="tablet-autohide">.</span>
     <% else %>
         <i class="fa fa-frown-o"></i>
     <% end %>

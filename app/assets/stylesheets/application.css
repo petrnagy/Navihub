@@ -26,6 +26,7 @@ label { color: #525252; font-weight: normal; }
 #yield > .alert { max-width: 640px; margin-left: auto; margin-right: auto; }
 input[type="text"], input[type="password"], textarea { -webkit-appearance: none; }
 .alert a { text-decoration: underline; }
+.strong { font-weight: bold; }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MEDIA QUERIES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 

@@ -26,11 +26,11 @@ SearchResultsLazyLoader.prototype = {
     lazyLoad: function() {
         var that = this;
         that._lazyLoadSearchResultsImages();
-        that._lazyLoadSearchResultsGeometries();
+        //that._lazyLoadSearchResultsGeometries();
         that._lazyLoadSearchResultsAddresses();
         that._lazyLoadSearchResultsTagLinks();
         //that._lazyInitEllipsis();
-        that._lazyInitTooltips();
+        //that._lazyInitTooltips();
         that._lazyLoadSearchResultsOpenDetail();
         that._lazyLoadMapPopups();
         that._lazyLoadRoutePopups();
@@ -51,6 +51,9 @@ SearchResultsLazyLoader.prototype = {
         });
     }, // end method
 
+    /**
+     * @deprecated
+     */
     _lazyLoadSearchResultsGeometries: function() {
         var that = this;
         var $set = $('#yield #search-results .result-geometry .fa-spinner:in-viewport').not('.pending');
@@ -138,6 +141,9 @@ SearchResultsLazyLoader.prototype = {
         that.di.ellipsis.do($set);
     }, // end method
 
+    /**
+     * @deprecated
+     */
     _lazyInitTooltips: function() {
         var that = this;
         if ( ! that.di.browser.isMobileDevice() ) {

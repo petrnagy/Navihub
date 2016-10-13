@@ -1,13 +1,18 @@
 <div class="distance-wrapper">
     <% if result[:distance] != nil %>
     <div class="result-subcol result-distance">
-        <div title="Place distance" class="autotooltip results-icon"><%= fa_icon("arrows-h") %></div><span class=""><%= DistanceHelper.pretty_distance(result[:distance], result[:distance_unit], 'km', false) %></span>
+        <span class="tablet-autohide">Is </span>
+        <span class="strong"><%= DistanceHelper.pretty_distance(result[:distance], result[:distance_unit], 'km', true) %></span>
+        <span class="tablet-autohide"> away.</span>
     </div>
+    <span class="tablet-autohide">It will take you </span>
     <div class="result-subcol result-walking-distance">
-        <div title="How long will you walk there?" class="autotooltip results-icon"><%= fa_icon("male") %></div><span class=""><%= DistanceHelper.pretty_minutes(DistanceHelper.m_to_min(result[:distance]), false) %></span>
+        <span class="strong"><%= DistanceHelper.pretty_minutes(DistanceHelper.m_to_min(result[:distance]), true) %></span>
     </div>
+    <span class="tablet-autohide"> to get there by foot or </span>
     <div class="result-subcol result-car-distance">
-        <div title="How long will you drive there?" class="autotooltip results-icon"><%= fa_icon("car") %></div><span class=""><%= DistanceHelper.pretty_minutes(DistanceHelper.car_m_to_min(result[:distance]), false) %></span>
+        <span class="strong"><%= DistanceHelper.pretty_minutes(DistanceHelper.car_m_to_min(result[:distance]), true) %></span>
     </div>
+    <span class="tablet-autohide"> to get there by car.</span>
     <% end %>
 </div>

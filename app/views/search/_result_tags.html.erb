@@ -1,6 +1,6 @@
 <% if result[:tags].is_a? Array %>
 <div class="labels-wrapper">
-    <div title="Place tags" class="autotooltip results-icon"><%= fa_icon("tags") %></div>
+    <div title="Place tags" class="results-icon"><%= fa_icon("tags") %></div>
     <div>
         <% result[:tags].each do |label| %>
         <a href="#"><span class="label label-default"><%= label %></span></a>
