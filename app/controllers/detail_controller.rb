@@ -34,9 +34,9 @@ class DetailController < ApplicationController
         data = load_detail parameters[:origin], parameters[:id]
         unless not data or nil == data
             if data[:detail][:website_url]
-                return redirect_to data[:detail][:website_url], status: 302
+                return redirect_to data[:detail][:website_url], status: :found
             elsif data[:detail][:url]
-                return redirect_to data[:detail][:url], status: 302
+                return redirect_to data[:detail][:url], status: :found
             end
         end
         render :template => "errors/404", :status => 404

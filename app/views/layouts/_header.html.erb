@@ -10,9 +10,9 @@
     <%= csrf_meta_tags %>
     <!-- Title -->
     <% if 'homepage' == params[:controller] %>
-    <title><%= @page_name %> | <%= @page_title %></title>
+    <title><%= @page_name.upcase %> | <%= @page_title %></title>
     <% else %>
-    <title><%= @page_title %> | <%= @page_name %></title>
+    <title><%= @page_title %> | <%= @page_name.upcase %></title>
     <% end %>
     <!-- Favicon -->
     <%= favicon_link_tag 'logo/buildings_stroke_100x100.png' %>
@@ -56,5 +56,6 @@
     <meta name="msvalidate.01" content="<%= @ms_site_verification %>" />
     <meta name="yandex-verification" content="<%= @yandex_site_verification %>" />
     <%= render 'layouts/noscript1' %>
+    <%= render 'layouts/header_scripts' %>
 
 </head>

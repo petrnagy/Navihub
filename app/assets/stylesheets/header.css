@@ -56,8 +56,8 @@ body.logged-in .myacc-dropdown > .dropdown-toggle { max-width: 200px; white-spac
     #burger-menu { float: right; color: white; font-size: 36px; display: block !important; }
     #appname { font-size: 100%; position: relative; top: 3px; }
     #menu-top, #menu-alt { display: none; }
-    #navbar-main { background-color: #545454; float: right; width: 200px; margin-top: -10px; margin-right: -15px;
-    border-bottom: 1px solid #353535; border-left: 1px solid #353535; border-right: 1px solid #353535;}
+    #navbar-main { background-color: #545454; float: right; width: 200px; margin-top: -10px; margin-right: -15px;}
+    /*#navbar-main.opened { border-bottom: 1px solid #353535; border-left: 1px solid #353535; border-right: 1px solid #353535; }*/
     #menu-top, #menu-alt, #menu-loc { margin: 0px }
     #navbar-main li.dropdown.open { background-color: #32332B; }
     #navbar-main li.dropdown.open li.divider { background-color: black; }

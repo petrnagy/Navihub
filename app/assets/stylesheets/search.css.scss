@@ -28,7 +28,7 @@ div.inline { display: inline; }
 #search-results .result-walking-distance, #search-results .result-car-distance { margin-left: 20px; }
 .result-row-icons .col-lg-2, .result-row-icons .col-lg-10 { border-top: 2px solid white; }
 .result-box .label { font-weight: normal; }
-.result-box .unknown-data { padding: 10px; }
+// .result-box .unknown-data { padding: 10px; }
 .result-box .unknown-data::before { font-size: 20px; color: gray; }
 .col-centered { float: none; margin-left: auto; margin-right: auto; }
 .smile-big { margin-bottom: 40px; }
@@ -88,9 +88,7 @@ a.rihref > i { font-size: 14px; }
 #search-results .detail-fav-switch i.fa.fa-star-o:hover { color: #D2D21E !important; }
 #search-results .detail-fav-switch.exists { color: #D2D21E !important; }
 .result-row { height: 30px; }
-.list-open-in-maps:hover img { -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75); }
+.list-open-in-maps:hover img { outline: 1px solid darkgray; }
 
 .powered-by-icon { position: absolute; bottom: 0; right: 0; }
 /* ~~~~~~~ */

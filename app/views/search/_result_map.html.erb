@@ -1,6 +1,6 @@
 <div class="map-wrapper">
     <% if result[:map] %>
-    <a title="Click to enlarge" class="autotooltip list-open-in-maps map-img" href="#">
+    <a title="Click to enlarge" class="list-open-in-maps map-img" href="#">
     <%= image_tag 'system/lazyload.jpg', size: '290x145', alt: result[:name], lazysrc: result[:map] %>
     </a>
     <% else %>

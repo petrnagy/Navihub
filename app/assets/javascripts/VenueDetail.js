@@ -127,7 +127,8 @@ VenueDetail.prototype = {
                       }, // end func
                   }); // end ajax
               } else {
-                  var cont = confirm("Remove favorite '"+that._data.name+"'?");
+                  //var cont = confirm("Remove favorite '"+that._data.name+"'?");
+                  var cont = true;
                   if ( true === cont ) {
                       $.ajax({
                           url: '/favorites',

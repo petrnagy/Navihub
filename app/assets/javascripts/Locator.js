@@ -123,11 +123,14 @@ Locator.prototype = {
                     if ( typeof response == 'object' && response.code == 1 ) {
                         msg = 'Please allow our site to access your <b>geolocation</b> for the best possible user experience. <a href="https://www.google.cz/#q=how+to+enable+browser+geolocation">How?</a>';
                     } else {
-                        msg = 'We could not guess your location and therefore the site functionality may be limited. (<a href="/" onclick="window.location.reload(); return false;">reload</a>)';
+                        // do not bother user with this, most of them are from big cities anyway...
+                        //msg = 'We could not guess your location and therefore the site functionality may be limited. (<a href="/" onclick="window.location.reload(); return false;">reload</a>)';
                     } // end if
-                    var flashmsg = '<div class="alert alert-dismissible alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>%%flashmsg%%</div>';
-                    flashmsg = flashmsg.replace('%%flashmsg%%', msg);
-                    $('#yield').prepend(flashmsg);
+                    if ( msg.length ) {
+                        var flashmsg = '<div class="alert alert-dismissible alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>%%flashmsg%%</div>';
+                        flashmsg = flashmsg.replace('%%flashmsg%%', msg);
+                        $('#yield').prepend(flashmsg);
+                    } // end if
                     that._data.browser = false;
                 }, { enableHighAccuracy: true, timeout: 300000, maximumAge: 60000 });
             } else {
