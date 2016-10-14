@@ -27,7 +27,7 @@ The application requires following to work properly:
 Privacy
 -------
 
-You can access our privacy policy at http://beta.navihub.net/pages/privacy-policy
+You can access our privacy policy at http://beta.navihub.net/@/privacy-policy
 
 License
 -------
