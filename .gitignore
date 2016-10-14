@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 /~resources
+/.vagrant
 
 # Ignore bundler config.
 /.bundle
