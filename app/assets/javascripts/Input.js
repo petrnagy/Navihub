@@ -92,7 +92,7 @@ Input.prototype = {
             "Pizza", "Water park", "Car rental", "Café", "Chicken wings", "Irish pub",
             "McDonalds", "Hotel", "Post office", "Cinema", "Winery",
             "Sport bar", "ATM", "Bakery", "Beauty salon", "Casino", "Minigolf", "Yoga class",
-            "Market", "Blackjack", "Zoo", "Golf", "Beach", "Laser tag", "Music school",
+            "Pizza hut", "Blackjack", "Zoo", "Golf", "Beach", "Laser tag", "Music school",
             "Hot dogs", "KFC", "Donuts", "Wendy's", "Burger King", "Burgers",
             "Bowling", "Disco", "Beer bar", "Grocery", "Pretzels", "Ice cream"
         ];
