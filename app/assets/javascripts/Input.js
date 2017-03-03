@@ -33,7 +33,7 @@ Input.prototype = {
             that.$form.find('button[type="submit"]').prop('disabled', false);
             that._bindSubmit();
         });
-        this._initDynamicPlaceholder();
+        //this._initDynamicPlaceholder();
     },
     _bindSubmit: function() {
         var that = this;
@@ -84,6 +84,9 @@ Input.prototype = {
         that.$form.find('input, select, option, button').prop('disabled', false);
     }, // end method
 
+    /**
+     * @deprecated
+     */
     _initDynamicPlaceholder: function() {
         var that = this;
         var $input = that.$form.find('input[name="search[term]"]');
