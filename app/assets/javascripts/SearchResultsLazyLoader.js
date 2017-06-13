@@ -18,9 +18,15 @@ SearchResultsLazyLoader.prototype = {
 
     _initSearchResultsLazyLoading: function() {
         var that = this;
-        $(window).scroll(function() { that.lazyLoad(); });
+        //$(window).scroll(function() { that.lazyLoad(); });
         $(window).resize(function() { that.lazyLoad(); });
         $(window).on("orientationchange", function() { that.lazyLoad(); });
+        $(window).scroll(function() {
+            clearTimeout($.data(this, 'scrollTimer'));
+            $.data(this, 'scrollTimer', setTimeout(function() {
+                that.lazyLoad();
+            }, 250));
+        });
     }, // end method
 
     lazyLoad: function() {

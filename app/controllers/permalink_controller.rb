@@ -46,7 +46,7 @@ class PermalinkController < ApplicationController
         row = Permalink.find_by(permalink_id: parameters['permalink_id'])
         if row
             @data = YAML.load row.yield
-            @notice = 'Friendly notice - this is a <b>permalink</b> page! The content is statically saved in our database and may not reflect your current location or any other infromation change. '
+            @notice = 'Friendly notice - this is a <b>permalink</b> page! The content is statically saved in our database and may not reflect your current location or any other information change. '
             unless row.ll == nil
                 loc = row.ll.split ','
                 if Location.possible loc[0], loc[1]
