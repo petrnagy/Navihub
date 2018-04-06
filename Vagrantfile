@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
   #config.vm.share_folder("v-root", "/vagrant", ".", :nfs => true)
   #config.vm.network "private_network", ip: "192.168.56.101"
   config.vm.network :private_network, ip: "10.11.12.13"
-  config.vm.synced_folder ".", "/vagrant", :nfs => { :mount_options => ["dmode=777","fmode=777"] }
+  config.vm.synced_folder ".", "/vagrant", type: "nfs", :nfs => { :mount_options => ["dmode=777","fmode=777"] }
 
   config.vm.provider :virtualbox do |vb|
     #vb.gui = true
