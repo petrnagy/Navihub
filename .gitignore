@@ -7,8 +7,13 @@
 /~resources
 /.vagrant
 
-# Ignore bundler config.
+# Ignore config(s)
 /.bundle
+/config/database.yml
+/config/secrets.yml
+/config/application.rb
+/config/environments/development.rb
+/config/environments/production.rb
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
