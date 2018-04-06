@@ -14,6 +14,7 @@
 /config/application.rb
 /config/environments/development.rb
 /config/environments/production.rb
+/config/environments/test.rb
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
